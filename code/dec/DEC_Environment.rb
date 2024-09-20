@@ -26,7 +26,7 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = "1.0.41.7"
+   @@version = "1.0.41.9"
 
    ## -----------------------------------------------------------------
 
@@ -36,8 +36,7 @@ module DEC
       "1.0.40" =>    "MD5 config flag for pull to manage duplications (HTTP/FTPS)\n\
           HTTP handler treats html navigation pages as directories for pull",
       "1.0.39" =>    "Support of SSH commands\n\
-          decNATS for NAOS updated according to:\n\
-          https://jira.elecnor-deimos.com/browse/NAOSMCS-52\n\
+          decNATS for NAOS updated\n\
           decListener exit code always set to 0 if command is successful", \
       "1.0.38" =>    "Fix on HTTP HEAD to use VerifyPeerSSL configuration", \
       "1.0.37" =>    "New gem roman-numerals is required\n\
@@ -51,8 +50,7 @@ module DEC
           User & Pass configuration items now can be kept encrypted",
       "1.0.32" =>    "HTTP handler updated to get only href anchors for SCIHUB", \
       "1.0.31" =>    "Update of the OData client for DHUS to support S5P (s5phub)", \
-      "1.0.30" =>    "Generation of pull report files DEC_F_RECV when some file failed retrieval\n\
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-484", \
+      "1.0.30" =>    "Generation of pull report files DEC_F_RECV when some file failed retrieval", \
       "1.0.29" =>    "Enhancement to parallelise pull operations\n\
           decODataClient updates:\n\
           > ADGS support (AUXIP)\n\
@@ -77,11 +75,8 @@ module DEC
           decODataClient support for DHUS / Sentinel-1",
       "1.0.24" =>    "Pull local dissemination chmod robustified for errors", \
       "1.0.23" =>    "Local dissemination upon pull is safely compressed:\n\
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-414\n\
-          Update of the OData client for S2PRIP to support download of PDI\n\
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-418",
-      "1.0.22" =>    "WebDAV verb MOVE for push does not carry time-out parameters:\n\
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-418",
+          Update of the OData client for S2PRIP to support download of PDI",
+      "1.0.22" =>    "WebDAV verb MOVE for push does not carry time-out parameters",
       "1.0.21" =>    "Pull local dissemination chmod robustified for errors", \
       "1.0.20" =>    "Support of WebDAV protocol verbs PUT + MOVE for push circulations", \
       "1.0.19" =>    "FTPS Implicit mode (port 990) support for pull & push mode\n\
@@ -90,8 +85,7 @@ module DEC
       "1.0.18" =>    "Update of the OData client for DHUS & S2PRIP to support pagination\n\
           OData client for DHUS to stream to the console the received XML",
       "1.0.17" =>    "Support to push parallelisation driven by ParallelDownload config\n\
-          OData client for DHUS supports pagination:\n\
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-376",
+          OData client for DHUS supports pagination",
       "1.0.16" =>    "First version of the OData client for DHUS / PRIP for Sentinel-2", \
       "1.0.15" =>    "Support to remote inventory / db different than localhost\n\
           dec_config.xml Inventory config now includes Database_Host & Database_Port items", \
@@ -115,10 +109,6 @@ module DEC
       "1.0.12" =>    "Support of WebDAV / HTTP(S) protocol using verbs PROPFIND,GET & DELETE\n\
           for pull mode (dec_incoming_files.xml)\n\
           DEC RetrievedFiles report updated to Sentinels naming convention:\n\
-          Report collision:
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-308\n\
-          Robustification for contingencies:
-          https://jira.elecnor-deimos.com/browse/S2MPASUP-278\n\
           dec_interfaces.xml replaces \"FTPServer\" with \"Server\" configuration item",
       "1.0.11" =>    "Migration to ActiveRecord 6", \
       "1.0.10" =>    "new dec_config.xml deprecates dcc_config.xml & ddc_config.xml\n\

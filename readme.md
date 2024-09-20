@@ -57,7 +57,13 @@ rake -f build_dec.rake dec:build
 ## Install
 
 ```
-rake -f build_aux.dec dec:install
+rake -f build_dec.rake dec:install
+```
+
+## Unit tests
+
+```
+decUnitTests
 ```
 
 

@@ -1,9 +1,6 @@
 %
-% Elecnor Deimos
 %
 % Data Exchange Component
-%
-% Borja Lopez Fernandez (BOLF)
 %
 % DEC Install information
 %
@@ -89,7 +86,7 @@ This section addresses how to install ruby based on \href{https://asdf-vm.com/gu
 \noindent
 Download the tool:
 
-\inlinecode{bash}{ \$> git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2}  \newline
+\inlinecode{bash}{ \$> git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1}  \newline
 
 Add the following entry to \$HOME/.bash\_profile 
 
@@ -143,10 +140,10 @@ Now it is possible to select the ruby run-time version and easily install it for
 \noindent
 Install the ruby run times specifying the version of choice, first to be downloaded and then to select it for local execution:\newline
 
-\inlinecode{bash}{ \$> asdf install ruby 3.1.4} \newline
+\inlinecode{bash}{ \$> asdf install ruby 3.1.6} \newline
 
 \par
-\inlinecode{bash}{ \$> asdf local ruby 3.1.4\; asdf reshim ruby}\newline
+\inlinecode{bash}{ \$> asdf local ruby 3.1.6\; asdf reshim ruby}\newline
 
 \par
 \noindent
@@ -172,16 +169,11 @@ Different versions can be locally installed and select the one of choice at any 
 \inlinecode{bash}{ \$> rvm --default use 3.0} \newline
 
 
-
-\section{Download DEC SW}
-The natural step is to get the DEC SW gem for installation ; according to the project, the repository or the source of the install kit may differ
-is section contains the link to download the DEC SW installer \textit{gemfile} \href{https://nexus3.elecnor-deimos.com/repository/NAOS-IVV/dec/dec-1.0.38a_naos-test_gsc4eo@nl2-u-moc-srv-01.gem}{\textit{dec.gem}} with the unit tests configuration. It is necessary to be logged-in with your DEIMOS \textit{corporate} account in Nexus to \textit{authorise} the download. Do not hesitate in requesting tailored installation packages according to your needs.
-
 \section{Install DEC SW}
 
 In order to install DEC SW and the gems required, execute the following command in the shell at the directory in which the DEC gem file is placed:
 \par
-\inlinecode{bash}{ \$> gem install dec_stable.gem } \newline
+\inlinecode{bash}{ \$> gem install dec_install_gemfile.gem } \newline
 \par
 
 \par

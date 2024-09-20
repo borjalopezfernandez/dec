@@ -87,20 +87,7 @@
 #        --Debug     shows Debug info during the execution
 #        --version   shows version number
 # 
-# == Author
-# Deimos-Space S.L.
-#
-# == Copyright
-# Copyright (c) 2022 Elecnor Deimos Space S.L.U.
-#
 
-#########################################################################
-#       
-# === Written by NAOS
-#
-# === Deimos Space
-# 
-#########################################################################
 
 ## nats server check -s nats://172.23.253.28:4222
 
@@ -307,7 +294,7 @@ end
 def usage
   fullpathFile = File.expand_path(__FILE__)    
   
-  value = `#{"head -95 #{fullpathFile}"}`
+  value = `#{"head -89 #{fullpathFile}"}`
      
   value.lines.drop(1).each{
      |line|

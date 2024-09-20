@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #DEC repository management
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component (DEC) repository
-### 
-### Git: rakefile,v $Id$ $Date$
-###
-### module DEC
-###
-#########################################################################
 
 require 'rake'
 require 'date'
@@ -98,7 +85,7 @@ namespace :dec do
       puts cmd
       system(cmd)
       date     = DateTime.now
-      filename = "DEC-DMS-TEC-SUM2020-1023-E_#{date.strftime("%Y%m%d")}.pdf"
+      filename = "DEC-SUM2025-E_#{date.strftime("%Y%m%d")}.pdf"
       cmd      = "mv dec_sum_main.pdf #{filename}"
       system(cmd)
       puts "Generared #{filename}"    

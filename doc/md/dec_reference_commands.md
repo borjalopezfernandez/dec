@@ -167,11 +167,6 @@ decCheckSent {#decCheckSent}
     --Debug     shows Debug info during the execution
     --version   shows version number
 
-    == Author
-    Deimos-Space S.L.
-
-    == Copyright
-    Copyright (c) 2006 ESA - Deimos Space S.L.
 
 [\[decConfigInterface2DB\]]{#decConfigInterface2DB
 label="decConfigInterface2DB"}
