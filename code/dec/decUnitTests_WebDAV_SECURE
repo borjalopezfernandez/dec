@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DEC_TestCases class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component
-# 
-# module DEC
-#
-#########################################################################
-
 require 'rubygems'
 require 'test/unit'
 require 'fileutils'
@@ -41,9 +29,9 @@ require 'dec/ReadConfigIncoming'
 
 ### openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt
 
-### curl -i --head -u borja:perrillo --ssl https://localhost:8080
+### curl -i --head -u borja:password --ssl https://localhost:8080
 
-### curl -i --head -u borja:perrillo --tlsv1 https://localhost:8080
+### curl -i --head -u borja:password --tlsv1 https://localhost:8080
 
 ### ruby -ropenssl -e 'puts OpenSSL::OPENSSL_VERSION'
 

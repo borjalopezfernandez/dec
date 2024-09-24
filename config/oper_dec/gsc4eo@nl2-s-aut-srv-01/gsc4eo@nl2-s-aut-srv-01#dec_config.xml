@@ -82,10 +82,10 @@
    </Reports>
 
    <Workflow>
-      <SourceDir>/data/mocExternalInterfaces/delivery_root</SourceDir>
-      <GlobalOutbox>/data/mocExternalInterfaces/outbox</GlobalOutbox>
-      <ReportDir>/data/mocExternalInterfaces/tmp</ReportDir>
-      <TempDir>/data/mocExternalInterfaces/tmp</TempDir>
+      <SourceDir>/tmp/data/mocExternalInterfaces/delivery_root</SourceDir>
+      <GlobalOutbox>/tmp/data/mocExternalInterfaces/outbox</GlobalOutbox>
+      <ReportDir>/tmp/data/mocExternalInterfaces/tmp</ReportDir>
+      <TempDir>/tmp/data/mocExternalInterfaces/tmp</TempDir>
    </Workflow>
 
 <!--

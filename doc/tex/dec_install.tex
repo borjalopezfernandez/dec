@@ -29,6 +29,11 @@
  \inlinecode{bash}{ \$> apt-get install ncftp}  \newline
  \inlinecode{bash}{ \$> apt-get install p7zip-full}  \newline
 
+\noindent 
+In order to generate the documentation in pdf, please install the following package:
+\inlinecode{bash}{ \$> apt-get install texlive-xetex}  \newline
+
+
 \subsection{Red-Hat based distributions}
  The installation of packages with RHEL based distributions are constrained by the repositories configured ; official RHEL lack yum support for some of the above SW packages listed in previous section for Debian / Ubuntu based distributions. 
  
@@ -131,6 +136,8 @@ Now it is possible to select the ruby run-time version and easily install it for
 3.1.2
 3.1.3
 3.1.4
+3.1.5
+3.1.6
 3.2.0-dev
 (...)
 \end{Verbatim}
@@ -171,8 +178,9 @@ Different versions can be locally installed and select the one of choice at any 
 
 \section{Install DEC SW}
 
-In order to install DEC SW and the gems required, execute the following command in the shell at the directory in which the DEC gem file is placed:
+In order to install DEC SW and the gems required, execute the following commands in the shell:
 \par
+\inlinecode{bash}{ \$> gem install aux_latest.gem } \newline
 \inlinecode{bash}{ \$> gem install dec_install_gemfile.gem } \newline
 \par
 

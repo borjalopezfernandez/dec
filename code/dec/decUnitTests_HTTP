@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #decUnitTests_HTTP class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decUnitTests_HTTP,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 ## Interface: PARALLEL_HTTP
 
 ## rake -f build_dec.rake dec:install[borja,localhost]

@@ -5,55 +5,811 @@
    <!-- =========================================================== -->
 
    <ListInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            
+
       <Interface>
-         <Name>LOCALHOST_SECURE</Name>
-         <LocalInbox>/tmp/dec/in_basket_if_localhost_secure</LocalInbox>
+         <Name>ECDC</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_ecdc</LocalInbox>
          <DownloadDirs>
-		      <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_secure/download1</Directory>
-            <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_secure/download2</Directory>
+            <Directory DepthSearch="0">covid19/casedistribution/csv</Directory>
          </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>SPCS</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_spcs</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/basicspacedata/query/class/cdm_public</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>CELES_D1</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_celes</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">NORAD/elements/gp.php?CATNR=35681</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>      
+
+      <Interface>
+         <Name>CELES_D2</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_celes</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">NORAD/elements/gp.php?CATNR=40013</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>  
+
+      <Interface>
+         <Name>TEST_CELESTRAK_SFS</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_celes/sfs</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">SpaceData/SW-Last5Years.txt</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>  
+
+      <Interface>
+         <Name>TEST_CELESTRAK_TLE</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_celes/tle</LocalInbox>
+         <DownloadDirs>
+            <!-- Sentinel-2B -->
+            <Directory DepthSearch="0">NORAD/elements/gp.php?CATNR=42063</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>  
+
+      <Interface>
+         <Name>TEST_CELESTRAK_TCA</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_celes/tca</LocalInbox>
+         <DownloadDirs>
+            <!-- Sentinel-2B -->
+            <Directory DepthSearch="0">NORAD/elements/gp.php?GROUP=active&#038;FORMAT=2le</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>  
+
+<Interface>
+         <Name>TEST_NASA_RFM</Name>
+         <LocalInbox>/tmp/data/mocExternalInterfaces/int/MOD09A1</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="1">/MOLT/MOD09A1.061/2023.08.21/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>TEST_NASA_RFM_URL</Name>
+         <LocalInbox>/tmp/data/mocExternalInterfaces/int/MOD09A1_URL</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/MOLT/MOD09A1.061/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      
+      <Interface>
+         <Name>TEST_NASA_ASTGTM</Name>
+         <LocalInbox>/tmp/data/mocExternalInterfaces/int/ASTERV3DEM</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/ASTT/ASTGTM.003/2000.03.01/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>TEST_NASA_SRTMDEM</Name>
+         <LocalInbox>/tmp/data/mocExternalInterfaces/int/DEM_SRTMV3</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/MEASURES/SRTMGL1.003/2000.02.11/SRTMGL1_page_1.html</Directory>
+            <Directory DepthSearch="0">/MEASURES/SRTMGL1.003/2000.02.11/SRTMGL1_page_2.html</Directory>
+            <Directory DepthSearch="0">/MEASURES/SRTMGL1.003/2000.02.11/SRTMGL1_page_3.html</Directory>
+            <Directory DepthSearch="0">/MEASURES/SRTMGL1.003/2000.02.11/SRTMGL1_page_4.html</Directory>
+            <Directory DepthSearch="0">/MEASURES/SRTMGL1.003/2000.02.11/SRTMGL1_page_5.html</Directory>
+            <Directory DepthSearch="0">/MEASURES/SRTMGL1.003/2000.02.11/SRTMGL1_page_6.html</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+
+      <Interface>
+         <Name>WEBDAV</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_webdav</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>SCIHUB</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_scihub</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">catalogueview/S2B/2021/08/</Directory>
+            <Directory DepthSearch="0">catalogueview/S2B/2021/09/</Directory>
+            <Directory DepthSearch="0">catalogueview/S2B/2021/10/</Directory>
+            <Directory DepthSearch="0">catalogueview/S2B/2021/11/</Directory>
+            <Directory DepthSearch="0">catalogueview/S2B/2021/12/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>WEBDAV_SECURE</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_webdav_secure</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">tmp</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>PARALLEL_HTTP</Name>
+         <LocalInbox>/tmp/if_dec/in_basket_if_http</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/dec_simul_if/parallel_http</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>LOCALHOST_FTP</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_ftp</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/tmp/dir1</Directory>
+            <Directory DepthSearch="0">/tmp/tmp/dir2</Directory>
+            <!--
+            <Directory DepthSearch="0">/dir1/</Directory>
+            <Directory DepthSearch="0">/dir2/</Directory>
+            <Directory DepthSearch="0">/dir3/</Directory>
+            -->
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>LOCALHOST_FTP_PASSIVE</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_ftp_passive</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/tmp/dir1</Directory>
+            <Directory DepthSearch="0">/tmp/tmp/dir2</Directory>
+            <!--
+            <Directory DepthSearch="0">/dir1/</Directory>
+            <Directory DepthSearch="0">/dir2/</Directory>
+            <Directory DepthSearch="0">/dir3/</Directory>
+            -->
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>LOCALHOST_FTPS</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_ftps</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/tmp/dir1</Directory>
+            <Directory DepthSearch="0">/tmp/tmp/dir2</Directory>
+            <!--
+            <Directory DepthSearch="0">/dir1/</Directory>
+            <Directory DepthSearch="0">/dir2/</Directory>
+            <Directory DepthSearch="0">/dir3/</Directory>
+            -->
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <!-- Delete Duplicated for FTPS not working -->
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
       </Interface>
 
       <Interface>
          <Name>LOCALHOST_NOT_SECURE</Name>
          <LocalInbox>/tmp/dec/in_basket_if_localhost_notsecure</LocalInbox>
          <DownloadDirs>
-		      <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_notsecure/download</Directory>
+            <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_notsecure/download</Directory>
          </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <!-- Delete Duplicated must be false for the tests -->
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
       </Interface>
       
       <Interface>
-         <Name>IERS</Name>
-         <LocalInbox>/tmp/dec/if_iers_in_basket</LocalInbox>
+         <Name>LOCALHOST_SECURE</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_secure</LocalInbox>
          <DownloadDirs>
-		      <Directory DepthSearch="0">products/eop/rapid/standard</Directory>
+		      <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_secure/download</Directory>
          </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
       </Interface>
-      
+
+      <Interface>
+         <Name>LOCALHOST_SECURE_PASSWORD</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_secure_password</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_secure_password/download</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>         
+            
       <Interface>
          <Name>FILESYSTEM</Name>
          <LocalInbox>/tmp/dec/if_local_filesystem</LocalInbox>
          <DownloadDirs>
 		      <Directory DepthSearch="0">/tmp/dec_simul_if/filesystem/download</Directory>
          </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>ILRS</Name>
+         <LocalInbox>/tmp/dec/if_islr_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/pub/slr/data/npt_crd/sentinel3a/2022</Directory>
+            <Directory DepthSearch="0">/pub/slr/data/npt_crd/sentinel3b/2022</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>NOAA</Name>
+         <LocalInbox>/tmp/dec/if_noaa_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/pub/warehouse/2024/RSGA</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
       </Interface>
       
+      <Interface>
+         <Name>TEST_IERS_BULA</Name>
+         <LocalInbox>/tmp/dec/if_iers_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/data/latestVersion/bulletinA.txt</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>
+      </Interface>
+      
+      <Interface>
+         <Name>TEST_IERS_BULC</Name>
+         <LocalInbox>/tmp/dec/if_iers_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/iers/bul/bulc/Leap_Second.dat</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>IGS</Name>
+         <LocalInbox>/tmp/dec/if_igs_in_basket</LocalInbox>
+         <DownloadDirs>
+            
+            <!--
+		      <Directory DepthSearch="0">/pub/igs/products/latest/final</Directory>
+            -->
+            <!-- GPS Messages -->
+            
+            <Directory DepthSearch="0">/gnss/data/daily/2022/brdc</Directory>
+
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>LEAP</Name>
+         <LocalInbox>/tmp/dec/if_leap_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/iers/bul/bulc/Leap_Second.dat</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>PUBLISH_S3</Name>
+         <LocalInbox>/tmp/dec/publish/s3</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/aux_tmp</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>true</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>PUBLISH_POD</Name>
+         <LocalInbox>/tmp/dec/publish/pod</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/tmp/dec_local_dissemination/pod</Directory>
+         </DownloadDirs>         
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>true</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>true</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      
+      <Interface>
+         <Name>NASA_NBULA</Name>
+         <LocalInbox>/tmp/dec/ext/nasa_cddis</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/archive/products/iers/finals2000A.data</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>NASA_NBULC</Name>
+         <LocalInbox>/tmp/dec/ext/nasa_cddis</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/archive/products/iers/tai-utc.dat</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
+         <Name>NASA_SFL</Name>
+         <LocalInbox>/tmp/dec/ext/nasa_msfc</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">%Q{sites/default/files/atoms/files/#{(Time.now.to_date &lt;&lt; 1).strftime("%b%Y").to_s.downcase!}f10_prd.txt}</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
       
    </ListInterfaces>
+<!-- 
+
+https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
+
+   Time.now.to_date << 1
+
+   <Directory DepthSearch="0">sites/default/files/atoms/files/#{}f10_prd.txt</Directory>
+
+-->
+
 
    <!-- =========================================================== -->
 
-   <ListFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  
-      <File Type="tai-utc*">
-         <Description>TAI UTC correlation</Description>
+      <File Type="bulletinA.txt">
+         <Description>AUX_BULA__</Description>
          <FromList>
-            <Interface>IERS</Interface>
-            <Interface>LOCALHOST_NOT_SECURE</Interface>
+            <Interface>TEST_IERS_BULA</Interface>
+         </FromList>
+      </File>
+
+      <File Type="Leap_Second.dat">
+         <Description>AUX_BULC__</Description>
+         <FromList>
+            <Interface>TEST_IERS_BULC</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*CATNR=?????">
+         <Description>AUX_TLE___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_TLE</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*GROUP=active*FORMAT=2le">
+         <Description>AUX_TCA___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_TCA</Interface>
+         </FromList>
+      </File>
+      
+      <File Type="*Last5Years*">
+         <Description>AUX_SFS___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_SFS</Interface>
+         </FromList>
+      </File>
+
+
+
+       <File Type="touch_file*">
+         <Description>test file</Description>
+         <FromList>
+            <Interface>LOCALHOST_FTP_PASSIVE</Interface>
+            <Interface>LOCALHOST_FTP</Interface>
+            <Interface>LOCALHOST_FTPS</Interface>
+            <Interface>LOCALHOST_SECURE</Interface>
+         </FromList>
+      </File>
+
+       <File Type="touchfile*">
+         <Description>test file</Description>
+         <FromList>
+            <Interface>LOCALHOST_FTP_PASSIVE</Interface>
+            <Interface>LOCALHOST_FTP</Interface>
+            <Interface>LOCALHOST_FTPS</Interface>
+            <Interface>LOCALHOST_SECURE</Interface>
+         </FromList>
+      </File>
+
+      <File Type="test_http*.bin*">
+         <Description>test file</Description>
+         <FromList>
+            <Interface>PARALLEL_HTTP</Interface>
+         </FromList>
+      </File>
+
+      <File Type="test_local*.bin*">
+         <Description>test file</Description>
+         <FromList>
             <Interface>FILESYSTEM</Interface>
          </FromList>
       </File>
+ 
+      <File Type="test_ftp_*.bin">
+         <Description></Description>
+         <FromList>
+            <Interface>LOCALHOST_FTP</Interface>
+         </FromList>
+      </File>
+
+      <File Type="test_sftp_*.bin">
+         <Description></Description>
+         <FromList>
+            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_PASSWORD</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*CATNR=?????">
+         <Description>AUX_TLE___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_TLE</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*GROUP=active*FORMAT=2le">
+         <Description>AUX_TCA___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_TCA</Interface>
+         </FromList>
+      </File>
+      
+      <File Type="*Last5Years*">
+         <Description>AUX_SFS___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_SFS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*f10_prd.txt">
+         <Description>AUX_SFL___</Description>
+         <FromList>
+            <Interface>NASA_SFL</Interface>
+         </FromList>
+      </File>
+
+      <File Type="finals2000A.data">
+         <Description>AUX_NBULA_</Description>
+         <FromList>
+            <Interface>NASA_NBULA</Interface>
+         </FromList>
+      </File>
+   
+      <File Type="tai-utc.dat">
+         <Description>AUX_NBULC_</Description>
+         <FromList>
+            <Interface>NASA_NBULC</Interface>
+         </FromList>
+      </File>
+
+
+      <File Type="*tai-utc*">
+         <Description>TAI UTC correlation</Description>
+         <FromList>
+            <Interface>WEBDAV</Interface>
+            <Interface>WEBDAV_SECURE</Interface>
+            <Interface>PARALLEL_HTTP</Interface>
+            <Interface>IERS</Interface>
+            <Interface>LOCALHOST_NOT_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>FILESYSTEM</Interface>
+         </FromList>
+      </File>
+
+      <File Type="Leap_Second.dat">
+         <Description>IERS TAI UTC Time Correlation</Description>
+         <FromList>
+            <Interface>LEAP</Interface>
+         </FromList>
+      </File>
+
+      <File Type="csv">
+         <Description>Comma Separated Value</Description>
+         <FromList>
+            <Interface>ECDC</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*cdm*">
+         <Description>conjunction data message</Description>
+         <FromList>
+            <Interface>SPCS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*CATNR*">
+         <Description>NORAD SAT CAT TLE</Description>
+         <FromList>
+            <Interface>CELES_D1</Interface>
+            <Interface>CELES_D2</Interface>
+         </FromList>
+      </File>
+
+      <File Type="finals2000A.daily">
+         <Description>EOP parameters</Description>
+         <FromList>
+            <Interface>IERS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="finals2000A.data">
+         <Description>EOP parameters</Description>
+         <FromList>
+            <Interface>IERS</Interface>
+         </FromList>
+      </File>
+
 
       <File Type="gpsrapid*">
          <Description>GPS data</Description>
@@ -62,12 +818,77 @@
          </FromList>
       </File>
 
-      <File Type="finals.a*">
+      <File Type="*finals.*">
          <Description>TAI UTC correlation</Description>
          <FromList>
+            <Interface>WEBDAV</Interface>
+            <Interface>WEBDAV_SECURE</Interface>
             <Interface>IERS</Interface>
             <Interface>LOCALHOST_NOT_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>PARALLEL_HTTP</Interface>
             <Interface>FILESYSTEM</Interface>
+         </FromList>
+      </File>
+
+
+<!--
+
+igswwwwd.sp3
+
+https://cddis.nasa.gov/Data_and_Derived_Products/GNSS/gnss_igsclk5.html
+
+WWWW/igsWWWWD.clk.Z
+
+> WWWW   GPS week
+> D      day of week (0-6, 7 indicates weekly)
+
+
+-->
+
+
+
+      <File Type="igs?????.*">
+         <Description>International GPS Service / GPS Orbits igswwwwd.sp3.Z</Description>
+         <FromList>
+            <Interface>IGS</Interface>
+         </FromList>
+      </File>
+
+
+
+      <File Type="ig??????.clk_30s*">
+         <Description>International GPS Service / GPS Clocks igswwwwd.sp3.Z</Description>
+         <FromList>
+            <Interface>IGS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="ig??????.clk_30s*">
+         <Description>International GPS Service / GPS Clocks igswwwwd.sp3.Z</Description>
+         <FromList>
+            <Interface>IGS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="brdc????.??n.*">
+         <Description>International GPS Service / GPS navigation message brdcdddf.yyn.Z</Description>
+         <FromList>
+            <Interface>IGS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="sentinel3*">
+         <Description>Satellite Laser Ranging data</Description>
+         <FromList>
+            <Interface>ILRS</Interface>
+         </FromList>
+      </File>
+
+      <File Type="????????RSGA.txt">
+         <Description>Report Solar Geophysical Activity flux and Geomagnetic activity</Description>
+         <FromList>
+            <Interface>NOAA</Interface>
          </FromList>
       </File>
      
@@ -76,16 +897,78 @@
          <FromList>
             <Interface>LOCALHOST_SECURE</Interface>
             <Interface>LOCALHOST_NOT_SECURE</Interface>
+            <Interface>SCIHUB</Interface>
          </FromList>
       </File>
+
+      <File Type="S3__GN_1_LSC_AX*">
+         <Description>Sentinel-3 Leap Second</Description>
+         <FromList>
+            <Interface>PUBLISH_S3</Interface>
+         </FromList>
+      </File>
+
+      <File Type="S3__GN_1_NAV_AX*">
+         <Description>Sentinel-3 IGS Broadcast Daily</Description>
+         <FromList>
+            <Interface>PUBLISH_S3</Interface>
+         </FromList>
+      </File>
+
+      <File Type="S3__GN_1_EOP_AX*">
+         <Description>IERS Earth Orientation Parameters</Description>
+         <FromList>
+            <Interface>PUBLISH_S3</Interface>
+         </FromList>
+      </File>
+
+      <File Type="S3__GN_1_SAC_AX*">
+         <Description>NOAA Solar Activity Report</Description>
+         <FromList>
+            <Interface>PUBLISH_S3</Interface>
+         </FromList>
+      </File>
+
      
-   </ListFiles>
+   </DownloadRules>
 
    <!-- =========================================================== -->
 
    <DisseminationRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    
       <ListIntrays>
+
+         <Intray>
+            <Name>NAOS_IN</Name>
+            <Directory>/tmp/dec/int/tmp/</Directory>
+         </Intray>
+
+         <Intray>
+            <Name>DIAS</Name>
+            <Directory>/tmp/dec_final_dissemination/DIAS/</Directory>
+         </Intray>
+
+
+         <Intray>
+            <Name>FINAL_S3</Name>
+            <Directory>/tmp/dec_final_dissemination/S3/</Directory>
+         </Intray>
+
+         <Intray>
+            <Name>ARCHIVE</Name>
+            <Directory>/tmp/dec_final_dissemination/archive/</Directory>
+            <!--
+            <Compress>7z</Compress>
+            -->
+         </Intray>
+
+         <Intray>
+            <Name>S3_IN</Name>
+            <Directory>/tmp/dec_local_dissemination/S3/</Directory>
+            <!--
+            <Execute>auxConverter -f %F -d /tmp/aux_tmp</Execute>
+            -->
+         </Intray>
 
          <Intray>
             <Name>S2ALL</Name>
@@ -96,11 +979,44 @@
             <Name>S2A</Name>
             <Directory>/tmp/dec_local_dissemination/S2A</Directory>
             <Compress>7z</Compress>
+            <!--
+            <Execute>7z</Execute>
+            -->
          </Intray>
 
          <Intray>
             <Name>S2B</Name>
             <Directory>/tmp/dec_local_dissemination/S2B</Directory>
+            <!--
+            <Execute>7z</Execute>
+            -->
+         </Intray>
+
+         <Intray>
+            <Name>S2_7Z</Name>
+            <Directory>/tmp/dec_local_dissemination/S2_7Z</Directory>
+            <Compress>7z</Compress>
+            <!--
+            <Execute>7z</Execute>
+            -->
+         </Intray>
+
+         <Intray>
+            <Name>S2_7Z-X_1</Name>
+            <Directory>/tmp/dec_local_dissemination/S2_7Z-X_1</Directory>
+            <Compress>7z-x</Compress>
+         </Intray>
+
+         <Intray>
+            <Name>S2_7Z-X_2</Name>
+            <Directory>/tmp/dec_local_dissemination/S2_7Z-X_2</Directory>
+            <Compress>7z-x</Compress>
+         </Intray>
+
+         <Intray>
+            <Name>S2_7Z-X_3</Name>
+            <Directory>/tmp/dec_local_dissemination/S2_7Z-X_3</Directory>
+            <Compress>7z-x</Compress>
          </Intray>
 
          <Intray>
@@ -112,9 +1028,34 @@
             <Name>DEC_REPORTS</Name>
             <Directory>/tmp/dec_local_dissemination/DEC_Reports</Directory>
          </Intray>
+
+         <Intray>
+            <Name>DEC_REPORTS_GRAVEYARD</Name>
+            <Directory>/tmp/dec_local_dissemination/DEC_Reports_Graveyard</Directory>
+         </Intray>
+ 
+         <Intray>
+            <Name>POD_IN</Name>
+            <Directory>/tmp/dec_tmp/dec/out_basket_pod_push/http</Directory>
+            <!--
+            <Execute>decSend2Interface -m POD_PUSH</Execute>
+            -->
+         </Intray>
+
+         <Intray>
+            <Name>TLE</Name>
+            <Directory>/tmp/dec_local_dissemination/TLE</Directory>
+         </Intray>
       
+         <Intray>
+            <Name>CDM</Name>
+            <Directory>/tmp/dec_local_dissemination/CDM</Directory>
+         </Intray>
+
                 
       </ListIntrays>
+
+      <!-- =============================================== -->
 
       <ListFilesDisseminated>
     
@@ -122,7 +1063,137 @@
             SORT Rules ranking from more restrictive ones    
             Only the first rule matching the file pattern is applied     
       -->
+
+         <File Type="finals2000A.data">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>NAOS_IN</Intray>
+            </ToList>
+         </File>   
+
+         <File Type="tai-utc.dat">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>NAOS_IN</Intray>
+            </ToList>
+         </File>  
+
+         <File Type="*Last5Years*">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>NAOS_IN</Intray>
+            </ToList>
+         </File>
+         
+         <File Type="*GROUP=active*FORMAT=2le">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>NAOS_IN</Intray>
+            </ToList>
+         </File>
+
+         <File Type="*CATNR=?????">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>NAOS_IN</Intray>
+            </ToList>
+         </File>
+
+         <File Type="*f10_prd.txt">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>NAOS_IN</Intray>
+            </ToList>
+         </File>  
+
+         <File Type="S2?_*OPENHUB*.csv">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>DIAS</Intray>
+            </ToList>
+         </File>
+
+         <File Type="*.tle">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>TLE</Intray>
+            </ToList>
+         </File>
+
+         <File Type="*cdm*">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>CDM</Intray>
+            </ToList>
+         </File>
+
+         <File Type="igs?????.*">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>POD_IN</Intray>
+            </ToList>
+         </File>
+
+         <File Type="S3__GN_1_LSC_AX*">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>FINAL_S3</Intray>
+               <Intray>ARCHIVE</Intray>
+            </ToList>
+         </File>
+
+         <File Type="S3__GN_1_NAV_AX*">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>FINAL_S3</Intray>
+               <Intray>ARCHIVE</Intray>
+            </ToList>
+         </File>
+
+         <File Type="S3__GN_1_EOP_AX*">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>FINAL_S3</Intray>
+               <Intray>ARCHIVE</Intray>
+            </ToList>
+         </File>
+
+
+         <File Type="*DECUNKNOWN*LOCALHOST_NOT_SECURE*">
+            <HardLink>False</HardLink>
+            <ToList>
+               <Intray>DEC_REPORTS_GRAVEYARD</Intray>
+            </ToList>
+         </File>
+
+         <File Type="*DEC_F_RECV*LOCALHOST_NOT_SECURE*">
+            <HardLink>False</HardLink>
+            <ToList>
+               <Intray>DEC_REPORTS_GRAVEYARD</Intray>
+            </ToList>
+         </File>
    
+         <File Type="*DEC_F_RECV*">
+            <HardLink>False</HardLink>
+            <ToList>
+               <Intray>DEC_REPORTS</Intray>
+            </ToList>
+         </File>
+
+         <File Type="brdc0???.??n.Z">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>S3_IN</Intray>
+            </ToList>
+         </File>
+
+         <File Type="????????RSGA.txt">
+            <HardLink>false</HardLink>
+            <ToList>
+               <Intray>S3_IN</Intray>
+            </ToList>
+         </File>
+
          <File Type="gpsrapid.*">
             <HardLink>false</HardLink>
             <ToList>
@@ -130,17 +1201,43 @@
             </ToList>
          </File>   
    
-         <File Type="tai-utc*">
-            <HardLink>False</HardLink>
+         <File Type="tai-utc.dat">
+            <HardLink>true</HardLink>
             <ToList>
                <Intray>GPS</Intray>
+               <Intray>S2A</Intray>
             </ToList>
          </File>
-   
-         <File Type="finals*">
-            <HardLink>false</HardLink>
+
+         <File Type="tai-utc.7z">
+            <HardLink>true</HardLink>
             <ToList>
                <Intray>GPS</Intray>
+               <Intray>S2_7Z-X_1</Intray>
+               <Intray>S2_7Z-X_2</Intray>
+               <Intray>S2_7Z-X_3</Intray>
+            </ToList>
+         </File>
+
+         <File Type="finals.7z">
+            <HardLink>true</HardLink>
+            <ToList>
+               <Intray>GPS</Intray>
+               <Intray>S2_7Z-X_1</Intray>
+               <Intray>S2_7Z-X_2</Intray>
+               <Intray>S2_7Z-X_3</Intray>
+            </ToList>
+         </File>
+
+   
+         <File Type="finals.all">
+            <HardLink>true</HardLink>
+            <ToList>
+               <Intray>S2A</Intray>
+               <Intray>GPS</Intray>
+               <Intray>S2B</Intray>
+               <Intray>S2_7Z</Intray>
+               <Intray>S2ALL</Intray>
             </ToList>
          </File>
    
@@ -167,12 +1264,6 @@
             </ToList>
          </File>
 
-         <File Type="*DEC_F_RECV*">
-            <HardLink>False</HardLink>
-            <ToList>
-               <Intray>DEC_REPORTS</Intray>
-            </ToList>
-         </File>
 
       </ListFilesDisseminated>
    </DisseminationRules>
@@ -181,4 +1272,3 @@
 
 
 </Config>
-

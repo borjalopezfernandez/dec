@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby -W0
 
-#########################################################################
-###
-### === Ruby source for #DEC_TestCases NASA CDDIS class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-### 
-### module DEC
-###
-#########################################################################
-
 require 'rubygems'
 require 'test/unit'
 require 'fileutils'

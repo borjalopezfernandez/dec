@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #CheckerFTPConfig class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component -> DEC
-# 
-# Git: $Id: CheckerFTPConfig.rb,v 1.11 2014/10/13 18:39:54 algs Exp $
-#
-#########################################################################
-
 require 'net/ftp'
 
 require 'ctc/SFTPBatchClient'
@@ -134,7 +122,8 @@ private
       if @ftpElement[:isSecure] == true then 
         puts "Secure conection is used (sftp)"
       else
-        puts "NON Secure conection is used (ftp)"
+         puts "NON Secure conection is used (ftp)"
+         puts "passive     -> #{@ftpElement[:isPassive]}"
       end
       if @ftpElement[:isSecure] == true and @ftpElement[:isCompressed] == true then 
         puts "Communication data is compressed (sftp)"
@@ -415,7 +404,8 @@ private
                                  dir, \
                                  file, \
                                  true, \
-                                 @isDebugMode \
+                                 @isDebugMode, \
+                                 passive \
                                 )
 
       if @isDebugMode == true then

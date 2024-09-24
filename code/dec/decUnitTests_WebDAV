@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #decUnitTests_WebDAV class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decUnitTests_WebDAV,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 ## Interface: WEBDAV http
 ## Port: 8080
 

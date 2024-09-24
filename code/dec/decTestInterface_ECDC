@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #decTestInterface_ECDC class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decTestInterface_ECDC,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 require 'rubygems'
 require 'test/unit'
 require 'fileutils'

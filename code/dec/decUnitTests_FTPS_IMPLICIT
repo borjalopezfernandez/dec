@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #decUnitTests_FTPS class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decUnitTests_FTPS_IMPLICIT,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 ###  TO BE DONE / SKELETON
 
 require 'rubygems'

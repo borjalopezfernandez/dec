@@ -1,16 +1,5 @@
 #!/usr/bin/env ruby -W0
 
-#########################################################################
-##
-## === Ruby source for #DEC_TestCases class
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component
-## 
-## module DEC
-##
-#########################################################################
 
 require 'rubygems'
 require 'test/unit'
@@ -134,7 +123,7 @@ class DECTestCaseCelesTrak < Test::Unit::TestCase
       # system("\\rm -rf /tmp/dec*")
       system("\\rm -rf /tmp/DEC*.log")
       system("\\rm -rf /data/mocExternalInterfaces/log/DEC*.log")
-      system("\\rm -rf /data/mocExternalInterfaces/tmp/mocIN/tmp/*")
+      system("\\rm -rf /tmp/dec/in_basket_if_celes/*")
       system("\\rm -rf /data/mocExternalInterfaces/tmp/mocIN/*")
       system("\\rm -rf /data/mocExternalInterfaces/tmp/mocOUT/*")
       system("\\rm -rf /data/mocExternalInterfaces/tmp/mocOUT/tmp/*")
@@ -206,7 +195,7 @@ class DECTestCaseCelesTrak < Test::Unit::TestCase
       assert(system(cmd), "pull statistics")
    
       arr = Dir["/tmp/DEC*.log"]
-      arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
+      # arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
 
       @@logger.debug("Verification of log trace: SFS conversion to NAOS mission")
       cmd = "grep AUX\_001 #{arr[0]}"
@@ -253,7 +242,7 @@ class DECTestCaseCelesTrak < Test::Unit::TestCase
       assert(system(cmd), "pull statistics")
    
       arr = Dir["/tmp/DEC*.log"]
-      arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
+      # arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
 
       @@logger.debug("Verification of log trace: TLE conversion to NAOS mission")
       cmd = "grep AUX\_001 #{arr[0]}"
@@ -313,7 +302,7 @@ class DECTestCaseCelesTrak < Test::Unit::TestCase
       assert(system(cmd), "pull statistics")
    
       arr = Dir["/tmp/DEC*.log"]
-      arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
+      # arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
 
       @@logger.debug("Verification of log trace: TCA conversion to NAOS mission")
       cmd = "grep AUX\_001 #{arr[0]}"

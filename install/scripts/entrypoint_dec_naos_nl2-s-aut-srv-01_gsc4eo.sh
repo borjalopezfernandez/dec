@@ -3,6 +3,8 @@ set -e
 
 [ "$DEBUG" == 'true' ] && set -x
 
+mkdir -p /tmp/data/mocExternalInterfaces/log/dec
+
 echo "container entrypoint init DEC NAOS gsc4eo@nl2-s-aut-srv-01"
 decListener -m SIM_DDC_ADA_TDA -i 60
 sleep 10

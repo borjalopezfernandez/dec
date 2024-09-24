@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby -W0
 
-#########################################################################
-###
-### === Ruby source for #decUnitTests_SFTP class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decUnitTests_SFTP,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 require 'rubygems'
 require 'test/unit'
 require 'fileutils'
@@ -26,7 +12,7 @@ require 'dec/ReadConfigDEC'
 require 'dec/ReadConfigOutgoing'
 require 'dec/ReadConfigIncoming'
 
-## rake -f build_dec.rake dec:install[borja,localhost,s2_test_pg]
+## rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]
 
 
 class DECTestCase_SFTP < Test::Unit::TestCase

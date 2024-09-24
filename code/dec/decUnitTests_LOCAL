@@ -1,22 +1,8 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #decUnitTests_LOCAL class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decUnitTests_LOCAL,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 ## Interface: LOCAL file-system
 
-## rake -f build_dec.rake dec:install[borja,localhost]
+## rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]
 
 require 'rubygems'
 require 'test/unit'

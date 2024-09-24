@@ -18,10 +18,12 @@ require 'dec/ReadInterfaceConfig'
 require 'dec/ReadConfigOutgoing'
 require 'dec/ReadConfigIncoming'
 
-### rake -f build_dec.rake dec:install[borja,localhost,s2_test_pg]
+### rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]
 
 ### Required for test of integration with minARC
 ### rake -f build_minarc.rake minarc:install[borja,localhost,s2_test_pg]
+
+### docker run -d     -p "21:21"     -p 21000-21010:21000-21010     -e USERS="test_ftp|test"     -e ADDRESS=localhost     delfer/alpine-ftp-server
 
 ### Preconditions:
 ### 1 - setup 
@@ -52,10 +54,10 @@ require 'dec/ReadConfigIncoming'
 ###  5  - test_decListener
 ###  6  - test_decGetFiles4Transfer
 ###  7  - test_decSend2Interface
-###  7.1  - test_decSend2Interface_FTP
+###  7.1  - test_decSend2Interface_FTP => decUnitTest_FTP_PASSIVE
 ###  7.2  - test_decSend2Interface_LOCAL
 ###  7.3  - test_decSend2Interface_HTTP
-###  7.4  - test_decSend2Interface_SFTP
+###  7.4  - test_decSend2Interface_SFTP => decUnitTest_SFTP
 ###  7.5  - test_decSend2Interface_FTPS => decUnitTests_FTPS / test_push
 ###  7.6  - test_decSend2Interface_contingency
 ###  8  - test_decNotify2Interface
@@ -2294,83 +2296,6 @@ class DECTestCase < Test::Unit::TestCase
 
    end
    
-   ## --------------------------------------------------------
-   ##
-   ## test for pushing files towards the interfaces
-   ##
-   ## 
-   
-   def test_decSend2Interface_FTP
-      puts __method__.to_s
-      puts
-      puts "================================================"
-      puts "DEC_UnitTests::#{__method__.to_s}"
-      puts
-
-      cmd = "decManageDB -d"
-      ret = system(cmd)
-
-      cmd = "decManageDB -c"
-      ret = system(cmd)
-
-      cmd = "decConfigInterface2DB -p EXTERNAL"
-      puts cmd
-      ret = system(cmd)
-
-      cmd = "decSend2Interface -S"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      ## Call to previous test to load the out-trays
-      test_decGetFiles4Transfer
-      checkDirectory("/tmp/dec_delivery_root/GIP_PROBA2")
-      
-      cmd = "decSend2Interface -m LOCALHOST_NOT_SECURE -O"
-      puts
-      puts cmd
-      puts
-      assert(system(cmd), cmd)
-
-      cmd = "decStats -H 1"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      puts
-      cmd = "decListDirUpload -m LOCALHOST_NOT_SECURE -t"
-      puts cmd
-      assert(system(cmd), cmd)
-      puts
-
-      decConfig   = DEC::ReadConfigDEC.instance
-      reportDir   = decConfig.getReportDir
-      puts
-      puts reportDir
-      puts
-      arr = Dir["#{reportDir}/*"]
-      assert(arr.length>0, "delivery report generation")
-
-      arr = Dir["/tmp/DEC*.log"]
-      
-      cmd = "grep ERROR #{arr[0]}"
-      puts cmd
-      assert(!system(cmd), "ERROR found in DEC logs in #{__method__.to_s}") 
-
-      ## Call to previous test to load the out-trays
-      test_decGetFiles4Transfer
-      checkDirectory("/tmp/dec_delivery_root/GIP_PROBA2")
-      
-      cmd = "decSend2Interface -m LOCALHOST_NOT_SECURE -O"
-      puts
-      puts cmd
-      puts
-      assert(system(cmd), cmd)
-      
-      cmd = "grep ERROR #{arr[0]}"
-      puts cmd
-      assert(!system(cmd), "ERROR found in DEC logs in #{__method__.to_s}") 
-
-   end
-
    ## -------------------------------------------------------------
 
    ## test for pushing files towards the interfaces
@@ -2503,100 +2428,6 @@ class DECTestCase < Test::Unit::TestCase
    
    ## -------------------------------------------------------------
    
-   def test_decSend2Interface_SFTP
-
-      puts __method__.to_s
-      puts
-      puts "================================================"
-      puts "DEC_UnitTests::#{__method__.to_s}"
-      puts
-
-      system("\\rm -f /tmp/dec_simul_if/localhost_secure/upload/*")
-      system("\\rm -f /tmp/dec_simul_if/localhost_secure/upload/_TEMP_/*")
-
-      cmd = "decManageDB -d"
-      ret = system(cmd)
-
-      cmd = "decManageDB -c"
-      ret = system(cmd)
-
-      cmd = "decConfigInterface2DB -p EXTERNAL"
-      ret = system(cmd)
-
-      cmd = "decValidateConfig -e"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      cmd = "decValidateConfig -o"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      sourceDir = DEC::ReadConfigDEC.instance.getSourceDir
-      
-      checkDirectory(sourceDir)
-      puts "SOURCE DIR => #{sourceDir}"
-
-      checkDirectory("/tmp/dec_simul_if/localhost_secure/upload/_TEMP_/")
-      checkDirectory("/tmp/dec_delivery_root/GIP_PROBA2")
-      
-      @@arrPushFiles.each{|filename|
-         system("echo \'#{filename}\' > #{sourceDir}/#{filename}")
-      }
-
-      cmd = "decListDirUpload -m LOCALHOST_SECURE -t"
-      puts cmd
-      assert(system(cmd), cmd)
-      puts      
-
-
-      cmd = "decGetFiles4Transfer"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      cmd = "decSend2Interface --mnemonic LOCALHOST_SECURE -O"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      checkDirectory("/tmp/dec_delivery_root/GIP_PROBA2")
-      
-      @@arrPushFiles.each{|filename|
-         system("echo \'#{filename}\' > #{sourceDir}/#{filename}")
-      }
-
-      cmd = "decListDirUpload -m LOCALHOST_SECURE -t"
-      puts cmd
-      assert(system(cmd), cmd)
-      puts      
-
-      cmd = "decStats -H 1"
-      assert(system(cmd), cmd)
-
-      system("\\rm -f /tmp/dec_simul_if/localhost_secure/upload/*")
-      system("\\rm -f /tmp/dec_simul_if/localhost_secure/upload/_TEMP_/*")
-
-      cmd = "decGetFiles4Transfer"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      cmd = "decSend2Interface --mnemonic LOCALHOST_SECURE -O"
-      puts cmd
-      assert(system(cmd), cmd)
-
-      cmd = "decListDirUpload -m LOCALHOST_SECURE -t"
-      puts cmd
-      assert(system(cmd), cmd)
-      puts      
-
-      cmd = "decStats -H 1"
-      assert(system(cmd), cmd)
-
-      arr = Dir["/tmp/DEC*.log"]
-      
-      cmd = "grep ERROR #{arr[0]}"
-      puts cmd
-      assert(!system(cmd), "ERROR found in DEC logs in #{__method__.to_s}") 
-
-   end
    
    ## -------------------------------------------------------------
    

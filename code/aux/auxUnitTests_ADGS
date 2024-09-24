@@ -67,8 +67,8 @@ class AUXTestCase < Test::Unit::TestCase
    def test_s1_osisaf_4_aux_ice
       @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START")
 
-      @@logger.debug("cp #{ENV['HOME']}/Projects/dec/code/aux/examples/osi-saf/ice_edge_nh_polstere-100_multi_202406121200.nc #{@@testDir}")
-      FileUtils.cp("#{ENV['HOME']}/Projects/dec/code/aux/examples/osi-saf/ice_edge_nh_polstere-100_multi_202406121200.nc", @@testDir)
+      @@logger.debug("cp code/aux/examples/osi-saf/ice_edge_nh_polstere-100_multi_202406121200.nc #{@@testDir}")
+      FileUtils.cp("code/aux/examples/osi-saf/ice_edge_nh_polstere-100_multi_202406121200.nc", @@testDir)
 
       cmd = "rm -rf /tmp/aux_out2/S1*.SAFE"
       @@logger.debug(cmd)
@@ -94,8 +94,8 @@ class AUXTestCase < Test::Unit::TestCase
    def test_s1_cddis_4_aux_tec
       @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START")
 
-      @@logger.debug("cp #{ENV['HOME']}/Projects/dec/code/aux/examples/nasa_cddis/ionex/c1pg1700.24i.Z #{@@testDir}")
-      FileUtils.cp("#{ENV['HOME']}/Projects/dec/code/aux/examples/nasa_cddis/ionex/c1pg1700.24i.Z",     @@testDir)
+      @@logger.debug("cp code/aux/examples/nasa_cddis/ionex/c1pg1700.24i.Z #{@@testDir}")
+      FileUtils.cp("code/aux/examples/nasa_cddis/ionex/c1pg1700.24i.Z",     @@testDir)
 
       cmd = "rm -rf /tmp/aux_out2/S1*.SAFE"
       @@logger.debug(cmd)
@@ -120,8 +120,8 @@ class AUXTestCase < Test::Unit::TestCase
    def test_s1_ifremer_4_aux_wav
       @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START")
 
-      @@logger.debug("cp #{ENV['HOME']}/Projects/dec/code/aux/examples/ifremer/IFR_WW3-GLOBAL-30MIN_20240117T18_G2024-01-16T02.nc #{@@testDir}")
-      FileUtils.cp("#{ENV['HOME']}/Projects/dec/code/aux/examples/ifremer/IFR_WW3-GLOBAL-30MIN_20240117T18_G2024-01-16T02.nc", @@testDir)
+      @@logger.debug("cp code/aux/examples/ifremer/IFR_WW3-GLOBAL-30MIN_20240117T18_G2024-01-16T02.nc #{@@testDir}")
+      FileUtils.cp("code/aux/examples/ifremer/IFR_WW3-GLOBAL-30MIN_20240117T18_G2024-01-16T02.nc", @@testDir)
 
       cmd = "rm -rf /tmp/aux_out2/S1*.SAFE"
       @@logger.debug(cmd)
@@ -145,8 +145,8 @@ class AUXTestCase < Test::Unit::TestCase
    def test_s2_cddis_iers_4_aux_ut1_utc
       @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START")
 
-      @@logger.debug("cp #{ENV['HOME']}/Projects/dec/code/aux/examples/nasa_cddis/ser7.dat #{@@testDir}")
-      FileUtils.cp("#{ENV['HOME']}/Projects/dec/code/aux/examples/nasa_cddis/ser7.dat", @@testDir)
+      @@logger.debug("cp code/aux/examples/nasa_cddis/ser7.dat #{@@testDir}")
+      FileUtils.cp("code/aux/examples/nasa_cddis/ser7.dat", @@testDir)
 
       cmd = "rm -rf /tmp/aux_out2/S2*.TGZ"
       @@logger.debug(cmd)

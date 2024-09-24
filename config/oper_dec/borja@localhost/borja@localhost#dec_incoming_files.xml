@@ -75,7 +75,7 @@
       </Interface>  
 
       <Interface>
-         <Name>CELESTRAK_SFS</Name>
+         <Name>TEST_CELESTRAK_SFS</Name>
          <LocalInbox>/tmp/dec/in_basket_if_celes/sfs</LocalInbox>
          <DownloadDirs>
             <Directory DepthSearch="0">SpaceData/SW-Last5Years.txt</Directory>
@@ -92,7 +92,7 @@
       </Interface>  
 
       <Interface>
-         <Name>CELESTRAK_TLE</Name>
+         <Name>TEST_CELESTRAK_TLE</Name>
          <LocalInbox>/tmp/dec/in_basket_if_celes/tle</LocalInbox>
          <DownloadDirs>
             <!-- Sentinel-2B -->
@@ -110,7 +110,7 @@
       </Interface>  
 
       <Interface>
-         <Name>CELESTRAK_TCA</Name>
+         <Name>TEST_CELESTRAK_TCA</Name>
          <LocalInbox>/tmp/dec/in_basket_if_celes/tca</LocalInbox>
          <DownloadDirs>
             <!-- Sentinel-2B -->
@@ -391,6 +391,23 @@
       </Interface>
       
       <Interface>
+         <Name>TEST_IERS_BULC</Name>
+         <LocalInbox>/tmp/dec/if_iers_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/iers/bul/bulc/Leap_Second.dat</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
          <Name>IGS</Name>
          <LocalInbox>/tmp/dec/if_igs_in_basket</LocalInbox>
          <DownloadDirs>
@@ -540,6 +557,36 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
          </FromList>
       </File>
 
+      <File Type="Leap_Second.dat">
+         <Description>AUX_BULC__</Description>
+         <FromList>
+            <Interface>TEST_IERS_BULC</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*CATNR=?????">
+         <Description>AUX_TLE___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_TLE</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*GROUP=active*FORMAT=2le">
+         <Description>AUX_TCA___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_TCA</Interface>
+         </FromList>
+      </File>
+      
+      <File Type="*Last5Years*">
+         <Description>AUX_SFS___</Description>
+         <FromList>
+            <Interface>TEST_CELESTRAK_SFS</Interface>
+         </FromList>
+      </File>
+
+
+
        <File Type="touch_file*">
          <Description>test file</Description>
          <FromList>
@@ -592,21 +639,21 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
       <File Type="*CATNR=?????">
          <Description>AUX_TLE___</Description>
          <FromList>
-            <Interface>CELESTRAK_TLE</Interface>
+            <Interface>TEST_CELESTRAK_TLE</Interface>
          </FromList>
       </File>
 
       <File Type="*GROUP=active*FORMAT=2le">
          <Description>AUX_TCA___</Description>
          <FromList>
-            <Interface>CELESTRAK_TCA</Interface>
+            <Interface>TEST_CELESTRAK_TCA</Interface>
          </FromList>
       </File>
       
       <File Type="*Last5Years*">
          <Description>AUX_SFS___</Description>
          <FromList>
-            <Interface>CELESTRAK_SFS</Interface>
+            <Interface>TEST_CELESTRAK_SFS</Interface>
          </FromList>
       </File>
 

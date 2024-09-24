@@ -27,24 +27,6 @@
 #   --Debug     shows Debug info during the execution
 #   --version   shows version number
 # 
-# == Author
-# Deimos-Space S.L.
-#
-# == Copyright
-# Copyright (c) 2006 ESA - Deimos Space S.L.
-#
-
-#########################################################################
-#
-# === Ruby script decGetFiles4Transfer for sending all files to an Entity
-# 
-# === Written by DEIMOS Space S.L.   (bolf)
-#
-# === Data Exchange Component
-# 
-# Git: $Id: decGetFiles4Transfer 1.4 2007/12/05 17:49:11 decdev Exp $
-#
-#########################################################################
 
 require 'getoptlong'
 
@@ -91,7 +73,7 @@ def main
    end
 
    if @bShowVersion == true then
-      print("\nESA - DEIMOS-Space S.L. ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
+      print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|
          puts "#{key} => #{value}"
@@ -180,7 +162,7 @@ end
 def usage
    fullpathFile = File.expand_path(__FILE__)    
    
-   value = `#{"head -35 #{fullpathFile}"}`
+   value = `#{"head -19 #{fullpathFile}"}`
       
    value.lines.drop(1).each{
       |line|

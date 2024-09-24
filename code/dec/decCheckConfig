@@ -65,13 +65,10 @@
 
 require 'rubygems'
 require 'getoptlong'
-require 'rdoc'
 
 require 'cuc/DirUtils'
 require 'cuc/Log4rLoggerFactory'
 require 'ctc/CheckerMailConfig'
-
-require 'dcc/CheckerServiceConfig'
 
 require 'dec/DEC_Environment'
 require 'dec/ReadConfigDEC'
@@ -101,7 +98,6 @@ require 'dec/CheckerInTrayConfig'
 @bTrays           = false
 @isNoDB           = false
 @bLog             = false
-
 @logger           = nil
 
 # MAIN script function
@@ -157,7 +153,7 @@ def main
    end
 
    if @bShowVersion == true then
-      print("\nESA - DEIMOS-Space S.L. ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
+      print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|
          puts "#{key} => #{value}"
@@ -459,31 +455,7 @@ def main
 			puts
    	end
 	end
-   
-#    # Check that dcc_services.xml is correctly configured
-# 
-#    if @bAll == true or @bServices == true then
-# #      puts
-#       puts "================================================"
-#       puts "Checking dcc_services.xml Configuration ..."
-#       puts
-#  
-#       checker = DCC::CheckerServiceConfig.new
-#       
-#       if @isDebugMode == true or @isVerboseMode then
-#          checker.setDebugMode
-#       end
-#       
-#       retVal = checker.check
-#       
-#       if retVal == true then
-#          puts "\ndcc_services.xml is configured correctly ! :-) \n"
-#       else
-#          puts "\ndcc_services.xml is not configured correctly ! :-( \n"
-#       end
-#       puts "================================================"         
-#    end
-   
+      
    if @retVal == true then
       exit(0)
    else
@@ -563,7 +535,7 @@ end
 def usage
    fullpathFile = File.expand_path(__FILE__)
    
-   value = `#{"head -64 #{fullpathFile}"}`
+   value = `#{"head -63 #{fullpathFile}"}`
       
    value.lines.drop(1).each{
       |line|

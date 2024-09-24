@@ -29,7 +29,7 @@ http://euccas.github.io/blog/20160518/make-logging-easy-in-ruby-with-log4r.html
   
   <type>RollingFileOutputter</type>
 
-  <filename>/data/mocExternalInterfaces/log/dec/DEC-MOC-SAP-.log</filename>
+  <filename>/tmp/data/mocExternalInterfaces/log/dec/DEC-MOC-SAP-.log</filename>
 
   <formatter type="PatternFormatter" pattern="[%5l] %d %c.#{moduleName} - %m">
       <date_pattern>%Y-%m-%d %H:%M:%S.%L</date_pattern>
