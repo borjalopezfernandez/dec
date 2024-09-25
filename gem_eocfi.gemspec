@@ -1,16 +1,4 @@
-#########################################################################
-###
-### === Ruby source for #Gem Specification
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === EOCFI module
-### 
-### Git: gem_dec.gemspec,v $Id$ $Date$
-###
-### System Component EOCFI
-###
-#########################################################################
+
 
 require_relative 'code/eocfi/EOCFI_Environment'
 include EOCFI
@@ -19,11 +7,11 @@ Gem::Specification.new do |s|
   s.name        = 'eocfi'
   s.version     = "#{EOCFI.class_variable_get(:@@version)}"
   s.platform    = Gem::Platform::RUBY
-  s.licenses    = ['Nonstandard']
+  s.licenses    = ['MIT']
   s.summary     = "EOCFI porting component"
   s.description = "Data Exchange Component"
-  s.authors     = ["Elecnor Deimos"]
-  s.email       = 'borja.lopez@deimos-space.com'
+  s.authors     = ["cf. Authors"]
+  s.email       = 'mansobeach@gmail.com'
  
   ## --------------------------------------------
   ##
@@ -68,8 +56,8 @@ Gem::Specification.new do |s|
   
   ## --------------------------------------------
 
-  s.homepage    = 'http://www.deimos-space.com'
-  s.metadata    = { "source_code_uri" => "https://github.com/example/example" }
+  s.homepage    = 'https://github.com/borjalopezfernandez/dec'
+  s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
     
   ## ----------------------------------------------
   
@@ -87,8 +75,8 @@ Gem::Specification.new do |s|
    
   ## ----------------------------------------------
 
-  s.post_install_message = "#{'1F4E1'.hex.chr('UTF-8')} Elecnor Deimos-Space  #{'1F47E'.hex.chr('UTF-8')} eocfi #{EOCFI.class_variable_get(:@@version)} installed \360\237\215\200 \360\237\215\200 \360\237\215\200 \n\
-#{'1F680'.hex.chr('UTF-8')} European Space Agency #{'1F6F0'.hex.chr('UTF-8')}  EOCFI version #{EOCFI.class_variable_get(:@@ESA_EOCFI_VERSION)} #{'1F483'.hex.chr('UTF-8')} #{'1F483'.hex.chr('UTF-8')} #{'1F483'.hex.chr('UTF-8')}\n\
+  s.post_install_message = "#{'1F4E1'.hex.chr('UTF-8')} EOCFI  #{'1F47E'.hex.chr('UTF-8')} eocfi #{EOCFI.class_variable_get(:@@version)} installed \360\237\215\200 \360\237\215\200 \360\237\215\200 \n\
+#{'1F680'.hex.chr('UTF-8')} EOCFI #{'1F6F0'.hex.chr('UTF-8')}  EOCFI version #{EOCFI.class_variable_get(:@@ESA_EOCFI_VERSION)} #{'1F483'.hex.chr('UTF-8')} #{'1F483'.hex.chr('UTF-8')} #{'1F483'.hex.chr('UTF-8')}\n\
 #{EOCFI.class_variable_get(:@@ESA_EOCFI_URL)}"
     
   ## ----------------------------------------------

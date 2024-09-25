@@ -3,11 +3,11 @@
 Gem::Specification.new do |s|
   s.name        = 'e2e_sdm'
   s.version     = '1.0.0'
-  s.licenses    = ['Nonstandard']
+  s.licenses    = ['MIT']
   s.summary     = "DEC/E2E SDM component"
   s.description = "E2E SDM"
-  s.authors     = ["Elecnor Deimos"]
-  s.email       = 'borja.lopez@deimos-space.com'
+  s.authors     = ["cf. AUTHORS"]
+  s.email       = ''
  
   s.files       = Dir['code/e2e/Analytic*.rb'] + \
                   Dir['code/e2e/CSW*.rb'] + \
