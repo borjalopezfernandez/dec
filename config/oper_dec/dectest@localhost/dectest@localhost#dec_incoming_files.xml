@@ -559,7 +559,7 @@
 
       
       <Interface>
-         <Name>NASA_NBULA</Name>
+         <Name>TEST_NASA_NBULA</Name>
          <LocalInbox>/tmp/dec/ext/nasa_cddis</LocalInbox>
          <DownloadDirs>
 		      <Directory DepthSearch="0">/archive/products/iers/finals2000A.data</Directory>
@@ -576,7 +576,7 @@
       </Interface>
 
       <Interface>
-         <Name>NASA_NBULC</Name>
+         <Name>TEST_NASA_NBULC</Name>
          <LocalInbox>/tmp/dec/ext/nasa_cddis</LocalInbox>
          <DownloadDirs>
             <Directory DepthSearch="0">/archive/products/iers/tai-utc.dat</Directory>
@@ -593,10 +593,10 @@
       </Interface>
 
       <Interface>
-         <Name>NASA_SFL</Name>
+         <Name>TEST_NASA_SFL</Name>
          <LocalInbox>/tmp/dec/ext/nasa_msfc</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">%Q{sites/default/files/atoms/files/#{(Time.now.to_date &lt;&lt; 1).strftime("%b%Y").to_s.downcase!}f10_prd.txt}</Directory>
+            <Directory DepthSearch="0">%Q{/wp-content/uploads/#{Time.now.strftime("%Y")}/#{(Time.now.to_date &lt;&lt; 1).strftime("%m")}/#{(Time.now.to_date &lt;&lt; 1).strftime("%b%Y").to_s.downcase!}f10-prd.txt}</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>false</DeleteDownloaded>
@@ -659,6 +659,35 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
             <Interface>TEST_CELESTRAK_SFS</Interface>
          </FromList>
       </File>
+
+      <File Type="*SRTM*.*">
+         <Description>SRTM DEM xml</Description>
+         <FromList>
+            <Interface>TEST_NASA_SRTMDEM</Interface>
+         </FromList>
+      </File>
+
+      <File Type="ASTGTMV003_*.*">
+         <Description>ASTER DEM all files</Description>
+         <FromList>
+            <Interface>TEST_NASA_ASTGTM</Interface>
+         </FromList>
+      </File>
+
+      <File Type="2023.12.??">
+         <Description>MODIS MOD09A1 Directory links</Description>
+         <FromList>
+            <Interface>TEST_NASA_RFM_URL</Interface>
+         </FromList>
+      </File>
+
+      <File Type="2024.*.*">
+         <Description>MODIS MOD09A1 Directory links</Description>
+         <FromList>
+            <Interface>TEST_NASA_RFM_URL</Interface>
+         </FromList>
+      </File>
+
 
 
 
@@ -732,24 +761,24 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
          </FromList>
       </File>
 
-      <File Type="*f10_prd.txt">
+      <File Type="*f10-prd.txt">
          <Description>AUX_SFL___</Description>
          <FromList>
-            <Interface>NASA_SFL</Interface>
+            <Interface>TEST_NASA_SFL</Interface>
          </FromList>
       </File>
 
       <File Type="finals2000A.data">
          <Description>AUX_NBULA_</Description>
          <FromList>
-            <Interface>NASA_NBULA</Interface>
+            <Interface>TEST_NASA_NBULA</Interface>
          </FromList>
       </File>
    
       <File Type="tai-utc.dat">
          <Description>AUX_NBULC_</Description>
          <FromList>
-            <Interface>NASA_NBULC</Interface>
+            <Interface>TEST_NASA_NBULC</Interface>
          </FromList>
       </File>
 

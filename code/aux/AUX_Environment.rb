@@ -7,11 +7,12 @@ require 'dotenv'
 
 module AUX
    
-   VERSION   = "0.0.9.10"
+   VERSION   = "0.0.10.1"
       
    ## -----------------------------------------------------------------
    
    CHANGE_RECORD = { \
+      "0.0.10"  =>    "NASA MSFC Solar Flux (F10.7) interface update", \
       "0.0.9"  =>    "ESA Sentinels SAFE format support\n\
          ESA EOFFS format support\n\
          NASA CDDIS IERS Bulletin A ASCII ser7.dat is supported\n\

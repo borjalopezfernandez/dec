@@ -26,12 +26,13 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = "1.0.42.1"
+   @@version = "1.0.42.2"
 
    ## -----------------------------------------------------------------
 
    @@change_record = { \
-      "1.0.42" =>    "gem net-ssh & net-sftp upgraded to support OpenSSL 3.0", \
+      "1.0.42" =>    "gem net-ssh & net-sftp upgraded to support OpenSSL 3.0\n\
+          Interface test update for NASA MSFC Solar Flux (F10.7)", \
       "1.0.41" =>    "Support to interfaces with custom scripts\n\
           DEC env variables override the configuration attributes shipped with the installer",
       "1.0.40" =>    "MD5 config flag for pull to manage duplications (HTTP/FTPS)\n\

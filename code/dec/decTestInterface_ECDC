@@ -11,7 +11,7 @@ require 'dec/DEC_Environment'
 require 'dec/ReadConfigDEC'
 require 'dec/ReadConfigOutgoing'
 
-## rake -f build_dec.rake dec:install[borja,localhost,s2_test]
+## rake -f build_dec.rake dec:install[dectest,localhost,s2_test]
 
 ## Protocol for ECDC is HTTP Pull mode
 

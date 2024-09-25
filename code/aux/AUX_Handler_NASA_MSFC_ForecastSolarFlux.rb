@@ -17,13 +17,14 @@
 
 ### NASA Earth Science Forecast Solar Flux
 ### https://www.nasa.gov/msfcsolar
-### https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
+### https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt <DEPRECATED>
+### https://nasa.gov/wp-content/uploads/2024/06/jun2024f10-prd.txt
 
 require 'aux/AUX_Handler_Generic'
 
 module AUX
 
-AUX_Pattern_NASA_MSFC_ForecastSolarFlux = "*f10_prd.txt"
+AUX_Pattern_NASA_MSFC_ForecastSolarFlux = "*f10-prd.txt"
 
 class AUX_Handler_NASA_MSFC_ForecastSolarFlux < AUX_Handler_Generic
    

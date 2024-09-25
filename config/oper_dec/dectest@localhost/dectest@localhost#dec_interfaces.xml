@@ -1361,16 +1361,7 @@
         </To>
       </Notify>
       <Events>
-          
-          <Event Name="NewFile2InTray"          executeCmd="auxConverter -m NAOS -f %F -d /tmp/dec/int/" />
-  
-           
-           <!--
-           <Event Name="ONRECEIVENEWFILESOK"     executeCmd="echo %f RECEIVED"/>
-            <Event Name="NewFile2InTray"          executeCmd="auxConverter -f %F" />
-           <Event Name="OnReceiveNewFilesOK"     executeCmd="echo OnReceiveNewFilesOK \':-\)\'"/>
-           -->
-      
+        <Event Name="OnReceiveNewFile"    executeCmd="auxConverter -m NAOS -f &quot;%F&quot; -d /tmp/dec/ext/nasa_cddis"/> 
       </Events>
       <ContactInfo>
         <Name>Mr Brosnan</Name>
@@ -1420,16 +1411,7 @@
         </To>
       </Notify>
       <Events>
-          
-          <Event Name="NewFile2InTray"          executeCmd="auxConverter -m NAOS -f %F -d /tmp/dec/int/" />
-  
-           
-           <!--
-           <Event Name="ONRECEIVENEWFILESOK"     executeCmd="echo %f RECEIVED"/>
-            <Event Name="NewFile2InTray"          executeCmd="auxConverter -f %F" />
-           <Event Name="OnReceiveNewFilesOK"     executeCmd="echo OnReceiveNewFilesOK \':-\)\'"/>
-           -->
-      
+          <Event Name="OnReceiveNewFile"    executeCmd="auxConverter -m NAOS -f &quot;%F&quot; -d /tmp/dec/ext/nasa_cddis"/>           
       </Events>
       <ContactInfo>
         <Name>Mr Brosnan</Name>
@@ -1481,7 +1463,7 @@
     </To>
   </Notify>
   <Events>
-      <Event Name="NewFile2InTray"          executeCmd="auxConverter -m NAOS -f %F -d /tmp/dec/int/" />
+      <Event Name="OnReceiveNewFile"          executeCmd="auxConverter -m NAOS -f %F -d /tmp/dec/ext/nasa_msfc" />
 
        
        <!--
