@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.licenses    = ['MIT']
   s.summary     = "AUX component"
   s.description = "Auxiliary Data Gathering"
-  s.authors     = ["Elecnor Deimos"]
-  s.email       = 'borja.lopez@deimos-space.com'
+  s.authors     = ["cf. AUTHORS"]
+  s.email       = 'mansobeach@gmail.com'
   
   s.required_ruby_version = '>= 2.5'
   

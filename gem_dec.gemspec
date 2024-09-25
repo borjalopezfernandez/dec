@@ -1,17 +1,3 @@
-#########################################################################
-###
-### === Ruby source for #Gem Specification
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component (DEC)
-###
-### Git: gem_dec.gemspec,v $Id$ $Date$
-###
-### System Component DEC
-###
-#########################################################################
-
 require_relative 'code/dec/DEC_Environment'
 include DEC
 
@@ -19,11 +5,11 @@ Gem::Specification.new do |s|
   s.name        = 'dec'
   s.version     = "#{DEC.class_variable_get(:@@version)}"
   s.platform    = Gem::Platform::RUBY
-  s.licenses    = ['Nonstandard']
-  s.summary     = "DEC/MINARC component"
+  s.licenses    = ['MIT']
+  s.summary     = "DEC"
   s.description = "Data Exchange Component"
-  s.authors     = ["Elecnor Deimos"]
-  s.email       = 'borja.lopez@deimos-space.com'
+  s.authors     = ["cf. AUTHORS"]
+  s.email       = 'mansobeach@gmail.com'
 
   s.files       = Dir['code/dec/*.rb'] + \
                   Dir['code/dcc/*.rb'] + \
@@ -143,8 +129,8 @@ Gem::Specification.new do |s|
    ## --------------------------------------------
 
 
-  s.homepage    = 'http://www.deimos-space.com'
-  s.metadata    = { "source_code_uri" => "https://confluence.elecnor-deimos.com/display/DEC" }
+  s.homepage    = 'https://github.com/borjalopezfernandez/dec'
+  s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
 
   ## ----------------------------------------------
 
