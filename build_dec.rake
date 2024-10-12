@@ -3,6 +3,7 @@
 
 require 'rake'
 require 'date'
+require 'fileutils'
 
 require 'cuc/CryptHelper'
 require_relative 'code/dec/DEC_Environment'
@@ -86,9 +87,22 @@ namespace :dec do
       system(cmd)
       date     = DateTime.now
       filename = "DEC-SUM2025-E_#{date.strftime("%Y%m%d")}.pdf"
-      cmd      = "mv dec_sum_main.pdf #{filename}"
+      
+      begin
+         FileUtils.rm filename
+      rescue Exception
+      end
+
+      begin
+         FileUtils.rm "../pdf/#{filename}"
+      rescue Exception
+      end
+
+      cmd      = "ln dec_sum_main.pdf #{filename}"
       system(cmd)
-      puts "Generared #{filename}"    
+      puts "Generated #{filename}"    
+      FileUtils.mv(filename, "../pdf")
+      FileUtils.mv("dec_sum_main.pdf", "../pdf")
       Dir.chdir(prevDir)
    end
 
