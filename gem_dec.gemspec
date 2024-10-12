@@ -90,6 +90,7 @@ Gem::Specification.new do |s|
       s.executables   << 'decTestInterface_CelesTrak'
       s.executables   << 'decTestInterface_CloudFerro'
       s.executables   << 'decTestInterface_ECDC'
+      s.executables   << 'decTestInterface_ESA_GSSC'
       s.executables   << 'decTestInterface_IERS'
       s.executables   << 'decTestInterface_ILRS'
       s.executables   << 'decTestInterface_GNSS'

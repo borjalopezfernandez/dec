@@ -98,7 +98,7 @@ namespace :dec do
    desc "build docker DEC image [user , host , prefix]"
 
    task :image_build, [:user, :host, :suffix] do |t, args|
-      # args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      # args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
      
       dockerFile = "Dockerfile.#{args[:suffix]}.dec.#{args[:host]}.#{args[:user]}.yaml"
    
@@ -120,7 +120,7 @@ namespace :dec do
    desc "build DEC gem & docker DEC image"
 
    task :image_build_all, [:user, :host, :suffix] => :build do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       puts "building Docker Image DEC with config #{args[:user]} #{args[:suffix]}@#{args[:host]}"
    
       dockerFile = "Dockerfile.dec.#{args[:suffix]}.#{args[:host]}.#{args[:user]}"
@@ -215,7 +215,7 @@ namespace :dec do
    desc "podman build"
 
    task :podman_build, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       version = DEC.class_variable_get(:@@version)
       puts "building Docker Container DEC #{version} with config #{args[:user]} #{args[:suffix]}@#{args[:host]}"
    
@@ -266,7 +266,7 @@ namespace :dec do
    desc "build DEC gem & docker image (container)"
 
    task :container_build, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       puts "building Docker Container DEC with config #{args[:user]} #{args[:suffix]}@#{args[:host]}"
    
       dockerFile = "Dockerfile.dec.#{args[:suffix]}.#{args[:host]}.#{args[:user]}"
@@ -286,7 +286,7 @@ namespace :dec do
    desc "run DEC container"
 
    task :container_run, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       puts "Executing Docker Container DEC with config #{args[:user]} #{args[:suffix]}@#{args[:host]}"
       cmd = "docker container rm dec_#{args[:suffix]}"
       puts cmd
@@ -301,7 +301,7 @@ namespace :dec do
    desc "shell to DEC container"
 
    task :container_shell, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       puts "Getting shell to Docker Container DEC with config #{args[:user]} #{args[:suffix]}@#{args[:host]}"      
       cmd = "docker container exec -i -t dec_#{args[:suffix]} /bin/bash"
       puts cmd
@@ -319,7 +319,7 @@ namespace :dec do
    desc "build DEC gem [user, host, suffix = s2 | s2odata]"
 
    task :build, [:user, :host, :suffix] => :load_config do |t, args|
-      args.with_defaults(:user => "borja", :host => "localhost", :suffix => "s2_test_odata")
+      args.with_defaults(:user => "dectest", :host => "localhost", :suffix => "s2_test_odata")
       puts "building gem dec #{args[:suffix]} with config #{args[:user]}@#{args[:host]}"
    
       if File.exist?("#{@rootConf}/#{args[:user]}@#{args[:host]}") == false then
@@ -443,7 +443,7 @@ namespace :dec do
    desc "check DEC configuration package"
    
    task :check_config, [:user, :host] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost)
+      args.with_defaults(:user => :dectest, :host => :localhost)
       
       if File.exist?("#{@rootConf}/#{args[:user]}@#{args[:host]}") == false then
          puts "DEC configuration not present in repository"
@@ -468,7 +468,7 @@ namespace :dec do
    desc "save DEC configuration package"
 
    task :save_config, [:user, :host] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost)
+      args.with_defaults(:user => :new_config_saved, :host => :localhost)
             
       path     = "#{@rootConf}/#{args[:user]}@#{args[:host]}"
       
@@ -501,7 +501,7 @@ namespace :dec do
    desc "load DEC configuration package"
 
    task :load_config, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => "s2_test_pg_odata")
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => "s2_test_pg_odata")
       puts "loading configuration for #{args[:user]}@#{args[:host]} for #{args[:suffix]}"      
       path     = "#{@rootConf}/#{args[:user]}@#{args[:host]}"
       
@@ -535,7 +535,7 @@ namespace :dec do
    desc "install DEC"
 
    task :install ,[:user, :host, :suffix] => :build do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2_pg)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2_pg)
       puts
       puts @filename
       puts
@@ -555,7 +555,7 @@ namespace :dec do
    desc "Start DEC with docker compose"
 
    task :start, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       conf = "docker-compose.dec.#{args[:suffix]}.#{args[:host]}.#{args[:user]}.yml"
       cmd  = "docker-compose -f install/docker/#{conf} up -d"
       puts cmd
@@ -567,7 +567,7 @@ namespace :dec do
    desc "Stop DEC with docker compose"
 
    task :stop, [:user, :host, :suffix] do |t, args|
-      args.with_defaults(:user => :borja, :host => :localhost, :suffix => :s2)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2)
       conf = "docker-compose.dec.#{args[:suffix]}.#{args[:host]}.#{args[:user]}.yml"
       cmd  = "docker-compose -f install/docker/#{conf} down"
       puts cmd
@@ -605,8 +605,8 @@ namespace :dec do
       puts "rake -f build_dec.rake dec:podman_build[gsc4eo,nl2-s-aut-srv-01,naos]"
       puts 
       puts "DEC Unit Tests"
-      puts "rake -f build_dec.rake dec:install[borja,localhost,s2_test_pg_odata]"
-      puts "rake -f build_dec.rake dec:install[borja,localhost,s2_test_pg]"
+      puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg_odata]"
+      puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]"
       puts
       puts "S2PDGSENG / Inputhub"
       puts "pull VPMC & VPMC_TCI or SVPMC & SVPMC_TCI"

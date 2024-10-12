@@ -483,6 +483,23 @@
       </Interface>
 
       <Interface>
+         <Name>TEST_IERS_BULB</Name>
+         <LocalInbox>/tmp/dec/if_iers_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/iers/bul/bulb_new/bulletinb.dat</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
          <Name>IGS</Name>
          <LocalInbox>/tmp/dec/if_igs_in_basket</LocalInbox>
          <DownloadDirs>
@@ -609,6 +626,23 @@
          </Switches>         
       </Interface>
       
+   <Interface>
+         <Name>TEST_ESA_GSSC</Name>
+         <LocalInbox>/tmp/dec/ext/esa_gssc</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">%Q{/gnss/products/ionex/#{(Date.today-1).strftime("%Y")}/#{(Date.today-1).strftime("%j")}}</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
    </ListInterfaces>
 <!-- 
 
@@ -624,7 +658,14 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
    <!-- =========================================================== -->
 
    <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- 
+
+      <File Type="c?pg???0.24i*">
+         <Description>IONEX VTEC</Description>
+         <FromList>
+            <Interface>TEST_ESA_GSSC</Interface>
+         </FromList>
+      </File>
+
       <File Type="bulletinA.txt">
          <Description>AUX_BULA__</Description>
          <FromList>
@@ -636,6 +677,13 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
          <Description>AUX_BULC__</Description>
          <FromList>
             <Interface>TEST_IERS_BULC</Interface>
+         </FromList>
+      </File>
+
+      <File Type="bulletinb.dat">
+         <Description>AUX_ERP___</Description>
+         <FromList>
+            <Interface>TEST_IERS_BULB</Interface>
          </FromList>
       </File>
 

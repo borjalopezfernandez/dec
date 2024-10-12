@@ -14,7 +14,7 @@ require 'dec/ReadConfigDEC'
 
 ### https://github.com/delfer/docker-alpine-ftp-server.git
 ### https://github.com/delfer/docker-alpine-ftp-server/blob/master/Dockerfile
-### docker run -v /tmp:/tmp -d     -p "21:21"     -p 21000-21010:21000-21010     -e USERS="test_ftp|test"     -e ADDRESS=localhost     delfer/alpine-ftp-server
+### docker run -v /tmp:/tmp -d  -p "21:21"  -p 21000-21010:21000-21010     -e USERS="test_ftp|test"     -e ADDRESS=localhost     delfer/alpine-ftp-server
 
 ### ------------------------------------
 ### MacOS Mojave

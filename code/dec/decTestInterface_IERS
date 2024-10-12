@@ -108,6 +108,7 @@ class DECTestInterface_IERS < Test::Unit::TestCase
       # system("\\rm -rf /tmp/dec*")
       system("\\rm -rf /tmp/DEC*.log")
       system("\\rm -rf /data/mocExternalInterfaces/log/DEC*.log")
+      system("\\rm -rf /tmp/dec/if_iers_in_basket/*")
 
       cmd = "mkdir -p /tmp/dec/int/"
       @@logger.debug(cmd)
@@ -121,10 +122,6 @@ class DECTestInterface_IERS < Test::Unit::TestCase
       @@logger.debug(cmd)
       ret = system(cmd)
       
-      cmd = "decConfigInterface2DB -p EXTERNAL"
-      @@logger.debug(cmd)
-      ret = system(cmd)
-
    end
 
    ## -----------------------------------------------------------
@@ -250,6 +247,75 @@ class DECTestInterface_IERS < Test::Unit::TestCase
    end
    ## -----------------------------------------------------------
 
+
+   ## -----------------------------------------------------------
+   
+   def testBULB
+      @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START")
+
+      cmd = "decConfigInterface2DB -a TEST_IERS_BULB"
+      @@logger.debug(cmd)
+      ret = system(cmd)
+
+      cmd = "decCheckConfig -e TEST_IERS_BULB"
+      @@logger.info(cmd)
+      assert(system(cmd), "list from TEST_IERS_BULB")
+
+      cmd = "decGetFromInterface -m TEST_IERS_BULB -l"
+      @@logger.info(cmd)
+      assert(system(cmd), "list from TEST_IERS_BULB")
+
+      cmd = "decGetFromInterface -m TEST_IERS_BULB --no-intray"
+      @@logger.info(cmd)
+      assert(system(cmd), "pull from TEST_IERS_BULB")
+  
+      cmd = "decStats"
+      @@logger.info(cmd)
+      assert(system(cmd), "pull statistics")
+
+      cmd = "head -2 /tmp/dec/if_iers_in_basket/bulletinb.dat"
+      @@logger.debug(cmd)
+      ret = `#{cmd}`
+      @@logger.debug(ret.delete("\r \n"))
+
+      # different files can be received with the same filename
+      cmd = "decGetFromInterface -m TEST_IERS_BULB --no-intray"
+      @@logger.info(cmd)
+      assert(system(cmd), "pull from TEST_IERS_BULB")
+
+      cmd = "decStats"
+      @@logger.info(cmd)
+      assert(system(cmd), "pull statistics")
+
+      cmd = "head -2 /tmp/dec/if_iers_in_basket/bulletinb.dat"
+      @@logger.debug(cmd)
+      ret = `#{cmd}`
+      @@logger.debug(ret.delete("\r \n"))
+
+      arr = Dir["/tmp/DEC*.log"]
+      # arr = Dir["/data/mocExternalInterfaces/log/DEC*.log"]
+      cmd = "grep ERROR #{arr[0]}"
+      assert(!system(cmd), "ERROR found in DEC logs in #{__method__.to_s}") 
+
+      @@logger.debug("Verification of log trace: file pull")
+      cmd = "grep DEC\_110 #{arr[0]}"
+      @@logger.debug(cmd)
+      assert(system(cmd), "Pull mission traced in DEC logs in #{__method__.to_s}") 
+
+      # No conversion into any mission so far
+      # @@logger.debug("Verification of log trace: File conversion to NAOS mission")
+      # cmd = "grep AUX\_001 #{arr[0]}"
+      # @@logger.debug(cmd)
+      # assert(system(cmd), "File conversion to NAOS mission traced in DEC logs in #{__method__.to_s}") 
+
+      @@logger.debug("Verification of log trace: Duplication of file")
+      cmd = "grep DEC\_111 #{arr[0]}"
+      @@logger.debug(cmd)
+      assert(system(cmd), "File duplication traced in DEC logs in #{__method__.to_s}") 
+
+      @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} END")
+   end
+   ## -----------------------------------------------------------
 
 end
 

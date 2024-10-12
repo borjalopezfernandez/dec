@@ -30,13 +30,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>    
@@ -53,7 +53,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -90,12 +90,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
+       
       </To>
     </Notify>
     <Events>
@@ -107,7 +107,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -145,12 +145,12 @@
     <CleanUpFreq Unit="s">5</CleanUpFreq>
   </Server>
   <DeliverByMailTo>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
   </DeliverByMailTo>
   <Notify>
     <SendNotification>false</SendNotification>
     <To>
-     <Address>borja.esa@gmail.com</Address>
+     
     </To>
   </Notify>
   <Events>
@@ -162,7 +162,7 @@
   </Events>
   <ContactInfo>
     <Name>Mr Satan</Name>
-    <EMail>borja.esa@gmail.com</EMail>
+    <EMail>mansobeach@gmail.com</EMail>
     <Tel>0039-800 454 432</Tel>
     <Fax>0039-800 454 433</Fax>
     <Address>Citta Uova</Address>
@@ -200,13 +200,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>true</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -219,7 +219,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -255,12 +255,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -273,7 +273,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -311,12 +311,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -324,7 +324,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -332,6 +332,58 @@
   </Interface>
 
    <!-- ================================================================ -->
+
+<Interface Name="TEST_IERS_BULB">
+    <Desc>IERS Mirror hpiers.obspm.fr</Desc>
+    <TXRXParams>
+      <Enabled4Sending>false</Enabled4Sending>
+      <Enabled4Receiving>true</Enabled4Receiving>
+      <ImmediateRetries>3</ImmediateRetries>
+      <LoopRetries>2</LoopRetries>
+      <LoopDelay unit="s">300</LoopDelay>
+      <PollingInterval unit="s">20</PollingInterval>
+      <PollingSize>470</PollingSize>
+      <ParallelDownload>3</ParallelDownload>
+    </TXRXParams>    
+    <Server>
+      <Protocol>HTTP</Protocol>
+      <Hostname>hpiers.obspm.fr</Hostname>
+	    <Port>443</Port>
+      <User></User>
+      <Pass></Pass>
+      <RegisterContentFlag>false</RegisterContentFlag>
+      <RetrieveContentFlag>true</RetrieveContentFlag>
+      <SecureFlag>true</SecureFlag>
+      <VerifyPeerSSL>false</VerifyPeerSSL>
+      <CompressFlag>false</CompressFlag>
+      <PassiveFlag>false</PassiveFlag>
+      <CleanUpFreq Unit="s">5</CleanUpFreq>
+    </Server>
+    <DeliverByMailTo>
+       <Address>mansobeach@gmail.com</Address>
+    </DeliverByMailTo>
+    <Notify>
+      <SendNotification>false</SendNotification>
+      <To>
+       <Address>mansobeach@gmail.com</Address>
+      </To>
+    </Notify>
+    <Events>
+    <!--
+      <Event Name="OnReceiveNewFile"    executeCmd="auxConverter -m NAOS -f &quot;%F&quot; -d /tmp"/>
+    -->
+    </Events>
+    <ContactInfo>
+      <Name>Mr Brosnan</Name>
+      <EMail>mansobeach@gmail.com</EMail>
+      <Tel>0039-800 454 432</Tel>
+      <Fax>0039-800 454 433</Fax>
+      <Address>Citta Uova</Address>
+    </ContactInfo>
+  </Interface>
+
+   <!-- ================================================================ -->
+
 
   <Interface Name="WEBDAV2">
     <Desc>Localhost Interface</Desc>
@@ -360,13 +412,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -378,7 +430,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -414,13 +466,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>true</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -432,7 +484,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -470,13 +522,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>true</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -486,7 +537,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -523,13 +574,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>true</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -541,7 +592,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -584,12 +635,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -606,7 +657,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -614,6 +665,54 @@
   </Interface>
 
   <!-- ================================================================ -->
+
+<Interface Name="TEST_ESA_GSSC">
+    <Desc>ESA GNSS Science Support Centre (GSSC) Interface</Desc>
+    <TXRXParams>
+      <Enabled4Sending>false</Enabled4Sending>
+      <Enabled4Receiving>true</Enabled4Receiving>
+      <ImmediateRetries>3</ImmediateRetries>
+      <LoopRetries>2</LoopRetries>
+      <LoopDelay unit="s">300</LoopDelay>
+      <PollingInterval unit="s">20</PollingInterval>
+      <PollingSize>470</PollingSize>
+      <ParallelDownload>2</ParallelDownload>
+    </TXRXParams>    
+    <Server>
+      <Protocol>FTP</Protocol>
+      <Hostname>gssc.esa.int</Hostname>
+	    <Port>21</Port>
+      <User>anonymous</User>
+      <Pass>guest</Pass>
+      <RegisterContentFlag>false</RegisterContentFlag>
+      <RetrieveContentFlag>true</RetrieveContentFlag>
+      <SecureFlag>false</SecureFlag>
+      <VerifyPeerSSL>false</VerifyPeerSSL>
+      <CompressFlag>false</CompressFlag>
+      <PassiveFlag>true</PassiveFlag>
+      <CleanUpFreq Unit="s">5</CleanUpFreq>
+    </Server>
+    <DeliverByMailTo>
+       <Address>mansobeach@gmail.com</Address>
+    </DeliverByMailTo>
+    <Notify>
+      <SendNotification>false</SendNotification>
+      <To>
+       <Address>mansobeach@gmail.com</Address>
+      </To>
+    </Notify>
+    <Events>
+        
+    </Events>
+    <ContactInfo>
+      <Name>Mr Brosnan</Name>
+      <EMail>mansobeach@gmail.com</EMail>
+      <Tel>0039-800 454 432</Tel>
+      <Fax>0039-800 454 433</Fax>
+      <Address>Citta Uova</Address>
+    </ContactInfo>
+  </Interface>
+
 
   <!-- ================================================================ --> 
  
@@ -651,12 +750,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -680,7 +779,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -718,12 +817,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -747,7 +846,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -783,12 +882,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -808,7 +907,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -844,12 +943,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -858,7 +957,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -894,12 +993,12 @@
     <CleanUpFreq Unit="s">5</CleanUpFreq>
   </Server>
   <DeliverByMailTo>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
   </DeliverByMailTo>
   <Notify>
     <SendNotification>false</SendNotification>
     <To>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
     </To>
   </Notify>
   <Events>
@@ -908,7 +1007,7 @@
   </Events>
   <ContactInfo>
     <Name>Mr Brosnan</Name>
-    <EMail>borja.lopez.fernandez@gmail.com</EMail>
+    <EMail>mansobeach@gmail.com</EMail>
     <Tel>0039-800 454 432</Tel>
     <Fax>0039-800 454 433</Fax>
     <Address>Citta Uova</Address>
@@ -944,12 +1043,12 @@
     <CleanUpFreq Unit="s">5</CleanUpFreq>
   </Server>
   <DeliverByMailTo>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
   </DeliverByMailTo>
   <Notify>
     <SendNotification>false</SendNotification>
     <To>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
     </To>
   </Notify>
   <Events>
@@ -957,7 +1056,7 @@
   </Events>
   <ContactInfo>
     <Name>Mr Brosnan</Name>
-    <EMail>borja.lopez.fernandez@gmail.com</EMail>
+    <EMail>mansobeach@gmail.com</EMail>
     <Tel>0039-800 454 432</Tel>
     <Fax>0039-800 454 433</Fax>
     <Address>Citta Uova</Address>
@@ -993,12 +1092,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1006,7 +1105,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1042,12 +1141,12 @@
         <CleanUpFreq Unit="s">5</CleanUpFreq>
       </Server>
       <DeliverByMailTo>
-         <Address>borja.lopez.fernandez@gmail.com</Address>
+         <Address>mansobeach@gmail.com</Address>
       </DeliverByMailTo>
       <Notify>
         <SendNotification>false</SendNotification>
         <To>
-         <Address>borja.lopez.fernandez@gmail.com</Address>
+         <Address>mansobeach@gmail.com</Address>
         </To>
       </Notify>
       <Events>
@@ -1055,7 +1154,7 @@
       </Events>
       <ContactInfo>
         <Name>Mr Brosnan</Name>
-        <EMail>borja.lopez.fernandez@gmail.com</EMail>
+        <EMail>mansobeach@gmail.com</EMail>
         <Tel>0039-800 454 432</Tel>
         <Fax>0039-800 454 433</Fax>
         <Address>Citta Uova</Address>
@@ -1293,12 +1392,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1314,7 +1413,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1352,12 +1451,12 @@
         <CleanUpFreq Unit="s">5</CleanUpFreq>
       </Server>
       <DeliverByMailTo>
-         <Address>borja.lopez.fernandez@gmail.com</Address>
+         <Address>mansobeach@gmail.com</Address>
       </DeliverByMailTo>
       <Notify>
         <SendNotification>false</SendNotification>
         <To>
-         <Address>borja.lopez.fernandez@gmail.com</Address>
+         <Address>mansobeach@gmail.com</Address>
         </To>
       </Notify>
       <Events>
@@ -1365,7 +1464,7 @@
       </Events>
       <ContactInfo>
         <Name>Mr Brosnan</Name>
-        <EMail>borja.lopez.fernandez@gmail.com</EMail>
+        <EMail>mansobeach@gmail.com</EMail>
         <Tel>0039-800 454 432</Tel>
         <Fax>0039-800 454 433</Fax>
         <Address>Ronda de Poniente</Address>
@@ -1402,12 +1501,12 @@
         <CleanUpFreq Unit="s">5</CleanUpFreq>
       </Server>
       <DeliverByMailTo>
-         <Address>borja.lopez.fernandez@gmail.com</Address>
+         <Address>mansobeach@gmail.com</Address>
       </DeliverByMailTo>
       <Notify>
         <SendNotification>false</SendNotification>
         <To>
-         <Address>borja.lopez.fernandez@gmail.com</Address>
+         <Address>mansobeach@gmail.com</Address>
         </To>
       </Notify>
       <Events>
@@ -1415,7 +1514,7 @@
       </Events>
       <ContactInfo>
         <Name>Mr Brosnan</Name>
-        <EMail>borja.lopez.fernandez@gmail.com</EMail>
+        <EMail>mansobeach@gmail.com</EMail>
         <Tel>0039-800 454 432</Tel>
         <Fax>0039-800 454 433</Fax>
         <Address>Ronda de Poniente</Address>
@@ -1454,12 +1553,12 @@
     <CleanUpFreq Unit="s">5</CleanUpFreq>
   </Server>
   <DeliverByMailTo>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
   </DeliverByMailTo>
   <Notify>
     <SendNotification>false</SendNotification>
     <To>
-     <Address>borja.lopez.fernandez@gmail.com</Address>
+     <Address>mansobeach@gmail.com</Address>
     </To>
   </Notify>
   <Events>
@@ -1475,7 +1574,7 @@
   </Events>
   <ContactInfo>
     <Name>Mr Brosnan</Name>
-    <EMail>borja.lopez.fernandez@gmail.com</EMail>
+    <EMail>mansobeach@gmail.com</EMail>
     <Tel>0039-800 454 432</Tel>
     <Fax>0039-800 454 433</Fax>
     <Address>Ronda de Poniente</Address>
@@ -1511,12 +1610,12 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1530,7 +1629,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Brosnan</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1569,13 +1668,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1587,7 +1686,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1623,13 +1722,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1641,7 +1740,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr 007</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1679,13 +1778,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1697,7 +1796,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr 007</Name>
-      <EMail>borja.lopez.fernandez@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1733,13 +1832,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1751,7 +1850,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1777,25 +1876,25 @@
       <Protocol>FTP</Protocol>
       <Hostname>localhost</Hostname>
       <Port>21</Port>
-      <User>borja</User>
-      <Pass encrypted='true'>cGVycmlsbG8K</Pass>
+      <User>test_ftp</User>
+      <Pass encrypted='true'>dGVzdAo=</Pass>
       <RegisterContentFlag>false</RegisterContentFlag>
       <RetrieveContentFlag>true</RetrieveContentFlag>
       <SecureFlag>false</SecureFlag>
       <VerifyPeerSSL>false</VerifyPeerSSL>
       <CompressFlag>false</CompressFlag>
-      <PassiveFlag>false</PassiveFlag>
-     <!-- <PassiveFlag>true</PassiveFlag> -->
+      <PassiveFlag>true</PassiveFlag>
+     <!-- <PassiveFlag>false</PassiveFlag> -->
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1807,7 +1906,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
@@ -1854,13 +1953,13 @@
       <CleanUpFreq Unit="s">5</CleanUpFreq>
     </Server>
     <DeliverByMailTo>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       <Address>mansobeach@gmail.com</Address>
     </DeliverByMailTo>
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez.fernandez@gmail.com</Address>
+       
+       <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
     <Events>
@@ -1872,7 +1971,7 @@
     </Events>
     <ContactInfo>
       <Name>Mr Satan</Name>
-      <EMail>borja.esa@gmail.com</EMail>
+      <EMail>mansobeach@gmail.com</EMail>
       <Tel>0039-800 454 432</Tel>
       <Fax>0039-800 454 433</Fax>
       <Address>Citta Uova</Address>
