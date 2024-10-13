@@ -97,6 +97,7 @@ Gem::Specification.new do |s|
       s.executables   << 'decTestInterface_NASA'
       s.executables   << 'decTestInterface_NATS_CCS5'
       s.executables   << 'decTestInterface_NOAA'
+      s.executables   << 'decTestInterface_NOAA_IGRF'
       s.executables   << 'decTestInterface_SCIHUB'
       s.executables   << 'decTestInterface_SPCS'
       s.executables   << 'decUnitTests'

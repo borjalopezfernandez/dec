@@ -447,7 +447,24 @@
             <MD5>false</MD5>
          </Switches>
       </Interface>
-      
+
+      <Interface>
+         <Name>TEST_NOAA_IGRF</Name>
+         <LocalInbox>/tmp/dec/if_noaa_in_basket</LocalInbox>
+         <DownloadDirs>
+		      <Directory DepthSearch="0">/IAGA/vmod/coeffs/igrf13coeffs.txt</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>true</MD5>
+         </Switches>         
+      </Interface>
+
       <Interface>
          <Name>TEST_IERS_BULA</Name>
          <LocalInbox>/tmp/dec/if_iers_in_basket</LocalInbox>
@@ -684,6 +701,13 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
          <Description>AUX_ERP___</Description>
          <FromList>
             <Interface>TEST_IERS_BULB</Interface>
+         </FromList>
+      </File>
+
+      <File Type="igrf13coeffs.txt">
+         <Description>AUX_GMF___</Description>
+         <FromList>
+            <Interface>TEST_NOAA_IGRF</Interface>
          </FromList>
       </File>
 

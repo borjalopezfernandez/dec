@@ -26,11 +26,13 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = "1.0.43.1"
+   @@version = "1.0.44.0"
 
    ## -----------------------------------------------------------------
 
    @@change_record = { \
+      "1.0.44" =>    "Interface test for NOAA-IGRF IGRF-13 coefficients\n\
+          TBW", \
       "1.0.43" =>    "Interface test for ESA-GSSC update for VTEC IONEX\n\
           Interface test update for IERS Bulletin B (latest)", \
       "1.0.42" =>    "gem net-ssh & net-sftp upgraded to support OpenSSL 3.0\n\
