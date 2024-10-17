@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #ReadInterfaceConfig class
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component
-##
-## Git: $Id: ReadInterfaceConfig.rb,v 1.7 2008/03/27 15:52:13 decdev Exp $
-##
-## This class reads and decodes the interfaces configuration file
-## dec_interfaces.xml.
-##
-#########################################################################
-
 require 'singleton'
 require 'rexml/document'
 
@@ -590,7 +575,7 @@ private
       hostname       = ""
       port           = ""
       user           = ""
-      pass           = ""
+      pass           = nil
       nCleanUpFreq   = 0
 
       if !xmlstruct.elements["Hostname"].nil? then

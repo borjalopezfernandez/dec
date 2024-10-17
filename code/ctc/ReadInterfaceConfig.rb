@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #ReadEntityConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: ReadInterfaceConfig.rb,v 1.7 2008/03/27 15:52:13 decdev Exp $
-#
-# == Module Common Transfer Component
-# This class reads and decodes the interfaces configuration file 
-# interfaces.xml.
-#
-#########################################################################
 
 require 'singleton'
 require 'rexml/document'

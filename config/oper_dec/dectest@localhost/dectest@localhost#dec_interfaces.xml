@@ -78,8 +78,8 @@
     <Server>
       <Protocol>SFTP</Protocol>
       <Hostname>localhost</Hostname>
-	   <Port>22</Port>      
-      <User>borja</User>
+	   <Port>2222</Port>      
+      <User>test_sftp</User>
       <Pass></Pass>
       <RegisterContentFlag>false</RegisterContentFlag>
       <RetrieveContentFlag>true</RetrieveContentFlag>
@@ -133,9 +133,9 @@
   <Server>
     <Protocol>SFTP</Protocol>
     <Hostname>localhost</Hostname>
-    <Port>22</Port>      
-    <User>borja</User>
-    <Pass encrypted='true'>cGVycmlsbG8K</Pass>
+    <Port>2222</Port>      
+    <User>test_sftp</User>
+    <Pass encrypted='false'>test</Pass>
     <RegisterContentFlag>false</RegisterContentFlag>
     <RetrieveContentFlag>true</RetrieveContentFlag>
     <SecureFlag>true</SecureFlag>

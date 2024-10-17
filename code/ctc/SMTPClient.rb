@@ -1,22 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #SMTPClient module
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: SMTPClient.rb,v 1.2 2006/10/19 13:07:53 decdev Exp $
-#
-# Module Common Transfer Component
-# This class is a wrapper of the email command line tool for sending emails.
-# It is used email (www.cleancode.org) program instead of the ruby own built smtp module
-# because of its easyness to add attachments.
-#
-#########################################################################
-
 
 module CTC
 

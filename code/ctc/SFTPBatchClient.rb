@@ -1,24 +1,8 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #SFTPBatchClient module
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: SFTPBatchClient.rb,v 1.3 2007/03/15 08:57:26 decdev Exp $
-#
-# This module contains methods for adding commands to a batch file and
-# then execute them in a sftp client.
-#
-#########################################################################
-
 ## https://stackoverflow.com/questions/5386482/how-to-run-the-sftp-command-with-a-password-from-bash-script
 
 ## https://stackoverflow.com/questions/11738169/how-to-send-password-using-sftp-batch-file
-
 
 require 'ctc/FTPClientCommands'
 
@@ -42,7 +26,8 @@ class SFTPBatchClient
       @cmd         = ""
       @compress    = compress
       checkModuleIntegrity
-      if @pass != nil then
+
+      if @pass != nil and @pass != "" then
          ENV['SSHPASS'] = @pass
          ObjectSpace.define_finalizer( self, self.class.finalize )
       end

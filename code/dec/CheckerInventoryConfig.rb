@@ -1,23 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #DCC_CheckerInventoryConfig class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component
-# 
-# Git:  $Id: CheckerInventoryConfig.rb,v 1.3 2007/12/19 06:08:03 decdev Exp $
-#
-# This class is in charge of verify that Interfaces defined in the 
-# configuration file dec_interfaces.xml are as well defined in the database.
-#
-# ==== This class is in charge of accessing DEC database and check whether 
-# ==== all I/F mnemonics defined within dec_interfaces.xml are loaded.
-#
-#########################################################################
-
 require 'dec/ReadInterfaceConfig'
 
 module DEC

@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #WrapperCURL module
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component -> Common Transfer Component
-### 
-### === module Common Transfer Component module WrapperCURL
-###
-### This module contains methods for creating the curl
-### command line parameters. 
-###
-#########################################################################
 
 require 'shell'
 require 'fileutils'

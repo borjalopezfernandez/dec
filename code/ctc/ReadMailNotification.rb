@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #ReadMailNotification class          
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: ReadMailNotification.rb,v 1.2 2006/10/17 13:26:07 decdev Exp $
-#
-# This class processes mail_notifications.xml
-# which contain all the information about the events and list of email addresses
-# to be notified when the event happens
-#
-#########################################################################
-
 require 'singleton'
 require 'rexml/document'
 

@@ -37,8 +37,8 @@
       <Interface>
          <Name>LOCALHOST_SECURE_PASSWORD</Name>
          <LocalOutbox>$DEC_TMP/dec/out_basket_if_localhost_secure_password</LocalOutbox>
-         <UploadDir>/tmp/dec_simul_if/localhost_secure_password/upload</UploadDir>
-         <UploadTemp>/tmp/dec_simul_if/localhost_secure_password/upload/_TEMP_</UploadTemp>
+         <UploadDir>dec_simul_if/localhost_secure_password/upload</UploadDir>
+         <UploadTemp>dec_simul_if/localhost_secure_password/upload/_TEMP_</UploadTemp>
       </Interface>
 
       <Interface>

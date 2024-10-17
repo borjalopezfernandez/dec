@@ -120,7 +120,7 @@ private
       
       puts
       if @ftpElement[:isSecure] == true then 
-        puts "Secure conection is used (sftp)"
+         puts "Secure conection is used (sftp)"
       else
          puts "NON Secure conection is used (ftp)"
          puts "passive     -> #{@ftpElement[:isPassive]}"
@@ -131,7 +131,12 @@ private
       puts "hostname     -> #{@ftpElement[:hostname]}"
       puts "port         -> #{@ftpElement[:port]}"
       puts "user         -> #{@ftpElement[:user]}"
-      puts "password     -> #{@ftpElement[:password]}"
+      if @ftpElement[:password] == nil then
+         puts "no password"
+      else
+         puts "password     -> #{@ftpElement[:password]}"
+      end
+
       if b4Send == true then
       	puts "upload dir   -> #{@ftpElement[:uploadDir]}"
       	puts "upload tmp   -> #{@ftpElement[:uploadTemp]}"

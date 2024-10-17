@@ -1,22 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #ReadMailConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS:  $Id: ReadMailConfig.rb,v 1.5 2013/03/14 13:40:57 algs Exp $
-#
-# Module Common Transfer Component
-# This class reads and decodes DEC mail configuration stored 
-# ft_mail_config.xml.
-#
-#########################################################################
-
-
 require 'singleton'
 require 'rexml/document'
 

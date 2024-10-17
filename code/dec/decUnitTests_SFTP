@@ -14,6 +14,15 @@ require 'dec/ReadConfigIncoming'
 
 ## rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]
 
+=begin
+docker run \
+    -v <host-dir>/ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key \
+    -v <host-dir>/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key \
+    -v <host-dir>/share:/home/foo/share \
+    -p 2222:22 -d atmoz/sftp \
+    foo::1001
+=end
+
 
 class DECTestCase_SFTP < Test::Unit::TestCase
 
@@ -30,6 +39,47 @@ class DECTestCase_SFTP < Test::Unit::TestCase
    # --------------------------------------------------------
    
    Test::Unit.at_start do
+
+      system("clear")
+      puts
+      puts "======================================"
+      puts "DEC #{File.basename(__FILE__)} Unit Test Cases"
+      puts
+      puts
+      
+      @@conf = DEC_Environment.new
+
+      @@conf.wrapper_load_config
+
+      @decConfigDir = ENV['DEC_CONFIG']
+ 
+      ## ----------------------------------
+      ## initialize logger
+      loggerFactory = CUC::Log4rLoggerFactory.new("DECTEST", "#{@decConfigDir}/dec_log_config.xml")
+   
+      @@logger = loggerFactory.getLogger   
+      if @@logger == nil then
+         puts
+		   puts "Error in #{File.basename(__FILE__)}"
+     	   puts "Could not initialize logging system !  :-("
+         puts "Check DEC logs configuration under \"#{@decConfigDir}/orchestrator_log_config.xml\"" 
+ 	      puts
+   	   exit(99)
+      end
+
+      # Delete the known host entry associated to previous container executions
+      cmd = "ssh-keygen -f ~/.ssh/known_hosts -R '[localhost]:2222'"
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dec/in_basket_if_localhost_secure_password"
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dec_simul_if/localhost_secure_password/download"
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dec_simul_if/localhost_secure_password/upload/_TEMP_"
+      system(cmd)
+
       system("clear")
       puts
       puts "======================================"
@@ -41,6 +91,9 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       puts "or with operational data in the archive"
       puts
       puts "THINK CAREFULLY !!! "
+      puts
+      puts "Execute the following test environment:"
+      puts "docker run --name dec_sftp_server -v /tmp/tmp:/home/test_sftp -v ~/.ssh/id_rsa.pub:/home/test_sftp/.ssh/keys/id_rsa.pub:ro -p 2222:22 -d atmoz/sftp test_sftp::1000"
       puts
       puts "do you want to continue Y/n" 
       puts
@@ -63,25 +116,11 @@ class DECTestCase_SFTP < Test::Unit::TestCase
          end
       end   
    
-      @@conf = DEC_Environment.new
+      # can create new keys 
+      # cmd = "ssh-keygen -q -t rsa -b 4096 -f /tmp/id_rsa < /dev/null"
+      # system(cmd)
 
-      @@conf.wrapper_load_config
 
-      @decConfigDir = ENV['DEC_CONFIG']
- 
-      ## ----------------------------------
-      ## initialize logger
-      loggerFactory = CUC::Log4rLoggerFactory.new("DECTEST", "#{@decConfigDir}/dec_log_config.xml")
-   
-      @@logger = loggerFactory.getLogger   
-      if @@logger == nil then
-         puts
-		   puts "Error in #{File.basename(__FILE__)}"
-     	   puts "Could not initialize logging system !  :-("
-         puts "Check DEC logs configuration under \"#{@decConfigDir}/orchestrator_log_config.xml\"" 
- 	      puts
-   	   exit(99)
-      end
 
       ## ----------------------------------
       @@conf.wrapper_unset_config
@@ -96,6 +135,20 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       system(cmd)      
       # ---------------------
+
+      cmd = "docker container stop dec_sftp_server"
+      @@logger.info(cmd)
+      system(cmd)
+
+      cmd = "docker container rm dec_sftp_server"
+      @@logger.info(cmd)
+      system(cmd)
+
+      cmd = "docker run --name dec_sftp_server -v /tmp/tmp:/home/test_sftp -v ~/.ssh/id_rsa.pub:/home/test_sftp/.ssh/keys/id_rsa.pub:ro -p 2222:22 -d atmoz/sftp test_sftp::1000"
+      @@logger.info(cmd)
+      system(cmd)
+
+      sleep(3.0)
 
    end
    
@@ -156,7 +209,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       ret = system(cmd)
 
-      cmd = "decConfigInterface2DB -p EXTERNAL"
+      cmd = "decConfigInterface2DB -a LOCALHOST_SECURE"
       @@logger.debug(cmd)
       ret = system(cmd)
 
@@ -193,11 +246,13 @@ class DECTestCase_SFTP < Test::Unit::TestCase
 
       @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START #{label}")
  
-      checkDirectory("/tmp/dec/in_basket_if_localhost_secure")
-      checkDirectory("/tmp/dec_simul_if/localhost_secure/download")
-      checkDirectory("/tmp/dec_simul_if/localhost_secure/upload/_TEMP_")
+=begin
+      checkDirectory("/tmp/tmp/dec/in_basket_if_localhost_secure")
+      checkDirectory("/tmp/tmp/dec_simul_if/localhost_secure/download")
+      checkDirectory("/tmp/tmp/dec_simul_if/localhost_secure/upload/_TEMP_")
+=end
 
-      cmd = "\\rm -rf /tmp/dec/in_basket_if_localhost_secure/*"
+      cmd = "\\rm -rf /tmp/tmp/dec/in_basket_if_localhost_secure/*"
       @@logger.debug(cmd)
       system(cmd)
 
@@ -209,7 +264,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       ret = system(cmd)
 
-      cmd = "decConfigInterface2DB -p EXTERNAL"
+      cmd = "decConfigInterface2DB -a LOCALHOST_SECURE"
       @@logger.debug(cmd)
       ret = system(cmd)
 

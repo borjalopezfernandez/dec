@@ -1,20 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-###
-### === Ruby source for #CheckerConfigFileSystem class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### ==  Data Exchange Component
-### 
-### Git:  $Id: CheckerConfigFileSystem.rb,v 1.3 $
-###
-### This class is in charge of verify the file system status
-###
-###
-#########################################################################
-
 require 'sys/filesystem'
 
 require 'cuc/DirUtils'

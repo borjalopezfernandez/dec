@@ -1,24 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #CheckerIncomingFileConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# == Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: CheckerIncomingFileConfig.rb,v 1.7 2009/10/21 13:36:46 algs Exp $
-#
-# === module Common Transfer Component (CTC)
-# This class is in charge of verify that the Configuration
-# for a given Incoming File in ft_incoming_file.xml is correct.
-#
-# ==== It checks that Interface(s) defined for a given file-type | file wildcard 
-# ==== in ft_incoming_files.xml exist in interfaces.xml config file.
-#
-#########################################################################
-
 require 'ctc/ReadInterfaceConfig'
 require 'ctc/ReadFileSource'
 

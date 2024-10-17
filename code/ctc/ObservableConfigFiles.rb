@@ -1,31 +1,9 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #ObservableConfigFiles class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: ObservableConfigFiles.rb,v 1.3 2006/10/05 15:07:24 decdev Exp $
-#
-# Module Common Transfer Component
-# This class monitors DEC Config files.
-#
-# This class implements the Observer and Singleton patterns.
-#
-# Its mission is to check if the DCC Config files have changed
-# and notify it to the classes in charge of decoding these files so that
-# they could reload their data.
-#
-#########################################################################
-
 require 'observer'
 require 'singleton'
 
 require 'cuc/CommandLauncher'
-
 
 
 module CTC

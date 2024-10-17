@@ -19,7 +19,7 @@ require 'dec/ReadConfigDEC'
 ### ------------------------------------
 ### MacOS Mojave
 ## sudo /usr/local/sbin/pure-ftpd -lpam
-## sudo /usr/local/sbin/pure-ftpd /Users/borja/Projects/dec/config/ftp/pure-ftpd.conf
+## sudo /usr/local/sbin/pure-ftpd /Users/<user>/Projects/dec/config/ftp/pure-ftpd.conf
 ### ------------------------------------
 
 ## https://bobcares.com/blog/proftpd-create-user/
@@ -52,6 +52,9 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       puts "or with operational data in the archive"
       puts
       puts "THINK CAREFULLY !!! "
+      puts
+      puts "Execute the following test environment:"
+      puts "docker run -v /tmp:/tmp -d  -p '21:21' -p 21000-21010:21000-21010  -e USERS='test_ftp|test'  -e ADDRESS=localhost delfer/alpine-ftp-server"
       puts
       puts "do you want to continue Y/n" 
       puts
@@ -123,6 +126,10 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       puts cmd
       system(cmd)
       
+      checkDirectory("/tmp/dec/in_basket_if_localhost_ftp_passive")
+      system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive_passive/*")
+
+      checkDirectory("/tmp/dec_simul_if/localhost_notsecure/upload/_TEMP_")
       return
    end
    ## ------------------------------------------------------
@@ -145,10 +152,6 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       puts "DEC_UnitTests::#{__method__.to_s}"
       puts
 
-      checkDirectory("/tmp/dec/in_basket_if_localhost_ftp_passive_passive")
-      
-      system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive_passive/*")
-
       cmd = "rm -f /tmp/DEC*.log"
       puts cmd
       system(cmd)
@@ -159,7 +162,7 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       cmd = "decManageDB -c"
       ret = system(cmd)
 
-      cmd = "decConfigInterface2DB -p EXTERNAL"
+      cmd = "decConfigInterface2DB -a LOCALHOST_FTP_PASSIVE"
       ret = system(cmd)
 
       cmd = "decValidateConfig -a"
@@ -269,8 +272,6 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       puts cmd
       system(cmd)
 
-      checkDirectory("/tmp/dec/in_basket_if_localhost_ftp_passive")
-      
       system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive/*")
 
       cmd = "rm -f /tmp/tmp/dir1/finals.all"

@@ -1,23 +1,6 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #SMOS_MF_FileNameDecoder class         
-#
-# === Written by DEIMOS Space S.L.
-#
-# === Data Collection Component
-# 
-# CVS: $Id: SMOS_MF_FileNameDecoder.rb,v 1.2 2006/10/19 13:07:53 decdev Exp $
-#
-#- This class is used for reading the system filename.
-#- It decodes the UNIX/Linux Filename following the
-#- Earth Explorer filename conventions
-#- This class is a specialization made for the SMOS MF Reports files
-#
-#########################################################################
  
-
 module CTC
  
 class SMOS_MF_FileNameDecoder

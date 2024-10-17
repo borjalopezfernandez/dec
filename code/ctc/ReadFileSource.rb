@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# ===Ruby source for #ReadFileSource class          
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: ReadFileSource.rb,v 1.9 2007/10/10 14:48:40 decdev Exp $
-#
-# This class processes ft_incoming_files.xml.
-# which contain all the information about the destination and address
-# of all files registered in the DCC.
-#
-#########################################################################
-
 require 'singleton'
 require 'rexml/document'
 
