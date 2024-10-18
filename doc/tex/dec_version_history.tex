@@ -28,13 +28,20 @@ In order to check the version which is currently installed the gem command can b
 \inlinecode{bash}{ \$> gem list | grep dec  }
 
 \begin{Verbatim}[tabsize=4]
-    dec (1.0.41.9)
+    dec (1.0.44.4)
 \end{Verbatim}
 
 \inlinecode{bash}{ \$> decValidateConfig -v  }
 
 \begin{Verbatim}[tabsize=4]
-    1.0.41 => Support to interfaces with custom scripts
+1.0.44 => Interface test for NOAA-IGRF IGRF-13 coefficients
+    Unit test decUnitTests_FTP_PASSIVE   includes testing environment
+    Unit test decUnitTests_SFTP_PASSWORD includes testing environment
+1.0.43 => Interface test for ESA-GSSC update for VTEC IONEX
+    Interface test update for IERS Bulletin B (latest)
+1.0.42 => gem net-ssh & net-sftp upgraded to support OpenSSL 3.0
+    Interface test update for NASA MSFC Solar Flux (F10.7)
+1.0.41 => Support to interfaces with custom scripts
     DEC env variables override the configuration attributes shipped with the installer
 1.0.40 => MD5 config flag for pull to manage duplications (HTTP/FTPS)
     HTTP handler treats html navigation pages as directories for pull

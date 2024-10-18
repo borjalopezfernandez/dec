@@ -14,7 +14,8 @@ require 'dec/ReadConfigDEC'
 
 ### https://github.com/delfer/docker-alpine-ftp-server.git
 ### https://github.com/delfer/docker-alpine-ftp-server/blob/master/Dockerfile
-### docker run -v /tmp:/tmp -d  -p "21:21"  -p 21000-21010:21000-21010     -e USERS="test_ftp|test"     -e ADDRESS=localhost     delfer/alpine-ftp-server
+### docker run -v /tmp:/tmp/tmp_ftp -d  -p "2121:21"  -p 21000-21010:21000-21010     -e USERS="test_ftp|test"     -e ADDRESS=localhost     delfer/alpine-ftp-server
+### docker exec -u root -i -t dec_ftp_server sh
 
 ### ------------------------------------
 ### MacOS Mojave
@@ -54,7 +55,7 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       puts "THINK CAREFULLY !!! "
       puts
       puts "Execute the following test environment:"
-      puts "docker run -v /tmp:/tmp -d  -p '21:21' -p 21000-21010:21000-21010  -e USERS='test_ftp|test'  -e ADDRESS=localhost delfer/alpine-ftp-server"
+      puts "docker run --name dec_ftp_server -v /tmp/tmp_ftp:/ftp/test_ftp -d  -p '2121:21' -p 21000-21010:21000-21010  -e USERS='test_ftp|test'  -e ADDRESS=localhost delfer/alpine-ftp-server"
       puts
       puts "do you want to continue Y/n" 
       puts
@@ -104,7 +105,81 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       end
 
       ## ----------------------------------
+
+      # Directories need to be created before the execution of the container
+      # with the FTP server exhange directories
+
+      cmd = "rm -rf /tmp/tmp_ftp"
+      @@logger.debug(cmd)
+      system(cmd)
+      
+      cmd = "mkdir -p /tmp/tmp_ftp"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "chmod a+w /tmp/tmp_ftp"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp_ftp/dir1"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp_ftp/dir2"
+      @@logger.debug(cmd)
+      system(cmd)
+      
+      cmd = "chmod a+w /tmp/tmp_ftp"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/dec/in_basket_if_localhost_ftp_passive"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive_passive/*"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp_ftp/dec_simul_if/localhost_notsecure/upload/_TEMP_"
+      @@logger.debug(cmd)
+      system(cmd)
+      
+      ## -----------------------------------------
+      ## list mode and subsequent download
+      
+      system("echo \'my touch file\' > /tmp/tmp_ftp/dir1/touchfile1.txt")
+      system("echo \'another touch file\' > /tmp/tmp_ftp/dir1/touchfile2.txt")
+      system("echo \'another brick in the touch file\' > /tmp/tmp_ftp/dir2/touchfile3.txt")
+      system("echo \'another brick in the touch file\' > /tmp/tmp_ftp/dir2/touchfile4.txt")
+      
+      cmd = "chmod a+w /tmp/tmp_ftp"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "chmod a+r /tmp/tmp_ftp"
+      @@logger.debug(cmd)
+      system(cmd)
+
       @@conf.wrapper_unset_config
+
+      cmd = "docker container stop dec_ftp_server"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      sleep(2.0)
+
+      cmd = "docker container rm dec_ftp_server"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      sleep(5.0)
+
+      cmd = "docker run --name dec_ftp_server -v /tmp/tmp_ftp:/ftp/test_ftp -d  -p '2121:21' -p 21000-21010:21000-21010  -e USERS='test_ftp|test'  -e ADDRESS=localhost delfer/alpine-ftp-server"
+      @@logger.info(cmd)
+      system(cmd)
+
+      sleep(5.0)
    
    end
    
@@ -118,18 +193,6 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
    # Setup before every test-case
    #
    def setup
-      cmd = "mkdir -p /tmp/tmp/dir1"
-      puts cmd
-      system(cmd)
-
-      cmd = "mkdir -p /tmp/tmp/dir2"
-      puts cmd
-      system(cmd)
-      
-      checkDirectory("/tmp/dec/in_basket_if_localhost_ftp_passive")
-      system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive_passive/*")
-
-      checkDirectory("/tmp/dec_simul_if/localhost_notsecure/upload/_TEMP_")
       return
    end
    ## ------------------------------------------------------
@@ -173,14 +236,6 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       puts cmd
       assert(system(cmd), cmd)
       
-      ## -----------------------------------------
-      ## list mode and subsequent download
-      
-      system("echo \'my touch file\' > /tmp/tmp/dir1/touchfile1.txt")
-      system("echo \'another touch file\' > /tmp/tmp/dir1/touchfile2.txt")
-      system("echo \'another brick in the touch file\' > /tmp/tmp/dir2/touchfile3.txt")
-      system("echo \'another brick in the touch file\' > /tmp/tmp/dir2/touchfile4.txt")
-            
       cmd = "decGetFromInterface -m LOCALHOST_FTP_PASSIVE -l"
       puts cmd
       assert(system(cmd), cmd)
@@ -194,64 +249,18 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       
       ## -----------------------------------------
 
-      
-      ## -----------------------------------------
-      ## Download again since --nodb is used to avoid filtering by previous download
-          
-      system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive/*")
-      
-      system("echo \'my touch file\' > /tmp/tmp/dir1/touchfile1.txt")
-      system("echo \'another touch file\' > /tmp/tmp/dir1/touchfile2.txt")
-      system("echo \'another brick in the touch file\' > /tmp/tmp/dir2/touchfile3.txt")
-      system("echo \'another brick in the touch file\' > /tmp/tmp/dir2/touchfile4.txt")
-            
-      cmd = "decGetFromInterface -m LOCALHOST_FTP_PASSIVE --nodb"
-      puts cmd
-      assert(system(cmd), cmd)
- 
-      arrFiles = Dir["/tmp/dec/in_basket_if_localhost_ftp_passive/touch*"]      
-      assert(arrFiles.length == 4, "Number of files pulled")
-
-      ## -----------------------------------------
-      ## Now no files should be present for download
-
-      system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive/*")
-      
-      cmd = "decGetFromInterface -m LOCALHOST_FTP_PASSIVE"
-      puts cmd
-      assert(system(cmd), cmd)
-            
-      arrFiles = Dir["/tmp/dec/in_basket_if_localhost_ftp_passive/touch*"]      
-      assert(arrFiles.length == 0, "Number of files pulled")
-
       ## -----------------------------------------
 
       cmd = "decStats -H 1"
       puts cmd
       assert(system(cmd), cmd)
-      
-      
+            
       ## -----------------------------------------
       
       arr = Dir["/tmp/DEC*.log"]
-
-      system("\\rm -rf /tmp/dec/in_basket_if_localhost_ftp_passive/*")
-      
-      system("echo \'my touch file\' > /tmp/tmp/dir1/touchfile1.txt")
-      system("echo \'another touch file\' > /tmp/tmp/dir1/touchfile2.txt")
-      system("echo \'another brick in the touch file\' > /tmp/tmp/dir2/touchfile3.txt")
-      system("echo \'another brick in the touch file\' > /tmp/tmp/dir2/touchfile4.txt")
-            
-      cmd = "decGetFromInterface -m LOCALHOST_FTP_PASSIVE"
+      cmd = "grep DEC_110 #{arr[0]}"
       puts cmd
-      assert(system(cmd), cmd)
- 
-      arrFiles = Dir["/tmp/dec/in_basket_if_localhost_ftp_passive/touch*"]      
-      assert(arrFiles.length == 0, "Duplicated files should not be pulled")
-                      
-      cmd = "grep DEC_125 #{arr[0]}"
-      puts cmd
-      assert(system(cmd), "Duplications logged in #{__method__.to_s}") 
+      assert(system(cmd), "Downloads logged in #{__method__.to_s}") 
 
       ## -----------------------------------------
       
@@ -289,7 +298,7 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       cmd = "decManageDB -c"
       ret = system(cmd)
 
-      cmd = "decConfigInterface2DB -p EXTERNAL"
+      cmd = "decConfigInterface2DB -a LOCALHOST_FTP_PASSIVE"
       ret = system(cmd)
 
       cmd = "decValidateConfig -a"

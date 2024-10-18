@@ -403,12 +403,14 @@ class DEC_ReceiverFromInterface
       pass           = @ftpserver[:password]
       passive        = @ftpserver[:isPassive]
       @depthLevel    = 0
+      prevDir        = nil
 
       begin
          if @isDebugMode == true then
             @logger.debug("getNonSecureFileList => FTP #{host} #{port} #{user} #{pass} | passive = #{bPassive}")
          end
-         @ftp = Net::FTP.new(host)
+         @ftp = Net::FTP.new
+         @ftp.connect(host, port)
          @ftp.login(user, pass)
          @ftp.passive = bPassive
       rescue Exception => e
@@ -436,6 +438,11 @@ class DEC_ReceiverFromInterface
          end
 
          begin
+            if prevDir == nil then
+               prevDir = @ftp.pwd
+            else
+               @ftp.chdir(prevDir)
+            end
             @ftp.chdir(@remotePath)
          rescue Exception => e
             @ftp.chdir("/")

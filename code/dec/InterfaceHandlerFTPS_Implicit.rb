@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #InterfaceHandlerFTPS class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component -> Data Collector Component
-### 
-### Git: $Id: InterfaceHandlerFTPS_implicit.rb,v 1.12 2014/05/16 00:14:38 bolf Exp $
-###
-### Module Interface
-### This class polls a given FTPS Interface using curl
-###
-#########################################################################
 
 require 'ctc/WrapperCURL'
 

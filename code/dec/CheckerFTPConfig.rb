@@ -312,21 +312,22 @@ private
    # Check that the remote directories exists
    def checkRemoteDirectory(dir, mirror=false)
       if mirror then
-         host = @ftpElement[:FTPServerMirror][:hostname]
-         port = @ftpElement[:FTPServerMirror][:port].to_i
-         user = @ftpElement[:FTPServerMirror][:user]
-         pass = @ftpElement[:FTPServerMirror][:password]         
+         ftp_host = @ftpElement[:FTPServerMirror][:hostname]
+         ftp_port = @ftpElement[:FTPServerMirror][:port].to_i
+         ftp_user = @ftpElement[:FTPServerMirror][:user]
+         ftp_pass = @ftpElement[:FTPServerMirror][:password]         
       else
-         host = @ftpElement[:hostname]
-         port = @ftpElement[:port].to_i
-         user = @ftpElement[:user]
-         pass = @ftpElement[:password]
+         ftp_host = @ftpElement[:hostname]
+         ftp_port = @ftpElement[:port].to_i
+         ftp_user = @ftpElement[:user]
+         ftp_pass = @ftpElement[:password]
       end
 
       if @ftpElement[:isSecure] == false then
          begin
-            @ftp = Net::FTP.new(host)
-            @ftp.login(user, pass)
+            @ftp = Net::FTP.new
+            @ftp.connect(ftp_host, ftp_port)
+            @ftp.login(ftp_user, ftp_pass)
             @ftp.passive = true
             @ftp.chdir(dir.chomp)
          rescue Exception => e
@@ -340,7 +341,7 @@ private
       end
 
       if @ftpElement[:isSecure] == true then
-         sftpClient = SFTPBatchClient.new(host, port, user, pass, @batchFile, false, @logger)
+         sftpClient = SFTPBatchClient.new(ftp_host, ftp_port, ftp_user, ftp_pass, @batchFile, false, @logger)
          if @isDebugMode == true then
             sftpClient.setDebugMode
          end

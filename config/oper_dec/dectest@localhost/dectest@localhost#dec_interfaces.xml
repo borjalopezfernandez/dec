@@ -1886,7 +1886,7 @@
     <Server>
       <Protocol>FTP</Protocol>
       <Hostname>localhost</Hostname>
-      <Port>21</Port>
+      <Port>2121</Port>
       <User>test_ftp</User>
       <Pass encrypted='true'>dGVzdAo=</Pass>
       <RegisterContentFlag>false</RegisterContentFlag>
@@ -1903,7 +1903,6 @@
     <Notify>
       <SendNotification>false</SendNotification>
       <To>
-       
        <Address>mansobeach@gmail.com</Address>
       </To>
     </Notify>
