@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #DatabaseModel class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component -> Data Distributor Component
-### 
-### Git: $Id$: DEC_DatabaseModel.rb,v 1.12 2007/12/18 18:34:03 decdev Exp $
-###
-### module DEC
-###
-#########################################################################
-
 ## Evetual future support of yaml
 ## db_config = YAML.load_file('config/database.yml')
 ## ActiveRecord::Base.establish_connection(db_config['production'])

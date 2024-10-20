@@ -15,29 +15,6 @@
 #              --env       it prints the execution environment variables
 #              --version   shows version number
 # 
-# == Author
-# Deimos-Space S.L. (bolf)
-#
-# == Copyright
-# Copyright (c) 2006 ESA - Deimos Space S.L.
-#
-
-
-#########################################################################
-#
-# Ruby script sendROP
-# 
-# Written by DEIMOS Space S.L.   (bolf)
-#
-# Data Exchange Component -> Mission Management & Planning Facility
-# 
-# Git:
-#     sendROP.rb  $Author: bolf$
-#                 $Date$ 
-#                 $Committer: bolf$
-#                 $Hash: f3afa7c$
-#
-#########################################################################
 
 require 'getoptlong'
 
@@ -131,7 +108,7 @@ def main
    end   
  
    if @bShowVersion == true then
-      print("\nESA - DEIMOS-Space S.L. ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
+      print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|
          puts "#{key} => #{value}"
@@ -280,7 +257,7 @@ end
 def usage
    fullpathFile = File.expand_path(__FILE__)   
    
-   value = `#{"head -22 #{fullpathFile}"}`
+   value = `#{"head -17 #{fullpathFile}"}`
       
    value.lines.drop(1).each{
       |line|

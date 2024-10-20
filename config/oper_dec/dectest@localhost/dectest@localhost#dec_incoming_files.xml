@@ -363,10 +363,10 @@
       </Interface>
       
       <Interface>
-         <Name>LOCALHOST_SECURE</Name>
-         <LocalInbox>/tmp/dec/in_basket_if_localhost_secure</LocalInbox>
+         <Name>LOCALHOST_SECURE_KEYS</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_secure_keys</LocalInbox>
          <DownloadDirs>
-		      <Directory DepthSearch="0">/tmp/dec_simul_if/localhost_secure/download</Directory>
+		      <Directory DepthSearch="0">dec_simul_if/localhost_secure_keys/download</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
@@ -769,7 +769,7 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
             <Interface>LOCALHOST_FTP_PASSIVE</Interface>
             <Interface>LOCALHOST_FTP</Interface>
             <Interface>LOCALHOST_FTPS</Interface>
-            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_KEYS</Interface>
          </FromList>
       </File>
 
@@ -779,7 +779,7 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
             <Interface>LOCALHOST_FTP_PASSIVE</Interface>
             <Interface>LOCALHOST_FTP</Interface>
             <Interface>LOCALHOST_FTPS</Interface>
-            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_KEYS</Interface>
          </FromList>
       </File>
 
@@ -807,7 +807,7 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
       <File Type="test_sftp_*.bin">
          <Description></Description>
          <FromList>
-            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_KEYS</Interface>
             <Interface>LOCALHOST_SECURE_PASSWORD</Interface>
          </FromList>
       </File>
@@ -863,7 +863,7 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
             <Interface>PARALLEL_HTTP</Interface>
             <Interface>IERS</Interface>
             <Interface>LOCALHOST_NOT_SECURE</Interface>
-            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_KEYS</Interface>
             <Interface>FILESYSTEM</Interface>
          </FromList>
       </File>
@@ -926,7 +926,7 @@ https://www.nasa.gov/sites/default/files/atoms/files/jun2022f10_prd.txt
             <Interface>WEBDAV_SECURE</Interface>
             <Interface>IERS</Interface>
             <Interface>LOCALHOST_NOT_SECURE</Interface>
-            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_KEYS</Interface>
             <Interface>PARALLEL_HTTP</Interface>
             <Interface>FILESYSTEM</Interface>
          </FromList>
@@ -996,7 +996,7 @@ WWWW/igsWWWWD.clk.Z
       <File Type="S2?_*">
          <Description>Sentinel-2 Ground Segment</Description>
          <FromList>
-            <Interface>LOCALHOST_SECURE</Interface>
+            <Interface>LOCALHOST_SECURE_KEYS</Interface>
             <Interface>LOCALHOST_NOT_SECURE</Interface>
             <Interface>SCIHUB</Interface>
          </FromList>

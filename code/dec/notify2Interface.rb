@@ -16,25 +16,6 @@
 #   --Debug     shows Debug info during the execution
 #   --version   shows version number
 # 
-# == Author
-# Deimos-Space S.L. (bolf)
-#
-# == Copyright
-# Copyright (c) 2006 ESA - Deimos Space S.L.
-#
-
-#########################################################################
-#
-# Ruby script notify2Interface for sending all files to an Entity
-# 
-# Written by DEIMOS Space S.L.   (bolf)
-#
-# Data Exchange Component -> Data Distributor Component
-# 
-# CVS:
-#   $Id: notify2Interface.rb,v 1.6 2007/11/06 16:33:54 decdev Exp $
-#
-#########################################################################
 
 require 'getoptlong'
 
@@ -87,7 +68,7 @@ def main
          case opt     
             when "--Debug"   then @debugMode = 1
             when "--version" then
-               print("\nESA - Deimos-Space S.L. ", File.basename($0), " $Revision: 1.6 $  [", @dateLastModification, "]\n\n\n")
+               print("\nDEC ", File.basename($0), " $Revision: 1.6 $  [", @dateLastModification, "]\n\n\n")
                exit (0)
             when "--mnemonic" then
                @mnemonic = arg
@@ -109,7 +90,7 @@ def main
    end
 
    if @bShowVersion == true then
-      print("\nESA - DEIMOS-Space S.L. ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
+      print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|
          puts "#{key} => #{value}"
@@ -256,7 +237,7 @@ end
 def usage
    fullpathFile = File.expand_path(__FILE__)
    
-   value = `#{"head -24 #{fullpathFile}"}`
+   value = `#{"head -18 #{fullpathFile}"}`
       
    value.lines.drop(1).each{
       |line|

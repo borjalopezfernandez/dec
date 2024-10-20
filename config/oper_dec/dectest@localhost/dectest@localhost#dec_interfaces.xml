@@ -63,7 +63,7 @@
  
   <!-- ================================================================ -->
  
-  <Interface Name="LOCALHOST_SECURE">
+  <Interface Name="LOCALHOST_SECURE_KEYS">
     <Desc>Localhost Interface</Desc>
     <TXRXParams>
       <Enabled4Sending>true</Enabled4Sending>

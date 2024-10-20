@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #InterfaceHandlerLocal class
-##
-## === Written by DEIMOS Space S.L. (algk)
-##
-## === Data Exchange Component
-## 
-## Git: $Id: InterfaceHandlerLocal.rb,v 1.12 2014/05/16 00:14:38 algs Exp $
-##
-## Module Data Collector Component
-## This class polls a given LOCAL Interface and gets all registered available files
-##
-#########################################################################
 
 require 'cuc/Log4rLoggerFactory'
 require 'dec/ReadInterfaceConfig'

@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## Ruby source for #CheckerHTTPConfig class
-##
-## Written by DEIMOS Space S.L. (bolf)
-##
-## Data Exchange Component
-## 
-## Git: $Id: CheckerHTTPConfig.rb,v 1.11 2014/10/13 18:39:54 algs Exp $
-##
-#########################################################################
-
 require 'curb'
 require 'uri'
 require 'net/dav'

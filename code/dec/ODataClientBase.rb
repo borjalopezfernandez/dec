@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #ODataClientDHUS class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: $Id: ODataClientBase.rb,v 1.25 bolf Exp $
-###
-### This class is an OData client
-###
-###
-#########################################################################
-
 require 'rubygems'
 require 'getoptlong'
 require 'net/http'

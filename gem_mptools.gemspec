@@ -1,16 +1,4 @@
-#########################################################################
-###
-### === Ruby source for #Gem Specification
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === MPL module
-### 
-### Git: gem_dec.gemspec,v $Id$ $Date$
-###
-### System Component MPL
-###
-#########################################################################
+
 
 Gem::Specification.new do |s|
   s.name        = 'mptools'
@@ -19,8 +7,8 @@ Gem::Specification.new do |s|
   s.licenses    = ['Nonstandard']
   s.summary     = "MPTools component"
   s.description = "Data Exchange Component"
-  s.authors     = ["Elecnor Deimos"]
-  s.email       = 'borja.lopez@deimos-space.com'
+  s.authors     = ["eople doin' it"]
+  s.email       = 'mansobeach@gmail.com'
  
   ## --------------------------------------------
   ##
@@ -61,8 +49,8 @@ Gem::Specification.new do |s|
   
   ## --------------------------------------------
 
-  s.homepage    = 'http://www.deimos-space.com'
-  s.metadata    = { "source_code_uri" => "https://github.com/example/example" }
+  s.homepage    = 'https://github.com/borjalopezfernandez/dec'
+  s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
     
   ## ----------------------------------------------
   
@@ -80,7 +68,7 @@ Gem::Specification.new do |s|
    
   ## ----------------------------------------------
 
-  s.post_install_message = "#{'1F4E1'.hex.chr('UTF-8')} Elecnor Deimos-Space #{'1F47E'.hex.chr('UTF-8')} mptools installed \360\237\215\200 \360\237\215\200 \360\237\215\200"
+  s.post_install_message = "#{'1F4E1'.hex.chr('UTF-8')} DEC/MP #{'1F47E'.hex.chr('UTF-8')} mptools installed \360\237\215\200 \360\237\215\200 \360\237\215\200"
     
   ## ----------------------------------------------
      

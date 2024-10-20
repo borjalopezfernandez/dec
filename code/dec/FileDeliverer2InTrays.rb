@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## = Ruby source for #FileDeliverer2InTrays class
-##
-## = Written by DEIMOS Space S.L. (bolf)
-##
-## = Data Exchange Component
-##
-## Git:
-##   $Id: FileDeliverer2InTrays.rb,v 1.16 2008/07/03 11:38:07 decdev Exp $
-##
-#########################################################################
-
 require 'fileutils'
 
 require 'cuc/Log4rLoggerFactory'

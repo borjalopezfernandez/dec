@@ -109,6 +109,16 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
       # Directories need to be created before the execution of the container
       # with the FTP server exhange directories
 
+      cmd = "docker container stop dec_ftp_server"
+      @@logger.debug(cmd)
+      system(cmd)
+      sleep(2.0)
+
+      cmd = "docker container rm dec_ftp_server"
+      @@logger.debug(cmd)
+      system(cmd)
+      sleep(10.0)
+
       cmd = "rm -rf /tmp/tmp_ftp"
       @@logger.debug(cmd)
       system(cmd)
@@ -163,23 +173,11 @@ class DECTestCase_FTP_Passive < Test::Unit::TestCase
 
       @@conf.wrapper_unset_config
 
-      cmd = "docker container stop dec_ftp_server"
-      @@logger.debug(cmd)
-      system(cmd)
-
-      sleep(2.0)
-
-      cmd = "docker container rm dec_ftp_server"
-      @@logger.debug(cmd)
-      system(cmd)
-
-      sleep(5.0)
-
       cmd = "docker run --name dec_ftp_server -v /tmp/tmp_ftp:/ftp/test_ftp -d  -p '2121:21' -p 21000-21010:21000-21010  -e USERS='test_ftp|test'  -e ADDRESS=localhost delfer/alpine-ftp-server"
       @@logger.info(cmd)
       system(cmd)
 
-      sleep(5.0)
+      sleep(10.0)
    
    end
    

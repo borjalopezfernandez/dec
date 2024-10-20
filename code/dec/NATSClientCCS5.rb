@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #NATSClientCCS5 class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-### 
-### Git: $Id: NATSClientCCS5.rb,v  $
-###
-###
-#########################################################################
-
 require 'json'
 require 'cuc/Converters'
 require 'ctc/API_NATS_NAOS_CCS5'

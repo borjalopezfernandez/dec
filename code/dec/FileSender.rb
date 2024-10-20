@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #FileSender class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component -> Common Transfer Component
-### 
-### Git: $Id: FileSender.rb,v 1.18 2014/05/20 14:41:04 algs Exp $
-###
-#########################################################################
-
 require 'net/ssh'
 require 'net/sftp'
 require 'fileutils'

@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #InterfaceHandlerHTTP_CELES class
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component
-## 
-## Git: $Id: InterfaceHandlerHTTP.rb,v 1.12 2014/05/16 00:14:38 bolf Exp $
-##
-## Module Interface
-## This class pushes (pending pull) a given HTTP Interface and gets all registered available files
-##
-#########################################################################
-
 ### https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
 
 ### HTTP verbs used:

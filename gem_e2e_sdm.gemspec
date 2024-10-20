@@ -31,8 +31,8 @@ Gem::Specification.new do |s|
                      'e2eUnitTests' #, \
                      ]
 
-  s.homepage    = 'http://www.deimos-space.com'
-  s.metadata    = { "source_code_uri" => "https://github.com/example/example" }
+  s.homepage    = 'https://github.com/borjalopezfernandez/dec'
+  s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
     
   # ----------------------------------------------
   

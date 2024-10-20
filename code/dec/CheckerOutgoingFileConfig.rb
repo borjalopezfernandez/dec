@@ -1,26 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #CheckerOutgoingFileConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# == Data Exchange Component
-# 
-# Git:$Id: CheckerOutgoingFileConfig.rb,v 1.9 2009/10/21 13:36:46 algs Exp $
-#
-# This class is in charge of verify that the Configuration
-# for a given Outgoing File-type in dec_outgoing_file.xml is correct.
-#
-# ==== This class is in charge of verify that the Configuration
-# ==== for a given Outgoing file-type in dec_outgoing_files.xml is correct.
-#
-# ==== It checks that defined Interface(s) for such file-type exist in
-# ==== the configuration file dec_interfaces.xml
-#
-#########################################################################
-
 require 'cuc/PackageUtils'
 
 require 'dec/ReadInterfaceConfig'

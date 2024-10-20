@@ -26,13 +26,14 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = "1.0.44.5"
+   @@version = "1.0.44.7"
 
    ## -----------------------------------------------------------------
 
    @@change_record = { \
       "1.0.44" =>    "Interface test for NOAA-IGRF IGRF-13 coefficients\n\
           Unit test decUnitTests_FTP_PASSIVE   includes testing environment\n\
+          Unit test decUnitTests_SFTP_KEYS     includes testing environment\n\
           Unit test decUnitTests_SFTP_PASSWORD includes testing environment", \
       "1.0.43" =>    "Interface test for ESA-GSSC update for VTEC IONEX\n\
           Interface test update for IERS Bulletin B (latest)", \

@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #HTTPClientCCS5 class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-### 
-### Git: $Id: HTTPClientCCS5.rb,v  $
-###
-###
-#########################################################################
-
 require 'json'
 require 'cuc/Converters'
 require 'ctc/API_HTTP_NAOS_CCS5'

@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby script moveFilesToRejectDirectory to move files of another
-# entity to _Rejected_ directory, this way the files 
-# will be rescued if required
-# 
-# Written by DEIMOS Space S.L.   (paat)
-#
-# RPF
-# 
-# CVS:
-#   $Id: moveFilesToRejectDirectory.rb,v 1.3 2008/07/03 11:34:58 decdev Exp $
-#
-#########################################################################
-
 require 'getoptlong'
 require 'cuc/DirUtils'
 require 'cuc/Log4rLoggerFactory'

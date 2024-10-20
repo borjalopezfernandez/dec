@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #InterfaceHandlerWebDAV class
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component
-## 
-## Git: $Id: InterfaceHandlerWebDAV.rb,v 1.12 2014/05/16 00:14:38 bolf Exp $
-##
-## Module Interface
-## This class pushes (pending pull) a given WebDAV Interface and 
-## gets all registered available files
-##
-#########################################################################
-
 ### https://www.qed42.com/blog/using-curl-commands-webdav
 ### https://code.blogs.iiidefix.net/posts/webdav-with-curl/
 

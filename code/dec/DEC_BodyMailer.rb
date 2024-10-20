@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DEC_BodyMailer class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Data Distributor Component
-# 
-# Git: $Id: DEC_BodyMailer.rb,v 1.11 2011/08/24 18:56:24 algs Exp $
-#
-# Module Data Distributor Component
-# This class delivers methods for sending files to entities using SMTP.
-# The files are sent in the delivered mail BODY.
-#
-#########################################################################
-
 require 'fileutils'
 
 require 'cuc/Log4rLoggerFactory'

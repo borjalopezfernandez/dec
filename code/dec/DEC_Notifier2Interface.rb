@@ -1,22 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DEC_Notifier2Interface class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Data Distributor Component
-# 
-# Git:  $Id: DEC_Notifier2Interface.rb,v 1.9 2010/10/18 15:47:55 algs Exp $
-#
-# Module Data Distributor Component
-# This class delivers text mails.
-#
-# This class creates and sends text mails.
-#
-#########################################################################
-
 require 'ctc/ReadMailConfig'
 require 'ctc/CheckerMailConfig'
 require 'ctc/MailSender'

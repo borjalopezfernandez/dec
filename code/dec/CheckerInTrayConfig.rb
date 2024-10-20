@@ -1,23 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# === Ruby source for #CheckerInTrayConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# ==  Data Exchange Component
-# 
-# Git:  $Id: CheckerInTrayConfig.rb,v 1.3 2007/12/19 06:03:48 decdev Exp $
-#
-# This class is in charge of verify that the dissemination configuration
-# defined in dec_incoming_files.xml is correct.
-#
-# ==== This class is in charge of verify that integrity of dec_incoming_files.xml
-# ==== This is to check that In-Trays specified for a file-type are defined.
-#
-#########################################################################
-
 require 'sys/filesystem'
 
 require 'cuc/DirUtils'

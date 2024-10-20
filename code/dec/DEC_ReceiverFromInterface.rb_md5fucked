@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #DEC_ReceiverFromInterface class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: $Id: DEC_ReceiverFromInterface.rb,v 1.29 2008/11/27 13:59:32 decdev Exp $
-###
-### Module Data Exchange Component
-### This class polls a given Interface and gets all registered available files
-### via FTP, SFTP, WebDAV, HTTP, or LOCAL.
-###
-#########################################################################
-
 ### IPC for children process (overall volume downloaded)
 
 ### https://www.jstorimer.com/blogs/workingwithcode/7766091-introduction-to-ipc-in-ruby

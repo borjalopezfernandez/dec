@@ -67,19 +67,6 @@ class DECTestCase_SFTP < Test::Unit::TestCase
    	   exit(99)
       end
 
-      # Delete the known host entry associated to previous container executions
-      cmd = "ssh-keygen -f ~/.ssh/known_hosts -R '[localhost]:2222'"
-      system(cmd)
-
-      cmd = "mkdir -p /tmp/tmp/dec/in_basket_if_localhost_secure_password"
-      system(cmd)
-
-      cmd = "mkdir -p /tmp/tmp/dec_simul_if/localhost_secure_password/download"
-      system(cmd)
-
-      cmd = "mkdir -p /tmp/tmp/dec_simul_if/localhost_secure_password/upload/_TEMP_"
-      system(cmd)
-
       system("clear")
       puts
       puts "======================================"
@@ -115,12 +102,82 @@ class DECTestCase_SFTP < Test::Unit::TestCase
             exit(99)
          end
       end   
-   
-      # can create new keys 
-      # cmd = "ssh-keygen -q -t rsa -b 4096 -f /tmp/id_rsa < /dev/null"
-      # system(cmd)
 
+      cmd = "docker container stop dec_sftp_server"
+      @@logger.info(cmd)
+      system(cmd)
+      sleep(10.0)
 
+      cmd = "docker container rm dec_sftp_server"
+      @@logger.info(cmd)
+      system(cmd)
+      sleep(10.0)
+
+      # Delete the known host entry associated to previous container executions
+      cmd = "rm -f ~/.ssh/id_rsa*"
+      @@logger.debug(cmd)
+      system(cmd)
+
+       # Delete the known host entry associated to previous container executions
+      cmd = "ssh-keygen -q -t rsa -b 4096 -f ~/.ssh/id_rsa < /dev/null"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      # Delete the known host entry associated to previous container executions
+      cmd = "ssh-keygen -f ~/.ssh/known_hosts -R '[localhost]:2222'"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "rm -rf /tmp/tmp"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dir1"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dir2"
+      @@logger.debug(cmd)
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/dec/in_basket_if_localhost_secure_keys"
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dec/in_basket_if_localhost_secure_keys"
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dec_simul_if/localhost_secure_keys/download"
+      system(cmd)
+
+      cmd = "mkdir -p /tmp/tmp/dec_simul_if/localhost_secure_keys/upload/_TEMP_"
+      system(cmd)
+
+      conf = ReadConfigOutgoing.instance
+
+      dir = conf.getOutgoingDir("LOCALHOST_SECURE_KEYS")
+      @@logger.debug("checking #{dir}")
+      # checkDirectory(dir)
+
+      dir = conf.getUploadDir("LOCALHOST_SECURE_KEYS")
+      @@logger.debug("checking #{dir}")
+      # checkDirectory(dir)
+
+      dir = conf.getUploadTemp("LOCALHOST_SECURE_KEYS")
+      @@logger.debug("checking #{dir}")
+      # checkDirectory(dir)
+
+      conf = ReadConfigIncoming.instance
+
+      dir = conf.getIncomingDir("LOCALHOST_SECURE_KEYS")
+      @@logger.debug("checking #{dir}")
+      # checkDirectory(dir)
+
+      arr = conf.getDownloadDirs("LOCALHOST_SECURE_KEYS")
+
+      arr.each{|inconfig|
+         @@logger.debug("checking #{inconfig[:directory]}")
+         # checkDirectory(inconfig[:directory])
+      }
 
       ## ----------------------------------
       @@conf.wrapper_unset_config
@@ -136,19 +193,24 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       system(cmd)      
       # ---------------------
 
-      cmd = "docker container stop dec_sftp_server"
-      @@logger.info(cmd)
-      system(cmd)
+      ## -----------------------------------------
+      ## list mode and subsequent download
+      
+      downloadDir = "/tmp/tmp/dec_simul_if/localhost_secure_keys/download"
+      @@numFiles    = 4
+      numBlocks   = 1024000
 
-      cmd = "docker container rm dec_sftp_server"
-      @@logger.info(cmd)
-      system(cmd)
+      1.upto(@@numFiles) do |i|
+         filename = "test_sftp_#{i}.bin"
+         cmd = "dd if=/dev/urandom of=#{downloadDir}/#{filename} bs=1024 count=#{numBlocks}"
+         @@logger.debug(cmd)
+         system(cmd)
+      end
 
       cmd = "docker run --name dec_sftp_server -v /tmp/tmp:/home/test_sftp -v ~/.ssh/id_rsa.pub:/home/test_sftp/.ssh/keys/id_rsa.pub:ro -p 2222:22 -d atmoz/sftp test_sftp::1000"
       @@logger.info(cmd)
       system(cmd)
-
-      sleep(3.0)
+      sleep(10.0)
 
    end
    
@@ -163,43 +225,10 @@ class DECTestCase_SFTP < Test::Unit::TestCase
    #
    def setup
       @@logger.info("#{File.basename(__FILE__)}::#{__method__.to_s} START")
-      cmd = "mkdir -p /tmp/tmp/dir1"
-      @@logger.debug(cmd)
-      system(cmd)
-
-      cmd = "mkdir -p /tmp/tmp/dir2"
-      @@logger.debug(cmd)
-      system(cmd)
+      
 
       @@logger.debug("Defining environment variable used in configuration: DEC_TMP")
       ENV['DEC_TMP'] = '/tmp'
-
-      conf = ReadConfigOutgoing.instance
-
-      dir = conf.getOutgoingDir("LOCALHOST_SECURE")
-      @@logger.debug("checking #{dir}")
-      checkDirectory(dir)
-
-      dir = conf.getUploadDir("LOCALHOST_SECURE")
-      @@logger.debug("checking #{dir}")
-      checkDirectory(dir)
-
-      dir = conf.getUploadTemp("LOCALHOST_SECURE")
-      @@logger.debug("checking #{dir}")
-      checkDirectory(dir)
-
-      conf = ReadConfigIncoming.instance
-
-      dir = conf.getIncomingDir("LOCALHOST_SECURE")
-      @@logger.debug("checking #{dir}")
-      checkDirectory(dir)
-
-      arr = conf.getDownloadDirs("LOCALHOST_SECURE")
-
-      arr.each{|inconfig|
-         @@logger.debug("checking #{inconfig[:directory]}")
-         checkDirectory(inconfig[:directory])
-      }
 
       cmd = "decManageDB -d"
       @@logger.debug(cmd)
@@ -209,7 +238,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       ret = system(cmd)
 
-      cmd = "decConfigInterface2DB -a LOCALHOST_SECURE"
+      cmd = "decConfigInterface2DB -a LOCALHOST_SECURE_KEYS"
       @@logger.debug(cmd)
       ret = system(cmd)
 
@@ -252,7 +281,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       checkDirectory("/tmp/tmp/dec_simul_if/localhost_secure/upload/_TEMP_")
 =end
 
-      cmd = "\\rm -rf /tmp/tmp/dec/in_basket_if_localhost_secure/*"
+      cmd = "\\rm -rf /tmp/tmp/dec/in_basket_if_localhost_secure_keys/*"
       @@logger.debug(cmd)
       system(cmd)
 
@@ -264,7 +293,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       ret = system(cmd)
 
-      cmd = "decConfigInterface2DB -a LOCALHOST_SECURE"
+      cmd = "decConfigInterface2DB -a LOCALHOST_SECURE_KEYS"
       @@logger.debug(cmd)
       ret = system(cmd)
 
@@ -272,32 +301,21 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       assert(system(cmd), cmd)   
    
-      cmd = "decCheckConfig -e LOCALHOST_SECURE"
+      cmd = "decCheckConfig -e LOCALHOST_SECURE_KEYS"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
       
-      ## -----------------------------------------
-      ## list mode and subsequent download
-      
-      downloadDir = "/tmp/dec_simul_if/localhost_secure/download"
-
-      1.upto(numFiles) do |i|
-         filename = "test_sftp_#{i}.bin"
-         cmd = "dd if=/dev/urandom of=#{downloadDir}/#{filename} bs=1024 count=#{numBlocks}"
-         @@logger.debug(cmd)
-         system(cmd)
-      end
            
-      cmd = "decGetFromInterface -m LOCALHOST_SECURE -l"
+      cmd = "decGetFromInterface -m LOCALHOST_SECURE_KEYS -l"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
       
-      cmd = "decGetFromInterface -m LOCALHOST_SECURE -P #{numSlots}"
+      cmd = "decGetFromInterface -m LOCALHOST_SECURE_KEYS -P #{numSlots}"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
 
-      arrFiles = Dir["/tmp/dec/in_basket_if_localhost_secure/test_sftp*"]      
-      assert(arrFiles.length == numFiles, "Number of files pulled")
+      arrFiles = Dir["/tmp/dec/in_basket_if_localhost_secure_keys/test_sftp*"]      
+      assert(arrFiles.length == @@numFiles, "Number of files pulled")
       
       cmd = "decStats -H 1"
       @@logger.debug(cmd)
@@ -337,8 +355,8 @@ class DECTestCase_SFTP < Test::Unit::TestCase
 
       @@logger.info("#{self.class.name.split('::').last}::#{__method__.to_s} START #{label}")
 
-      checkDirectory("/tmp/dec/in_basket_if_LOCALHOST_SECURE/")
-      system("\\rm -rf /tmp/dec/in_basket_if_LOCALHOST_SECURE/*")
+      checkDirectory("/tmp/dec/in_basket_if_LOCALHOST_SECURE_KEYS/")
+      system("\\rm -rf /tmp/dec/in_basket_if_LOCALHOST_SECURE_KEYS/*")
 
       outTray     = "/tmp/dec_delivery_root"
       checkDirectory(outTray)
@@ -355,7 +373,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       assert(system(cmd), cmd)   
    
-      cmd = "decCheckConfig -e LOCALHOST_SECURE"
+      cmd = "decCheckConfig -e LOCALHOST_SECURE_KEYS"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
       
@@ -370,7 +388,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
 
-      cmd = "decSend2Interface --mnemonic LOCALHOST_SECURE -O"
+      cmd = "decSend2Interface --mnemonic LOCALHOST_SECURE_KEYS -O"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
 
@@ -378,7 +396,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
 #      puts cmd
 #      assert(system(cmd), cmd)
 
-      cmd = "decListDirUpload -m LOCALHOST_SECURE -t"
+      cmd = "decListDirUpload -m LOCALHOST_SECURE_KEYS -t"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
     
@@ -392,7 +410,7 @@ class DECTestCase_SFTP < Test::Unit::TestCase
       @@logger.debug(cmd)
       system(cmd)
 
-      cmd = "rm -f /tmp/dec_simul_if/localhost_secure/upload/test_sftp_*.bin"
+      cmd = "rm -f /tmp/dec_simul_if/localhost_secure_keys/upload/test_sftp_*.bin"
       @@logger.debug(cmd)
       assert(system(cmd), cmd)
 

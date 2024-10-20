@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DEC_FileMailer class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component
-# 
-# CVS: $Id: DEC_FileMailer.rb,v 1.21 2013/03/14 13:40:57 algs Exp $
-#
-# Module Data Exchange Component
-# This class delivers methods for sending files to entities using SMTP.
-# The files are sent through attachments in a mail.
-#
-#########################################################################
-
 require 'fileutils'
 
 require 'cuc/Log4rLoggerFactory'

@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #CheckerLocalConfig class
-#
-# Written by DEIMOS Space S.L. (algk)
-#
-# Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: CheckerLocalConfig.rb,v 1.4 2014/10/13 18:39:54 algs Exp $
-#
-#########################################################################
-
-
 module DEC
 
 class CheckerLocalConfig

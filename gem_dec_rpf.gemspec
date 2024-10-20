@@ -3,11 +3,11 @@
 Gem::Specification.new do |s|
   s.name        = 'dec_rpf'
   s.version     = '1.0.7'
-  s.licenses    = ['Nonstandard']
+  s.licenses    = ['MIT']
   s.summary     = "DEC/RPF component"
   s.description = "Data Exchange Component for Reference Planning"
-  s.authors     = ["Elecnor Deimos"]
-  s.email       = 'borja.lopez@deimos-space.com'
+  s.authors     = ["people doin' it"]
+  s.email       = 'mansobeach@gmail.com'
  
   s.files       = Dir['code/ddc/*.rb'] + \
                   Dir['code/dcc/*.rb'] + \
@@ -60,8 +60,8 @@ Gem::Specification.new do |s|
                      'decUnitTests_mail' \
                      ]
 
-  s.homepage    = 'http://www.deimos-space.com'
-  s.metadata    = { "source_code_uri" => "https://github.com/example/example" }
+  s.homepage    = 'https://github.com/borjalopezfernandez/dec'
+  s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
     
   # ----------------------------------------------
   

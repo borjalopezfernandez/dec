@@ -28,10 +28,10 @@
       </Interface>
 
       <Interface>
-         <Name>LOCALHOST_SECURE</Name>
-         <LocalOutbox>$DEC_TMP/dec/out_basket_if_localhost_secure</LocalOutbox>
-         <UploadDir>/tmp/dec_simul_if/localhost_secure/upload</UploadDir>
-         <UploadTemp>/tmp/dec_simul_if/localhost_secure/upload/_TEMP_</UploadTemp>
+         <Name>LOCALHOST_SECURE_KEYS</Name>
+         <LocalOutbox>$DEC_TMP/dec/out_basket_if_localhost_secure_keys</LocalOutbox>
+         <UploadDir>dec_simul_if/localhost_secure_keys/upload</UploadDir>
+         <UploadTemp>dec_simul_if/localhost_secure_keys/upload/_TEMP_</UploadTemp>
       </Interface>
 
       <Interface>
@@ -107,7 +107,7 @@
       <File Type="test_sftp_*.bin">
          <Description></Description>
          <ToList>
-            <Interface Name="LOCALHOST_SECURE"  Compress="NONE" DeliveryMethods="SFTP" />
+            <Interface Name="LOCALHOST_SECURE_KEYS"      Compress="NONE" DeliveryMethods="SFTP" />
             <Interface Name="LOCALHOST_SECURE_PASSWORD"  Compress="NONE" DeliveryMethods="SFTP" />
             <!--
             <Interface Name="LOCALHOST_SECURE"  Compress="7Z" DeliveryMethods="SFTP" />
@@ -142,8 +142,8 @@
       <File Type="./GIP_PROBA2/*GIP_PROBAS*"> 
          <Description></Description>
          <ToList>
-            <Interface Name="LOCALHOST_NOT_SECURE"    Compress="NONE"      DeliveryMethods="FTP" />
-            <Interface Name="LOCALHOST_SECURE"        Compress="NONE"      DeliveryMethods="SFTP" />
+            <Interface Name="LOCALHOST_NOT_SECURE"          Compress="NONE"      DeliveryMethods="FTP" />
+            <Interface Name="LOCALHOST_SECURE_KEYS"         Compress="NONE"      DeliveryMethods="SFTP" />
             <!--
             <Interface Name="FILESYSTEM"              Compress="7Z"        DeliveryMethods="LOCAL" />
             -->
@@ -160,7 +160,7 @@
       <File Type="S2B*">
          <Description></Description>
          <ToList>
-            <Interface Name="LOCALHOST_SECURE"  Compress="7Z" DeliveryMethods="SFTP" />
+            <Interface Name="LOCALHOST_SECURE_KEYS"  Compress="7Z" DeliveryMethods="SFTP" />
          </ToList>
       </File>
 

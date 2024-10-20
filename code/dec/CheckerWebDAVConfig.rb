@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## Ruby source for #CheckerWebDAVConfig class
-##
-## Written by DEIMOS Space S.L. (bolf)
-##
-## Data Exchange Component -> Common Transfer Component
-## 
-## Git: $Id: CheckerWebDAVConfig.rb,v 1.11 2014/10/13 18:39:54 algs Exp $
-##
-#########################################################################
-
 require 'net/dav'
 
 require 'dec/InterfaceHandlerWebDAV'

@@ -111,7 +111,7 @@ Gem::Specification.new do |s|
       s.executables   << 'decUnitTests_LOCAL'
       s.executables   << 'decUnitTests_ncftpput'
       s.executables   << 'decUnitTests_SBOA'
-      s.executables   << 'decUnitTests_SFTP'
+      s.executables   << 'decUnitTests_SFTP_KEYS'
       s.executables   << 'decUnitTests_SFTP_PASSWORD'
       s.executables   << 'decUnitTests_WebDAV'
       s.executables   << 'decUnitTests_WebDAV_SECURE'

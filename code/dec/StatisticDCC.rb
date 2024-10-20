@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #StatisticDCC class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Data Collector Component
-# 
-# Git: $Id: StatisticDCC.rb,v 1.29 2008/11/27 13:59:32 decdev Exp $
-#
-# Module Data Collector Component
-#
-#########################################################################
-
 require 'filesize'
 
 require 'dec/DEC_DatabaseModel'

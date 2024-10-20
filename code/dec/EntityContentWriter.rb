@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# = Ruby source for #EntityContentWriter class
-#
-# = Written by DEIMOS Space S.L. (bolf)
-#
-# = Data Exchange Component 
-# 
-# CVS:
-#
-# = This class writes an XML file with the content of an Entity Download
-# = directory
-#
-#########################################################################
-
 require 'dec/ReadConfigDEC'
 
 module DEC

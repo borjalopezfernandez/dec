@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #InterfaceHandlerHTTP_SPCS class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: $Id: InterfaceHandlerHTTP_SPCS.rb,v  $
-###
-###
-#########################################################################
-
 module DEC
 
 ## curl -c cookies.txt -b cookies.txt https://www.space-track.org/ajaxauth/login -d 'identity=borja.lopez@deimos-space.com&password=perrillo.pwd.long'

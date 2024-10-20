@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #InterfaceHandlerAbstract class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component -> Data Collector Component
-###
-### Git: $Id: InterfaceHandlerAbstract.rb,v
-###
-### Module Interface
-### This is an abstract class that defines the interface handler methods
-###
-#########################################################################
-
 ## http://morningcoffee.io/interfaces-in-ruby.html
 
 module DEC

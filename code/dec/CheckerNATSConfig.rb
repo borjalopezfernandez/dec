@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## Ruby source for #CheckerWebDAVConfig class
-##
-## Written by DEIMOS Space S.L.
-##
-## Data Exchange Component 
-## 
-## Git: $Id: CheckerNATSConfig.rb,v 1.11 2014/10/13 18:39:54 algs Exp $
-##
-#########################################################################
-
-
 require 'dec/NATSClientCCS5'
 
 module DEC

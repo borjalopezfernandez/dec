@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #ODataClientTEST_ADGS class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: $Id: ODataClientADGS.rb,v 1.25 2014/10/14 08:49:08 bolf Exp $
-###
-### This class is an OData client adapted to the ADGS Test for DEV
-###
-###
-#########################################################################
-
 require 'rubygems'
 
 require 'ctc/API_TEST_ADGS'

@@ -1,22 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #RetrieverFromArchive class
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component -> Data Distributor Component
-## 
-## Git: $Id: RetrieverFromArchive.rb,v 1.13 2008/07/03 11:38:26 decdev Exp $
-##
-## Module Data Distributor Component
-## This class retrieves files to be transferred is pointed by 
-## SourceDir configuration item and files are placed into 
-## dec_config.xml GlobalOutbox directory
-##
-#########################################################################
-
 require 'fileutils'
 
 require 'cuc/DirUtils'
@@ -94,13 +77,15 @@ class RetrieverFromArchive
             arrMethods.each{|aMethod|
 
                destDir = "#{dir}/#{aMethod}"
-               
-               checkDirectory(destDir)
 
+               # @logger.debug("RetrieverFromArchive::mv2OutTrays => #{aFile} / #{interface[:mnemonic]} / #{destDir}")
+               
                if @isDebugMode == true then
                   @logger.debug("RetrieverFromArchive::mv2OutTrays => #{aFile} / #{interface[:mnemonic]} / #{destDir}")
                end
 
+               checkDirectory(destDir)
+              
                ## ---------------------------------
                ## If delivery once has been selected, check whether the file
                ## has already been delivered

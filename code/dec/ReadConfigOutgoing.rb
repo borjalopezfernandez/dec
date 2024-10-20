@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# == Ruby source for #ReadDimInTray class          
-#
-# == Written by DEIMOS Space S.L. (bolf)
-#
-# == Data Exchange Component
-# 
-# $Git: $Id: ReadConfigOutgoing.rb,v 1.6 2008/04/04 14:01:51 decdev Exp $
-#
-# This class processes dec_outgoing_files.xml config file
-#
-#########################################################################
-
 require 'singleton'
 require 'rexml/document'
 

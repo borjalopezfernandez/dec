@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DEC_TestCases class
-#
-# === Written by DEIMOS Space S.L.
-#
-# === Data Exchange Component
-#
-# # git: decUnitTests_email,v $Id$: 
-# 
-# module DEC
-#
-#########################################################################
-
 require 'rubygems'
 require 'test/unit'
 require 'fileutils'

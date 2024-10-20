@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #decUnitTests_FTP class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-###
-### # git: decUnitTests_FTP,v $Id$: 
-### 
-### module DEC
-###
-#########################################################################
-
 require 'rubygems'
 require 'test/unit'
 require 'fileutils'

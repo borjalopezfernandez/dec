@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #DEC_FileSender class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: $Id: DEC_FileSender.rb,v 1.25 2014/10/14 08:49:08 algs Exp $
-###
-### This class performs the file(s) FTP/SFTP delivery to a given Entity.
-### Its source directory is the OUTBOX/ftp directory.
-###
-###
-#########################################################################
-
 require 'cuc/DirUtils'
 require 'cuc/Log4rLoggerFactory'
 require 'cuc/EE_ReadFileName'

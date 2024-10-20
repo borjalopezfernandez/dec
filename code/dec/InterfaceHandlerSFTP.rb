@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #InterfaceHandlerSFTP class
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component
-## 
-## Git: $Id: InterfaceHandlerSFTP.rb,v 1.12 2014/05/16 00:14:38 bolf Exp $
-##
-## Module Interface
-## This class pushes (pending pull) a given SFTP Interface and gets all registered available files
-##
-#########################################################################
-
 require 'ctc/FTPClientCommands'
 require 'ctc/WrapperCURL'
 require 'dec/ReadInterfaceConfig'
