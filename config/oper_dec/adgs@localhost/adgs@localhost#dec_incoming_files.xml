@@ -57,6 +57,33 @@
          </Switches>
       </Interface>
 
+      <!--
+      archive/gnss/products/ionex/2025/001/JPL0OPSRAP_202500010000_01D_02H_GIM.INX.gz"
+      -->
+
+      <Interface>
+         <Name>S1_CDDIS_4_AUX_TEC_HTTPS</Name>
+         <LocalInbox>/tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec</LocalInbox>
+         <DownloadDirs>
+         <!--
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.prev_day.yday().to_s.rjust(3,'0')}/JPL0OPSRAP_2025#{Date.today.prev_day.yday().to_s.rjust(3,'0')}0000_01D_02H_GIM.INX.gz"</Directory>
+            -->
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.prev_day.prev_day.yday().to_s.rjust(3,'0')}/"</Directory>
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.prev_day.yday().to_s.rjust(3,'0')}/"</Directory>
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.yday().to_s.rjust(3,'0')}/"</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+
       <Interface>
          <Name>S1_CDDIS_4_AUX_TEC</Name>
          <LocalInbox>/data/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec</LocalInbox>
@@ -215,6 +242,13 @@
          <Description>IGS ionex</Description>
          <FromList>
             <Interface>S1_CDDIS_4_AUX_TEC</Interface>
+         </FromList>
+      </File>
+
+      <File Type="JPL*">
+         <Description>IGS ionex</Description>
+         <FromList>
+            <Interface>S1_CDDIS_4_AUX_TEC_HTTPS</Interface>
          </FromList>
       </File>
 

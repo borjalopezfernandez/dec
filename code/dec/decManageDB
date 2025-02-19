@@ -13,9 +13,9 @@
 
 require 'rubygems'
 require 'getoptlong'
-require 'active_record'
 
 require 'cuc/Log4rLoggerFactory'
+require 'active_record'
 
 require 'dec/DEC_Migrations'
 require 'dec/DEC_Environment'

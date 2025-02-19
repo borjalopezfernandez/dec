@@ -18,6 +18,8 @@
 
 require 'rubygems'
 
+
+require 'logger'
 require 'log4r'
 require 'log4r/configurator'
 

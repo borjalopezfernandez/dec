@@ -14,6 +14,7 @@ require 'dec/InterfaceHandlerAbstract'
 require 'uri'
 require 'net/http'
 require 'curb'
+require 'open-uri'
 require 'nokogiri'
 require 'fileutils'
 
@@ -185,7 +186,37 @@ class InterfaceHandlerHTTP < InterfaceHandlerAbstract
       if @isDebugMode == true then
          @logger.debug("InterfaceHandlerHTTP::getDirList => HTTP HEAD #{url} => #{response.code}")
       end
-         
+
+=begin         
+         <div class="archiveItem">
+         <div class="archiveItemImgContainer">
+         <img src="/css/images/txtFile_18x25.png" alt="[file]"></div><!-- end imgContainer-->
+         <div class="archiveItemTextContainer"><a class="archiveItemText" id="c1pg0480.25i.Z" title="DataFile" href="c1pg0480.25i.Z ">c1pg0480.25i.Z</a> <span class="fileInfo">2025:02:17 06:51:24    216.4veItem-->
+         </div><!-- end item-->
+=end
+      if response.code.to_i == 302 then
+         if @isDebugMode == true
+            @logger.debug("InterfaceHandlerHTTP::getDirList => REDIRECTION - 302 for #{uri}")
+            @logger.debug("InterfaceHandlerHTTP::getDirList => #{response.body}")
+            @logger.debug("InterfaceHandlerHTTP::getDirList => NEED TO DO SUPER-CURL")
+         end
+         file_dirs = "/tmp/list_nasa_cddis_302_#{Time.now.to_f}.#{Random.new.rand(1.5)}.html"
+         getFileWithRedirection(url, file_dirs, user, pass, @logger, @isDebugMode)
+         doc = Nokogiri::HTML(File.open(file_dirs))
+         # Filter by class archiveItemText and attribute href c1pg0480.25i.Z
+         arr         = Array.new
+         linkFiles   = doc.css('.archiveItemText')
+         linkFiles.each{|linkFile|
+            link = "#{url}#{linkFile.text}"
+            arr << link
+            if @isDebugMode == true
+               @logger.debug(link)
+            end
+         }        
+         File.delete(file_dirs)
+         return arr
+      end
+
       if @isDebugMode == true and response.code.to_i == 200 then 
          @logger.debug("InterfaceHandlerHTTP::getDirList => #{response.body}")
       end

@@ -95,6 +95,7 @@ Gem::Specification.new do |s|
       s.executables   << 'decTestInterface_ILRS'
       s.executables   << 'decTestInterface_GNSS'
       s.executables   << 'decTestInterface_NASA'
+      s.executables   << 'decTestInterface_NASA_CDDIS_HTTPS'
       s.executables   << 'decTestInterface_NATS_CCS5'
       s.executables   << 'decTestInterface_NOAA'
       s.executables   << 'decTestInterface_NOAA_IGRF'
@@ -162,6 +163,7 @@ Gem::Specification.new do |s|
   s.add_dependency('rexml', '~> 3.2')
   s.add_dependency('roman-numerals', '~> 0.3')
   s.add_dependency('ed25519', '~> 1.3')
+  s.add_dependency('open-uri', '~> 0.5')
   s.add_dependency('nokogiri', '~> 1.1')
   s.add_dependency('shell', '~> 0.8')
 

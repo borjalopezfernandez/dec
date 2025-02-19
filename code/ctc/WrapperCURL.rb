@@ -430,6 +430,7 @@ module WrapperCURL
    # Redirect host needs to become part of the function signature
    # It should have been obtained as part of the 302 reply
    # This is currently specific of NASA CDDIS / EOSDIS
+   # test this with CDDIS AUX TEC
    def getFileWithRedirection(url, \
                               filename, \
                               user, \
@@ -445,17 +446,17 @@ module WrapperCURL
       aFile.flush
       aFile.close
       
-      # puts
-      # puts Dir.pwd
-      # puts
-
-      cmd = "curl --silent -b ~/.cookies -c ~/.cookies -L --netrc-file #{tmpNetRC} #{url} > #{filename}"
+      cmd = "curl" # --silent -b ~/.cookies -c ~/.cookies -L --netrc-file #{tmpNetRC} #{url} > #{filename}"
       if isDebugMode == true then
+         cmd = "#{cmd.dup} -v -b ~/.cookies -c ~/.cookies -L --netrc-file #{tmpNetRC} #{url} > #{filename}"
          @logger.debug(cmd)
+      else
+         cmd = "#{cmd.dup} --silent -b ~/.cookies -c ~/.cookies -L --netrc-file #{tmpNetRC} #{url} > #{filename}"
       end
+
       ret = system(cmd)
 
-      File.delete(tmpNetRC)
+      # File.delete(tmpNetRC)
 
       return ret
    end

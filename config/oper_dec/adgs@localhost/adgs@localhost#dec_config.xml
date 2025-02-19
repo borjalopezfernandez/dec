@@ -54,7 +54,7 @@
       <!-- DEC pull / retrieval reports (decGetFromInterface) -->
 
       <Report Name="RetrievedFiles">
-         <Enabled>true</Enabled>
+         <Enabled>false</Enabled>
          <Desc>List of Files Retrieved</Desc>
          <FileClass>OPER</FileClass>
          <FileType>DEC_F_RECV</FileType>
@@ -76,6 +76,10 @@
       <TempDir>/data/adgs/tmp</TempDir>
    </Workflow>
 
+
+
+<!--
+
    <Inventory>
       <Database_Adapter>postgresql</Database_Adapter>
       <Database_Host>adgs_db</Database_Host>
@@ -84,6 +88,19 @@
       <Database_User>adgs</Database_User>
       <Database_Password>adg$</Database_Password>
    </Inventory>
+
+-->
+
+  <Inventory>
+      <Database_Adapter>sqlite3</Database_Adapter>
+      <Database_Host>localhost</Database_Host>
+      <Database_Port></Database_Port>
+      <Database_Name>/tmp/dec_inventory</Database_Name>
+      <Database_User>root</Database_User>
+      <Database_Password>2mysql</Database_Password>
+   </Inventory>
+
+
 
 
 </Configuration>

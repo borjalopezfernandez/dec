@@ -294,10 +294,11 @@ class DEC_ReceiverFromInterface
                @handler.setDebugMode
             end
 
-
             perf = measure {
                list = @handler.getPullList(false)
 
+               # @logger.info("[DEC_061] I/F #{@entity}: Found #{list.length} file(s)")
+              
                if @isDebugMode == true then
                   @logger.debug("Found #{list.length} files")
                end
@@ -335,7 +336,7 @@ class DEC_ReceiverFromInterface
       perf = measure { @fileList = filterFullPathFileList(list, forCheck) }
 
       n = @fileList.length
-
+      
       if @isBenchmarkMode == true then
          @logger.info("Filtered (config + database) #{list.length} items : #{perf.format("Real Time %r | Total CPU: %t | User CPU: %u | System CPU: %y")}")
       end
