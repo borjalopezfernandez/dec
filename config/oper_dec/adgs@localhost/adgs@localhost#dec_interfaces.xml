@@ -224,8 +224,8 @@
       <Protocol>HTTP</Protocol>
       <Hostname>cddis.nasa.gov</Hostname>
       <Port>443</Port>
-      <User>borja_lopez_fernandez</User>
-      <Pass>Perrillo666</Pass>
+      <User encrypted='true'>Ym9yamFfbG9wZXpfZmVybmFuZGV6Cg==</User>
+      <Pass encrypted='true'>UGVycmlsbG82NjYK</Pass>
       <RegisterContentFlag>false</RegisterContentFlag>
       <RetrieveContentFlag>true</RetrieveContentFlag>
       <SecureFlag>true</SecureFlag>
