@@ -193,6 +193,12 @@ class EventManager
       filename    = nil
       directory   = nil
       pathfile    = nil
+      clonedCmd = nil
+
+      # Make an independent copy (meaning not by reference) of the cmd string
+      if cmd != nil then
+         clonedCmd = cmd.clone
+      end
 
       if params != nil then
          filename    = params["filename"]
@@ -209,29 +215,29 @@ class EventManager
       # Escape special XML characters.
       # At least '&' required for background execution
 
-      anewCmd = cmd.sub!("&amp;", "&")
+      anewCmd = clonedCmd.sub!("&amp;", "&")
 
       if anewCmd != nil then
-         cmd = anewCmd
+         clonedCmd = anewCmd
       end
 
       # --------------------------
 
       if params != nil then
 
-         anewCmd = cmd.sub!("%F", pathfile)
+         anewCmd = clonedCmd.sub!("%F", pathfile)
          if anewCmd != nil then
-            cmd = anewCmd
+            clonedCmd = anewCmd
          end
 
-         anewCmd = cmd.sub!("%f", filename)
+         anewCmd = clonedCmd.sub!("%f", filename)
          if anewCmd != nil then
-            cmd = anewCmd
+            clonedCmd = anewCmd
          end
 
-         anewCmd = cmd.sub!("%d", directory)
+         anewCmd = clonedCmd.sub!("%d", directory)
          if anewCmd != nil then
-            cmd = anewCmd
+            clonedCmd = anewCmd
          end
       end
 
@@ -239,17 +245,17 @@ class EventManager
 
       if @isDebugMode == true and log != nil then
          log.debug("Event #{eventName} Triggered for #{intray}")
-         log.debug("Executing command #{cmd}")
+         log.debug("Executing command #{clonedCmd}")
       end
 
-      output = `#{cmd}`
+      output = `#{clonedCmd}`
 
 
       if $?.exitstatus == 0 then
 
          if log != nil then
 
-            msg = "[DEC_131] Intray #{intray}: event #{eventName.downcase} => #{cmd}"
+            msg = "[DEC_131] Intray #{intray}: event #{eventName.downcase} => #{clonedCmd}"
 
 #            if output != "" then
 #               log.info("#{msg} => #{output.chop}")
@@ -259,8 +265,8 @@ class EventManager
          end
       else
          if log != nil then
-            log.error("[DEC_750] Intray #{intray}: EventManager failed execution of #{cmd}")
-            log.debug("#{cmd} / #{$?.exitstatus} / #{output}")
+            log.error("[DEC_750] Intray #{intray}: EventManager failed execution of #{clonedCmd}")
+            log.debug("#{clonedCmd} / #{$?.exitstatus} / #{output}")
          end
       end
 
