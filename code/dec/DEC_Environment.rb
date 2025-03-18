@@ -26,12 +26,13 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = "1.0.45.1"
+   @@version = "1.0.45.2"
 
    ## -----------------------------------------------------------------
 
    @@change_record = { \
-      "1.0.45" =>    "Support for NASA CDDIS with HTTPS", \
+      "1.0.45" =>    "Support for NASA CDDIS with HTTPS\n\
+          Event message DEC_131 added to the log", \
       "1.0.44" =>    "Interface test for NOAA-IGRF IGRF-13 coefficients\n\
           Unit test decUnitTests_FTP_PASSIVE   includes testing environment\n\
           Unit test decUnitTests_SFTP_KEYS     includes testing environment\n\

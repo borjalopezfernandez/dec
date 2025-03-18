@@ -476,7 +476,7 @@ private
                cmd = "\\ln -f #{@tmpDir}/7z/#{targetFile} #{targetDir}/#{targetFile}"
                bRet = execute(cmd, "pull")
                if bRet == true then
-                  @logger.info("[DEC_115] Intray #{intray}: #{targetFile} disseminated into #{targetDir}")
+                  @logger.info("[DEC_115.2] Intray #{intray}: #{targetFile} disseminated into #{targetDir}")
                else
                   @logger.error("[DEC_626.1] Intray #{intray}: #{targetFile} failed dissemination into #{targetDir}")
                end
@@ -557,7 +557,7 @@ private
                end
 =end
 
-               @logger.info("[DEC_115] Intray #{intray}: #{file} disseminated into #{targetDir}")
+               @logger.info("[DEC_115.1] Intray #{intray}: #{file} disseminated into #{targetDir}")
 
                event  = EventManager.new
 
@@ -643,7 +643,7 @@ private
             bReturn = false
             next
          else
-            @logger.info("[DEC_115] Intray #{intray}: #{targetFile} disseminated into #{targetDir}")
+            @logger.info("[DEC_115.3] Intray #{intray}: #{targetFile} disseminated into #{targetDir}")
          end
 
          # ---------------------------------
@@ -669,6 +669,15 @@ private
 
          if @isDebugMode == true then
             event.setDebugMode
+         end
+
+         # Execution before the event
+
+         if exec != "" and exec != nil then
+            if @isDebugMode == true then
+               @logger.debug("#{intray} EVENT: #{exec}")
+            end
+            event.exec_trigger(intray, "NewFile2Intray", exec, hParams, @logger)
          end
 
          #@logger.info("Event NEWFILE2INTRAY #{file} => #{targetDir}")

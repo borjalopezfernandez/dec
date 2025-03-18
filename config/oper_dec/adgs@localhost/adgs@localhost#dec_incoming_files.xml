@@ -327,6 +327,25 @@
          </Intray>
 
          <Intray>
+            <Name>BIOMASS_ECHO_AUX_TEC</Name>
+            <Directory>/tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass1</Directory>
+            <Execute>echo %f</Execute>
+         </Intray>
+
+         <Intray>
+            <Name>BIOMASS_ECHO_FULLPATH_AUX_TEC</Name>
+            <Directory>/tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass3</Directory>
+            <Execute>echo %F</Execute>
+         </Intray>
+
+
+         <Intray>
+            <Name>BIOMASS_LIST_AUX_TEC</Name>
+            <Directory>/tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass2</Directory>
+            <Execute>ls -l %F</Execute>
+         </Intray>
+
+         <Intray>
             <Name>S3_IN</Name>
             <Directory>/data/adgs/dec/s3_aux</Directory>
             <!--
@@ -367,6 +386,17 @@
             <Intray>S1X_IN_4_AUX_TEC</Intray>
          </ToList>
       </File>
+
+
+      <File Type="JPL*.gz">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>BIOMASS_LIST_AUX_TEC</Intray>
+            <Intray>BIOMASS_ECHO_AUX_TEC</Intray>
+            <Intray>BIOMASS_ECHO_FULLPATH_AUX_TEC</Intray>
+         </ToList>
+      </File>
+
 
 <!--
 

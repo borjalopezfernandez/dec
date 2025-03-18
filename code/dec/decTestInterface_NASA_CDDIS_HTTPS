@@ -64,6 +64,9 @@ class DECTestInterface_NASA_CDDIS_HTTPS < Test::Unit::TestCase
       cmd = "mkdir -p /tmp/adgs/dec/log"
       system(cmd)
       system("mkdir -p /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec")
+      system("mkdir -p /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass1")
+      system("mkdir -p /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass2")
+      system("mkdir -p /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass3")
 
       @@conf = DEC_Environment.new
 
@@ -112,7 +115,9 @@ class DECTestInterface_NASA_CDDIS_HTTPS < Test::Unit::TestCase
       system("\\rm -rf #{reportDir}")
       # system("\\rm -rf /tmp/dec*")
       system("\\rm -rf /tmp/adgs/dec/log/ADGS*.log")
-      system("\\rm -rf /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/JPL*")
+      system("\\rm -rf /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass1/JPL*")
+      system("\\rm -rf /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass2/JPL*")
+      system("\\rm -rf /tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec/biomass3/JPL*")
 
       cmd = "mkdir -p /tmp/dec/int/"
       @@logger.debug(cmd)
@@ -168,6 +173,11 @@ class DECTestInterface_NASA_CDDIS_HTTPS < Test::Unit::TestCase
       cmd = "grep DEC\_110 #{arr[0]}"
       @@logger.debug(cmd)
       assert(system(cmd), "Pull mission traced in DEC logs in #{__method__.to_s}") 
+
+      @@logger.debug("Verification of log trace: dissemination events")
+      cmd = "grep DEC\_131 #{arr[0]}"
+      @@logger.debug(cmd)
+      assert(system(cmd), "Dissemination events traced in DEC logs in #{__method__.to_s}") 
 
       @@logger.debug("Verification of log trace: file pull")
       cmd = "grep DEC\_301 #{arr[0]}"

@@ -186,6 +186,9 @@ class EventManager
    ## -----------------------------------------------------------
 
    def exec_trigger(intray, eventName, cmd, params = nil, log = nil)
+
+      # log.debug("*********************** EventManager::exec_trigger => #{eventName} #{intray} #{cmd} #{params}")
+
       if @isDebugMode == true and log != nil then
          log.debug("EventManager::exec_trigger => #{eventName} #{intray} #{cmd} #{params}")
       end
@@ -193,7 +196,7 @@ class EventManager
       filename    = nil
       directory   = nil
       pathfile    = nil
-      clonedCmd = nil
+      clonedCmd   = nil
 
       # Make an independent copy (meaning not by reference) of the cmd string
       if cmd != nil then
@@ -250,18 +253,14 @@ class EventManager
 
       output = `#{clonedCmd}`
 
-
       if $?.exitstatus == 0 then
-
          if log != nil then
-
             msg = "[DEC_131] Intray #{intray}: event #{eventName.downcase} => #{clonedCmd}"
-
-#            if output != "" then
-#               log.info("#{msg} => #{output.chop}")
-#            else
-#               log.info(msg)
-#            end
+            if output != "" then
+               log.info("#{msg} => #{output.chop}")
+            else
+               log.info(msg)
+            end
          end
       else
          if log != nil then
