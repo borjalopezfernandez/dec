@@ -137,14 +137,14 @@ Gem::Specification.new do |s|
 
   ## ----------------------------------------------
 
-  s.required_ruby_version = '> 3.0'
+  s.required_ruby_version = '> 3.3'
 
   ## ----------------------------------------------
 
   s.add_dependency('activerecord', '~> 6.0')
   s.add_dependency('bcrypt', '~> 3.1')
   s.add_dependency('bcrypt_pbkdf', '~> 1.1')
-  s.add_dependency('curb', '~> 0.9')
+  s.add_dependency('curb', '~> 1.0')
   s.add_dependency('dotenv', '~> 2')
   s.add_dependency('ffi', '~> 1.15')
   s.add_dependency('filesize', '~> 0.1')
@@ -184,7 +184,7 @@ Gem::Specification.new do |s|
   ##
   ## Tailored installer to include Postgresql
   if ENV.include?("DEC_PG") == true then
-     s.add_dependency('pg', '~> 1.2.3')
+     s.add_dependency('pg', '~> 1.5.9')
   end
   ## --------------------------------------------
 

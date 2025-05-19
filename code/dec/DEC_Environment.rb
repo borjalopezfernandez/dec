@@ -26,11 +26,12 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = "1.0.45.2"
+   @@version = "1.0.46.0"
 
    ## -----------------------------------------------------------------
 
    @@change_record = { \
+      "1.0.46" =>    "TBW / update to ruby", \
       "1.0.45" =>    "Support for NASA CDDIS with HTTPS\n\
           Event message DEC_131 added to the log", \
       "1.0.44" =>    "Interface test for NOAA-IGRF IGRF-13 coefficients\n\

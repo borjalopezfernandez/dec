@@ -5,7 +5,12 @@ require 'rake'
 require 'date'
 require 'fileutils'
 
-require 'cuc/CryptHelper'
+begin
+   require 'cuc/CryptHelper'
+rescue Exception 
+   require_relative 'code/cuc/CryptHelper'
+end
+
 require_relative 'code/dec/DEC_Environment'
 
 ### ============================================================================

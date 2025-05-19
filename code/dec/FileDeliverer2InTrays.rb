@@ -504,7 +504,7 @@ private
 
             # --------------------------
             # Remove in target directory any eventual copy of a file with the same name
-            if File.exists?(targetDir+'/'+file) then
+            if File.exist?(targetDir+'/'+file) then
                @logger.warn("[DEC_555_1] Intray #{intray}: #{file} duplicated already existed in #{targetDir}")
                @logger.warn("[DEC_556_1] Intray #{intray}: #{file} duplicated will be deleted before dissemination")
                FileUtils.rm_rf(targetDir+'/'+file)
