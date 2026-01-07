@@ -6,9 +6,44 @@
 
    <ListInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+     <Interface>
+         <Name>AIUB_AUX_TEC_FTP</Name>
+         <LocalInbox>/tmp/bcops/tmp/in_basket_aux_tec</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">CODE/IONO/P2/2026/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+
       <Interface>
-         <Name>AIUB_AUX_TEC</Name>
-         <LocalInbox>/tmp/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec</LocalInbox>
+         <Name>AIUB_AUX_TEC_HTTP</Name>
+         <LocalInbox>/tmp/bcops/tmp/in_basket_aux_tec</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">CODE/IONO/P2/2026/</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>AIUB_AUX_TEC_HTTPS</Name>
+         <LocalInbox>/tmp/bcops/tmp/in_basket_aux_tec</LocalInbox>
          <DownloadDirs>
             <Directory DepthSearch="0">CODE/IONO/P2/2025/</Directory>
          </DownloadDirs>
@@ -22,7 +57,6 @@
             <MD5>false</MD5>
          </Switches>
       </Interface>
-
       
       <!--
       archive/gnss/products/ionex/2025/001/JPL0OPSRAP_202500010000_01D_02H_GIM.INX.gz"
@@ -69,24 +103,6 @@
       </Interface>
 
 
-
-   <Interface>
-         <Name>S2_CDDIS_IERS_4_AUX_UT1UTC</Name>
-         <LocalInbox>/data/adgs/tmp/in_basket_if_s2_iers_cddis_4_aux_ut1utc</LocalInbox>
-         <DownloadDirs>
-            <Directory DepthSearch="0">/products/iers/</Directory>
-         </DownloadDirs>
-         <Switches>
-            <DeleteDownloaded>false</DeleteDownloaded>
-            <DeleteDuplicated>false</DeleteDuplicated>
-            <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>false</LocalDissemination>
-            <LogDuplicated>false</LogDuplicated>
-            <LogUnknown>false</LogUnknown>
-            <MD5>true</MD5>
-         </Switches>
-      </Interface>
-
    </ListInterfaces>
 
    <!-- =========================================================== -->
@@ -118,7 +134,9 @@
       <File Type="COD0OPSPRD*">
          <Description>IGS ionex TEC Predicted</Description>
          <FromList>
-            <Interface>AIUB_AUX_TEC</Interface>
+            <Interface>AIUB_AUX_TEC_FTP</Interface>
+            <Interface>AIUB_AUX_TEC_HTTPS</Interface>
+            <Interface>AIUB_AUX_TEC_HTTP</Interface>
          </FromList>
       </File>
 
