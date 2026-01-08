@@ -45,7 +45,7 @@
          <Name>AIUB_AUX_TEC_HTTPS</Name>
          <LocalInbox>/tmp/bcops/tmp/in_basket_aux_tec</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">CODE/IONO/P2/2025/</Directory>
+            <Directory DepthSearch="0">s3_script/aiub_s3_bucket_listing.php?path=CODE%2F2026/</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>false</DeleteDownloaded>
@@ -140,8 +140,15 @@
          </FromList>
       </File>
 
+      <File Type="COD0OPSFIN*INX*">
+         <Description>IGS ionex TEC Final solution</Description>
+         <FromList>
+            <Interface>AIUB_AUX_TEC_FTP</Interface>
+            <Interface>AIUB_AUX_TEC_HTTPS</Interface>
+            <Interface>AIUB_AUX_TEC_HTTP</Interface>
+         </FromList>
+      </File>
 
-      
    </DownloadRules>
 
    <!-- =========================================================== -->

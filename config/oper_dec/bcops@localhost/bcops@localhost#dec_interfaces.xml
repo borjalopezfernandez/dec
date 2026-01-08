@@ -68,7 +68,7 @@
   </TXRXParams>    
   <Server>
     <Protocol>HTTP</Protocol>
-    <Hostname>ftp.aiub.unibe.ch</Hostname>
+    <Hostname>code.aiub.unibe.ch</Hostname>
     <Port>443</Port>
     <User>anonymous</User>
     <Pass>guest</Pass>
