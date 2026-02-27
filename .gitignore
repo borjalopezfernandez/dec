@@ -12,3 +12,4 @@ tmp/
 reek.yml
 test_curl.rb
 coverage
+.tool-versions

@@ -138,7 +138,6 @@ VALUE method_xo_time_to_orbit2(VALUE self, VALUE strROEF, VALUE strUTC, VALUE is
       xl_print_msg(&n, msg) ;
    }
 
-
    /* ------------------------------------------------------ */
    /* xl_time_ascii_to_processing */
 
@@ -200,7 +199,6 @@ VALUE method_xo_time_to_orbit2(VALUE self, VALUE strROEF, VALUE strUTC, VALUE is
       xo_print_msg(&n, msg) ;
    }
 
-
    status = xo_time_to_orbit(&orbit_id, 
                               &time_ref_utc,
                               &dTimeProcessing,
@@ -208,7 +206,6 @@ VALUE method_xo_time_to_orbit2(VALUE self, VALUE strROEF, VALUE strUTC, VALUE is
                               &second_t, 
                               &microsec_t,
                               ierr) ;
-
   
    if (status != XO_OK)
    {
