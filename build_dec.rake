@@ -619,6 +619,7 @@ namespace :dec do
       puts "rake -f build_dec.rake dec:podman_init"
       puts
       puts "== PODMAN RECIPEES =="
+      puts "rake -f build_dec.rake dec:podman_build[dec,flx-smf-02,fcops]"
       puts "rake -f build_dec.rake dec:podman_build[gsc4eo,nl2-u-moc-srv-01,naos-test]"
       puts "rake -f build_dec.rake dec:podman_build[gsc4eo,nl2-s-aut-srv-01,naos-test]"
       puts "rake -f build_dec.rake dec:podman_build[gsc4eo,nl2-s-aut-srv-01,naos]"
@@ -626,6 +627,13 @@ namespace :dec do
       puts "DEC Unit Tests"
       puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg_odata]"
       puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]"
+      puts
+      puts "FCOPS"
+      puts "rake -f build_dec.rake dec:install[dec,flx-smf-02,fcops]"
+      puts
+      puts "ADGS"
+      puts "rake -f build_dec.rake dec:build[adgs,localhost,adgs_test_pg]"
+      puts "rake -f build_dec.rake dec:install[adgs,localhost,adgs_test_pg]"
       puts
       puts "S2PDGSENG / Inputhub"
       puts "pull VPMC & VPMC_TCI or SVPMC & SVPMC_TCI"
@@ -653,9 +661,6 @@ namespace :dec do
       puts "push NAOS_MCS_SFTP"
       puts "rake -f build_dec.rake dec:build[aiv,naos-aiv,naos]"
       puts
-      puts "ADGS"
-      puts "rake -f build_dec.rake dec:build[adgs,localhost,adgs_test_pg]"
-      puts "rake -f build_dec.rake dec:install[adgs,localhost,adgs_test_pg]"
       puts                  
       puts "Obsolete:"
       puts "rake -f build_dec.rake dec:build[s2decservice,e2espm-inputhub,s2_pg]"

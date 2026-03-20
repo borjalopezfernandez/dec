@@ -56,6 +56,7 @@ require 'cuc/CheckerProcessUniqueness'
 require 'cuc/Log4rLoggerFactory'
 require 'dec/ReadInterfaceConfig'
 require 'dec/DEC_Environment'
+require 'dec/ReadConfigDEC'
 
 
 @isDebugMode      = false                  
@@ -146,6 +147,7 @@ def main
    end
 
    if @bShowVersion == true then
+      print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
       print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|

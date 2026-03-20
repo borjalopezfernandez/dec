@@ -148,7 +148,7 @@ module Log4r
       # File.ctime can return the erstwhile creation time. File.size? can similarly return
       # old information. So instead of simply doing ctime and size checks after File.new, we 
       # do slightly more complicated checks beforehand:
-      if (mode == 'w' || !File.exists?(@filename))
+      if (mode == 'w' || !File.exist?(@filename))
         @start_time = Time.now()
         @datasize = 0
       else

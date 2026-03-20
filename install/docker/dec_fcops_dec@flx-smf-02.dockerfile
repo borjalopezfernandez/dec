@@ -1,10 +1,11 @@
 #########################################################################
 #
-#     Dockerfile.dec.naos.nl2-u-moc-srv-01.gsc4eo  
+#     dec_fcops_dec@flx-smf-02.dockerfile   
 #
 #########################################################################
 #
-# Dockerfile for DEC @ NAOS UAP
+# Dockerfile for DEC @ FCOPS FLX-SMF-02
+# Ruby 3.4 shipped with Alpine 3.23
 # 
 # ALPINE
 # https://hub.docker.com/_/alpine
@@ -45,24 +46,26 @@ RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 # https://stackoverflow.com/questions/49955097/how-do-i-add-a-user-when-im-using-alpine-as-a-base-image
 # https://wiki.alpinelinux.org/wiki/Setting_up_a_new_user
 #
-RUN addgroup -g 2020 -S gsc4eo && adduser -u 2020 -S gsc4eo -G gsc4eo -s /bin/bash
+RUN addgroup -g 1002 -S smf && adduser -u 1000 -S dec -G smf -s /bin/bash
 # ------------------------------------------------
-COPY ./install/scripts/entrypoint_dec_naos_nl2-u-moc-srv-01_gsc4eo.sh /usr/bin/
-RUN ln -s /usr/bin/entrypoint_dec_naos_nl2-u-moc-srv-01_gsc4eo.sh /    
+COPY ./install/scripts/entrypoint_dec_fcops_flx-smf-02_dec.sh /usr/bin/
+RUN ln -s /usr/bin/entrypoint_dec_fcops_flx-smf-02_dec.sh /    
 # ------------------------------------------------
 # ------------------------------------------------
 # ------------------------------------------------
 # Patch log4r
+# /usr/lib/ruby/gems/3.4.0/gems/log4r-1.1.10/lib/log4r/outputter/rollingfileoutputter.rb
 COPY ./install/patch/rollingfileoutputter.rb /usr/local/bundle/gems/log4r-1.1.10/lib/log4r/outputter/
+COPY ./install/patch/rollingfileoutputter.rb /usr/lib/ruby/gems/3.4.0/gems/log4r-1.1.10/lib/log4r/outputter/
 # ------------------------------------------------
 # ------------------------------------------------
 #SHELL ["/bin/bash", "-c"]
-USER gsc4eo
-RUN   mkdir -p /home/gsc4eo/.ssh
-# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa.pub /home/gsc4eo/.ssh/
-# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa /home/gsc4eo/.ssh/
-# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa /home/gsc4eo/.ssh/id_rsa
-# COPY --chown=2020:2020 ./config/ssh/known_hosts /home/gsc4eo/.ssh/known_hosts
-ENV USER=gsc4eo HOSTNAME=dec GEM_HOME=/usr/local/bundle PATH="/usr/local/bundle/bin:${PATH}"
+USER dec
+RUN   mkdir -p /home/dec/.ssh
+# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa.pub /home/dec/.ssh/
+# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa /home/dec/.ssh/
+# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa /home/dec/.ssh/id_rsa
+# COPY --chown=2020:2020 ./config/ssh/known_hosts /home/dec/.ssh/known_hosts
+ENV USER=dec HOSTNAME=dec GEM_HOME=/usr/local/bundle PATH="/usr/local/bundle/bin:${PATH}"
 # "------------------------------------------------
-ENTRYPOINT ["/usr/bin/entrypoint_dec_naos_nl2-u-moc-srv-01_gsc4eo.sh"]
+ENTRYPOINT ["/usr/bin/entrypoint_dec_fcops_flx-smf-02_dec.sh"]
