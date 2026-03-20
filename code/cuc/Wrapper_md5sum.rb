@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #Wrapper_md5sum class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component (DEC)
-### 
-### Git: Wrapper_md5sum,v $Id$ $Date$
-###
-### module CUC
-###
-#########################################################################
-
 require 'rubygems'
 require 'date'
 require 'cuc/Converters'

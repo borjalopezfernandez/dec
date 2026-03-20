@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #FT_PackageUtils class
-#
-# Fullfils FTR-1.10 Requirement (CS-RS-ESA-GS-0212)
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# RPF
-# 
-# CVS:
-#  $Id: FT_PackageUtils.rb,v 1.10 2008/08/13 14:59:28 decdev Exp $
-#
-#########################################################################
-
 require 'fileutils'
 
 require 'cuc/DirUtils'

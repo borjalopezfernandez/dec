@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# = Ruby source for #InterfaceListWriter class
-#
-# = Written by DEIMOS Space S.L. (bolf)
-#
-# = Data Exchange Component -> Data Collector Component
-# 
-# CVS:
-#
-# = This class writes an XML file with the content of an Interface Download
-# = directory or the polled directories
-#
-#########################################################################
-
-
 module CTC
 
 class UnknownListWriter

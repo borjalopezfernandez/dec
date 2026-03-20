@@ -1,20 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# Ruby source for #Logger class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component -> Common Utils Component
-# 
-# CVS:
-#   $Id: DEC_Logger.rb,v 1.1 2006/09/06 14:32:54 decdev Exp $
-#
-#########################################################################
-
- # Module Common Utils Component
- # This class implements the DEC File Logger.
 
 require 'cuc/Logger'
 require 'cuc/DirUtils'

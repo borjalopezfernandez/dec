@@ -1,23 +1,6 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #Log4rLoggerFactory class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component -> Common Utils Component
-# 
-# Git:
-#   $Id: Log4rLoggerFactory.rb,v 1.2 2008/07/02 10:04:07 decdev Exp $
-#
-#########################################################################
-
- # Module Common Utils Component
- # This class implements a wrapper to the log4r library.
-
 require 'rubygems'
-
 
 require 'logger'
 require 'log4r'

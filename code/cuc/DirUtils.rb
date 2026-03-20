@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #DirUtils module
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component -> Common Utils Component
-## 
-## Git: $Id: DirUtils.rb,v 1.6 2007/02/05 14:35:10 decdev Exp $
-##
-## Module Common Utils Component
-## This module contains utility methods for handling directories
-##
-#########################################################################
-
 module CUC
 
 module DirUtils

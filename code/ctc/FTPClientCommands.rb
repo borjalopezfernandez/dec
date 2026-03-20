@@ -1,22 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-##
-## === Ruby source for #FTPClientCommands module
-##
-## === Written by DEIMOS Space S.L. (bolf)
-##
-## === Data Exchange Component -> Common Transfer Component
-## 
-## git: FTPClientCommands.rb,v $Id$: 
-##
-## === module Common Transfer Component module FTPClientCommands
-##
-## This module contains methods for creating the ncftp, sftp, ...
-## command line statements. 
-##
-#########################################################################
-
 ## http://www.mukeshkumar.net/articles/curl/how-to-use-curl-command-line-tool-with-ftp-and-sftp
 
 ## https://stackoverflow.com/questions/5386482/how-to-run-the-sftp-command-with-a-password-from-bash-script

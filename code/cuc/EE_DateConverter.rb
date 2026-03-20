@@ -1,20 +1,4 @@
 #!/usr/bin/env ruby
-
-#########################################################################
-#
-# === Ruby source for #EE_DateConverter class         
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === MDS-LEGOS => ORC Component
-# 
-# CVS: $Id: EE_DateConverter.rb,v 1.3 2009/05/06 13:24:33 decdev Exp $
-#
-# This class is used to convert different date formats commonly used.
-# following the Earth Explorer filename conventions
-#
-#########################################################################
-
  
 module CUC
 

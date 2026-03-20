@@ -1,22 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #MailSender class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# Git: $Id: MailSender.rb,v 1.9 2013/03/14 14:03:24 algs Exp $
-#
-# Module Common Transfer Component
-# This class delivers text mails.
-#
-# This class creates and sends text mails.
-#
-#########################################################################
-
 require 'net/smtp'
 require 'cuc/DirUtils'
 

@@ -1,17 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# ===       
-#
-# === Written by Borja Lopez Fernandez
-#
-# === Casale & Beach
-# 
-#
-#
-#########################################################################
-
 # Module Common Utils Component
 # This class deploys the files specified in a list
 # Files are appended $DEC_BASE as root directory 

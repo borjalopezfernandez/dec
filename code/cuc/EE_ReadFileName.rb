@@ -1,21 +1,4 @@
 #!/usr/bin/env ruby
-
-#########################################################################
-#
-# === Ruby source for #EE_ReadFileName class         
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Utils Component
-# 
-# CVS: $Id: EE_ReadFileName.rb,v 1.15 2009/04/21 12:02:18 decdev Exp $
-#
-# This class is used for reading the system filename.
-# It decodes the UNIX/Linux Filename following the
-# Earth Explorer filename conventions
-#
-#########################################################################
-
  
 module CUC
 

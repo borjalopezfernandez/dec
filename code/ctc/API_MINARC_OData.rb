@@ -1,18 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #MINARC_API_OData class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Mini Archive Component (MinArc)
-###
-### Git: MINARC_API_OData.rb,v $Id$
-###
-### module MINARC
-###
-#########################################################################
 
 ### SPRs
 ## JSON status with backslash quotes

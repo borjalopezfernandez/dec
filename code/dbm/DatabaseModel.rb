@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DatabaseModel class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Data Distributor Component
-# 
-# CVS: $Id: DatabaseModel.rb,v 1.12 2007/12/18 18:34:03 decdev Exp $
-#
-# module DBM
-#
-#########################################################################
-
 require 'rubygems'
 require 'active_record'
 

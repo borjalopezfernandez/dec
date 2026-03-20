@@ -1,27 +1,6 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #DCC_CheckerInventoryConfig class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component -> Common Transfer Component
-# 
-# CVS:  $Id: CheckerInventoryConfig.rb,v 1.3 2007/12/19 06:08:03 decdev Exp $
-#
-# === module Common Transfer Component (CTC)
-# This class is in charge of verify that Interfaces defined in the 
-# configuration file interfaces.xml are as well defined in the database.
-#
-# ==== This class is in charge of accessing DEC database and check whether 
-# ==== all I/F mnemonics defined within interfaces.xml are loaded.
-#
-#########################################################################
-
 require 'ctc/ReadInterfaceConfig'
-
-
 
 module CTC
 

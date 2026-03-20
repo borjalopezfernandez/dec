@@ -1,22 +1,15 @@
 #!/usr/bin/ruby
 
-#########################################################################
-##
-## Ruby source for #CryptHelper class
-##
-## Written by DEIMOS Space S.L.
-##
-## Data Exchange Component -> Common Utils Component
-## 
-## git: $Id: CryptHelper.rb,v Exp $
-##
-#########################################################################
 
 require 'openssl'
 require 'base64'
 require 'open3'
 
-require 'cuc/Log4rLoggerFactory'
+begin
+   require 'cuc/Log4rLoggerFactory'
+rescue Exception 
+   require_relative 'cuc/Log4rLoggerFactory'
+end
 
 # https://wiki.openssl.org/index.php/Main_Page
 

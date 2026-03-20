@@ -9,17 +9,6 @@
 # == Usage
 # getPublicIP.rb
 
-#########################################################################
-#
-# ===       
-#
-# === Written by Borja Lopez Fernandez
-#
-# === Casale & Beach
-# 
-#
-#
-#########################################################################
 
 require 'rubygems'
 require 'optparse'

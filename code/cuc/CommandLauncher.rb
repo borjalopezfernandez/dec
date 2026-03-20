@@ -1,17 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# Ruby source for #CommandLauncher class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component -> Common Utils Component
-# 
-# CVS:
-#   $Id: CommandLauncher.rb,v 1.5 2008/07/02 10:03:07 decdev Exp $
-#
-#########################################################################
 
 require 'cuc/Log4rLoggerFactory'
 

@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# = Ruby source for #ProcessHandler class
-#
-# = Written by DEIMOS Space S.L. (bolf)
-#
-# = Data Exchange Component -> Common Utils Component
-# 
-# CVS:
-#   $Id: Listener.rb,v 1.1 2006/09/11 16:46:55 decdev Exp $
-#
-#########################################################################
-
-   # This class implements a generic listener (daemon).
-   # It is checked that it is not running a listener with a given name.
-
 require "cuc/DirUtils"
 require "cuc/CheckerProcessUniqueness"
 

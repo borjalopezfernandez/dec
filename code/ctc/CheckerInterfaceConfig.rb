@@ -1,25 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #CheckerInterfaceConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: CheckerInterfaceConfig.rb,v 1.8 2010/04/09 10:12:28 algs Exp $
-#
-# === module Common Transfer Component (CTC)
-# This class is in charge of verify that the configuration
-# for a given Interface defined interfaces.xml is correct.
-#
-# ==== This class is in charge of verify that the FTP Configuration for a 
-# ==== given I/F is correct. It performs tests connections to defined 
-# ==== directories.
-#
-#########################################################################
-
 require 'ctc/FTPClientCommands'
 require 'ctc/SFTPBatchClient'
 require 'ctc/ReadInterfaceConfig'

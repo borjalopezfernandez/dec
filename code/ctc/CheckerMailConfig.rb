@@ -1,29 +1,8 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DCC_CheckerMailConfig class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# == Data Exchange Component -> Common Transfer Component
-# 
-# CVS:  $Id: CheckerMailConfig.rb,v 1.10 2010/10/18 15:47:15 algs Exp $
-#
-# === module Common Transfer Component (CTC)
-# This class is in charge of verify that the mail configuration
-# defined in ft_mail_config.xml is correct.
-#
-# ==== This class is in charge of verify that the SMTP and/or POP3
-# ==== configuration is correct. It performs tests connections to defined 
-# ==== servers.
-#
-#########################################################################
-
 require 'ctc/ReadMailConfig'
 require 'ctc/MailSender'
 require 'ctc/MailReceiver'
-
 
 module CTC
 

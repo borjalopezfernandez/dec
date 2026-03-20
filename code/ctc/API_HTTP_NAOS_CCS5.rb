@@ -1,23 +1,6 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #API_HTTP_NAOS_CCS5 class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-### 
-### Git: #API_HTTP_NAOS_CCS5.rb,v $Id$
-###
-### module CTC
-###
-#########################################################################
-
 module CTC
-
-## TO DOCUMENT SOMEWHERE LIKELY MCS CONFIGURATIONS    
-# https://jira.elecnor-deimos.com/browse/NAOSMCS-52
 
    module API_HTTP_NAOS_CCS5
       API_HTTP_NAOS_CCS5_PORT          = 8080

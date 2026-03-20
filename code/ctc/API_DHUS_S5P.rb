@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #MINARC_API class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: API_DHUS_S5P.rb,v $Id$
-###
-### module DHUS
-###
-#########################################################################
-
 ## https://scihub.copernicus.eu/userguide/ODataAPI
 ## > https://scihub.copernicus.eu/dhus/odata/v1/Products?$select=Name,CreationDate,IngestionDate,Online,ContentDate
 ##

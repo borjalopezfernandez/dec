@@ -1,19 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# Ruby source for #DatabaseManager class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Collector Component
-# 
-# CVS:
-#  $Id: DatabaseManager.rb,v 1.1 2006/09/06 14:32:54 decdev Exp $
-#
-#########################################################################
-
-
 require 'singleton'
 require 'thread'
 require 'Ruby9i'

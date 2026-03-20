@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #CheckerMailNotification class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: CheckerMailNotification.rb,v 1.3 2006/10/05 15:07:24 decdev Exp $
-#
-# This class is in charge of verify that the Mail Notification
-# mail_notifications.xml configuration file is correct.
-#
-#########################################################################
-
 require 'ctc/ReadInterfaceConfig'
 require 'ctc/ReadMailNotification'
 

@@ -1,21 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# Ruby source for #DCC_MailParser class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Collector Component
-# 
-# CVS:
-#   $Id: MailParser.rb,v 1.4 2007/06/01 10:34:57 decdev Exp $
-#
-#########################################################################
-
-   #- This class processes all the incoming mails to the DCC email account.
-	#- It extracts the notification mails
-
 @@CONTENT_TYPE_TEXT_PLAIN   = "TEXT/PLAIN"
 @@CONTENT_TYPE_TEXT_XML     = "TEXT/XML"
 @@CONTENT_TYPE_MPART_MIXED  = "MULTIPART/MIXED"
@@ -26,7 +10,6 @@
 module CTC
 
 class MailParser
-
 
    attr_reader :returnPath, :date, :to, :subject, :body, :contentType, :contentTransferEncoding
 	attr_reader :isFile, :isBinary, :filename

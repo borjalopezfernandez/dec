@@ -1,23 +1,6 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #DDC_FileMailer class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: FileMailer.rb,v 1.2 2006/10/05 14:52:30 decdev Exp $
-#
-# Module Common Transfer Component
-# This class delivers methods for sending files to entities using SMTP.
-# The files are sent through attachments in a mail.
-#
-#########################################################################
-
 require 'ctc/SMTPClient'
-
 
 module CTC
 

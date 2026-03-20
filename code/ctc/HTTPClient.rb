@@ -1,23 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# = Ruby source for #HTTPClient class
-#
-# = Written by DEIMOS Space S.L. (bolf)
-#
-# = Data Exchange Component -> Common Transfer Component
-# 
-# CVS:
-#   
-# = This class is an HTTP Client for sending the requests to the MUIS I/F EOLI.
-# == This class wraps the ruby net:http library.
-#
-#########################################################################
-
-# This module contains methods for performing HTTP Requests
-
-
 require 'net/http'
 
 module CTC

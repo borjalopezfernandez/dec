@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #CheckerProcessUniqueness class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component -> Common Utils Component
-###
-### Git: $Id: CheckerProcessUniqueness.rb,v 1.3 2007/09/04 04:09:43 decdev Exp $
-###
-###
-###
-#########################################################################
-
 require 'cuc/DirUtils'
 
  # Module Common Utils Component

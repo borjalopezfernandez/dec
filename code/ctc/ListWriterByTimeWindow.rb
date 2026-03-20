@@ -1,31 +1,14 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# = Ruby source for #TimeWindownListWriter class
-#
-# = Written by DEIMOS Space S.L. (algk)
-#
-# = Data Exchange Component -> Data Collector Component
-# 
-# CVS:
-#
-# = This class writes an XML file with the content of an Interface Download
-# = directory or the polled directories
-#
-#########################################################################
-
-
 module CTC
 
 require 'getoptlong'
 
 require 'dbm/DatabaseModel'
 
-
 class ListWriterByTimeWindow
 
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
    # Class contructor
    def initialize(directory, table, start, stop, fileClass = "", fileType = "")
@@ -42,7 +25,7 @@ class ListWriterByTimeWindow
       @currentTime = Time.now
       @currentTime.utc      
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
    def setup(satPrefix, prjName, prjID, mission, namespace='', schema='')
       @bSetup = true
@@ -53,13 +36,13 @@ class ListWriterByTimeWindow
       @namespace  = namespace
       @schema     = schema
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
    # Set the flag for debugging on
    def setDebugMode
       @isDebugMode = true
    end
-   #------------------------------------------------------------- 
+   # ------------------------------------------------------------- 
 
    def getFiles
       case @table      
@@ -101,21 +84,21 @@ class ListWriterByTimeWindow
 		@theFile.flush
       @theFile.close
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
    def getFilename
       return @realname
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
 private
       
-	#-------------------------------------------------------------
+	# -------------------------------------------------------------
    
    # Check that everything needed by the class is present.
    def checkModuleIntegrity
       return true
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
    def createFile
 	   prevDir = Dir.pwd
@@ -161,7 +144,7 @@ private
 
       @theFile.flush
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
    def writeFixedHeader
       @theFile.puts("    <Fixed_Header>")
@@ -213,8 +196,7 @@ private
       @theFile.puts("    </Fixed_Header>")
       @theFile.flush
    end
-   #-------------------------------------------------------------
-   
+   # -------------------------------------------------------------
    
    def writeDataBlock(data)
 
@@ -269,7 +251,7 @@ private
       @theFile.puts(%Q{  </Data_Block>})
       @theFile.flush
    end
-   #-------------------------------------------------------------
+   # -------------------------------------------------------------
    
 end # class
 

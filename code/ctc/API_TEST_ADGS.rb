@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #API_ADGS class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: API_ADGS.rb,v $Id$
-###
-### module ADGS
-###
-#########################################################################
-
 ## URL Percent Encoding
 ## https://en.wikipedia.org/wiki/Percent-encoding
 ### %27 => '

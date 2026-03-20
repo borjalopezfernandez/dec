@@ -1,20 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #MailReceiver class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS: $Id: MailReceiver.rb,v 1.3 2010/04/13 11:06:09 algs Exp $
-#
-# Module Common Transfer Component
-# Class for receiving mails.
-#
-#########################################################################
-
 require 'net/pop'
 
 

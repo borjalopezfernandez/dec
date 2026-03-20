@@ -1,20 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-##
-## Ruby source for #PackageUtils class
-##
-## Fullfils FTR-1.10 Requirement (CS-RS-ESA-GS-0212)
-##
-## Written by DEIMOS Space S.L. (bolf)
-##
-## Data Exchange Component -> Common Utils Component
-## 
-## Git:
-##  $Id: PackageUtils.rb,v 1.3 2007/11/30 10:57:22 decdev Exp $
-##
-#########################################################################
-
 require 'fileutils'
 
 require 'cuc/DirUtils'

@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# === Ruby source for #MailEventNotifier class
-#
-# === Written by DEIMOS Space S.L. (bolf)
-#
-# === Data Exchange Component -> Common Transfer Component
-# 
-# CVS:  $Id: MailEventNotifier.rb,v 1.3 2008/07/02 09:59:15 decdev Exp $
-#
-#########################################################################
-
 require 'ctc/ReadMailNotification'
 require 'ctc/CheckerMailNotification'
 require 'cuc/Log4rLoggerFactory'

@@ -1,18 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# Ruby source for #ReadServiceConfig class          
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Collector Component
-# 
-# CVS:
-#  $Id: ReadServiceConfig.rb,v 1.1 2006/09/12 07:59:26 decdev Exp $
-#
-#########################################################################
-
 require 'singleton'
 require 'rexml/document'
 require 'cuc/DirUtils'

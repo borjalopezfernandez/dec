@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #API_NATS_NAOS_CCS5 class
-###
-### === Written by DEIMOS Space S.L.
-###
-### === Data Exchange Component
-### 
-### Git: #API_NATS_NAOS_MCS.rb,v $Id$
-###
-### module CTC
-###
-#########################################################################
-
 module CTC
 
 ## TO DOCUMENT SOMEWHERE LIKELY MCS CONFIGURATIONS    

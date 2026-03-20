@@ -1,18 +1,5 @@
 #!/usr/bin/ruby
 
-#########################################################################
-#
-# Ruby source for #Logger class
-#
-# Written by DEIMOS Space S.L. (bolf)
-#
-# Data Exchange Component -> Common Utils Component
-# 
-# CVS:
-#   $Id: Logger.rb,v 1.1 2006/09/06 14:32:54 decdev Exp $
-#
-#########################################################################
-
 LOG_NONE        = ""
 LOG_ERROR       = " ERROR "
 LOG_INFORMATION = " INFO  "

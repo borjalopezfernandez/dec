@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-###
-### === Ruby source for #MINARC_API class
-###
-### === Written by DEIMOS Space S.L. (bolf)
-###
-### === Data Exchange Component
-### 
-### Git: API_PRIP.rb,v $Id$
-###
-### module DHUS
-###
-#########################################################################
-
 ## OData https://scihub.copernicus.eu/apihub/odata/v1
 
 ## URL Percent Encoding

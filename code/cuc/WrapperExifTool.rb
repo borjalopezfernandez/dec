@@ -1,19 +1,6 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# ===       
-#
-# === Written by Borja Lopez Fernandez
-#
-# === Casale & Beach
-# 
-#
-#
-#########################################################################
-
 require 'rubygems'
-
 require 'date'
 
 require 'cuc/Converters'
