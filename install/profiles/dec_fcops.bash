@@ -1,5 +1,5 @@
 # service start
-alias decStart="podman run --userns keep-id --env 'USER' --tz=Europe/London --name dec -d --mount type=bind,source=/data,destination=/data localhost/dec_fcops_dec_flx-smf-02:latest"
+alias decStart="podman run --tz=Europe/London --name dec -d --mount type=bind,source=/data,destination=/data localhost/dec_fcops_dec_flx-smf-02:latest"
 alias decStart="podman run --userns keep-id --env 'USER' --tz=Europe/London --name dec -d --mount type=bind,source=/data,destination=/data localhost/dec_fcops_dec_flx-smf-02:latest"
 # commands
 alias decStart="podman run --userns keep-id --env 'USER' --add-host=nl2-s-aut-srv-01:172.23.253.16 --network=host --tz=Europe/London --name dec -d --mount type=bind,source=/data,destination=/data localhost/dec_naos-test_gsc4eo_nl2-u-moc-srv-01:latest"
