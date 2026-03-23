@@ -62,9 +62,7 @@ COPY ./install/patch/rollingfileoutputter.rb /usr/lib/ruby/gems/3.4.0/gems/log4r
 #SHELL ["/bin/bash", "-c"]
 USER dec
 RUN   mkdir -p /home/dec/.ssh
-# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa.pub /home/dec/.ssh/
-# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa /home/dec/.ssh/
-# COPY --chown=2020:2020 ./config/ssh/naos-aiv.id_rsa /home/dec/.ssh/id_rsa
+# COPY --chown=2020:2020 ./config/ssh/<SMF>.pub /home/dec/.ssh/
 # COPY --chown=2020:2020 ./config/ssh/known_hosts /home/dec/.ssh/known_hosts
 ENV USER=dec HOSTNAME=dec GEM_HOME=/usr/local/bundle PATH="/usr/local/bundle/bin:${PATH}"
 # "------------------------------------------------

@@ -80,7 +80,7 @@
       <Database_Adapter>sqlite3</Database_Adapter>
       <Database_Host>localhost</Database_Host>
       <Database_Port></Database_Port>
-      <Database_Name>/data/fcops/dec/dec_inventory</Database_Name>
+      <Database_Name>/data/fcops/dec/db/dec_inventory.sqlite</Database_Name>
       <Database_User></Database_User>
       <Database_Password></Database_Password>
    </Inventory>
