@@ -85,8 +85,8 @@
       <Protocol>FTP</Protocol>
       <Hostname>localhost</Hostname>
 	   <Port>21</Port>      
-      <User>borja</User>
-      <Pass>perrillo</Pass>
+      <User>user</User>
+      <Pass>password</Pass>
       <UploadDir>/tmp/dec_simul_if/localhost_notsecure/upload</UploadDir>
       <UploadTemp>/tmp/dec_simul_if/localhost_notsecure/upload/_TEMP_</UploadTemp>
       <DownloadDirs>

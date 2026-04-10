@@ -84,5 +84,5 @@ module DHUS
    API_ODATA_FILTER_VALIDITY        = "&$filter=ContentDate/Start ge datetime '2021-03-24T00:00:00.000 and ContentDate/End le datetime'2021-03-25T00:00:00.000'"
    
    API_RESOURCE_FOUND               = "200"
-   API_TOP_LIMIT_ITEMS              = 50
+   API_TOP_LIMIT_ITEMS              = 1000
 end

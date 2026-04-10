@@ -185,7 +185,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       
       currentTime = DateTime.now - (5.0/24.0)
       datetime    = currentTime.strftime("%Y-%m-%dT%H:00:00.000")
-      client      = ODataClientDHUS.new("borjalf", "perrillo.pwd", "dhus:s1:S1B", nil, datetime, nil, "/tmp", false, @@logger)
+      client      = ODataClientDHUS.new("mylogin", "mypassword", "dhus:s1:S1B", nil, datetime, nil, "/tmp", false, @@logger)
       client.setDebugMode
       assert(client.exec_query, "hour delay")
       ## --------------------------------------------
@@ -214,7 +214,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       
       currentTime = DateTime.now - (1.5/24.0)
       datetime    = currentTime.strftime("%Y-%m-%dT%H:00:00.000")
-      client      = ODataClientDHUS.new("borjalf", "perrillo.pwd", "dhus:s2:S2B", nil, datetime, nil, "/tmp", false, @@logger)
+      client      = ODataClientDHUS.new("mylogin", "mypassword", "dhus:s2:S2B", nil, datetime, nil, "/tmp", false, @@logger)
       client.setDebugMode
       assert(client.exec_query, "hour delay")
       ## --------------------------------------------
@@ -244,7 +244,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       
       currentTime = DateTime.now - (5.0/24.0)
       datetime    = currentTime.strftime("%Y-%m-%dT%H:00:00.000")
-      client      = ODataClientDHUS.new("borjalf", "perrillo.pwd", "dhus:s3:S3B", nil, datetime, nil, "/tmp", false, @@logger)
+      client      = ODataClientDHUS.new("mylogin", "mypassword", "dhus:s3:S3B", nil, datetime, nil, "/tmp", false, @@logger)
       client.setDebugMode
       assert(client.exec_query, "hour delay")
       ## --------------------------------------------
@@ -271,7 +271,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
      
       require 'dec/ODataClientDHUS'
       
-      client      = ODataClientDHUS.new("borjalf", "perrillo.pwd", "dhus:s1:S1B", nil, nil, "2021-06-17T23:59:00.000,2021-06-18T00:00:00.000", "/tmp", false, @@logger)
+      client      = ODataClientDHUS.new("mylogin", "mypassword", "dhus:s1:S1B", nil, nil, "2021-06-17T23:59:00.000,2021-06-18T00:00:00.000", "/tmp", false, @@logger)
       client.setDebugMode
       assert(client.exec_query, "sensing range")
       ## --------------------------------------------
@@ -297,7 +297,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
      
       require 'dec/ODataClientDHUS'
       
-      client      = ODataClientDHUS.new("borjalf", "perrillo.pwd", "dhus:s2:S2A", nil, nil, "2021-07-18T00:00:00.000,2021-07-18T00:05:00.000", "/tmp", false, @@logger)
+      client      = ODataClientDHUS.new("mylogin", "mypassword", "dhus:s2:S2A", nil, nil, "2021-07-18T00:00:00.000,2021-07-18T00:05:00.000", "/tmp", false, @@logger)
       client.setDebugMode
       assert(client.exec_query, "sensing range")
       ## --------------------------------------------
@@ -350,7 +350,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 #      puts strURL
 #      puts uri.request_uri
 #      
-#      request.basic_auth("borjalf", "perrillo.pwd")
+#      request.basic_auth("mylogin", "password")
 #      
 #      response = nil
 #      
@@ -416,12 +416,12 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       puts
 
       ## Query by Datatake
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -q dhus:s2:l2a:GS2B_20200903T104429_018252_N02.14"
+      cmd = "decODataClient -u mylogin -p password -q dhus:s2:l2a:GS2B_20200903T104429_018252_N02.14"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
 
       ## Query by Datatake & Datastrip
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -q dhus:s2:l1c:GS2A_20200831T191921_027123_N02.09:20200901T003452"
+      cmd = "decODataClient -u mylogin -p password -q dhus:s2:l1c:GS2A_20200831T191921_027123_N02.09:20200901T003452"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake & Datastrip query")
 
@@ -444,7 +444,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       currentTime = DateTime.now - (2/24.0)
 
       ## Query by CreationDate for Sentinel-1A
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1A -D"
+      cmd = "decODataClient -u mylogin -p password -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1A -D"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -452,7 +452,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       sleep(10.0)
 
       ## Query by CreationDate for Sentinel-1B
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1B -D"
+      cmd = "decODataClient -u mylogin -p password -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1B -D"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -461,13 +461,13 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
 
       ## Query by CreationDate for GRD products Medium Resolution
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1A_EW_GRDM_1 -D"
+      cmd = "decODataClient -u mylogin -p password -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1A_EW_GRDM_1 -D"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
 
       ## Query by CreationDate for GRD products Medium Resolution
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1A_EW_OCN -D"
+      cmd = "decODataClient -u mylogin -p password -t #{currentTime.strftime("%Y-%m-%dT%H:00:00.000")} -q dhus:s1:S1A_EW_OCN -D"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -486,7 +486,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-1A
             
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -H 2 -q dhus:s1:S1A -L /Users/borja/Projects/dec/data/dhus -D"
+      cmd = "decODataClient -u mylogin -p password -H 2 -q dhus:s1:S1A -L /Users/borja/Projects/dec/data/dhus -D"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -542,7 +542,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-1A
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -c \"2021-04-01T23:50:00.000,2021-04-02T00:00:00.000\" --query dhus:s1:S1A -D -L /tmp"
+      cmd = "decODataClient -u mylogin -p password -c \"2021-04-01T23:50:00.000,2021-04-02T00:00:00.000\" --query dhus:s1:S1A -D -L /tmp"
       
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
@@ -563,7 +563,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-1A
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -c \"2021-04-02T08:00:00.000,2021-04-02T10:00:00.000\" --query dhus:s1:S1A -D -L /tmp"
+      cmd = "decODataClient -u mylogin -p password -c \"2021-04-02T08:00:00.000,2021-04-02T10:00:00.000\" --query dhus:s1:S1A -D -L /tmp"
       
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
@@ -586,7 +586,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-1A
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -d 2 --query dhus:s1:S1A -L /tmp"
+      cmd = "decODataClient -u mylogin -p password -d 2 --query dhus:s1:S1A -L /tmp"
       
       @@logger.debug(cmd)
       
@@ -609,7 +609,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-2A
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -d 2 --query dhus:s2:S2A -L /tmp"
+      cmd = "decODataClient -u mylogin -p password -d 2 --query dhus:s2:S2A -L /tmp"
       
       @@logger.debug(cmd)
       
@@ -630,7 +630,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-2A
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -d 2 --query dhus:s3:S3A -L /tmp"
+      cmd = "decODataClient -u mylogin -p password -d 2 --query dhus:s3:S3A -L /tmp"
       
       @@logger.debug(cmd)
       
@@ -677,8 +677,8 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s}")
 
       ## Query by ContentDate/Start ContentDate/End for Sentinel-1A
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -s \"2022-01-17T23:00:00.000,2022-01-18T00:00:00.000\" --query dhus:s1:S1A -D -L /tmp"
-      @@logger.debug(cmd.gsub("-u borjalf -p perrillo.pwd", "-u ******** -p ********"))
+      cmd = "decODataClient -u mylogin -p password -s \"2022-01-17T23:00:00.000,2022-01-18T00:00:00.000\" --query dhus:s1:S1A -D -L /tmp"
+      @@logger.debug(cmd.gsub("-u mylogin -p password", "-u ******** -p ********"))
       assert(system(cmd), "#{cmd} Datatake query")
 
    end
@@ -686,8 +686,8 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
    def test_s1b_validity_json
       @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s}")
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -s 2022-01-17T00:00:00.000,2022-01-17T00:20:00.000 -q dhus:s1:S1A -L /Users/borja/Projects/dec/data/dhus -f json -D"
-      @@logger.debug(cmd.gsub("-u borjalf -p perrillo.pwd", "-u ******** -p ********"))
+      cmd = "decODataClient -u mylogin -p password -s 2022-01-17T00:00:00.000,2022-01-17T00:20:00.000 -q dhus:s1:S1A -L /Users/borja/Projects/dec/data/dhus -f json -D"
+      @@logger.debug(cmd.gsub("-u mylogin -p password", "-u ******** -p ********"))
       assert(system(cmd), "#{cmd} Datatake query")
    end
    ## ------------------------------------------------------
@@ -701,7 +701,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by ContentDate/Start ContentDate/End for Sentinel-1A
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -q dhus:s1:S1A:S1A_WV_SLC__1SSV_20210101 -L /Users/borja/Projects/dec/data/dhus -D"
+      cmd = "decODataClient -u mylogin -p password -q dhus:s1:S1A:S1A_WV_SLC__1SSV_20210101 -L /Users/borja/Projects/dec/data/dhus -D"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -721,7 +721,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-1B
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -H 4.5 -q dhus:s1:S1B -L /Users/borja/Projects/dec/data/dhus"
+      cmd = "decODataClient -u mylogin -p password -H 4.5 -q dhus:s1:S1B -L /Users/borja/Projects/dec/data/dhus"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -743,7 +743,7 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 
       ## Query by CreationDate for Sentinel-1B
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -H 2 -q dhus:s2:S2B -L /Users/borja/Projects/dec/data/dhus"
+      cmd = "decODataClient -u mylogin -p password -H 2 -q dhus:s2:S2B -L /Users/borja/Projects/dec/data/dhus"
       puts cmd
       assert(system(cmd), "#{cmd} Datatake query")
       puts
@@ -771,8 +771,8 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       currentTime = DateTime.now - (2/24.0)
       endTime     = currentTime + (2/1440.0)
 
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -c \"#{currentTime.strftime("%Y-%m-%dT%H:%M:00.000")},#{endTime.strftime("%Y-%m-%dT%H:%M:00.000")}\" -q dhus:s1:S1A -L /tmp -r"
-      @@logger.debug(cmd.gsub("-u borjalf -p perrillo.pwd", "-u ******** -p ********"))
+      cmd = "decODataClient -u mylogin -p password -c \"#{currentTime.strftime("%Y-%m-%dT%H:%M:00.000")},#{endTime.strftime("%Y-%m-%dT%H:%M:00.000")}\" -q dhus:s1:S1A -L /tmp -r"
+      @@logger.debug(cmd.gsub("-u mylogin -p password", "-u ******** -p ********"))
       assert(system(cmd), "Sentinel-1 product(s) download")
       
       @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s} END")
@@ -827,12 +827,12 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
 #      puts
 #
 #      ## Query by Datatake
-##       cmd = "decODataClient -u borjalf -p perrillo.pwd -q dhus:s2:l2a:GS2B_20200903T104429_018252_N02.14"
+##       cmd = "decODataClient -u mylogin -p password -q dhus:s2:l2a:GS2B_20200903T104429_018252_N02.14"
 ##       puts cmd
 ##       assert(system(cmd), "#{cmd} Datatake query")
 #
 #      ## Query by Datatake & Datastrip
-#      cmd = "decODataClient -D -u borjalf -p perrillo.pwd -q dhus:s2:l1c:GS2A_20200831T191921_027123_N02.09:20200901T003452"
+#      cmd = "decODataClient -D -u mylogin -p password -q dhus:s2:l1c:GS2A_20200831T191921_027123_N02.09:20200901T003452"
 #      puts cmd
 #      assert(system(cmd), "#{cmd} Datatake & Datastrip query")
 #
@@ -849,8 +849,8 @@ class DECTestInterfaceDHUS < Test::Unit::TestCase
       @@logger.debug(cmd)
       system(cmd)
       
-      cmd = "decODataClient -u borjalf -p perrillo.pwd -q dhus:s2:S2A --creation \"2021-07-01T00:00:00.000,2021-07-01T00:05:03.000\" -L /tmp -r"  # "-D"
-      @@logger.debug(cmd.gsub("-u borjalf -p perrillo.pwd", "-u ******** -p ********"))
+      cmd = "decODataClient -u mylogin -p password -q dhus:s2:S2A --creation \"2021-07-01T00:00:00.000,2021-07-01T00:05:03.000\" -L /tmp -r"  # "-D"
+      @@logger.debug(cmd.gsub("-u mylogin -p password", "-u ******** -p ********"))
       assert(system(cmd), "Sentinel-2 product download")
       
       @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s} END")

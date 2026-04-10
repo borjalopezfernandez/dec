@@ -88,7 +88,6 @@ Gem::Specification.new do |s|
       puts
 
       s.executables   << 'decTestInterface_CelesTrak'
-      s.executables   << 'decTestInterface_CloudFerro'
       s.executables   << 'decTestInterface_ECDC'
       s.executables   << 'decTestInterface_ESA_GSSC'
       s.executables   << 'decTestInterface_IERS'
@@ -99,6 +98,7 @@ Gem::Specification.new do |s|
       s.executables   << 'decTestInterface_NATS_CCS5'
       s.executables   << 'decTestInterface_NOAA'
       s.executables   << 'decTestInterface_NOAA_IGRF'
+      s.executables   << 'decTestInterface_OData_CDSE'
       s.executables   << 'decTestInterface_SCIHUB'
       s.executables   << 'decTestInterface_SPCS'
       s.executables   << 'decUnitTests'

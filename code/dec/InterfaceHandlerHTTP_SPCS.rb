@@ -2,7 +2,7 @@
 
 module DEC
 
-## curl -c cookies.txt -b cookies.txt https://www.space-track.org/ajaxauth/login -d 'identity=borja.lopez@deimos-space.com&password=perrillo.pwd.long'
+## curl -c cookies.txt -b cookies.txt https://www.space-track.org/ajaxauth/login -d 'identity=<user>&password=<password>'
 ## curl --cookie cookies.txt --limit-rate 100K 'https://www.space-track.org/basicspacedata/query/class/cdm_public/' | jq
 
 ## curl --cookie cookies.txt --limit-rate 100K 'https://www.space-track.org/basicspacedata/query/class/tle_latest/ORDINAL/1/NORAD_CAT_ID/40013/predicates/EPOCH,TLE_LINE1,TLE_LINE2/format/json'
@@ -59,7 +59,7 @@ class InterfaceHandlerHTTP_SPCS
    end
    ## -----------------------------------------------------------
 
-   ## ## curl -c cookies.txt -b cookies.txt https://www.space-track.org/ajaxauth/login -d 'identity=borja.lopez@deimos-space.com&password=perrillo.pwd.long'
+   ## ## curl -c cookies.txt -b cookies.txt https://www.space-track.org/ajaxauth/login -d 'identity=user&password=password'
    def login
       cmd = "curl -s -c #{@cookies} -b #{@cookies} https://www.space-track.org/ajaxauth/login -d 'identity=#{@user}&password=#{@pass}'"
       if @isDebugMode == true then

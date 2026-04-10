@@ -117,8 +117,8 @@ def main
    end
 
 
-   dhusUser       = "borjalf"
-   dhusPwd        = "perrillo.pwd"
+   dhusUser       = "user"
+   dhusPwd        = "password"
 
    url = "https://scihub.copernicus.eu/dhus/odata/v1/Products?$orderby=IngestionDate$top=100&$skip=100&platformname:Sentinel-2"
 

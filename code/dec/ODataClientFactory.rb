@@ -16,7 +16,7 @@ require 'dec/ODataClientADGS'
 require 'dec/ODataClientTEST_ADGS'
 require 'dec/ODataClientDHUS'
 require 'dec/ODataClientDHUS_S5P'
-
+require 'dec/ODataClientCDSE'
 
 module DEC
 
@@ -53,7 +53,11 @@ class ODataClientFactory
    ## -----------------------------------------------------------
 
    def get_instance
-   
+
+      if @query.include?("CDSE") == true then
+         return ODataClientCDSE.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
+      end
+
       if @query.include?("TEST_ADGS") == true then
          return ODataClientTEST_ADGS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
       end

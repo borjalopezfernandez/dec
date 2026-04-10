@@ -32,8 +32,8 @@ class DECTestCase_Ncftpput < Test::Unit::TestCase
       # --------------------------------
       # change your credentials here      
       @@host        = "localhost"      
-      @@user        = "borja"
-      @@pass        = "perrillo"
+      @@user        = "user"
+      @@pass        = "password"
       @@port        = 21
       # --------------------------------
       @@file        = "satansaldemi.txt"

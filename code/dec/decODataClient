@@ -3,6 +3,15 @@
 # The decODataClient is a simple OData client to hit Copernicus Sentinel
 # servers to extract Sentinel-2 product metadata.
 #
+# CDSE queries:
+#
+# Query by Sentinel-3 Product types 
+#
+# --query cdse:s3:OL_1_ERR___
+# --query cdse:s3:OL_1_EFR___
+# 
+#
+#
 # DHUS queries:
 #
 # Query by Sentinel-2 Datatake Identifier: which looks for the associated
@@ -32,7 +41,7 @@
 # decODataClient 
 #     --user      <username>
 #     --password  <password>
-#     --time       2021-03-24T00:00:00.000 (DHuS format applied to the IngestionDate)
+#     --time      2026-03-24T00:00:00.000Z (format applied to the PublicationDate)
 #     --delay     <hour delay> (decimal offset 0.5-0.25 is scaled to minutes)
 #     --sensing   "2021-03-16T00:00:00.000,2021-03-20T00:00:00.000"
 #     --creation  "2021-03-16T00:00:00.000,2021-03-20T00:00:00.000"
@@ -138,6 +147,7 @@ def main
    end
 
    if @bShowVersion == true then
+      print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
       print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|
@@ -151,7 +161,7 @@ def main
       exit(0)
    end
    
-   if @user == "" or @password == "" or @query == "" then
+   if @query == "" then
       usage
       exit(99)
    end
@@ -471,9 +481,12 @@ end
 
 ## Print command line help
 def usage
+
+   print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
+   
    fullpathFile = File.expand_path(__FILE__)
    
-   value = `#{"head -51 #{fullpathFile}"}`
+   value = `#{"head -53 #{fullpathFile}"}`
       
    value.lines.drop(1).each{
       |line|

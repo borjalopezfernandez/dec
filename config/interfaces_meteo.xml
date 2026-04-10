@@ -22,8 +22,8 @@
       <Protocol>FTP</Protocol>
       <Hostname>localhost</Hostname>
 	   <Port>21</Port>
-      <User><!--e2edctest-->borja</User>
-      <Pass><!--e2edctest-->perrillo</Pass>
+      <User><!--e2edctest--></User>
+      <Pass><!--e2edctest--></Pass>
       <UploadDir>Sandbox/dec/dec_sent_file</UploadDir>
       <UploadTemp>Sandbox/dec/dec_sent_file/_TEMP_</UploadTemp>
       <DownloadDirs>

@@ -34,7 +34,7 @@ class ODataClientBase
       @full_path_dir = full_path_dir
       @download      = download
       @logger        = logger
-      @format        = "xml"
+      @format        = "json"
       @currentDate   = DateTime.now.strftime("%Y%m%dT%H%M%S")
       
       if @sensingtime != nil then
@@ -50,7 +50,7 @@ class ODataClientBase
       nParams      = @query.split(":").length
       @system      = @query.split(":")[0]
       @mission     = @query.split(":")[1]
-      @datatake    = @query.split(":")[2]
+      @type        = @query.split(":")[2]
       @param       = nil
       begin
          @param       = @query.split(":")[3]
@@ -76,7 +76,7 @@ class ODataClientBase
 
       ## --------------------------------------------
       if @isDebugMode == true then
-         @logger.debug("exec_query => #{@system} : #{@mission} : #{@datatake} ; #{@param} ; #{@condition}")
+         @logger.debug("exec_query => system - #{@system} | mission - #{@mission} | type : #{@type} | param : #{@param} | condition : #{@condition}")
       end
       ## --------------------------------------------
 
@@ -95,7 +95,7 @@ class ODataClientBase
       ## --------------------------------------------
       ##
       ## Product Select      
-      ret = querySelect(@mission, @urlSelect, @urlPaging, @condition, @datatake)           
+      ret = querySelect(@mission, @urlSelect, @urlPaging, @condition, @type)           
       return ret
       
    end
@@ -109,8 +109,17 @@ class ODataClientBase
    ##
    ## Product Select 
 
-   def querySelect(dhus_instance, urlSelect, urlPage, condition, mission)
+   def querySelect(endpoint, urlSelect, urlPage, condition, mission)
       
+      if @isDebugMode == true then
+         @logger.debug("")
+         @logger.debug("querySelect => endpoint    : #{endpoint}")
+         @logger.debug("querySelect => urlSelect   : #{urlSelect}")
+         @logger.debug("querySelect => urlPage     : #{urlPage}")
+         @logger.debug("querySelect => condition   : #{condition}")
+         @logger.debug("querySelect => mission     : #{mission}")
+         @logger.debug("")
+      end
       uri  = URI.parse(urlSelect)  
       http = Net::HTTP.new(uri.host, uri.port)
       http.open_timeout = 600
@@ -121,16 +130,22 @@ class ODataClientBase
       ## THIS SHOULD BECOME A PARAMETER
       http.verify_mode  = OpenSSL::SSL::VERIFY_NONE
       ###############################################
-      
-      
-      request  = Net::HTTP::Get.new(uri.request_uri)   
-      request.basic_auth(@user, @password)
-      
+            
+      request  = Net::HTTP::Get.new(uri.request_uri)
+
+      if @user != "" and @user != nil then
+         if @isDebugMode == true then
+            @logger.debug("request.basic_auth(#{@user}, #{@password})")
+         end         
+         request.basic_auth(@user, @password)
+      end
+
       iPending = @iTotal
       iSkip    = 0
 
       arrResponseBody = Array.new
 
+=begin
       ## --------------------------------------------
 
       if @datetime != nil then
@@ -158,12 +173,16 @@ class ODataClientBase
       end
 
       ## --------------------------------------------
-   
+=end
       ## --------------------------------------------
    
       uri      = URI.parse(urlSelect)
-      cmdCurl  = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.request_uri}\'"
-
+      cmdCurl  = ''
+      if @user != "" and @user != nil then
+         cmdCurl  = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.request_uri}\'"
+      else
+         cmdCurl  = "curl -k \'#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.request_uri}\'"
+      end
       ## -------------------------------------------- 
       if @isDebugMode == true then
          @logger.debug(cmdCurl)
@@ -172,7 +191,14 @@ class ODataClientBase
           
       request  = Net::HTTP::Get.new(uri.request_uri)   
 
-      request.basic_auth(@user, @password)
+      if @user != "" and @user != nil then
+         if @isDebugMode == true then
+            @logger.debug("request.basic_auth(#{@user}, #{@password})")
+         end
+         
+         request.basic_auth(@user, @password)
+      end
+
       response    = nil
       iRetry      = 1
       exception   = nil
@@ -216,9 +242,9 @@ class ODataClientBase
       end
       ## ---------------------
       
-      ## datatake is carrying the mission id
+      ## type is carrying the mission id
       begin    
-         createFileMetadata(dhus_instance, mission, response.body, iSkip)
+         createFileMetadata(endpoint, mission, response.body, iSkip)
       rescue Exception => e
          return false
       end
@@ -227,8 +253,8 @@ class ODataClientBase
          downloadItems(response.body)
       end
          
-      iPending = iPending - DHUS::API_TOP_LIMIT_ITEMS
-      iSkip    = iSkip    + DHUS::API_TOP_LIMIT_ITEMS
+      iPending = iPending - @topLimits
+      iSkip    = iSkip    + @topLimits
    
       ## --------------------------------------------
    
@@ -243,6 +269,8 @@ class ODataClientBase
 
       while iPending > 0 do
 
+         urlPaging   = "#{urlPage}#{iSkip}"
+=begin
          urlPaging   = "#{urlPage}#{iSkip}#{condition}"
 
          if @sensingtime != nil then
@@ -283,20 +311,29 @@ class ODataClientBase
                urlPaging = "#{urlPaging.dup} and #{@attributeDateAvailable} ge #{@creationStart} and #{@attributeDateAvailable} lt #{@creationEnd}"
             end
          end
+=end
 
          ## -----------------------------------------
       
-         uri         = URI.parse(urlPaging)    
-         cmdCurl     = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.request_uri}\'"
-         
+         uri         = URI.parse(urlPaging)
+
+         if @user != "" and @user != nil then
+            cmdCurl     = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.request_uri}\'"
+         else
+            cmdCurl     = "curl -k \'#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.request_uri}\'"
+         end
          ## -------------------------------------------- 
          if @isDebugMode == true then
             @logger.debug(cmdCurl)
          end
          ## --------------------------------------------
          
-         request     = Net::HTTP::Get.new(uri.request_uri)   
-         request.basic_auth(@user, @password)
+         request     = Net::HTTP::Get.new(uri.request_uri)
+
+         if @user != "" and @user != nil then
+            request.basic_auth(@user, @password)
+         end
+         
          response    = nil
          iRetry      = 1
       
@@ -318,20 +355,20 @@ class ODataClientBase
                iRetry   = iRetry + 1
                response = nil
                @logger.warn("Retry [#{iRetry}] #{uri.scheme}://#{uri.host}#{uri.request_uri}")
-               sleep(5.0)
+               sleep(30.0)
             end
             
          end
          
-         ## datatake is carrying the mission id
-         createFileMetadata(dhus_instance, mission, response.body, iSkip)
+         ## type is carrying the mission id
+         createFileMetadata(endpoint, mission, response.body, iSkip)
 
          if @download == true then
             downloadItems(response.body)
          end
 
-         iPending = iPending - DHUS::API_TOP_LIMIT_ITEMS
-         iSkip    = iSkip    + DHUS::API_TOP_LIMIT_ITEMS
+         iPending = iPending - @topLimits
+         iSkip    = iSkip    + @topLimits
          
       end
       
@@ -345,7 +382,12 @@ class ODataClientBase
    ##
    
    def queryCount(urlCount, condition)
-      
+      @logger.debug("")
+      @logger.debug("queryCount => urlCount : #{urlCount} | condition : #{condition}")
+      @logger.debug("")
+
+
+=begin
       if @datetime != nil then
          if @bUseDateTime == true then
             urlCount = "#{urlCount}#{condition} and #{@attributeDateAvailable} ge datetime'#{@datetime}'"
@@ -364,11 +406,11 @@ class ODataClientBase
 
       ## https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=year(ContentDate/End)%20le%202015%20and%20month(IngestionDate)%20eq%2012
 
-      ## curl -k -u borjalf:perrillo.pwd "https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=year(ContentDate/End)%20le%202015"
+      ## curl -k -u user:password "https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=year(ContentDate/End)%20le%202015"
 
       ## https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=year(ContentDate/End)%20lt%202014%20and%20month(IngestionDate)%20eq%2012
 
-      ## curl -k -u borjalf:perrillo.pwd 'https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=year(ContentDate/End)%20lt%202015%20and%20month(IngestionDate)%20eq%2012'
+      ## curl -k -u user:password 'https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=year(ContentDate/End)%20lt%202015%20and%20month(IngestionDate)%20eq%2012'
 
       if @creationtime != nil then
          if @bUseDateTime == true then
@@ -377,9 +419,16 @@ class ODataClientBase
             urlCount = "#{urlCount}#{condition} and #{@attributeDateAvailable} ge #{@creationStart} and #{@attributeDateAvailable} lt #{@creationEnd}"
          end
       end
+=end
 
       uri      = URI.parse(urlCount)
-      cmdCurl  = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.request_uri}\'"
+
+      cmdCurl  = ''
+      if @user != "" and @user != nil then
+         cmdCurl  = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.request_uri}\'"
+      else
+         cmdCurl  = "curl -k \'#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.request_uri}\'"
+      end
 
       ## --------------------------------------------
       if @isDebugMode == true then
@@ -398,9 +447,16 @@ class ODataClientBase
       http.verify_mode  = OpenSSL::SSL::VERIFY_NONE
       ###############################################
       
-      request              = Net::HTTP::Get.new(uri.request_uri)   
-      request.basic_auth(@user, @password)
+      request              = Net::HTTP::Get.new(uri.request_uri)
       
+      if @user != "" and @user != nil then
+         if @isDebugMode == true then
+            @logger.debug("request.basic_auth(#{@user}, #{@password})")
+         end
+         
+         request.basic_auth(@user, @password)
+      end
+
       response = nil   
       iRetry   = 0
       
@@ -468,23 +524,23 @@ class ODataClientBase
       filename = ""
    
       if @datetime != nil then
-         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_ADGS_#{@currentDate}_V#{@datetime.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
+         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_V#{@datetime.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
       end
 
       if @creationtime != nil then
          if service_instance == "GNSS" then
-            filename = "DEC_OPER_AGNSS_#{mission.ljust(3,"_")}_ADGS_#{@currentDate}_V#{@creationStart.gsub("-","").gsub(":","").split(".")[0]}_#{@creationEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
+            filename = "DEC_OPER_AGNSS_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_V#{@creationStart.gsub("-","").gsub(":","").split(".")[0]}_#{@creationEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
          else
-            filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_ADGS_#{@currentDate}_V#{@creationStart.gsub("-","").gsub(":","").split(".")[0]}_#{@creationEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
+            filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_V#{@creationStart.gsub("-","").gsub(":","").split(".")[0]}_#{@creationEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
          end
       end
    
       if @sensingtime != nil then
-         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_ADGS_#{@currentDate}_V#{@sensingStart.gsub("-","").gsub(":","").split(".")[0]}_#{@sensingEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
+         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_V#{@sensingStart.gsub("-","").gsub(":","").split(".")[0]}_#{@sensingEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
       end
    
       if @creationtime == nil and @sensingtime == nil and @datetime == nil then
-         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_ADGS_#{@currentDate}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
+         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
       end
       
       filenameTemp = ".TEMP_#{filename}"
@@ -505,10 +561,13 @@ class ODataClientBase
 
    ## process count reply from the http body
    def processCountReply(body)
+      # @logger.debug("ODataClient::processCountReply")
       if body.include?("odata") == true then
+         # @logger.debug("ODataClient::processCountReply odata found")
          obj = JSON.parse(body)
-         return obj["count"].to_i
+         return obj["@odata.count"].to_i
       else
+         # @logger.debug("ODataClient::processCountReply odata not found")
          return body.to_i   
       end      
    end

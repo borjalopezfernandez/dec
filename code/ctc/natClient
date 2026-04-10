@@ -132,9 +132,9 @@ def notify_by_gmail(publicIP)
 
    sourceHostname = `hostname`
 
-   email_to_address = "borja.lopez.fernandez@gmail.com"
+   email_to_address = "destination@gmail.com"
 
-   gmail = Gmail.connect!("borja.esa@gmail.com", "perrillo.pwd")
+   gmail = Gmail.connect!("sender@gmail.com", "password")
 
 #   puts gmail.logged_in?
 
