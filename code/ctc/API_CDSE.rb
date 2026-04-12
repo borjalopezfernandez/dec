@@ -10,10 +10,17 @@
 ## > https://catalogue.dataspace.copernicus.eu/odata/v1/Products?$select=Name,CreationDate,IngestionDate,Online,ContentDate
 ## > https://documentation.dataspace.copernicus.eu/APIs/OData.html#top-option
 ##
+## > https://documentation.dataspace.copernicus.eu/APIs/OData.html#query-by-attributes
+## Attributes/OData.CSC.ValueTypeAttribute/any(att:att/Name eq ‘[Attribute.Name]’ and att/OData.CSC.ValueTypeAttribute/Value eq [Attribute.Value])
+## Attributes/OData.CSC.StringAttribute/any(att:att/Name eq ‘[Attribute.Name]’ and att/OData.CSC.StringAttribute/Value eq ‘[Attribute.Value]’)
+##
+##
 ## Authentication:
 ## https://documentation.dataspace.copernicus.eu/APIs/Token.html
 ##
 ## Sentinel-3 OLCI products in the CDSE catalogue
+## https://catalogue.dataspace.copernicus.eu/odata/v1/Attributes(SENTINEL-3)
+## [{"Name":"productType","ValueType":"String"},{"Name":"landCover","ValueType":"Double"},{"Name":"cloudCover","ValueType":"Double"},{"Name":"timeliness","ValueType":"String"},{"Name":"brightCover","ValueType":"Double"},{"Name":"coordinates","ValueType":"String"},{"Name":"cycleNumber","ValueType":"Integer"},{"Name":"orbitNumber","ValueType":"Integer"},{"Name":"coastalCover","ValueType":"Double"},{"Name":"processorName","ValueType":"String"},{"Name":"closedSeaCover","ValueType":"Integer"},{"Name":"openOceanCover","ValueType":"Integer"},{"Name":"orbitDirection","ValueType":"String"},{"Name":"processingDate","ValueType":"DateTimeOffset"},{"Name":"snowOrIceCover","ValueType":"Double"},{"Name":"lastOrbitNumber","ValueType":"Integer"},{"Name":"operationalMode","ValueType":"String"},{"Name":"processingLevel","ValueType":"String"},{"Name":"processingCenter","ValueType":"String"},{"Name":"processorVersion","ValueType":"String"},{"Name":"salineWaterCover","ValueType":"Double"},{"Name":"tidalRegionCover","ValueType":"Double"},{"Name":"platformShortName","ValueType":"String"},{"Name":"baselineCollection","ValueType":"String"},{"Name":"lastOrbitDirection","ValueType":"String"},{"Name":"processingBaseline","ValueType":"String"},{"Name":"continentalIceCover","ValueType":"Integer"},{"Name":"instrumentShortName","ValueType":"String"},{"Name":"relativeOrbitNumber","ValueType":"Integer"},{"Name":"freshInlandWaterCover","ValueType":"Double"},{"Name":"lastRelativeOrbitNumber","ValueType":"Integer"},{"Name":"platformSerialIdentifier","ValueType":"String"}]
 ## https://sentiwiki.copernicus.eu/web/olci-products
 ## https://sentiwiki.copernicus.eu/web/olci-products#S3-OLCI-Products-L1B
 ##
