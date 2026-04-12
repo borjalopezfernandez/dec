@@ -9,10 +9,7 @@ require 'json'
 require 'filesize'
 
 require 'cuc/Log4rLoggerFactory'
-
-## Dirty thing regarding OpenHub download with uuid in single quote
 require 'ctc/API_DHUS'
-
 require 'dec/DEC_Environment'
 
 module DEC
@@ -24,7 +21,7 @@ class ODataClientBase
    
    ## -------------------------------------------------------------
    
-   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger)
+   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, debug = false)
       @user          = user
       @password      = password      
       @query         = query.upcase
@@ -37,6 +34,10 @@ class ODataClientBase
       @format        = "json"
       @currentDate   = DateTime.now.strftime("%Y%m%dT%H%M%S")
       
+      if debug == true then
+         self.setDebugMode
+      end
+
       if @sensingtime != nil then
          @sensingStart = @sensingtime.split(",")[0]
          @sensingEnd   = @sensingtime.split(",")[1]
@@ -195,7 +196,6 @@ class ODataClientBase
          if @isDebugMode == true then
             @logger.debug("request.basic_auth(#{@user}, #{@password})")
          end
-         
          request.basic_auth(@user, @password)
       end
 
@@ -251,6 +251,8 @@ class ODataClientBase
       
       if @download == true then
          downloadItems(response.body)
+      else
+         listItems(response.body)
       end
          
       iPending = iPending - @topLimits
@@ -357,7 +359,6 @@ class ODataClientBase
                @logger.warn("Retry [#{iRetry}] #{uri.scheme}://#{uri.host}#{uri.request_uri}")
                sleep(30.0)
             end
-            
          end
          
          ## type is carrying the mission id
@@ -365,15 +366,13 @@ class ODataClientBase
 
          if @download == true then
             downloadItems(response.body)
+         else
+            listItems(response.body)
          end
-
          iPending = iPending - @topLimits
          iSkip    = iSkip    + @topLimits
-         
       end
-      
       return true
-   
    end
 
    ## --------------------------------------------
@@ -382,10 +381,11 @@ class ODataClientBase
    ##
    
    def queryCount(urlCount, condition)
-      @logger.debug("")
-      @logger.debug("queryCount => urlCount : #{urlCount} | condition : #{condition}")
-      @logger.debug("")
-
+      if @isDebugMode == true then
+         @logger.debug("")
+         @logger.debug("queryCount => urlCount : #{urlCount} | condition : #{condition}")
+         @logger.debug("")
+      end
 
 =begin
       if @datetime != nil then
@@ -420,16 +420,13 @@ class ODataClientBase
          end
       end
 =end
-
       uri      = URI.parse(urlCount)
-
       cmdCurl  = ''
       if @user != "" and @user != nil then
          cmdCurl  = "curl -k -u #{@user}:#{@password} \'#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.request_uri}\'"
       else
          cmdCurl  = "curl -k \'#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.request_uri}\'"
       end
-
       ## --------------------------------------------
       if @isDebugMode == true then
          @logger.debug(cmdCurl)
@@ -453,7 +450,6 @@ class ODataClientBase
          if @isDebugMode == true then
             @logger.debug("request.basic_auth(#{@user}, #{@password})")
          end
-         
          request.basic_auth(@user, @password)
       end
 
@@ -461,12 +457,10 @@ class ODataClientBase
       iRetry   = 0
       
       while response == nil and iRetry <= 5 do
-      
          begin
             if iRetry != 0 then
                sleep(5.0)
                @logger.info("[DEC_255] I/F #{@system}: Retry [#{iRetry}] #{uri.scheme}://#{uri.host}#{uri.request_uri}")
-
             end
             response = http.request(request)
  
@@ -536,7 +530,7 @@ class ODataClientBase
       end
    
       if @sensingtime != nil then
-         filename = "DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_V#{@sensingStart.gsub("-","").gsub(":","").split(".")[0]}_#{@sensingEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
+         filename = "#{Dir.pwd}/DEC_OPER_OP#{@system.slice(0,4)}_#{mission.ljust(3,"_")}_FCOPS_#{@currentDate}_V#{@sensingStart.gsub("-","").gsub(":","").split(".")[0]}_#{@sensingEnd.gsub("-","").gsub(":","").split(".")[0]}_#{@iTotal}_#{iSkip.to_s.rjust(@iTotal.to_s.length,'0')}.#{@format}"
       end
    
       if @creationtime == nil and @sensingtime == nil and @datetime == nil then
@@ -573,6 +567,23 @@ class ODataClientBase
    end
    ## -------------------------------------------------------------
 
+   def listItems(body)
+      if @isDebugMode == true then
+         @logger.debug("ODataClient::listItems")
+      end
+      if body.include?("@odata") == true then
+         obj = JSON.parse(body)
+         # puts obj["value"].length.to_s + " items found"
+         obj["value"].each{|item|
+            if @isDebugMode == true then
+               @logger.debug(item['Name'])
+            end
+            puts item['Name']
+         }
+      end
+   end
+   ## -------------------------------------------------------------
+
    ## It gets the http body reply
    def downloadItems(body)
       if @isDebugMode == true then
@@ -596,7 +607,6 @@ class ODataClientBase
             if @isDebugMode == true then
                @logger.debug(item)
             end
-
             download(item.css('d|Id').text, item.css('d|Name').text, item.css('d|ContentLength').text.to_i)
          }
       end    

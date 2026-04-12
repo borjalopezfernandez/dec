@@ -27,7 +27,7 @@ class ODataClientFactory
    
    ## -------------------------------------------------------------
    
-   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger)
+   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, debug = false)
       @user          = user
       @password      = password
       @query         = query
@@ -38,7 +38,8 @@ class ODataClientFactory
       @download      = download
       @logger        = logger
       @query         = query
-      @logger        = logger            
+      @logger        = logger    
+      @isDebugMode   = debug        
    end
    ## -----------------------------------------------------------
   
@@ -54,24 +55,24 @@ class ODataClientFactory
 
    def get_instance
 
-      if @query.include?("CDSE") == true then
-         return ODataClientCDSE.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
+      if @query.include?('CDSE') == true then
+         return ODataClientCDSE.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @isDebugMode)
       end
 
-      if @query.include?("TEST_ADGS") == true then
-         return ODataClientTEST_ADGS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
+      if @query.include?('TEST_ADGS') == true then
+         return ODataClientTEST_ADGS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @isDebugMode)
       end
   
-      if @query.include?("ADGS") == true then
-         return ODataClientADGS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
+      if @query.include?('ADGS') == true then
+         return ODataClientADGS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @isDebugMode)
       end
 
-      if @query.include?("DHUS_S5P") == true then
-         return ODataClientDHUS_S5P.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
+      if @query.include?('DHUS_S5P') == true then
+         return ODataClientDHUS_S5P.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @isDebugMode)
       end
 
-      if @query.include?("DHUS") == true then
-         return ODataClientDHUS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger)
+      if @query.include?('DHUS') == true then
+         return ODataClientDHUS.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @isDebugMode)
       end
       
       raise "no OData instance recognised for the query #{@query}"

@@ -1,17 +1,72 @@
 #!/usr/bin/env ruby
 
-## https://scihub.copernicus.eu/userguide/ODataAPI
-## > https://catalogue.dataspace.copernicus.eu/odata/v1/Products?$select=Name,CreationDate,IngestionDate,Online,ContentDate
 ##
-## OData https://scihub.copernicus.eu/apihub/odata/v1
-
-## https://documentation.dataspace.copernicus.eu/APIs/OData.html#top-option
+## CDSE - Copernicus Data Space Ecosystem
+## https://dataspace.copernicus.eu/
+##
+## > https://documentation.dataspace.copernicus.eu/APIs/OData.html
+## > https://documentation.dataspace.copernicus.eu/APIs/OData.html#odata-products-endpoint
+## > https://documentation.dataspace.copernicus.eu/APIs/OData.html#query-collection-of-products
+## > https://catalogue.dataspace.copernicus.eu/odata/v1/Products?$select=Name,CreationDate,IngestionDate,Online,ContentDate
+## > https://documentation.dataspace.copernicus.eu/APIs/OData.html#top-option
+##
+## Authentication:
+## https://documentation.dataspace.copernicus.eu/APIs/Token.html
+##
+## Sentinel-3 OLCI products in the CDSE catalogue
+## https://sentiwiki.copernicus.eu/web/olci-products
+## https://sentiwiki.copernicus.eu/web/olci-products#S3-OLCI-Products-L1B
+##
+## Sentinel-3 SLSTR products in the CDSE catalogue
+## https://sentiwiki.copernicus.eu/web/slstr-products
+## https://sentiwiki.copernicus.eu/web/slstr-products#S3-SLSTR-Products-L1B-Observation-Mode
+##
+## MMM_OL_L_TTTTTT_yyyymmddThhmmss_YYYYMMDDTHHMMSS_YYYYMMDDTHHMMSS_[instance ID]_GGG_[class ID].SEN3
+## MMM_SL_L_TTTTTT_yyyymmddThhmmss_YYYYMMDDTHHMMSS_YYYYMMDDTHHMMSS_[instance ID]_GGG_[class ID].SEN3
+##
+## MMM - mission ID (S3A, S3B)
+## L - processing level (L1, L2)
+## TTTTTT - product type (OL_1_EFR___, OL_1_ERR___, OL_2_LFR___, OL_2_LRR___, OL_2_WFR___)
+## TTTTTT - product type (SL_1_RBT___)
+## yyyymmddThhmmss - sensing start time
+## YYYYMMDDTHHMMSS - sensing stop time
+## YYYYMMDDTHHMMSS - product generation time
+## instance ID - unique identifier of the product instance
+## GGG - ground segment identifier (e.g. S3OP, S3PP)
+## class ID - processing baseline identifier (e.g. 02.00, 03.01)
+##
+##
+## S3A_OL_1_ERR____20260411T043233_20260411T051645_20260411T064044_2652_138_133______PS1_O_NR_004.SEN3
+## S3B_OL_1_ERR____20260411T053450_20260411T061902_20260411T080526_2652_118_376______ESA_O_NR_004.SEN3
 
 =begin
 By default, if the orderby option is not used, the results are not ordered. If orderby option is used, additional orderby by id is also used, so that the results are fully ordered, and no products are lost while paginating through the results.
-
 The acceptable arguments for this option: ContentDate/Start, ContentDate/End, PublicationDate, ModificationDate, in directions: asc, desc.
 
+decODataClient --query cdse:s3:OL_1_ERR___  --time 2026-04-12T00:00:00.000Z | grep "S3B" | grep "NR"
+
+S3B_OL_1_ERR____20260411T222438_20260411T230850_20260412T004831_2652_119_001______ESA_O_NR_004.SEN3
+S3B_OL_1_ERR____20260412T000537_20260412T004949_20260412T023156_2652_119_002______ESA_O_NR_004.SEN3
+S3B_OL_1_ERR____20260412T014635_20260412T023047_20260412T041248_2652_119_003______ESA_O_NR_004.SEN3
+S3B_OL_1_ERR____20260412T032734_20260412T041146_20260412T055250_2652_119_004______ESA_O_NR_004.SEN3
+S3B_OL_1_ERR____20260412T050833_20260412T055245_20260412T073727_2652_119_005______ESA_O_NR_004.SEN3
+
+decODataClient --query cdse:s3:OL_1_EFR___  --time 2026-04-12T00:00:00.000Z | grep "S3B" | grep "NR"
+S3B_OL_1_EFR____20260411T212524_20260411T212751_20260412T000234_0146_118_385_3960_ESA_O_NR_004.SEN3
+S3B_OL_1_EFR____20260411T222438_20260411T222723_20260412T004441_0165_119_001_1440_ESA_O_NR_004.SEN3
+S3B_OL_1_EFR____20260411T222723_20260411T223023_20260412T004035_0179_119_001_1620_ESA_O_NR_004.SEN3
+S3B_OL_1_EFR____20260411T223023_20260411T223323_20260412T004153_0179_119_001_1800_ESA_O_NR_004.SEN3
+S3B_OL_1_EFR____20260411T223323_20260411T223623_20260412T004138_0180_119_001_1980_ESA_O_NR_004.SEN3
+
+decODataClient --query cdse:s3:OL_1_ERR___  --time 2026-04-12T00:00:00.000Z | grep "S3A" | grep "NR"
+S3A_OL_1_ERR____20260411T230320_20260411T234731_20260412T010809_2651_138_144______PS1_O_NR_004.SEN3
+S3A_OL_1_ERR____20260412T004419_20260412T012830_20260412T025157_2651_138_145______PS1_O_NR_004.SEN3
+S3A_OL_1_ERR____20260412T022517_20260412T030929_20260412T043537_2652_138_146______PS1_O_NR_004.SEN3
+S3A_OL_1_ERR____20260412T040616_20260412T045028_20260412T061620_2652_138_147______PS1_O_NR_004.SEN3
+S3A_OL_1_ERR____20260412T054715_20260412T063127_20260412T075832_2652_138_148______PS1_O_NR_004.SEN3
+
+S3B_OL_1_ERR____20260411T222438_20260411T230850_20260412T004831_2652_119_001______ESA_O_NR_004.SEN3
+S3B_OL_1_EFR____20260411T222438_20260411T222723_20260412T004441_0165_119_001_1440_ESA_O_NR_004.SEN3
 =end
 
 
@@ -41,6 +96,8 @@ module CDSE
    API_URL_ODATA_COUNT_SENTINEL3_OL_1_EFR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$top=1&$count=True&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')" 
 
+   API_URL_ODATA_COUNT_SENTINEL3_SL_1_RBT___  =\
+    "#{API_ROOT}/odata/v1/Products?$select=Name&$top=1&$count=True&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'SL_1_RBT___')" 
 
    API_URL_ODATA_SELECT_BASE_SENTINEL3_OL_1_ERR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_ERR___')"
@@ -48,11 +105,17 @@ module CDSE
    API_URL_ODATA_SELECT_BASE_SENTINEL3_OL_1_EFR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
 
+   API_URL_ODATA_SELECT_BASE_SENTINEL3_SL_1_RBT___  =\
+    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'SL_1_RBT___')"
+
    API_URL_ODATA_SELECT_SENTINEL3_OL_1_ERR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_ERR___')&$orderby=ContentDate/Start asc&$top=1000"
 
    API_URL_ODATA_SELECT_SENTINEL3_OL_1_EFR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')&$orderby=ContentDate/Start asc&$top=1000"
+
+   API_URL_ODATA_SELECT_SENTINEL3_SL_1_RBT___  =\
+   "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'SL_1_RBT___')&$orderby=ContentDate/Start asc&$top=1000"
 
    API_URL_ODATA_SELECT_PAGING_BASE_SENTINEL3_OL_1_ERR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_ERR___')"
@@ -60,12 +123,17 @@ module CDSE
    API_URL_ODATA_SELECT_PAGING_BASE_SENTINEL3_OL_1_EFR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
 
+   API_URL_ODATA_SELECT_PAGING_BASE_SENTINEL3_SL_1_RBT___  =\
+   "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'SL_1_RBT___')"
 
    API_URL_ODATA_SELECT_PAGING_SENTINEL3_OL_1_ERR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_ERR___')&$orderby=ContentDate/Start asc&$top=1000&$skip="
 
    API_URL_ODATA_SELECT_PAGING_SENTINEL3_OL_1_EFR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')&$orderby=ContentDate/Start asc&$top=1000&$skip="
+
+   API_URL_ODATA_SELECT_PAGING_SENTINEL3_SL_1_RBT___  =\
+   "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'SL_1_RBT___')&$orderby=ContentDate/Start asc&$top=1000&$skip="
 
    API_URL_ODATA_PRODUCT_PAGING_S3     =\
     "https://catalogue.dataspace.copernicus.eu/odata/v1/Products?$orderby=CreationDate asc&$format=xml&$select=Name,Id,IngestionDate,CreationDate,Online,ContentLength,EvictionDate,ContentDate,ContentGeometry&$top=50&$skip="

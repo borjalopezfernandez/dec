@@ -9,7 +9,7 @@
 #
 # --query cdse:s3:OL_1_ERR___
 # --query cdse:s3:OL_1_EFR___
-# 
+# --query cdse:s3:SL_1_RBT___
 #
 #
 # DHUS queries:
@@ -51,6 +51,7 @@
 #     --retrieve  downloads every item matching the query
 #     --query     <dhus:l2a:GS2B_20200903T104429_018252_N02.14> | <prip>
 #     --Verbose   it shows OData metadata
+#     --version   it shows the DEC version numnber
 # 
 #
 # prip:S2A_OPER_MSI_L0__DS_VGS2:MSI_L0__GR
@@ -59,9 +60,7 @@
 # 
 # S2B_OPER_MSI_L0__DS_VGS2_20201028T163228_S20201028T144729_N02.09
 
-
 require 'rubygems'
-
 require 'getoptlong'
 require 'net/http'
 require 'date'
@@ -69,9 +68,7 @@ require 'nokogiri'
 require 'json'
 
 require 'cuc/Log4rLoggerFactory'
-
 require 'ctc/API_PRIP'
-
 require 'dec/DEC_Environment'
 require 'dec/ODataClientFactory'
 
