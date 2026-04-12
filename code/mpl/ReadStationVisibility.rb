@@ -1,17 +1,5 @@
 #!/usr/bin/env ruby
 
-#########################################################################
-#
-# ===       
-#
-# === Written by Borja Lopez Fernandez
-#
-# === Deimos Space
-# 
-#
-#
-#########################################################################
-
 require 'rexml/document'
 
 require 'cuc/Converters'
