@@ -64,8 +64,11 @@ COPY ./install/patch/patternformatter.rb /usr/lib/ruby/gems/3.4.0/gems/log4r-1.1
 #SHELL ["/bin/bash", "-c"]
 USER dec
 RUN   mkdir -p /home/dec/.ssh
-# COPY --chown=2020:2020 ./config/ssh/<SMF>.pub /home/dec/.ssh/
-# COPY --chown=2020:2020 ./config/ssh/known_hosts /home/dec/.ssh/known_hosts
+COPY --chown=1000:1002 ./config/ssh/flex-smf.id_rsa /home/dec/.ssh/flex-smf.id_rsa
+COPY --chown=1000:1002 ./config/ssh/flex-smf.id_rsa /home/dec/.ssh/id_rsa
+RUN chmod 400 /home/dec/.ssh/id_rsa
+COPY --chown=1000:1002 ./config/ssh/known_hosts.dec_flex-smf-02 /home/dec/.ssh/known_hosts
+RUN chmod 600 /home/dec/.ssh/known_hosts
 ENV USER=dec HOSTNAME=dec GEM_HOME=/usr/local/bundle PATH="/usr/local/bundle/bin:${PATH}"
 # "------------------------------------------------
 ENTRYPOINT ["/usr/bin/entrypoint_dec_fcops_flx-smf-02_dec.sh"]

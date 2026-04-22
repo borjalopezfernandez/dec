@@ -13,13 +13,10 @@ require 'dec/ReadConfigDEC'
 
 # Preconditions:
 # 1 - setup 
-
 # 2 - teardown
 
-##  0.1 - test_download_s2a_updates (catalogue time)
-
 # Select a single test of the suite
-# ruby decUnitTests_OData_CDSE -n test_my_method 
+# ruby decTestInterface_OData_CDSE -n test_my_method 
 
 
 class DECTestInterfaceCDSE < Test::Unit::TestCase
@@ -150,6 +147,22 @@ class DECTestInterfaceCDSE < Test::Unit::TestCase
       cmd = "decODataClient --query cdse:s3:OL_1_ERR___  --time #{Date.today.to_datetime.strftime("%Y-%m-%dT%H:%M:%S.000Z")}"
       @@logger.debug("#{cmd}")
       assert(system(cmd), "#{cmd} cdse:s3:OL_1_ERR___ with datetime")
+   end
+
+   def test_S3A_OL_1_EFR
+      @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s}")
+      ## Query by Mission collection and product type for Sentinel-3 OL_1_EFR___
+      cmd = "decODataClient --query cdse:s3a:OL_1_EFR___  --time #{Date.today.to_datetime.strftime("%Y-%m-%dT%H:%M:%S.000Z")}"
+      @@logger.debug("#{cmd}")
+      assert(system(cmd), "#{cmd} cdse:s3a:OL_1_EFR___ with datetime")
+   end
+
+   def test_S3A_NR_OL_1_EFR
+      @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s}")
+      ## Query by Mission collection and product type for Sentinel-3 OL_1_EFR___
+      cmd = "decODataClient --query cdse:s3a:NR_OL_1_EFR___  --time #{Date.today.to_datetime.strftime("%Y-%m-%dT%H:%M:%S.000Z")}"
+      @@logger.debug("#{cmd}")
+      assert(system(cmd), "#{cmd} cdse:s3a:NR_OL_1_EFR___ with datetime")
    end
 
    def test_S3_OL_1_EFR

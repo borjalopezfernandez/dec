@@ -45,6 +45,18 @@ class ODataClientCDSE < ODataClientBase
          @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3_SL_1_RBT___
       end
 
+      if query.include?("S3A") and query.include?("OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3A_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3A_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_OL_1_EFR___
+      end
+
+      if query.include?("S3A") and query.include?("NR_OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3A_NR_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3A_NR_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NR_OL_1_EFR___
+      end
+
       if @sensingtime != nil then
          @urlSelect   = CDSE::API_URL_ODATA_PRODUCT_SELECT_BY_SENSING
          @urlPaging   = CDSE::API_URL_ODATA_PRODUCT_PAGING_BY_SENSING
@@ -61,12 +73,19 @@ class ODataClientCDSE < ODataClientBase
       end
       
       if @datetime != nil and @isDebugMode == true then
-         @logger.debug("ODataClientCDSE initialize with datetime: #{datetime}")
-         @logger.debug("ODataClientCDSE PublicationDate urlCount: #{@urlCount}")
-         @logger.debug("ODataClientCDSE PublicationDate urlSelect: #{@urlSelect}")
-         @logger.debug("ODataClientCDSE PublicationDate urlPaging: #{@urlPaging}")
+         @logger.debug("ODataClientCDSE initialize with datetime  : #{datetime}")
+         @logger.debug("ODataClientCDSE PublicationDate urlCount  : #{@urlCount}")
+         @logger.debug("ODataClientCDSE PublicationDate urlSelect : #{@urlSelect}")
+         @logger.debug("ODataClientCDSE PublicationDate urlPaging : #{@urlPaging}")
       end
 
+      if @datetime != nil then
+         @urlCount    = "#{@urlCount.dup}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}"
+         @urlSelect   = "#{@urlSelect.dup}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}&$orderby=ContentDate/Start asc&$top=1000"
+         @urlPaging   = "#{@urlPaging.dup}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}&$orderby=ContentDate/Start asc&$top=1000&$skip="
+      end
+
+=begin
       if @datetime != nil and query.include?("OL_1_ERR___") then
          @urlCount    = "#{@urlCount.dup}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}"
          @urlSelect   = "#{CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3_OL_1_ERR___}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}&$orderby=ContentDate/Start asc&$top=1000"
@@ -84,6 +103,7 @@ class ODataClientCDSE < ODataClientBase
          @urlSelect   = "#{CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3_SL_1_RBT___}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}&$orderby=ContentDate/Start asc&$top=1000"
          @urlPaging   = "#{CDSE::API_URL_ODATA_SELECT_PAGING_BASE_SENTINEL3_SL_1_RBT___}#{CDSE::API_ODATA_FILTER_PUBLICATIONDATE}#{datetime}&$orderby=ContentDate/Start asc&$top=1000&$skip="
       end
+=end
 
       if @param != nil then
          @condition   = "#{@condition.dup} and substringof(%27#{@param}%27,Name)"

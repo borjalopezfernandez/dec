@@ -518,10 +518,9 @@ end
 
 ## Print command line help
 def usage
-   fullpathFile = File.expand_path(__FILE__)
-   
-   value = `#{"head -42 #{fullpathFile}"}`
-      
+   print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
+   fullpathFile   = File.expand_path(__FILE__)
+   value          = `#{"head -42 #{fullpathFile}"}`
    value.lines.drop(1).each{
       |line|
       len = line.length - 1

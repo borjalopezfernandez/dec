@@ -82,6 +82,69 @@
 
    <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  
+      <File Type="*NPPF*">
+         <Description>MPL_NPPF__</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*DNPPF*">
+         <Description>MPL_DNPPF_</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_GS_PLN*">
+         <Description>MPL_GS_PLN</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_GS_CNF*">
+         <Description>MPL_GS_CNF</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_ORBPRE*">
+         <Description>MPL_ORBPRE</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_NOB_IN*">
+         <Description>REP_NOB_IN</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_NOBOUT*">
+         <Description>REP_NOBOUT</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP__CHF__*">
+         <Description>REP__CHF__</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_PSDUMP*">
+         <Description>REP_PSDUMP</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
    <File Type="finals2000A.data">
          <Description>AUX_NBULA_</Description>
          <FromList>

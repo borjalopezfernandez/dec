@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 
-# The decODataClient is a simple OData client to hit Copernicus Sentinel
-# servers to extract Sentinel-2 product metadata.
+# The decODataClient is a simple OData client to hit OData endpoints
 #
 # CDSE queries:
 #
-# Query by Sentinel-3 Product types 
+# Query by Sentinel-3 Product types ; NR and NT timeliness are preppended to the product type 
 #
+# --query cdse:s3a:OL_1_EFR___
+# --query cdse:s3a:NR_OL_1_EFR___
 # --query cdse:s3:OL_1_ERR___
 # --query cdse:s3:OL_1_EFR___
 # --query cdse:s3:SL_1_RBT___

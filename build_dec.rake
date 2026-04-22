@@ -38,19 +38,19 @@ namespace :dec do
    
    ## ----------------------------------------------------------------
 
-   desc "fetch gem dependencies"
+   desc "fetch / download gem dependencies"
 
    task :fetchgems do
       prevDir  = Dir.pwd
-      file     = File.open("gem_dec.gemspec")
-      Dir.chdir("foss/gems")
+      file     = File.open('gem_dec.gemspec')
+      Dir.chdir('install/gems_dependency')
       arrLines = file.readlines
       arrLines.each{|line|
          # gem fetch activerecord --version "=6.0" 
          if line.include?('dependency') then
             item     = line.split("\'")[1]
             version  = line.split("\'")[3]
-            cmd = "gem fetch #{item} -v \"#{version}\""
+            cmd      = "gem fetch #{item} -v \"#{version}\""
             puts cmd
             system(cmd)
          end
@@ -243,9 +243,11 @@ namespace :dec do
 
       ## dec-1.0.37c_naos_test_gsc4eo@nl2-u-moc-srv-01.gem
 
+      # 
+
       dockerFile  = "dec_#{args[:suffix]}_#{args[:user]}@#{args[:host]}.dockerfile"
-      imgFile     = "dec-#{version}_#{args[:suffix]}_#{args[:user]}@#{args[:host]}"
-      imgName     = "dec_#{args[:suffix]}_#{args[:user]}_#{args[:host]}"
+      imgFile     = "dec-#{version}_#{args[:user]}_#{args[:suffix]}@#{args[:host]}"
+      imgName     = "dec_#{args[:user]}_#{args[:suffix]}_#{args[:host]}"
 
       if File.exist?("install/docker/#{dockerFile}") == false then
          puts "DEC Dockerfile #{dockerFile} not present in repository"
@@ -338,7 +340,7 @@ namespace :dec do
    desc "build DEC gem [user, host, suffix = s2 | s2odata]"
 
    task :build, [:user, :host, :suffix] => :load_config do |t, args|
-      args.with_defaults(:user => "dectest", :host => "localhost", :suffix => "s2_test_odata")
+      args.with_defaults(:user => "dectest", :host => "localhost", :suffix => "")
       puts "building gem dec #{args[:suffix]} with config #{args[:user]}@#{args[:host]}"
    
       if File.exist?("#{@rootConf}/#{args[:user]}@#{args[:host]}") == false then
@@ -408,8 +410,8 @@ namespace :dec do
       end
       filename = ret.split("File: ")[1].chop
       name     = File.basename(filename, ".*")
-      mv filename, "#{name}_#{args[:suffix]}_#{args[:user]}@#{args[:host]}.gem"
-      @filename = "#{name}_#{args[:suffix]}_#{args[:user]}@#{args[:host]}.gem"
+      mv filename, "#{name}_#{args[:user]}_#{args[:suffix]}@#{args[:host]}.gem"
+      @filename  = "#{name}_#{args[:user]}_#{args[:suffix]}@#{args[:host]}.gem"
       cp @filename, "install/gems/dec_#{args[:suffix]}.gem"
       cp @filename, "install/gems/"
       begin
@@ -625,6 +627,7 @@ namespace :dec do
       puts "rake -f build_dec.rake dec:podman_build[gsc4eo,nl2-s-aut-srv-01,naos]"
       puts 
       puts "DEC Unit Tests"
+      puts "rake -f build_dec.rake dec:install[fcops,localhost]"
       puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg_odata]"
       puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]"
       puts

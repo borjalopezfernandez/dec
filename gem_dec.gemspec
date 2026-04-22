@@ -137,43 +137,45 @@ Gem::Specification.new do |s|
 
   ## ----------------------------------------------
 
-  s.required_ruby_version = '>= 3.4'
+   # s.required_ruby_version = '>= 3.4'
+   s.required_ruby_version = '>= 3.3'
 
-  ## ----------------------------------------------
+   ## ----------------------------------------------
 
-  s.add_dependency('activerecord', '~> 6.0')
-  s.add_dependency('bcrypt', '~> 3.1')
-  s.add_dependency('bcrypt_pbkdf', '~> 1.1')
-  s.add_dependency('bigdecimal', '~> 4.0')
-  s.add_dependency('curb', '~> 1.0')
-  s.add_dependency('dotenv', '~> 2')
-  s.add_dependency('ffi', '~> 1.15')
-  s.add_dependency('filesize', '~> 0.1')
-  s.add_dependency('ftools', '~> 0.0')
-  s.add_dependency('ftpfxp', '~> 0.0')
-  s.add_dependency('getoptlong', '~> 0.2')
-  s.add_dependency('log4r', '~> 1.0')
-  s.add_dependency('manpages', '~> 0.6')
-  s.add_dependency('mutex_m', '~> 0.3')
-  s.add_dependency('nats', '~> 0.11')
-  s.add_dependency('nats-pure', '~> 2.0')
-  s.add_dependency('net_dav', '~> 0.5')
-  s.add_dependency('net-ftp', '~> 0.1')
-  s.add_dependency('net-pop', '~> 0.1')
-  s.add_dependency('net-sftp', '~> 4.0')
-  s.add_dependency('net-smtp', '~> 0.3')
-  s.add_dependency('net-ssh', '~> 7.2')
-  s.add_dependency('rexml', '~> 3.2')
-  s.add_dependency('roman-numerals', '~> 0.3')
-  s.add_dependency('ed25519', '~> 1.3')
-  s.add_dependency('open-uri', '~> 0.5')
-  s.add_dependency('nokogiri', '~> 1.1')
-  s.add_dependency('shell', '~> 0.8')
+   s.add_dependency('activerecord', '~> 6.0')
+   s.add_dependency('activesupport', '~> 6.0')
+   s.add_dependency('bcrypt', '~> 3.1')
+   s.add_dependency('bcrypt_pbkdf', '~> 1.1')
+   s.add_dependency('bigdecimal', '~> 4.0')
+   s.add_dependency('curb', '~> 1.0')
+   s.add_dependency('dotenv', '~> 2')
+   s.add_dependency('ffi', '~> 1.15')
+   s.add_dependency('filesize', '~> 0.1')
+   s.add_dependency('ftools', '~> 0.0')
+   s.add_dependency('ftpfxp', '~> 0.0')
+   s.add_dependency('getoptlong', '~> 0.2')
+   s.add_dependency('log4r', '~> 1.0')
+   s.add_dependency('manpages', '~> 0.6')
+   s.add_dependency('mutex_m', '~> 0.3')
+   s.add_dependency('nats', '~> 0.11')
+   s.add_dependency('nats-pure', '~> 2.0')
+   s.add_dependency('net_dav', '~> 0.5')
+   s.add_dependency('net-ftp', '~> 0.1')
+   s.add_dependency('net-pop', '~> 0.1')
+   s.add_dependency('net-sftp', '~> 4.0')
+   s.add_dependency('net-smtp', '~> 0.3')
+   s.add_dependency('net-ssh', '~> 7.2')
+   s.add_dependency('rexml', '~> 3.2')
+   s.add_dependency('roman-numerals', '~> 0.3')
+   s.add_dependency('ed25519', '~> 1.3')
+   s.add_dependency('open-uri', '~> 0.5')
+   s.add_dependency('nokogiri', '~> 1.1')
+   s.add_dependency('shell', '~> 0.8')
 
-  if ENV.include?("DEC_TEST") == true then
-     s.add_dependency('minitest', '~> 5.15')
-     s.add_dependency('test-unit', '~> 3.5')
-  end
+   if ENV.include?("DEC_TEST") == true then
+      s.add_dependency('minitest', '~> 5.15')
+      s.add_dependency('test-unit', '~> 3.5')
+   end
 
 #  ## --------------------------------------------
 #  ##

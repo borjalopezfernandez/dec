@@ -94,10 +94,10 @@ class SFTPBatchClient
       if retVal == true then
          retVal = processStdError(errorFile)
       end
-      if FileTest.exists?(@batchFile) then # and retVal == true then 
+      if FileTest.exist?(@batchFile) then # and retVal == true then 
          File.delete(@batchFile)
       end 
-      if FileTest.exists?(errorFile) then # and retVal == true then 
+      if FileTest.exist?(errorFile) then # and retVal == true then 
          File.delete(errorFile)
       end      
       return retVal
