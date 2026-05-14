@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-
 require 'rake'
 require 'date'
 require 'fileutils'
@@ -254,7 +253,7 @@ namespace :dec do
          exit(99)
       end
 
-      cmd = "podman build --format docker -f \"install/docker/#{dockerFile}\" -t #{imgName} ."
+      cmd = "podman build --cap-add=all --format docker -f \"install/docker/#{dockerFile}\" -t #{imgName} ."
       puts
       puts cmd
       puts

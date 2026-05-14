@@ -13,6 +13,7 @@
 #
 FROM alpine:3.23
 # ================================================
+# USER root
 RUN apk update && apk add --no-cache build-base
 RUN apk --no-cache add linux-headers
 RUN apk --no-cache add procps
@@ -33,6 +34,7 @@ RUN apk --no-cache add ruby
 RUN apk --no-cache add ruby-dev
 RUN gem update --system --no-document
 #
+USER root
 #RUN gem update
 COPY ./install/gems/dec_latest.gem .
 RUN gem install dec_latest.gem --no-document
