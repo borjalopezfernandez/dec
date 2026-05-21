@@ -132,7 +132,11 @@ class InterfaceHandlerSFTP < InterfaceHandlerAbstract
 
       cmd = ""
 
-      if @server[:password] == "" then
+      if @server[:password] == '' or @server[:password] == nil then
+
+         if @isDebugMode == true then
+            @logger.debug("InterfaceHandlerSFTP::getDirList => SSH key authentication")
+         end
 
          cmd = self.createSftpCommand(@server[:hostname],
                                   @server[:port],
@@ -149,6 +153,10 @@ class InterfaceHandlerSFTP < InterfaceHandlerAbstract
                                   "-1",
                                   nil)
       else
+
+         if @isDebugMode == true then
+            @logger.debug("InterfaceHandlerSFTP::getDirList => password authentication")
+         end
 
          cmd = self.createSftpSshPassCommand(@server[:hostname],
                                  @server[:port],

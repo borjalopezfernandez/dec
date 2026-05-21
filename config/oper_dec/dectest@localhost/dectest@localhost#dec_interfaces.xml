@@ -78,8 +78,8 @@
     <Server>
       <Protocol>SFTP</Protocol>
       <Hostname>localhost</Hostname>
-	   <Port>2222</Port>      
-      <User>test_sftp</User>
+	   <Port>22</Port>      
+      <User>$USER</User>
       <Pass></Pass>
       <RegisterContentFlag>false</RegisterContentFlag>
       <RetrieveContentFlag>true</RetrieveContentFlag>

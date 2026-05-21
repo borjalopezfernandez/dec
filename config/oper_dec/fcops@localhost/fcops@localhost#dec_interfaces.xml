@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+<!-- ================================================================ -->
+
+<Interface Name="MPF_2_SMF">
+  <Desc>MPF 2 SMF</Desc>
+  <TXRXParams>
+    <Enabled4Sending>false</Enabled4Sending>
+    <Enabled4Receiving>true</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">60</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>172.29.222.2</Hostname>
+    <Port>22</Port>
+    <User>mpsoper</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+      <Event Name='OnReceiveNewFilesOK'     executeCmd="decSend2Interface -m SMF_PDGS_MPF"/>
+      <Event Name='OnReceiveOK'             executeCmd="decSend2Interface -m SMF_PDGS_MPF"/>
+      <!--
+      <Event Name='OnReceiveNewFile'        executeCmd="echo 'OnReceiveNewFile from SMF_PDGS'"/>
+      <Event Name='NewFile2Intray'          executeCmd="echo 'NewFile2Intray from SMF_PDGS %f / %F'"/>
+      -->
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+<!-- ================================================================ -->
+
+<Interface Name="CPF_2_SMF">
+  <Desc>CPF 2 SMF</Desc>
+  <TXRXParams>
+    <Enabled4Sending>false</Enabled4Sending>
+    <Enabled4Receiving>true</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">60</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>172.29.222.4</Hostname>
+    <Port>22</Port>
+    <User>dec</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+      <Event Name='OnReceiveNewFilesOK'     executeCmd="decSend2Interface -m SMF_PDGS_CPF"/>
+      <Event Name='OnReceiveOK'             executeCmd="decSend2Interface -m SMF_PDGS_CPF"/>
+      <!--
+      <Event Name='OnReceiveNewFile'        executeCmd="echo 'OnReceiveNewFile from SMF_PDGS'"/>
+      <Event Name='NewFile2Intray'          executeCmd="echo 'NewFile2Intray from SMF_PDGS %f / %F'"/>
+      -->
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+<!-- ================================================================ -->
+
+
+<!-- ================================================================ -->
+
+<Interface Name="MARF_2_SMF">
+  <Desc>MARF Interface</Desc>
+  <TXRXParams>
+    <Enabled4Sending>false</Enabled4Sending>
+    <Enabled4Receiving>true</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">60</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <!--
+    <Hostname>ftp-lm.damps.info</Hostname>
+    -->
+    <Hostname>213.166.43.28</Hostname>
+    <!--
+    <Port>2022</Port
+    -->
+    <Port>2022</Port>
+    <!--
+    <User>ftp_lm_flex_repo</User
+    -->
+    <User>ftp_lm_flex_repo</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+   <Events>
+      <Event Name='OnReceiveNewFilesOK'     executeCmd="decSend2Interface -m SMF_PDGS_MARF"/>
+      <Event Name='OnReceiveOK'             executeCmd="decSend2Interface -m SMF_PDGS_MARF"/>
+      <!--
+      <Event Name='OnReceiveNewFile'        executeCmd="echo 'OnReceiveNewFile from SMF_PDGS'"/>
+      <Event Name='NewFile2Intray'          executeCmd="echo 'NewFile2Intray from SMF_PDGS %f / %F'"/>
+      -->
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+<!-- ================================================================ -->
+
+<Interface Name="AF_2_SMF">
+  <Desc>AF 2 SMF</Desc>
+  <TXRXParams>
+    <Enabled4Sending>false</Enabled4Sending>
+    <Enabled4Receiving>true</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">60</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>localhost</Hostname>
+    <Port>22</Port>
+    <User>$USER</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+      <Event Name='OnReceiveNewFilesOK'     executeCmd="decSend2Interface -m SMF_PDGS_AF"/>
+      <Event Name='OnReceiveOK'             executeCmd="decSend2Interface -m SMF_PDGS_AF"/>
+      <!--
+      <Event Name='OnReceiveNewFile'        executeCmd="echo 'OnReceiveNewFile from SMF_PDGS'"/>
+      <Event Name='NewFile2Intray'          executeCmd="echo 'NewFile2Intray from SMF_PDGS %f / %F'"/>
+      -->
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+<!-- ================================================================ -->
+
+
+<!-- ================================================================ -->
+
+<Interface Name="DAF_2_SMF">
+  <Desc>DAF 2 SMF</Desc>
+  <TXRXParams>
+    <Enabled4Sending>false</Enabled4Sending>
+    <Enabled4Receiving>true</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">60</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>51.210.38.68</Hostname>
+    <Port>22</Port>
+    <User>smf</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+      <Event Name='OnReceiveNewFilesOK'     executeCmd="decSend2Interface -m SMF_PDGS_DAF"/>
+      <Event Name='OnReceiveOK'             executeCmd="decSend2Interface -m SMF_PDGS_DAF"/>
+      <!--
+      <Event Name='OnReceiveNewFile'        executeCmd="echo 'OnReceiveNewFile from SMF_PDGS'"/>
+      <Event Name='NewFile2Intray'          executeCmd="echo 'NewFile2Intray from SMF_PDGS %f / %F'"/>
+      -->
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+<!-- ================================================================ -->
+
+
+ <!-- ================================================================ --> 
+ 
+<Interface Name="IERS_BULA">
+    <Desc>IERS Bulletin A Interface</Desc>
+    <TXRXParams>
+      <Enabled4Sending>false</Enabled4Sending>
+      <Enabled4Receiving>true</Enabled4Receiving>
+      <ImmediateRetries>3</ImmediateRetries>
+      <LoopRetries>2</LoopRetries>
+      <LoopDelay unit="s">1800</LoopDelay>
+      <PollingInterval unit="s">20</PollingInterval>
+      <PollingSize>470</PollingSize>
+      <ParallelDownload>5</ParallelDownload>
+    </TXRXParams>    
+    <Server>
+      <Protocol>HTTP</Protocol>
+      <Hostname>datacenter.iers.org</Hostname>
+	    <Port>443</Port>
+      <User></User>
+      <Pass></Pass>
+      <RegisterContentFlag>false</RegisterContentFlag>
+      <RetrieveContentFlag>true</RetrieveContentFlag>
+      <SecureFlag>true</SecureFlag>
+      <VerifyPeerSSL>false</VerifyPeerSSL>
+      <CompressFlag>false</CompressFlag>
+      <PassiveFlag>false</PassiveFlag>
+      <CleanUpFreq Unit="s">5</CleanUpFreq>
+    </Server>
+    <DeliverByMailTo>
+       <Address></Address>
+    </DeliverByMailTo>
+    <Notify>
+      <SendNotification>false</SendNotification>
+      <To>
+       <Address></Address>
+      </To>
+    </Notify>
+    <Events>
+         <!--
+          <Event Name='OnReceiveNewFile'    executeCmd="auxConverter -m FLEX -f &quot;%F&quot; -d /tmp"/>
+         -->
+    </Events>
+    <ContactInfo>
+      <Name></Name>
+      <EMail></EMail>
+      <Tel></Tel>
+      <Fax></Fax>
+      <Address></Address>
+    </ContactInfo>
+</Interface>
+
+<!-- ================================================================ -->
+
+<Interface Name="IERS_BULB">
+    <Desc>IERS Bulletin B Interface</Desc>
+    <TXRXParams>
+      <Enabled4Sending>false</Enabled4Sending>
+      <Enabled4Receiving>true</Enabled4Receiving>
+      <ImmediateRetries>3</ImmediateRetries>
+      <LoopRetries>2</LoopRetries>
+      <LoopDelay unit="s">1800</LoopDelay>
+      <PollingInterval unit="s">20</PollingInterval>
+      <PollingSize>470</PollingSize>
+      <ParallelDownload>5</ParallelDownload>
+    </TXRXParams>    
+    <Server>
+      <Protocol>HTTP</Protocol>
+      <Hostname>datacenter.iers.org</Hostname>
+	    <Port>443</Port>
+      <User></User>
+      <Pass></Pass>
+      <RegisterContentFlag>false</RegisterContentFlag>
+      <RetrieveContentFlag>true</RetrieveContentFlag>
+      <SecureFlag>true</SecureFlag>
+      <VerifyPeerSSL>false</VerifyPeerSSL>
+      <CompressFlag>false</CompressFlag>
+      <PassiveFlag>false</PassiveFlag>
+      <CleanUpFreq Unit="s">5</CleanUpFreq>
+    </Server>
+    <DeliverByMailTo>
+       <Address></Address>
+    </DeliverByMailTo>
+    <Notify>
+      <SendNotification>false</SendNotification>
+      <To>
+       <Address></Address>
+      </To>
+    </Notify>
+    <Events>
+         <!--
+          <Event Name='OnReceiveNewFile'    executeCmd="auxConverter -m FLEX -f &quot;%F&quot; -d /tmp"/>
+         -->
+    </Events>
+    <ContactInfo>
+      <Name></Name>
+      <EMail></EMail>
+      <Tel></Tel>
+      <Fax></Fax>
+      <Address></Address>
+    </ContactInfo>
+</Interface>
+
+<!-- ================================================================ -->
+
+<Interface Name="SMF_PDGS_DAF">
+  <Desc>SMF PDGS/RP S&amp;T endpoint for DAF inputs</Desc>
+  <TXRXParams>
+    <Enabled4Sending>true</Enabled4Sending>
+    <Enabled4Receiving>false</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">300</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>185.170.36.179</Hostname>
+    <Port>22</Port>
+    <!--
+    <Hostname>172.29.222.4</Hostname>
+    <Port>22</Port>
+    -->
+    <User>daf</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+
+<!-- ================================================================ -->
+
+<Interface Name="SMF_PDGS_MARF">
+  <Desc>SMF PDGS/RP S&amp;T endpoint for MARF inputs</Desc>
+  <TXRXParams>
+    <Enabled4Sending>true</Enabled4Sending>
+    <Enabled4Receiving>false</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">300</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>185.170.36.179</Hostname>
+    <Port>22</Port>
+    <!--
+    <Hostname>172.29.222.4</Hostname>
+    <Port>22</Port>
+    -->
+    <User>marf</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+
+<!-- ================================================================ -->
+
+<Interface Name="SMF_PDGS_CPF">
+  <Desc>SMF PDGS/RP S&amp;T endpoint for CPF inputs</Desc>
+  <TXRXParams>
+    <Enabled4Sending>true</Enabled4Sending>
+    <Enabled4Receiving>false</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">300</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>185.170.36.179</Hostname>
+    <Port>22</Port>
+    <!--
+    <Hostname>172.29.222.4</Hostname>
+    <Port>22</Port>
+    -->
+    <User>cpf</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+
+<!-- ================================================================ -->
+
+<Interface Name="SMF_PDGS_MPF">
+  <Desc>SMF PDGS/RP S&amp;T endpoint for MPF inputs</Desc>
+  <TXRXParams>
+    <Enabled4Sending>true</Enabled4Sending>
+    <Enabled4Receiving>false</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">300</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>185.170.36.179</Hostname>
+    <Port>22</Port>
+    <!--
+    <Hostname>172.29.222.4</Hostname>
+    <Port>22</Port>
+    -->
+    <User>mpf</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+
+<!-- ================================================================ -->
+
+<!-- ================================================================ -->
+
+<Interface Name="SMF_PDGS_AF">
+  <Desc>SMF PDGS/RP S&amp;T endpoint for AF inputs</Desc>
+  <TXRXParams>
+    <Enabled4Sending>true</Enabled4Sending>
+    <Enabled4Receiving>false</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">300</LoopDelay>
+    <PollingInterval unit="s">20</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>185.170.36.179</Hostname>
+    <Port>22</Port>
+    <!--
+    <Hostname>172.29.222.4</Hostname>
+    <Port>22</Port>
+    -->
+    <User>af</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+
+<!-- ================================================================ -->
+
+
+
+
+</Interfaces>

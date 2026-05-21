@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <!-- =========================================================== -->
+
+   <ListInterfaces>
+
+      <Interface>
+         <Name>SMF_PDGS_AF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+
+      <Interface>
+         <Name>SMF_PDGS_CPF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+
+      <Interface>
+         <Name>SMF_PDGS_DAF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+
+      <Interface>
+         <Name>SMF_PDGS_MARF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+      
+      <Interface>
+         <Name>SMF_PDGS_MPF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+      
+      <Interface>
+         <Name>FILESYSTEM</Name>
+         <LocalOutbox>$DEC_TMP/dec/out_basket_if_filesystem</LocalOutbox>
+         <UploadDir>/tmp/dec_simul_if/filesystem/upload</UploadDir>
+         <UploadTemp>/tmp/dec_simul_if/filesystem/upload/_TEMP_</UploadTemp>
+      </Interface>      
+            
+   </ListInterfaces>
+
+   <!-- =========================================================== -->
+
+   <ListFiles>
+
+      <File Type="*DWHDATA_OA*">
+         <Description>DAF Report DWHDATA_OAFS</Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_DAF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_ARCUPD*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MARF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_XACQ*">
+         <Description>AF station acquisition report</Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_AF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*_NPPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*MPL_ORBPRE*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*MPL_GS_PLN*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*MPL_GS_CNF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*MPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*MPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*CPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*CPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*CPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*CPF*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_AF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_AF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_PSDUMP*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_PROD*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+      <File Type="*REP_DEL*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+   </ListFiles>
+
+   <!-- =========================================================== -->
+
+</Config>
