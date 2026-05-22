@@ -12,7 +12,7 @@
     <ImmediateRetries>3</ImmediateRetries>
     <LoopRetries>2</LoopRetries>
     <LoopDelay unit="s">60</LoopDelay>
-    <PollingInterval unit="s">20</PollingInterval>
+    <PollingInterval unit="s">120</PollingInterval>
     <PollingSize>100000</PollingSize>
     <ParallelDownload>8</ParallelDownload>
   </TXRXParams>    
@@ -66,7 +66,7 @@
     <ImmediateRetries>3</ImmediateRetries>
     <LoopRetries>2</LoopRetries>
     <LoopDelay unit="s">60</LoopDelay>
-    <PollingInterval unit="s">20</PollingInterval>
+    <PollingInterval unit="s">60</PollingInterval>
     <PollingSize>100000</PollingSize>
     <ParallelDownload>8</ParallelDownload>
   </TXRXParams>    
@@ -123,7 +123,7 @@
     <ImmediateRetries>3</ImmediateRetries>
     <LoopRetries>2</LoopRetries>
     <LoopDelay unit="s">60</LoopDelay>
-    <PollingInterval unit="s">20</PollingInterval>
+    <PollingInterval unit="s">120</PollingInterval>
     <PollingSize>100000</PollingSize>
     <ParallelDownload>8</ParallelDownload>
   </TXRXParams>    
@@ -186,7 +186,7 @@
     <ImmediateRetries>3</ImmediateRetries>
     <LoopRetries>2</LoopRetries>
     <LoopDelay unit="s">60</LoopDelay>
-    <PollingInterval unit="s">20</PollingInterval>
+    <PollingInterval unit="s">60</PollingInterval>
     <PollingSize>100000</PollingSize>
     <ParallelDownload>8</ParallelDownload>
   </TXRXParams>    
@@ -243,7 +243,7 @@
     <ImmediateRetries>3</ImmediateRetries>
     <LoopRetries>2</LoopRetries>
     <LoopDelay unit="s">60</LoopDelay>
-    <PollingInterval unit="s">20</PollingInterval>
+    <PollingInterval unit="s">120</PollingInterval>
     <PollingSize>100000</PollingSize>
     <ParallelDownload>8</ParallelDownload>
   </TXRXParams>    
@@ -292,6 +292,9 @@
 
  <!-- ================================================================ --> 
  
+<!--
+
+
 <Interface Name="IERS_BULA">
     <Desc>IERS Bulletin A Interface</Desc>
     <TXRXParams>
@@ -328,9 +331,9 @@
       </To>
     </Notify>
     <Events>
-         <!--
+        
           <Event Name='OnReceiveNewFile'    executeCmd="auxConverter -m FLEX -f &quot;%F&quot; -d /tmp"/>
-         -->
+         
     </Events>
     <ContactInfo>
       <Name></Name>
@@ -341,7 +344,13 @@
     </ContactInfo>
 </Interface>
 
+-->
+
+
 <!-- ================================================================ -->
+
+
+<!--
 
 <Interface Name="IERS_BULB">
     <Desc>IERS Bulletin B Interface</Desc>
@@ -379,9 +388,9 @@
       </To>
     </Notify>
     <Events>
-         <!--
+     
           <Event Name='OnReceiveNewFile'    executeCmd="auxConverter -m FLEX -f &quot;%F&quot; -d /tmp"/>
-         -->
+        
     </Events>
     <ContactInfo>
       <Name></Name>
@@ -391,6 +400,8 @@
       <Address></Address>
     </ContactInfo>
 </Interface>
+
+-->
 
 <!-- ================================================================ -->
 

@@ -27,7 +27,7 @@
          <Name>CPF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromCPF</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">/data/fcops/cpf/fromCPF/</Directory>
+            <Directory DepthSearch="0">smf</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
@@ -78,7 +78,7 @@
          <Name>DAF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromDAF</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">/data/fcops/daf/smf</Directory>
+            <Directory DepthSearch="0">smf</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
@@ -91,39 +91,7 @@
          </Switches>
       </Interface>
 
-      <Interface>
-         <Name>IERS_BULA</Name>
-         <LocalInbox>/data/fcops/int/fromIERS_BULA</LocalInbox>
-         <DownloadDirs>
-		      <Directory DepthSearch="0">/data/latestVersion/bulletinA.txt</Directory>
-         </DownloadDirs>
-         <Switches>
-            <DeleteDownloaded>false</DeleteDownloaded>
-            <DeleteDuplicated>false</DeleteDuplicated>
-            <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>true</LocalDissemination>
-            <LogDuplicated>false</LogDuplicated>
-            <LogUnknown>false</LogUnknown>
-            <MD5>true</MD5>
-         </Switches>
-      </Interface>
 
-      <Interface>
-         <Name>IERS_BULB</Name>
-         <LocalInbox>/data/fcops/int/fromIERS_BULB</LocalInbox>
-         <DownloadDirs>
-		      <Directory DepthSearch="0">/data/latestVersion/bulletinB.txt</Directory>
-         </DownloadDirs>
-         <Switches>
-            <DeleteDownloaded>false</DeleteDownloaded>
-            <DeleteDuplicated>false</DeleteDuplicated>
-            <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>true</LocalDissemination>
-            <LogDuplicated>false</LogDuplicated>
-            <LogUnknown>false</LogUnknown>
-            <MD5>true</MD5>
-         </Switches>
-      </Interface>
 
    </ListInterfaces>
 
@@ -131,14 +99,10 @@
 
    <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  
-      <File Type="DWHDATA_OA*">
-         <Description>AUX_IERS_A</Description>
-         <FromList>
-            <Interface>DAF_2_SMF</Interface>
-         </FromList>
-      </File>
 
-      <File Type="bulletinA.txt">
+<!--
+
+     <File Type="bulletinA.txt">
          <Description>AUX_IERS_A</Description>
          <FromList>
             <Interface>IERS_BULA</Interface>
@@ -149,6 +113,15 @@
          <Description>AUX_IERS_B</Description>
          <FromList>
             <Interface>IERS_BULB</Interface>
+         </FromList>
+      </File>
+
+-->
+
+      <File Type="DWHDATA_OA*">
+         <Description>AUX_IERS_A</Description>
+         <FromList>
+            <Interface>DAF_2_SMF</Interface>
          </FromList>
       </File>
 
