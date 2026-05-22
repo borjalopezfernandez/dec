@@ -561,7 +561,7 @@ class DEC_ReceiverFromInterface
       begin
          Timeout.timeout(10) do
             if @isDebugMode == true then
-               @logger.debug("[DEC_XXX] I/F #{@entity}: Connecting to #{host} with #{@protocol}")
+               @logger.debug("[DEC_XXX] I/F #{@entity}: Connecting to #{user}@#{host} with #{@protocol}")
             end
             if pass != "N/A" and pass != "" and pass != nil then
                @ftp     = Net::SFTP.start(host, user, :password => pass, :port => port, :timeout => 5)

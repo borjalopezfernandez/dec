@@ -27,7 +27,7 @@
          <Name>CPF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromCPF</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">/data/fcops/int/fromCPF/</Directory>
+            <Directory DepthSearch="0">/data/fcops/cpf/fromCPF/</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
@@ -219,6 +219,8 @@
          <Description>REP_NOB_IN</Description>
          <FromList>
             <Interface>MPF_2_SMF</Interface>
+            <Interface>CPF_2_SMF</Interface>
+            <Interface>AF_2_SMF</Interface>
          </FromList>
       </File>
 
@@ -226,6 +228,8 @@
          <Description>REP_NOBOUT</Description>
          <FromList>
             <Interface>MPF_2_SMF</Interface>
+            <Interface>CPF_2_SMF</Interface>
+            <Interface>AF_2_SMF</Interface>
          </FromList>
       </File>
 
@@ -254,7 +258,7 @@
          <Intray>
             <Name>SMF_PDGS</Name>
             <Directory>/data/fcops/int/smf_pdgs/sftp</Directory>
-            <Execute>echo "Processing file for SMF_PDGS"</Execute>
+            <Execute></Execute>
          </Intray>
 
          <Intray>

@@ -251,7 +251,7 @@
     <Protocol>SFTP</Protocol>
     <Hostname>51.210.38.68</Hostname>
     <Port>22</Port>
-    <User>smf</User>
+    <User>smf_rep</User>
     <Pass></Pass>
     <RegisterContentFlag>false</RegisterContentFlag>
     <RetrieveContentFlag>true</RetrieveContentFlag>
