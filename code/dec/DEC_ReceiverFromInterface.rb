@@ -608,6 +608,10 @@ class DEC_ReceiverFromInterface
    ##
    ## Method that recursively list the files in the directoy corresponding to the given handle.
    def exploreSecureTree(path, depth)
+      if path == '' or path == nil then
+         path = '.'
+      end
+
       req = Array.new
       begin
         Timeout.timeout(300) do
@@ -1813,15 +1817,17 @@ private
 			   retVal = sftpClient.executeAll
             output = sftpClient.output
 
+            if @isDebugMode == true then
+               @logger.debug("I/F #{@entity}: Delete command executed with return value #{retVal}")
+               @logger.debug("I/F #{@entity}: Delete command executed with output value #{output}")
+               puts
+               puts "------------------------------------------"
+               puts "Client FT output is :\n\n"
+               puts output
+               puts "------------------------------------------"
+               puts
+            end
             return retVal
-#            if @isDebugMode == true then
-#               puts
-#               puts "------------------------------------------"
-#               puts "Client FT output is :\n\n"
-#               puts output
-#               puts "------------------------------------------"
-#               puts
-#            end
 			else
            # ncftpget performs the retrieval and delete operation in just one call
            # so additional commands are not required

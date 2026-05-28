@@ -31,7 +31,7 @@
 #
 # -s flag:
 #
-# With this option the DCC Services configured in the dcc_services.xml file are checked.
+# With this option the DEC Services configured in the dec_services.xml file are checked.
 # The check performed with this flag is that the executable set in the command of the service
 # can be found in the $PATH environment variable.
 #
@@ -534,10 +534,9 @@ end
 ##
 ## Print command line help
 def usage
-   fullpathFile = File.expand_path(__FILE__)
-   
-   value = `#{"head -63 #{fullpathFile}"}`
-      
+   print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
+   fullpathFile   = File.expand_path(__FILE__)
+   value          = `#{"head -63 #{fullpathFile}"}`
    value.lines.drop(1).each{
       |line|
       len = line.length - 1

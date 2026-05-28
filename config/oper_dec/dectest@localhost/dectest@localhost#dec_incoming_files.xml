@@ -366,7 +366,10 @@
          <Name>LOCALHOST_SECURE_KEYS</Name>
          <LocalInbox>/tmp/dec/in_basket_if_localhost_secure_keys</LocalInbox>
          <DownloadDirs>
+            <Directory DepthSearch="0"></Directory>
+            <!-- 
 		      <Directory DepthSearch="0">dec_simul_if/localhost_secure_keys/download</Directory>
+             -->
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
@@ -374,7 +377,7 @@
             <DeleteUnknown>false</DeleteUnknown>
             <LocalDissemination>true</LocalDissemination>
             <LogDuplicated>true</LogDuplicated>
-            <LogUnknown>true</LogUnknown>
+            <LogUnknown>false</LogUnknown>
             <MD5>false</MD5>
          </Switches>         
       </Interface>

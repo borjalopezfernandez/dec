@@ -208,14 +208,19 @@ def main
          if @isDebugMode == true then
             @logger.debug("Adding #{entity} to the DEC Inventory/Interfaces")
          end
-         anInterface = Interface.new
-         anInterface.name = entity
-         anInterface.description = cnf.getDescription(entity)
-         res = anInterface.save
-         if res == true then
-            @logger.info("[DEC_001] I/F #{entity}: added to the DEC Inventory/Interface db")
-         else
-            @logger.warn("[DEC_501] I/F #{entity}: it is already present in DEC Inventory/Interface db")
+         begin
+            anInterface             = Interface.new
+            anInterface.name        = entity
+            anInterface.description = cnf.getDescription(entity)
+            res                     = anInterface.save
+            if res == true then
+               @logger.info("[DEC_001] I/F #{entity}: added to the DEC Inventory/Interface db")
+            else
+               @logger.warn("[DEC_501] I/F #{entity}: it is already present in DEC Inventory/Interface db")
+            end
+         rescue Exception => e
+            @logger.error("[DEC_798] Fatal Error : DEC/Inventory #{e.to_s} #{'1F480'.hex.chr('UTF-8')}")
+            return false
          end
 		}
    end
@@ -226,10 +231,9 @@ end
 ##
 ## Print command line help
 def usage
-   fullpathFile = File.expand_path(__FILE__)   
-   
-   value = `#{"head -22 #{fullpathFile}"}`
-      
+   print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
+   fullpathFile   = File.expand_path(__FILE__)   
+   value          = `#{"head -22 #{fullpathFile}"}`
    value.lines.drop(1).each{
       |line|
       len = line.length - 1

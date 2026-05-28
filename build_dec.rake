@@ -339,7 +339,7 @@ namespace :dec do
    desc "build DEC gem [user, host, suffix = s2 | s2odata]"
 
    task :build, [:user, :host, :suffix] => :load_config do |t, args|
-      args.with_defaults(:user => "dectest", :host => "localhost", :suffix => "")
+      args.with_defaults(:user => 'dectest', :host => 'localhost', :suffix => 'oper')
       puts "building gem dec #{args[:suffix]} with config #{args[:user]}@#{args[:host]}"
    
       if File.exist?("#{@rootConf}/#{args[:user]}@#{args[:host]}") == false then

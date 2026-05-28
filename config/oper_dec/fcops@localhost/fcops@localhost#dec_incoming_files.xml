@@ -44,7 +44,7 @@
          <Name>MARF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromMARF</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">./</Directory>
+            <Directory DepthSearch="0">.</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
