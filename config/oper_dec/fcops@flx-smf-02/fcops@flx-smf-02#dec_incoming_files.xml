@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Config>
+
+<!-- 
+
+Rules for the new kids
+
+-->
+
+   <!-- =========================================================== -->
+
+   <ListInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+     <Interface>
+         <Name>MPF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromMPF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/data/mpf/delivery_root/smf/fromMPF</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>CPF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromCPF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">smf</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+     
+     <Interface>
+         <Name>MARF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromMARF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">.</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>AF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromAF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">toSMF</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>DAF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromDAF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">smf</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+
+
+   </ListInterfaces>
+
+   <!-- =========================================================== -->
+
+   <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+
+<!--
+
+     <File Type="bulletinA.txt">
+         <Description>AUX_IERS_A</Description>
+         <FromList>
+            <Interface>IERS_BULA</Interface>
+         </FromList>
+      </File>
+ 
+      <File Type="bulletinB.txt">
+         <Description>AUX_IERS_B</Description>
+         <FromList>
+            <Interface>IERS_BULB</Interface>
+         </FromList>
+      </File>
+
+-->
+
+      <File Type="*DWHDATA_OA*">
+         <Description>AUX_IERS_A</Description>
+         <FromList>
+            <Interface>DAF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_XACQ*">
+         <Description>REP_XACQ___</Description>
+         <FromList>
+            <Interface>AF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_ARCUPD*">
+         <Description>REP_ARCUPD</Description>
+         <FromList>
+            <Interface>MARF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_PROD*">
+         <Description>REP_PROD__</Description>
+         <FromList>
+            <Interface>CPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_DEL*">
+         <Description>REP_DEL___</Description>
+         <FromList>
+            <Interface>CPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*_NPPF*">
+         <Description>MPL_NPPF__</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*DNPPF*">
+         <Description>MPL_DNPPF_</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_GS_PLN*">
+         <Description>MPL_GS_PLN</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_GS_CNF*">
+         <Description>MPL_GS_CNF</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_ORBPRE*">
+         <Description>MPL_ORBPRE</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_NOB_IN*">
+         <Description>REP_NOB_IN</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+            <Interface>CPF_2_SMF</Interface>
+            <Interface>AF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_NOBOUT*">
+         <Description>REP_NOBOUT</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+            <Interface>CPF_2_SMF</Interface>
+            <Interface>AF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP__CHF__*">
+         <Description>REP__CHF__</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*REP_PSDUMP*">
+         <Description>REP_PSDUMP</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+   </DownloadRules>
+
+   <!-- =========================================================== -->
+
+   <DisseminationRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   
+      <ListIntrays>
+
+         <Intray>
+            <Name>SMF_PDGS_MARF</Name>
+            <Directory>/data/fcops/int/smf_pdgs/marf/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_PDGS_AF</Name>
+            <Directory>/data/fcops/int/smf_pdgs/af/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_PDGS_MPF</Name>
+            <Directory>/data/fcops/int/smf_pdgs/mpf/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_PDGS_DAF</Name>
+            <Directory>/data/fcops/int/smf_pdgs/daf/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_PDGS_CPF</Name>
+            <Directory>/data/fcops/int/smf_pdgs/cpf/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_ACQ</Name>
+            <Directory>/data/fcops/smf/af-sftp/REP_XACQ__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_ARCUPD</Name>
+            <Directory>/data/fcops/smf/marf-sftp/REP_ARCUPD</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_DEL___</Name>
+            <Directory>/data/fcops/smf/cpf-sftp/REP_DEL___</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_PROD__</Name>
+            <Directory>/data/fcops/smf/cpf-sftp/REP_PROD__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOB_IN_AF</Name>
+            <Directory>/data/fcops/smf/af-sftp/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOBOUT_AF</Name>
+            <Directory>/data/fcops/smf/af-sftp/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOB_IN_MPF</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOBOUT_MPF</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOB_IN_CPF</Name>
+            <Directory>/data/fcops/smf/cpf-sftp/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOBOUT_CPF</Name>
+            <Directory>/data/fcops/smf/cpf-sftp/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_MPL_DNPPF_</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/MPL_DNPPF_</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_MPL_NPPF__</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/MPL_NPPF__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_MPL_GS_PLN</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/MPL_GS_PLN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_MPL_GS_CNF</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/MPL_GS_CNF</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_MPL_ORBPRE</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/MPL_ORBPRE</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP__CHF__</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP__CHF__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_PSDUMP</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP_PSDUMP</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_DWHDATA_OAFS</Name>
+            <Directory>/data/fcops/smf/daf-sftp/DWHDATA_OA</Directory>
+            <Execute></Execute>
+         </Intray>
+
+
+      </ListIntrays>
+
+      <!-- =============================================== -->
+
+      <ListFilesDisseminated>
+    
+      <!--
+            SORT Rules ranking from more restrictive ones    
+            Only the first rule matching the file pattern is applied     
+      -->
+
+
+
+      <File Type="*DWHDATA_OA*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_DAF</Intray>
+            <Intray>SMF_FCOPS_DWHDATA_OAFS</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_XACQ*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_AF</Intray>
+            <Intray>SMF_FCOPS_REP_ACQ</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_ARCUPD*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MARF</Intray>
+            <Intray>SMF_FCOPS_REP_ARCUPD</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*DNPPF*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_MPL_DNPPF_</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*_NPPF*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_MPL_NPPF__</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*MPL_GS_PLN*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_MPL_GS_CNF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*MPL_GS_CNF*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_MPL_GS_CNF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*MPL_ORBPRE*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_MPL_ORBPRE</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*_MPF_*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_REP_NOB_IN_MPF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*_MPF_*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_REP_NOBOUT_MPF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*_CPF_*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_CPF</Intray>
+            <Intray>SMF_FCOPS_REP_NOB_IN_CPF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*_CPF_*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_CPF</Intray>
+            <Intray>SMF_FCOPS_REP_NOBOUT_CPF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_AF</Intray>
+            <Intray>SMF_FCOPS_REP_NOB_IN_AF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_AF</Intray>
+            <Intray>SMF_FCOPS_REP_NOBOUT_AF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_DEL*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_CPF</Intray>
+            <Intray>SMF_FCOPS_REP_DEL___</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_PROD*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_CPF</Intray>
+            <Intray>SMF_FCOPS_REP_PROD__</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP__CHF__*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_REP__CHF__</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_PSDUMP*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_REP_PSDUMP</Intray>
+         </ToList>
+      </File>
+
+      </ListFilesDisseminated>
+   </DisseminationRules>
+
+   <!-- =========================================================== -->
+
+
+</Config>
