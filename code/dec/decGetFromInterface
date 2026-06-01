@@ -199,6 +199,8 @@ def main
 
    checkEnvironmentEssential
 
+   cnf = ReadInterfaceConfig.instance
+
    if @bShowMnemonics == true and @isNoDB == false then
       require 'dec/DEC_DatabaseModel'
       
@@ -210,7 +212,12 @@ def main
             if arrInterfaces.length == 0 then
                @logger.warn("Sorry, there are no configured I/Fs")
             else
+               puts "=== Data Exchange Component / Registered I/Fs for Pull ==="
                arrInterfaces.each{|interface|
+                  entity = interface.name
+                  if cnf.isEnabled4Receiving?(entity) == false then
+                     next
+                  end
                   print interface.id.to_s.rjust(2)
                   print " "
                   print interface.name
@@ -265,8 +272,6 @@ def main
    ##
    ## Check configuration
    ##
-
-   cnf = ReadInterfaceConfig.instance
 
    if cnf.exists?(@entity) == false
       @logger.error("[DEC_605] I/F #{@entity}: such is not a configured interface #{'1F480'.hex.chr('UTF-8')}")

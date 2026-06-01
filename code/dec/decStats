@@ -81,6 +81,7 @@ def main
    require 'dec/StatisticDDC'
 
    if @bShowVersion == true then
+      print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
       print("\nDEC ", File.basename($0), " Version: [#{DEC.class_variable_get(:@@version)}]", "\n\n")
       hRecord = DEC.class_variable_get(:@@change_record)
       hRecord.each_pair{|key, value|
@@ -184,32 +185,57 @@ end
 def queryFile
    aFile = File.basename(@filename, ".*") 
    aFile = "#{aFile}%"
-   files = ReceivedFile.where("filename LIKE ?", aFile)
+   files = ReceivedFile.where("filename LIKE ?", aFile).all
    
    if files == nil or files.empty? == true then
-      puts "File #{aFile} not found in the inventory"
-      exit(99)
+      if @isDebugMode == true then
+         puts "DEBUG: File #{aFile} not found in the inventory of received files"
+      end
    end
    
-   puts
-   files.each{|file|
-      puts file.filename
-      puts Interface.find_by_id(file.interface_id).name
-      puts file.reception_date
-      puts file.size
-      puts file.protocol
-      puts
-   }
+   # puts files.length.to_s + " file(s) found in the inventory for #{aFile}"
+   
+   if files != nil and files.empty? == false then
+      files.each{|file|
+         puts file.filename
+         puts Interface.find_by_id(file.interface_id).name
+         puts file.reception_date
+         puts file.size
+         puts file.protocol
+         puts
+      }
+   end
+
+   files = SentFile.where("filename LIKE ?", aFile).all
+   
+   if files == nil or files.empty? == true then
+      if @isDebugMode == true then
+         puts "DEBUG: File #{aFile} not found in the inventory of sent files"
+      end
+   end
+   
+   # puts files.length.to_s + " file(s) found in the inventory for #{aFile}"
+   
+   if files != nil and files.empty? == false then
+      files.each{|file|
+         puts file.filename
+         puts Interface.find_by_id(file.interface_id).name
+         puts file.reception_date
+         puts file.size
+         puts file.protocol
+         puts
+      }
+   end
+
    exit(0)
 end
 
 ## ---------------------------------------------------------
 
 def usage
-   fullpathFile = File.expand_path(__FILE__)   
-   
-   value = `#{"head -16 #{fullpathFile}"}`
-      
+   print("\n[#{DEC::ReadConfigDEC.instance.getProjectName}][#{DEC::ReadConfigDEC.instance.getProjectID}]", "\n")
+   fullpathFile   = File.expand_path(__FILE__)   
+   value          = `#{"head -16 #{fullpathFile}"}`
    value.lines.drop(1).each{
       |line|
       len = line.length - 1

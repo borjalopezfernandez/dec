@@ -172,7 +172,9 @@ def main
       puts
       exit(99)
    end
-       
+   
+   @ftReadConf = ReadInterfaceConfig.instance
+
    if @bShowMnemonics == true then
       require 'dec/DEC_DatabaseModel'
       arrInterfaces = Interface.all
@@ -186,8 +188,12 @@ def main
             puts "Sorry, there are no configured I/Fs :-|"
             puts
          else
-            puts "=== Data Distributor Component Registered I/Fs ==="
+            puts "=== Data Exchange Component / Registered I/Fs for Push ==="
             arrInterfaces.each{|interface|
+               entity = interface.name
+               if @ftReadConf.isEnabled4Sending?(entity) == false then
+                  next
+               end
                print interface.name
                1.upto(25 - interface.name.length) do
                   print " "
@@ -255,7 +261,6 @@ def main
   
 
    # Check that the given mnemonic is present in the config file   
-   @ftReadConf = ReadInterfaceConfig.instance
    arrEntities = @ftReadConf.getAllExternalMnemonics
    bFound      = false
    arrEntities.each{|entity|

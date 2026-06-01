@@ -5,7 +5,7 @@
 <!-- ================================================================ -->
 
 <Interface Name="MPF_2_SMF">
-  <Desc>MPF 2 SMF</Desc>
+  <Desc>MPF Server</Desc>
   <TXRXParams>
     <Enabled4Sending>false</Enabled4Sending>
     <Enabled4Receiving>true</Enabled4Receiving>
@@ -59,7 +59,7 @@
 <!-- ================================================================ -->
 
 <Interface Name="CPF_2_SMF">
-  <Desc>CPF 2 SMF</Desc>
+  <Desc>SMF Server</Desc>
   <TXRXParams>
     <Enabled4Sending>false</Enabled4Sending>
     <Enabled4Receiving>true</Enabled4Receiving>
@@ -116,7 +116,7 @@
 <!-- ================================================================ -->
 
 <Interface Name="MARF_2_SMF">
-  <Desc>MARF Interface</Desc>
+  <Desc>MARF Server</Desc>
   <TXRXParams>
     <Enabled4Sending>false</Enabled4Sending>
     <Enabled4Receiving>true</Enabled4Receiving>
@@ -179,7 +179,7 @@
 <!-- ================================================================ -->
 
 <Interface Name="AF_2_SMF">
-  <Desc>AF 2 SMF</Desc>
+  <Desc>AF Server</Desc>
   <TXRXParams>
     <Enabled4Sending>false</Enabled4Sending>
     <Enabled4Receiving>true</Enabled4Receiving>
@@ -236,7 +236,7 @@
 <!-- ================================================================ -->
 
 <Interface Name="DAF_2_SMF">
-  <Desc>DAF 2 SMF</Desc>
+  <Desc>F-COPS SFTP Server</Desc>
   <TXRXParams>
     <Enabled4Sending>false</Enabled4Sending>
     <Enabled4Receiving>true</Enabled4Receiving>
