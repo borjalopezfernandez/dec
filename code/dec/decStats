@@ -220,9 +220,9 @@ def queryFile
       files.each{|file|
          puts file.filename
          puts Interface.find_by_id(file.interface_id).name
-         puts file.reception_date
+         puts file.delivery_date
          puts file.size
-         puts file.protocol
+         puts file.delivered_using
          puts
       }
    end

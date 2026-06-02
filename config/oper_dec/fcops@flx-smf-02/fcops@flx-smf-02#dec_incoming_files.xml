@@ -159,14 +159,14 @@ Rules for the new kids
          </FromList>
       </File>
 
-      <File Type="*_NPPF*">
+      <File Type="*MPL_NPPF__*">
          <Description>MPL_NPPF__</Description>
          <FromList>
             <Interface>MPF_2_SMF</Interface>
          </FromList>
       </File>
 
-      <File Type="*DNPPF*">
+      <File Type="*MPL_DNPPF_*">
          <Description>MPL_DNPPF_</Description>
          <FromList>
             <Interface>MPF_2_SMF</Interface>
@@ -189,6 +189,13 @@ Rules for the new kids
 
       <File Type="*MPL_ORBPRE*">
          <Description>MPL_ORBPRE</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_ORBSCT*">
+         <Description>MPL_ORBSCT</Description>
          <FromList>
             <Interface>MPF_2_SMF</Interface>
          </FromList>
@@ -265,14 +272,50 @@ Rules for the new kids
          </Intray>
 
          <Intray>
-            <Name>SMF_FCOPS_REP_ACQ</Name>
+            <Name>SMF_FCOPS_REP_XACQ__</Name>
             <Directory>/data/fcops/smf/af-sftp/REP_XACQ__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_XACQ__</Name>
+            <Directory>/data/fcops/smf/devops/af/REP_XACQ__</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>SMF_FCOPS_REP_ARCUPD</Name>
             <Directory>/data/fcops/smf/marf-sftp/REP_ARCUPD</Directory>
+            <Execute></Execute>
+         </Intray>
+
+          <Intray>
+            <Name>DEVOPS_REP_ARCUPD</Name>
+            <Directory>/data/fcops/smf/devops/marf/REP_ARCUPD</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_DEL___</Name>
+            <Directory>/data/fcops/smf/devops/cpf/REP_DEL___</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_PROD__</Name>
+            <Directory>/data/fcops/smf/devops/cpf/REP_PROD__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_NOB_IN_CPF</Name>
+            <Directory>/data/fcops/smf/devops/cpf/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_NOBOUT_CPF</Name>
+            <Directory>/data/fcops/smf/devops/cpf/REP_NOBOUT</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -289,30 +332,6 @@ Rules for the new kids
          </Intray>
 
          <Intray>
-            <Name>SMF_FCOPS_REP_NOB_IN_AF</Name>
-            <Directory>/data/fcops/smf/af-sftp/REP_NOB_IN</Directory>
-            <Execute></Execute>
-         </Intray>
-
-         <Intray>
-            <Name>SMF_FCOPS_REP_NOBOUT_AF</Name>
-            <Directory>/data/fcops/smf/af-sftp/REP_NOBOUT</Directory>
-            <Execute></Execute>
-         </Intray>
-
-         <Intray>
-            <Name>SMF_FCOPS_REP_NOB_IN_MPF</Name>
-            <Directory>/data/fcops/smf/mpf-sftp/REP_NOB_IN</Directory>
-            <Execute></Execute>
-         </Intray>
-
-         <Intray>
-            <Name>SMF_FCOPS_REP_NOBOUT_MPF</Name>
-            <Directory>/data/fcops/smf/mpf-sftp/REP_NOBOUT</Directory>
-            <Execute></Execute>
-         </Intray>
-
-         <Intray>
             <Name>SMF_FCOPS_REP_NOB_IN_CPF</Name>
             <Directory>/data/fcops/smf/cpf-sftp/REP_NOB_IN</Directory>
             <Execute></Execute>
@@ -325,8 +344,68 @@ Rules for the new kids
          </Intray>
 
          <Intray>
+            <Name>DEVOPS_REP_NOB_IN_AF</Name>
+            <Directory>/data/fcops/smf/devops/af/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+          <Intray>
+            <Name>DEVOPS_REP_NOBOUT_AF</Name>
+            <Directory>/data/fcops/smf/devops/af/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOB_IN_AF</Name>
+            <Directory>/data/fcops/smf/af-sftp/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOBOUT_AF</Name>
+            <Directory>/data/fcops/smf/af-sftp/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_NOB_IN_MPF</Name>
+            <Directory>/data/fcops/smf/devops/mpf/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOB_IN_MPF</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP_NOB_IN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_NOBOUT_MPF</Name>
+            <Directory>/data/fcops/smf/devops/mpf/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_NOBOUT_MPF</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP_NOBOUT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
             <Name>SMF_FCOPS_MPL_DNPPF_</Name>
             <Directory>/data/fcops/smf/mpf-sftp/MPL_DNPPF_</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_MPL_NPPF__</Name>
+            <Directory>/data/fcops/smf/devops/mpf/MPL_NPPF__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_MPL_DNPPF_</Name>
+            <Directory>/data/fcops/smf/devops/mpf/MPL_DNPPF_</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -343,6 +422,12 @@ Rules for the new kids
          </Intray>
 
          <Intray>
+            <Name>DEVOPS_MPL_GS_PLN</Name>
+            <Directory>/data/fcops/smf/devops/mpf/MPL_GS_PLN</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
             <Name>SMF_FCOPS_MPL_GS_CNF</Name>
             <Directory>/data/fcops/smf/mpf-sftp/MPL_GS_CNF</Directory>
             <Execute></Execute>
@@ -351,6 +436,18 @@ Rules for the new kids
          <Intray>
             <Name>SMF_FCOPS_MPL_ORBPRE</Name>
             <Directory>/data/fcops/smf/mpf-sftp/MPL_ORBPRE</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_MPL_ORBPRE</Name>
+            <Directory>/data/fcops/smf/devops/mpf/MPL_ORBPRE</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_MPL_ORBSCT</Name>
+            <Directory>/data/fcops/smf/devops/mpf/MPL_ORBSCT</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -372,6 +469,11 @@ Rules for the new kids
             <Execute></Execute>
          </Intray>
 
+         <Intray>
+            <Name>DEVOPS_DWHDATA_OAFS</Name>
+            <Directory>/data/fcops/smf/devops/daf/DWHDATA_OA</Directory>
+            <Execute></Execute>
+         </Intray>
 
       </ListIntrays>
 
@@ -385,20 +487,21 @@ Rules for the new kids
       -->
 
 
-
       <File Type="*DWHDATA_OA*">
          <HardLink>true</HardLink>
          <ToList>
-            <Intray>SMF_PDGS_DAF</Intray>
             <Intray>SMF_FCOPS_DWHDATA_OAFS</Intray>
+            <Intray>SMF_PDGS_DAF</Intray>
+            <Intray>DEVOPS_DWHDATA_OAFS</Intray>
          </ToList>
       </File>
 
-      <File Type="*REP_XACQ*">
+      <File Type="*REP_XACQ__*">
          <HardLink>true</HardLink>
          <ToList>
             <Intray>SMF_PDGS_AF</Intray>
-            <Intray>SMF_FCOPS_REP_ACQ</Intray>
+            <Intray>SMF_FCOPS_REP_XACQ__</Intray>
+            <Intray>DEVOPS_REP_XACQ__</Intray>
          </ToList>
       </File>
 
@@ -407,22 +510,25 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_MARF</Intray>
             <Intray>SMF_FCOPS_REP_ARCUPD</Intray>
+            <Intray>DEVOPS_REP_ARCUPD</Intray>
          </ToList>
       </File>
 
-      <File Type="*DNPPF*">
+      <File Type="*MPL_DNPPF_*">
          <HardLink>true</HardLink>
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_MPL_DNPPF_</Intray>
+            <Intray>DEVOPS_MPL_DNPPF_</Intray>
          </ToList>
       </File>
 
-      <File Type="*_NPPF*">
+      <File Type="*MPL_NPPF__*">
          <HardLink>true</HardLink>
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_MPL_NPPF__</Intray>
+            <Intray>DEVOPS_MPL_NPPF__</Intray>
          </ToList>
       </File>
 
@@ -430,7 +536,8 @@ Rules for the new kids
          <HardLink>true</HardLink>
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
-            <Intray>SMF_FCOPS_MPL_GS_CNF</Intray>
+            <Intray>SMF_FCOPS_MPL_GS_PLN</Intray>
+            <Intray>DEVOPS_MPL_GS_PLN</Intray>
          </ToList>
       </File>
 
@@ -447,6 +554,14 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_MPL_ORBPRE</Intray>
+            <Intray>DEVOPS_MPL_ORBPRE</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*MPL_ORBSCT*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>DEVOPS_MPL_ORBSCT</Intray>
          </ToList>
       </File>
 
@@ -455,6 +570,7 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_REP_NOB_IN_MPF</Intray>
+            <Intray>DEVOPS_REP_NOB_IN_MPF</Intray>
          </ToList>
       </File>
 
@@ -463,6 +579,7 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_REP_NOBOUT_MPF</Intray>
+            <Intray>DEVOPS_REP_NOBOUT_MPF</Intray>
          </ToList>
       </File>
 
@@ -471,6 +588,7 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_CPF</Intray>
             <Intray>SMF_FCOPS_REP_NOB_IN_CPF</Intray>
+            <Intray>DEVOPS_REP_NOB_IN_CPF</Intray>
          </ToList>
       </File>
 
@@ -479,30 +597,16 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_CPF</Intray>
             <Intray>SMF_FCOPS_REP_NOBOUT_CPF</Intray>
-         </ToList>
-      </File>
-
-      <File Type="*REP_NOB_IN*">
-         <HardLink>true</HardLink>
-         <ToList>
-            <Intray>SMF_PDGS_AF</Intray>
-            <Intray>SMF_FCOPS_REP_NOB_IN_AF</Intray>
-         </ToList>
-      </File>
-
-      <File Type="*REP_NOBOUT*">
-         <HardLink>true</HardLink>
-         <ToList>
-            <Intray>SMF_PDGS_AF</Intray>
-            <Intray>SMF_FCOPS_REP_NOBOUT_AF</Intray>
+            <Intray>DEVOPS_REP_NOBOUT_CPF</Intray>
          </ToList>
       </File>
 
       <File Type="*REP_DEL*">
          <HardLink>true</HardLink>
          <ToList>
-            <Intray>SMF_PDGS_CPF</Intray>
             <Intray>SMF_FCOPS_REP_DEL___</Intray>
+            <Intray>SMF_PDGS_CPF</Intray>
+            <Intray>DEVOPS_REP_DEL___</Intray>
          </ToList>
       </File>
 
@@ -511,6 +615,7 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_CPF</Intray>
             <Intray>SMF_FCOPS_REP_PROD__</Intray>
+            <Intray>DEVOPS_REP_PROD__</Intray>
          </ToList>
       </File>
 
@@ -527,6 +632,24 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_REP_PSDUMP</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOB_IN*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_AF</Intray>
+            <Intray>SMF_FCOPS_REP_NOB_IN_AF</Intray>
+            <Intray>DEVOPS_REP_NOB_IN_AF</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_NOBOUT*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_AF</Intray>
+            <Intray>SMF_FCOPS_REP_NOBOUT_AF</Intray>
+            <Intray>DEVOPS_REP_NOBOUT_AF</Intray>
          </ToList>
       </File>
 

@@ -1203,6 +1203,8 @@ private
 
          if @isNoInTray == false then
             disseminateFile(filename)
+         else
+            @logger.warning("[DEC_XYZ] I/F #{@entity}: dissemination is skipped")
          end
 
          return true
@@ -1336,6 +1338,8 @@ private
 
          if @isNoInTray == false then
             disseminateFile(File.basename(full_path))
+         else
+            @logger.warning("[DEC_XYZ] I/F #{@entity}: dissemination of #{File.basename(full_path)} is skipped")
          end
 
          return ret
@@ -1638,7 +1642,10 @@ private
          ## disseminate the file to the In-Trays
 
          if @isNoInTray == false then
+            # @logger.debug("[DEC_ZYX] I/F #{@entity}: dissemination of #{File.basename(disFile)} to In-Trays")
             disseminateFile(disFile)
+         else
+            @logger.warning("[DEC_ZYX] I/F #{@entity}: dissemination of #{File.basename(disFile)} is skipped")
          end
 
          return true
