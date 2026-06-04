@@ -279,7 +279,7 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_REP_XACQ__</Name>
-            <Directory>/data/fcops/smf/devops/af/REP_XACQ__</Directory>
+            <Directory>/data/fcops/devops/af/REP_XACQ__</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -291,31 +291,31 @@ Rules for the new kids
 
           <Intray>
             <Name>DEVOPS_REP_ARCUPD</Name>
-            <Directory>/data/fcops/smf/devops/marf/REP_ARCUPD</Directory>
+            <Directory>/data/fcops/devops/marf/REP_ARCUPD</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>DEVOPS_REP_DEL___</Name>
-            <Directory>/data/fcops/smf/devops/cpf/REP_DEL___</Directory>
+            <Directory>/data/fcops/devops/cpf/REP_DEL___</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>DEVOPS_REP_PROD__</Name>
-            <Directory>/data/fcops/smf/devops/cpf/REP_PROD__</Directory>
+            <Directory>/data/fcops/devops/cpf/REP_PROD__</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>DEVOPS_REP_NOB_IN_CPF</Name>
-            <Directory>/data/fcops/smf/devops/cpf/REP_NOB_IN</Directory>
+            <Directory>/data/fcops/devops/cpf/REP_NOB_IN</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>DEVOPS_REP_NOBOUT_CPF</Name>
-            <Directory>/data/fcops/smf/devops/cpf/REP_NOBOUT</Directory>
+            <Directory>/data/fcops/devops/cpf/REP_NOBOUT</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -345,13 +345,13 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_REP_NOB_IN_AF</Name>
-            <Directory>/data/fcops/smf/devops/af/REP_NOB_IN</Directory>
+            <Directory>/data/fcops/devops/af/REP_NOB_IN</Directory>
             <Execute></Execute>
          </Intray>
 
           <Intray>
             <Name>DEVOPS_REP_NOBOUT_AF</Name>
-            <Directory>/data/fcops/smf/devops/af/REP_NOBOUT</Directory>
+            <Directory>/data/fcops/devops/af/REP_NOBOUT</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -369,7 +369,7 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_REP_NOB_IN_MPF</Name>
-            <Directory>/data/fcops/smf/devops/mpf/REP_NOB_IN</Directory>
+            <Directory>/data/fcops/devops/mpf/REP_NOB_IN</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -381,7 +381,7 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_REP_NOBOUT_MPF</Name>
-            <Directory>/data/fcops/smf/devops/mpf/REP_NOBOUT</Directory>
+            <Directory>/data/fcops/devops/mpf/REP_NOBOUT</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -399,13 +399,13 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_MPL_NPPF__</Name>
-            <Directory>/data/fcops/smf/devops/mpf/MPL_NPPF__</Directory>
+            <Directory>/data/fcops/devops/mpf/MPL_NPPF__</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>DEVOPS_MPL_DNPPF_</Name>
-            <Directory>/data/fcops/smf/devops/mpf/MPL_DNPPF_</Directory>
+            <Directory>/data/fcops/devops/mpf/MPL_DNPPF_</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -423,7 +423,7 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_MPL_GS_PLN</Name>
-            <Directory>/data/fcops/smf/devops/mpf/MPL_GS_PLN</Directory>
+            <Directory>/data/fcops/devops/mpf/MPL_GS_PLN</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -441,13 +441,13 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_MPL_ORBPRE</Name>
-            <Directory>/data/fcops/smf/devops/mpf/MPL_ORBPRE</Directory>
+            <Directory>/data/fcops/devops/mpf/MPL_ORBPRE</Directory>
             <Execute></Execute>
          </Intray>
 
          <Intray>
             <Name>DEVOPS_MPL_ORBSCT</Name>
-            <Directory>/data/fcops/smf/devops/mpf/MPL_ORBSCT</Directory>
+            <Directory>/data/fcops/devops/mpf/MPL_ORBSCT</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -471,7 +471,7 @@ Rules for the new kids
 
          <Intray>
             <Name>DEVOPS_DWHDATA_OAFS</Name>
-            <Directory>/data/fcops/smf/devops/daf/DWHDATA_OA</Directory>
+            <Directory>/data/fcops/devops/daf/DWHDATA_OA</Directory>
             <Execute></Execute>
          </Intray>
 

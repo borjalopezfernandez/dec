@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
    <Project>
-      <Name>FCOPS / Data Exchange Component - SMF Node (20260602)</Name>
+      <Name>FCOPS / Data Exchange Component - SMF Node (20260604)</Name>
       <Id>DEC</Id>
       <Mission>FCOPS</Mission>
       <SatPrefix>FLX</SatPrefix>
