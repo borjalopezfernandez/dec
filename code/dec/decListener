@@ -488,18 +488,14 @@ def launchListener(entity)
       command  = %Q{decListener --mnemonic #{entity} --interval #{pI}}
    end
 
-   inConfig    = ReadConfigIncoming.instance
-   bLocalDissemination = inConfig.getSwitches(entity)[:localDissemination]
+   inConfig             = ReadConfigIncoming.instance
+   bLocalDissemination  = inConfig.getSwitches(entity)[:localDissemination]
 
    if bLocalDissemination == false then
       command  = %Q{#{command} --no-intray}
    end
 
-   if @isDebugMode == true then
-      @logger.debug(command)
-   end
-
-   @logger.info("[DEC_GEN] I/F #{entity}: Starting Listener")
+   @logger.info("[DEC_INI] I/F #{entity}: Starting Listener => #{command}")
    # ---------------------------------------------
    # Create a new process for each Entity
    pid = fork {

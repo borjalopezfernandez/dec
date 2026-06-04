@@ -22,7 +22,7 @@ Rules for the new kids
             <DeleteDownloaded>true</DeleteDownloaded>
             <DeleteDuplicated>false</DeleteDuplicated>
             <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>false</LocalDissemination>
+            <LocalDissemination>true</LocalDissemination>
             <LogDuplicated>false</LogDuplicated>
             <LogUnknown>false</LogUnknown>
             <MD5>false</MD5>
@@ -39,7 +39,7 @@ Rules for the new kids
             <DeleteDownloaded>true</DeleteDownloaded>
             <DeleteDuplicated>false</DeleteDuplicated>
             <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>false</LocalDissemination>
+            <LocalDissemination>true</LocalDissemination>
             <LogDuplicated>false</LogDuplicated>
             <LogUnknown>false</LogUnknown>
             <MD5>false</MD5>
@@ -56,7 +56,7 @@ Rules for the new kids
             <DeleteDownloaded>true</DeleteDownloaded>
             <DeleteDuplicated>false</DeleteDuplicated>
             <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>false</LocalDissemination>
+            <LocalDissemination>true</LocalDissemination>
             <LogDuplicated>false</LogDuplicated>
             <LogUnknown>false</LogUnknown>
             <MD5>false</MD5>
@@ -73,7 +73,7 @@ Rules for the new kids
             <DeleteDownloaded>true</DeleteDownloaded>
             <DeleteDuplicated>false</DeleteDuplicated>
             <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>false</LocalDissemination>
+            <LocalDissemination>true</LocalDissemination>
             <LogDuplicated>false</LogDuplicated>
             <LogUnknown>false</LogUnknown>
             <MD5>false</MD5>
@@ -90,7 +90,7 @@ Rules for the new kids
             <DeleteDownloaded>true</DeleteDownloaded>
             <DeleteDuplicated>false</DeleteDuplicated>
             <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>false</LocalDissemination>
+            <LocalDissemination>true</LocalDissemination>
             <LogDuplicated>false</LogDuplicated>
             <LogUnknown>false</LogUnknown>
             <MD5>false</MD5>

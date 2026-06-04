@@ -350,7 +350,7 @@ private
       bDefined = true
       bCheckOK = true
 
-      if !ENV['DCC_CONFIG'] and !ENV['DEC_CONFIG'] then
+      if !ENV['DEC_CONFIG'] then
          puts "DEC_CONFIG environment variable not defined !  :-(\n"
          bCheckOK = false
          bDefined = false
@@ -360,8 +360,6 @@ private
 
       if ENV['DEC_CONFIG'] then
          configDir         = %Q{#{ENV['DEC_CONFIG']}}
-      else
-         configDir         = %Q{#{ENV['DCC_CONFIG']}}
       end
 
       @@configDirectory = configDir
