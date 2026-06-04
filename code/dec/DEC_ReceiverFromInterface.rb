@@ -1202,6 +1202,7 @@ private
          # disseminate the file to the In-Trays
 
          if @isNoInTray == false then
+            # @logger.debug("[DEC_ZYX] I/F #{@entity}: disseminate #{File.basename(filename)} to In-Trays")
             disseminateFile(filename)
          else
             @logger.warning("[DEC_XYZ] I/F #{@entity}: dissemination is skipped")
