@@ -98,7 +98,6 @@ Gem::Specification.new do |s|
       s.executables   << 'decTestInterface_NATS_CCS5'
       s.executables   << 'decTestInterface_NOAA'
       s.executables   << 'decTestInterface_NOAA_IGRF'
-      s.executables   << 'decTestInterface_OData_CDSE'
       s.executables   << 'decTestInterface_SCIHUB'
       s.executables   << 'decTestInterface_SPCS'
       s.executables   << 'decUnitTests'
@@ -119,8 +118,10 @@ Gem::Specification.new do |s|
       s.executables   << 'decUnitTests_mail'
 
       if ENV.include?("DEC_ODATA") == true then
+         puts "Adding OData client unit tests"
          s.executables   << 'decTestInterface_OData_ADGS'
          s.executables   << 'decTestInterface_OData_DHUS'
+         s.executables   << 'decTestInterface_OData_CDSE'
          s.executables   << 'decTestInterface_S2PRIP'
       end
 

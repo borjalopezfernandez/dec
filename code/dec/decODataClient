@@ -7,7 +7,8 @@
 # Query by Sentinel-3 Product types ; NR and NT timeliness are preppended to the product type 
 #
 # --query cdse:s3a:OL_1_EFR___
-# --query cdse:s3a:NR_OL_1_EFR___
+# --query cdse:s3a:NR_OL_1_EFR___ / Near-Real Time
+# --query cdse:s3a:NT_OL_1_EFR___ / Non Time Critical
 # --query cdse:s3:OL_1_ERR___
 # --query cdse:s3:OL_1_EFR___
 # --query cdse:s3:SL_1_RBT___

@@ -57,6 +57,12 @@ class ODataClientCDSE < ODataClientBase
          @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NR_OL_1_EFR___
       end
 
+      if query.include?("S3A") and query.include?("NT_OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3A_NT_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3A_NT_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NT_OL_1_EFR___
+      end
+
       if @sensingtime != nil then
          @urlSelect   = CDSE::API_URL_ODATA_PRODUCT_SELECT_BY_SENSING
          @urlPaging   = CDSE::API_URL_ODATA_PRODUCT_PAGING_BY_SENSING

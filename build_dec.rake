@@ -339,8 +339,9 @@ namespace :dec do
    desc "build DEC gem [user, host, suffix = s2 | s2odata]"
 
    task :build, [:user, :host, :suffix] => :load_config do |t, args|
-      args.with_defaults(:user => 'dectest', :host => 'localhost', :suffix => 'oper')
-      puts "building gem dec #{args[:suffix]} with config #{args[:user]}@#{args[:host]}"
+      puts "task build gem dec #{args[:suffix]} with config #{args[:user]}@#{args[:host]}"
+      args.with_defaults(:user => 'dectest', :host => 'localhost', :suffix => 'test_odata')
+      puts "task build gem dec #{args[:suffix]} with config #{args[:user]}@#{args[:host]}"
    
       if File.exist?("#{@rootConf}/#{args[:user]}@#{args[:host]}") == false then
          puts "DEC configuration not present in repository"
@@ -359,6 +360,7 @@ namespace :dec do
          puts "building gem dec #{args[:suffix]} with flag DEC_ODATA"
          ENV['DEC_ODATA'] = "true"
       else
+         puts "building gem dec #{args[:suffix]} without flag DEC_ODATA"
          ENV.delete('DEC_ODATA')
       end
 
@@ -555,7 +557,7 @@ namespace :dec do
    desc "install DEC"
 
    task :install ,[:user, :host, :suffix] => :build do |t, args|
-      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => :s2_pg)
+      args.with_defaults(:user => :dectest, :host => :localhost, :suffix => 'test_pg_odata')
       puts
       puts @filename
       puts

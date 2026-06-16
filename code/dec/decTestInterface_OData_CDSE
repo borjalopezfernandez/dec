@@ -165,6 +165,15 @@ class DECTestInterfaceCDSE < Test::Unit::TestCase
       assert(system(cmd), "#{cmd} cdse:s3a:NR_OL_1_EFR___ with datetime")
    end
 
+   def test_S3A_NT_OL_1_EFR
+      @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s}")
+      ## Query by Mission collection and product type for Sentinel-3 OL_1_EFR___
+      yesterday = Date.today - 1
+      cmd = "decODataClient --query cdse:s3a:NT_OL_1_EFR___  --time #{yesterday.to_datetime.strftime("%Y-%m-%dT%H:%M:%S.000Z")}"
+      @@logger.debug("#{cmd}")
+      assert(system(cmd), "#{cmd} cdse:s3a:NT_OL_1_EFR___ with datetime")
+   end
+
    def test_S3_OL_1_EFR
       @@logger.debug("#{self.class.name.split('::').last}::#{__method__.to_s}")
       ## Query by Mission collection and product type for Sentinel-3 OL_1_EFR___

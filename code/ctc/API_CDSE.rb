@@ -100,6 +100,9 @@ module CDSE
    API_URL_ODATA_COUNT_SENTINEL3A_OL_1_EFR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$top=1&$count=True&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
 
+   API_URL_ODATA_COUNT_SENTINEL3A_NT_OL_1_EFR___  =\
+    "#{API_ROOT}/odata/v1/Products?$select=Name&$top=1&$count=True&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'timeliness' and att/OData.CSC.StringAttribute/Value eq 'NT') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
+
    API_URL_ODATA_COUNT_SENTINEL3A_NR_OL_1_EFR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$top=1&$count=True&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'timeliness' and att/OData.CSC.StringAttribute/Value eq 'NR') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
 
@@ -117,6 +120,9 @@ module CDSE
 
    API_URL_ODATA_SELECT_BASE_SENTINEL3A_OL_1_EFR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
+
+   API_URL_ODATA_SELECT_BASE_SENTINEL3A_NT_OL_1_EFR___  =\
+    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'timeliness' and att/OData.CSC.StringAttribute/Value eq 'NT') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
 
    API_URL_ODATA_SELECT_BASE_SENTINEL3A_NR_OL_1_EFR___  =\
     "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'timeliness' and att/OData.CSC.StringAttribute/Value eq 'NR') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')"
@@ -153,6 +159,9 @@ module CDSE
 
    API_URL_ODATA_SELECT_PAGING_SENTINEL3_OL_1_ERR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_ERR___')&$orderby=ContentDate/Start asc&$top=1000&$skip="
+
+   API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NT_OL_1_EFR___  =\
+   "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'timeliness' and att/OData.CSC.StringAttribute/Value eq 'NT') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')&$orderby=ContentDate/Start asc&$top=1000&$skip="
 
    API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NR_OL_1_EFR___  =\
    "#{API_ROOT}/odata/v1/Products?$select=Name&$filter=Collection/Name eq 'SENTINEL-3' and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'timeliness' and att/OData.CSC.StringAttribute/Value eq 'NR') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq 'A') and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq 'OL_1_EFR___')&$orderby=ContentDate/Start asc&$top=1000&$skip="
