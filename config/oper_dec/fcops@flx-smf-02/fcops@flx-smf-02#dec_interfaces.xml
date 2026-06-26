@@ -18,7 +18,7 @@
   </TXRXParams>    
   <Server>
     <Protocol>SFTP</Protocol>
-    <Hostname>172.29.222.2</Hostname>
+    <Hostname>192.168.222.2</Hostname>
     <Port>22</Port>
     <User>mpsoper</User>
     <Pass></Pass>
@@ -72,7 +72,7 @@
   </TXRXParams>    
   <Server>
     <Protocol>SFTP</Protocol>
-    <Hostname>172.29.222.4</Hostname>
+    <Hostname>192.168.222.4</Hostname>
     <Port>22</Port>
     <User>dec</User>
     <Pass></Pass>
@@ -421,10 +421,6 @@
     <Protocol>SFTP</Protocol>
     <Hostname>185.170.36.179</Hostname>
     <Port>22</Port>
-    <!--
-    <Hostname>172.29.222.4</Hostname>
-    <Port>22</Port>
-    -->
     <User>daf</User>
     <Pass></Pass>
     <RegisterContentFlag>false</RegisterContentFlag>
@@ -474,10 +470,6 @@
     <Protocol>SFTP</Protocol>
     <Hostname>185.170.36.179</Hostname>
     <Port>22</Port>
-    <!--
-    <Hostname>172.29.222.4</Hostname>
-    <Port>22</Port>
-    -->
     <User>marf</User>
     <Pass></Pass>
     <RegisterContentFlag>false</RegisterContentFlag>
@@ -527,10 +519,6 @@
     <Protocol>SFTP</Protocol>
     <Hostname>185.170.36.179</Hostname>
     <Port>22</Port>
-    <!--
-    <Hostname>172.29.222.4</Hostname>
-    <Port>22</Port>
-    -->
     <User>cpf</User>
     <Pass></Pass>
     <RegisterContentFlag>false</RegisterContentFlag>
@@ -580,10 +568,6 @@
     <Protocol>SFTP</Protocol>
     <Hostname>185.170.36.179</Hostname>
     <Port>22</Port>
-    <!--
-    <Hostname>172.29.222.4</Hostname>
-    <Port>22</Port>
-    -->
     <User>mpf</User>
     <Pass></Pass>
     <RegisterContentFlag>false</RegisterContentFlag>
@@ -635,10 +619,6 @@
     <Protocol>SFTP</Protocol>
     <Hostname>185.170.36.179</Hostname>
     <Port>22</Port>
-    <!--
-    <Hostname>172.29.222.4</Hostname>
-    <Port>22</Port>
-    -->
     <User>af</User>
     <Pass></Pass>
     <RegisterContentFlag>false</RegisterContentFlag>

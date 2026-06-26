@@ -440,6 +440,13 @@ Rules for the new kids
          </Intray>
 
          <Intray>
+            <Name>SMF_FCOPS_MPL_ORBSCT</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/MPL_ORBSCT</Directory>
+            <Execute></Execute>
+         </Intray>
+
+
+         <Intray>
             <Name>DEVOPS_MPL_ORBPRE</Name>
             <Directory>/data/fcops/devops/mpf/MPL_ORBPRE</Directory>
             <Execute></Execute>
@@ -561,6 +568,7 @@ Rules for the new kids
       <File Type="*MPL_ORBSCT*">
          <HardLink>true</HardLink>
          <ToList>
+            <Intray>SMF_FCOPS_MPL_ORBSCT</Intray>
             <Intray>DEVOPS_MPL_ORBSCT</Intray>
          </ToList>
       </File>
