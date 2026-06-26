@@ -1,136 +1,105 @@
-Information Messages
-====================
+# Information Messages
 
-Scope
------
+## Scope
 
-The information messages by DEC SW are meant in general for tracing the
-nominal performed circulations allowing consumers to monitor them.
+The information messages by DEC SW are meant in general for tracing the nominal performed circulations allowing consumers to monitor them.
 
-Index of Messages
------------------
+## Index of Messages
 
--   **\[DEC\_000\]** : DEC Database / Inventory \$table created
+-   **\[DEC_000\]** : DEC Database / Inventory \$table created
 
--   **\[DEC\_001\]** : Interface added to DEC Inventory
+-   **\[DEC_001\]** : Interface added to DEC Inventory
 
--   **\[DEC\_002\]** : Valid schema check for configuration file
+-   **\[DEC_002\]** : Valid schema check for configuration file
 
--   **\[DEC\_003\]** I/F \"interface\": Interface is correctly declared
-    in the DEC Inventory
+-   **\[DEC_003\]** I/F \"interface\": Interface is correctly declared in the DEC Inventory
 
--   **\[DEC\_004\]** I/F \"interface\": Exchange point is reachable
+-   **\[DEC_004\]** I/F \"interface\": Exchange point is reachable
 
--   **\[DEC\_005\]** I/F \"interface\": Polling Started
+-   **\[DEC_005\]** I/F \"interface\": Polling Started
 
--   **\[DEC\_006\]** I/F \"interface\": Automation Listener Status
-    Active
+-   **\[DEC_006\]** I/F \"interface\": Automation Listener Status Active
 
--   **\[DEC\_007\]** I/F \"interface\": Automation Listener Status
-    Inactive
+-   **\[DEC_007\]** I/F \"interface\": Automation Listener Status Inactive
 
--   **\[DEC\_050\]** I/F \"interface\": Polling Completed / No file(s)
-    available for pull
+-   **\[DEC_050\]** I/F \"interface\": Polling Completed / No file(s) available for pull
 
--   **\[DEC\_060\]** I/F \"interface\": Polling Completed / New file(s)
-    available for pull
+-   **\[DEC_060\]** I/F \"interface\": Polling Completed / New file(s) available for pull
 
--   **\[DEC\_100\]** I/F \"interface\": Pull iteration completed for
-    such interface
+-   **\[DEC_100\]** I/F \"interface\": Pull iteration completed for such interface
 
--   **\[DEC\_105\]** I/F \"interface\": \"filename\" is available
+-   **\[DEC_105\]** I/F \"interface\": \"filename\" is available
 
--   **\[DEC\_110\]** I/F \"interface\": Downloaded \"filename\" with
-    size \"num\_bytes\" bytes
+-   **\[DEC_110\]** I/F \"interface\": Downloaded \"filename\" with size \"num_bytes\" bytes
 
--   **\[DEC\_111\]** I/F \"interface\": Downloaded \"filename\" with
-    same md5 / duplication
+-   **\[DEC_111\]** I/F \"interface\": Downloaded \"filename\" with same md5 / duplication
 
--   **\[DEC\_115\]** Disseminated \"filename\" into \"directory\" Intray
+-   **\[DEC_115\]** Disseminated \"filename\" into \"directory\" Intray
 
--   **\[DEC\_116\]** Compressed \"filename\" in \"method\" at
-    \"directory\" Intray
+-   **\[DEC_116\]** Compressed \"filename\" in \"method\" at \"directory\" Intray
 
--   **\[DEC\_120\]** I/F \"interface\": Deleting unknown file
-    \"filename\" available
+-   **\[DEC_120\]** I/F \"interface\": Deleting unknown file \"filename\" available
 
--   **\[DEC\_125\]** I/F \"interface\": Deleting duplicated file
-    \"filename\" previously received
+-   **\[DEC_125\]** I/F \"interface\": Deleting duplicated file \"filename\" previously received
 
--   **\[DEC\_126\]** I/F \"interface\": Deleted downloaded file
-    \"filename\"
+-   **\[DEC_126\]** I/F \"interface\": Deleted downloaded file \"filename\"
 
--   **\[DEC\_130\]** I/F \"interface\": event \"name\" triggered
+-   **\[DEC_130\]** I/F \"interface\": event \"name\" triggered
 
--   **\[DEC\_131\]** I/F \"interface\": event NewFile2Intray triggered
+-   **\[DEC_131\]** I/F \"interface\": event NewFile2Intray triggered
 
--   **\[DEC\_135\]** I/F \"interface\": \"filename\" pull report created
+-   **\[DEC_135\]** I/F \"interface\": \"filename\" pull report created
 
--   **\[DEC\_210\]** I/F \"interface\": File \"filename\" sent using
-    \"protocol\"
+-   **\[DEC_210\]** I/F \"interface\": File \"filename\" sent using \"protocol\"
 
--   **\[DEC\_211\]** File retrieved from SourceDir to the GlobalOutbox
-    (prior its *push* circulation)
+-   **\[DEC_211\]** File retrieved from SourceDir to the GlobalOutbox (prior its *push* circulation)
 
--   **\[DEC\_212\]** File removed from SourceDir upon DEC\_211
+-   **\[DEC_212\]** File removed from SourceDir upon DEC_211
 
--   **\[DEC\_213\]** File placed at the Interface LocalOutbox
+-   **\[DEC_213\]** File placed at the Interface LocalOutbox
 
--   **\[DEC\_214\]** File compressed at the interface LocalOutbox
+-   **\[DEC_214\]** File compressed at the interface LocalOutbox
 
--   **\[DEC\_254\]** Request of OData metadata to interface
+-   **\[DEC_254\]** Request of OData metadata to interface
 
--   **\[DEC\_255\]** Retry Request of OData URL
+-   **\[DEC_255\]** Retry Request of OData URL
 
--   **\[DEC\_257\]** Metadata OData file created
+-   **\[DEC_257\]** Metadata OData file created
 
--   **\[DEC\_259\]** Download request to an OData interface delivery
-    point
+-   **\[DEC_259\]** Download request to an OData interface delivery point
 
--   **\[DEC\_260\]** Successful download from an OData interface
-    delivery point
+-   **\[DEC_260\]** Successful download from an OData interface delivery point
 
--   **\[AUX\_001\]** File conversion from source file source is
-    performed
+-   **\[AUX_001\]** File conversion from source file source is performed
 
 -   **\[NATS001\]** I/F \"interface\": NATS Request performed
 
 -   **\[NATS002\]** I/F \"interface\": NATS Request is successful
 
--   **\[NATS003\]** I/F \"interface\": NATS Subscribe to some queue is
-    performed
+-   **\[NATS003\]** I/F \"interface\": NATS Subscribe to some queue is performed
 
-[\[DEC000\]]{#DEC000 label="DEC000"}
+[]{#DEC000 label="DEC000"}
 
-\[DEC\_000\] DEC Database / Inventory \$table created
------------------------------------------------------
+## \[DEC_000\] DEC Database / Inventory \$table created
 
-This message is generated by when creating the DEC Inventory database
-and the associated tables which are necessary to be able to persist the
-records of the performed circulations.
+This message is generated by [*decManageDB*](#decManageDB) when creating the DEC Inventory database and the associated tables which are necessary to be able to persist the records of the performed circulations.
 
         [DEC_000] DEC Database / Inventory table interfaces created
         [DEC_000] DEC Database / Inventory table tracked_files created
         [DEC_000] DEC Database / Inventory table received_files created
         [DEC_000] DEC Database / Inventory table sent_files created
 
-[\[DEC001\]]{#DEC001 label="DEC001"}
+[]{#DEC001 label="DEC001"}
 
-\[DEC\_001\] Interface added into DEC Inventory
------------------------------------------------
+## \[DEC_001\] Interface added into DEC Inventory
 
-This message is generated by when adding a new interface into the DEC
-Inventory database to be able to persist the records of the performed
-circulations.
+This message is generated by [*decConfigInterface2DB*](#decConfigInterface2DB) when adding a new interface into the DEC Inventory database to be able to persist the records of the performed circulations.
 
-[\[DEC002\]]{#DEC002 label="DEC002"}
+[]{#DEC002 label="DEC002"}
 
-\[DEC\_002\] Node XML configuration is valid
---------------------------------------------
+## \[DEC_002\] Node XML configuration is valid
 
-This message is generated by tool when checking the DEC configuration
-XML syntax and semantics across the different configuration files ; one
-message is generated for each configuration file.
+This message is generated by [*decValidateConfig*](#decValidateConfig) tool when checking the DEC configuration XML syntax and semantics across the different configuration files ; one message is generated for each configuration file.
 
         [DEC_002] Valid schema check for dec_config
         [DEC_002] Valid schema check for dec_interfaces
@@ -139,205 +108,137 @@ message is generated for each configuration file.
         [DEC_002] Valid schema check for ft_mail_config
         [DEC_002] Valid schema check for dec_log_config
 
-[\[DEC003\]]{#DEC003 label="DEC003"}
+[]{#DEC003 label="DEC003"}
 
-\[DEC\_003\] Interface Correctly Declared in the Inventory
-----------------------------------------------------------
+## \[DEC_003\] Interface Correctly Declared in the Inventory
 
-This message is generated by tool when checking the availability of the
-configured interfaces tool when checking the availability of the
-configured interfaces.
+This message is generated by [*decCheckConfig*](#decCheckConfig) tool when checking the availability of the configured interfaces [*decCheckConfig*](#decCheckConfig) tool when checking the availability of the configured interfaces.
 
-[\[DEC004\]]{#DEC004 label="DEC004"}
+[]{#DEC004 label="DEC004"}
 
-\[DEC\_004\] Interface Exchange Point Reachable
------------------------------------------------
+## \[DEC_004\] Interface Exchange Point Reachable
 
-This message is generated by tool when checking the availability of the
-configured interfaces.
+This message is generated by [*decCheckConfig*](#decCheckConfig) tool when checking the availability of the configured interfaces.
 
-[\[DEC005\]]{#DEC005 label="DEC005"}
+[]{#DEC005 label="DEC005"}
 
-\[DEC\_005\] Interface Polling Start
-------------------------------------
+## \[DEC_005\] Interface Polling Start
 
-This message time tags the start of the polling operation to *pull*
-files from a given interface. The time to poll and filter the file to be
-pulled depends on the number of files published, the different rules
-configured for download or / and verification with the database of
-previous downloads ; measurements can be done with this message and its
-conclusion which is flagged by or message.
+This message time tags the start of the polling operation to *pull* files from a given interface. The time to poll and filter the file to be pulled depends on the number of files published, the different rules configured for download or / and verification with the database of previous downloads ; measurements can be done with this message and its conclusion which is flagged by [*\[DEC_050\]*](#DEC050) or [*\[DEC_060\]*](#DEC060) message.
 
-[\[DEC006\]]{#DEC006 label="DEC006"}
+[]{#DEC006 label="DEC006"}
 
-\[DEC\_006\] Interface Automation Listener Active
--------------------------------------------------
+## \[DEC_006\] Interface Automation Listener Active
 
-This message time the automation listener status *Active* to *pull*
-files from a given interface.
+This message time the automation listener status *Active* to *pull* files from a given interface.
 
-[\[DEC007\]]{#DEC007 label="DEC007"}
+[]{#DEC007 label="DEC007"}
 
-\[DEC\_007\] Interface Automation Listener Inactive
----------------------------------------------------
+## \[DEC_007\] Interface Automation Listener Inactive
 
-This message time the automation listener status *Inactive* to *pull*
-files from a given interface.
+This message time the automation listener status *Inactive* to *pull* files from a given interface.
 
-[\[DEC050\]]{#DEC050 label="DEC050"}
+[]{#DEC050 label="DEC050"}
 
-\[DEC\_050\] Interface Polling Complete / No File(s) Available
---------------------------------------------------------------
+## \[DEC_050\] Interface Polling Complete / No File(s) Available
 
-This message is logged upon completion filtering the files published in
-the download interface and verification of eventual duplications in the
-database without any *new* file meeting the download rules. It can be
-used to measure the time required to perform the filtering operations.
+This message is logged upon completion filtering the files published in the download interface and verification of eventual duplications in the database without any *new* file meeting the download rules. It can be used to measure the time required to perform the filtering operations.
 
-[\[DEC060\]]{#DEC060 label="DEC060"}
+[]{#DEC060 label="DEC060"}
 
-\[DEC\_060\] Interface Polling Complete / New File(s) Available
----------------------------------------------------------------
+## \[DEC_060\] Interface Polling Complete / New File(s) Available
 
-This message is logged upon completion filtering the files published in
-the download interface and verification of eventual duplications in the
-database reporting there are some *new* files for download. It can be
-used to measure the time required to perform the filtering operations.
+This message is logged upon completion filtering the files published in the download interface and verification of eventual duplications in the database reporting there are some *new* files for download. It can be used to measure the time required to perform the filtering operations.
 
-[\[DEC100\]]{#DEC100 label="DEC100"}
+[]{#DEC100 label="DEC100"}
 
-\[DEC\_100\] Interface Pull Iteration Completed
------------------------------------------------
+## \[DEC_100\] Interface Pull Iteration Completed
 
 This message is logged upon the completion of the pull circulation loop.
 
-[\[DEC105\]]{#DEC105 label="DEC105"}
+[]{#DEC105 label="DEC105"}
 
-\[DEC\_105\] File Available
----------------------------
+## \[DEC_105\] File Available
 
-The file referenced in the message met any of the filtering rules
-defined in the configuration *dec\_incoming\_files.xml* and it is
-therefore available for download from the interface. This message is
-logged only when the *--list* mode is used, otherwise the files matching
-the rules are directly downloaded and logged accordingly.
+The file referenced in the message met any of the filtering rules defined in the configuration *dec_incoming_files.xml* and it is therefore available for download from the interface. This message is logged only when the *--list* mode is used, otherwise the files matching the rules are directly downloaded and logged accordingly.
 
-[\[DEC110\]]{#DEC110 label="DEC110"}
+[]{#DEC110 label="DEC110"}
 
-\[DEC\_110\] File Downloaded
-----------------------------
+## \[DEC_110\] File Downloaded
 
-The file referenced in the message has been downloaded from the
-interface and placed into the associated to such interface. If the same
-file is available again at the same interface, the DEC will detect a
-file duplication condition.
+The file referenced in the message has been downloaded from the interface and placed into the [*LocalInbox*](#LocalInbox) associated to such interface. If the same file is available again at the same interface, the DEC will detect a file duplication condition.
 
-[\[DEC111\]]{#DEC111 label="DEC111"}
+[]{#DEC111 label="DEC111"}
 
-\[DEC\_111\] File Downloaded with same MD5
-------------------------------------------
+## \[DEC_111\] File Downloaded with same MD5
 
-The downloaded file from the interface referenced in the message has the
-same md5 with respect to the previous retrieval and it is handled as a
-file duplication condition.
+The downloaded file from the interface referenced in the message has the same md5 with respect to the previous retrieval and it is handled as a file duplication condition.
 
-[\[DEC115\]]{#DEC115 label="DEC115"}
+[]{#DEC115 label="DEC115"}
 
-\[DEC\_115\] File Disseminated
-------------------------------
+## \[DEC_115\] File Disseminated
 
-The file referenced in the message met any of the and it has been moved
-from into the Intray(s) matching the first .
+The file referenced in the message met any of the and it has been moved from [*LocalInbox*](#LocalInbox) into the Intray(s) matching the first [*dissemination rule*](#Dissemination rules).
 
-[\[DEC116\]]{#DEC116 label="DEC116"}
+[]{#DEC116 label="DEC116"}
 
-\[DEC\_116\] File Compressed
-----------------------------
+## \[DEC_116\] File Compressed
 
-The file referenced in the message has been compressed according to the
-*Compress* optional configuration item of the *Intray* entity.
+The file referenced in the message has been compressed according to the [*dissemination rule*](#Dissemination rules) *Compress* optional configuration item of the *Intray* entity.
 
-[\[DEC117\]]{#DEC117 label="DEC117"}
+[]{#DEC117 label="DEC117"}
 
-\[DEC\_117\] File Uncompressed
-------------------------------
+## \[DEC_117\] File Uncompressed
 
-The file referenced in the message has been compressed according to the
-*Compress* optional configuration item of the *Intray* entity.
+The file referenced in the message has been compressed according to the [*dissemination rule*](#Dissemination rules) *Compress* optional configuration item of the *Intray* entity.
 
-\[DEC\_120\] Unknown File Deleted
----------------------------------
+## \[DEC_120\] Unknown File Deleted
 
-According to the configuration item defined in *dec\_config.xml*
-configuration, a file available in the *pull* interface, which did not
-match any filtering rule defined in the configuration
-*dec\_incoming\_files.xml* has been deleted from the *DownloadDirs*
-*Directory* of such interface it was present.
+According to the configuration item [*DeleteUnknownFiles*](#DeleteUnknownFiles) defined in *dec_config.xml* configuration, a file available in the *pull* interface, which did not match any filtering rule defined in the configuration *dec_incoming_files.xml* has been deleted from the *DownloadDirs* *Directory* of such interface it was present.
 
-[\[DEC125\]]{#DEC125 label="DEC125"}
+[]{#DEC125 label="DEC125"}
 
-\[DEC\_125\] Duplicated File Deleted
-------------------------------------
+## \[DEC_125\] Duplicated File Deleted
 
-According to the configuration item defined in *dec\_config.xml*
-configuration, a file available in the *pull* interface, which has been
-previously downloaded successfully such interface is considered
-duplicated and it is removed directly in download directory without
-downloading it.
+According to the configuration item [*DeleteDuplicatedFiles*](#DeleteDuplicatedFiles) defined in *dec_config.xml* configuration, a file available in the *pull* interface, which has been previously downloaded successfully such interface is considered duplicated and it is removed directly in download directory without downloading it.
 
-[\[DEC126\]]{#DEC126 label="DEC126"}
+[]{#DEC126 label="DEC126"}
 
-\[DEC\_126\] File Deleted
--------------------------
+## \[DEC_126\] File Deleted
 
-According to the configuration item defined in
-*dec\_incoming\_files.xml* for every interface, the file which has been
-successfully *pulled* is deleted subsequently. This message can also be
-logged when deleting duplicated files.
+According to the configuration item [*DeleteDownloaded*](#DeleteFlag) defined in *dec_incoming_files.xml* for every interface, the file which has been successfully *pulled* is deleted subsequently. This message can also be logged when deleting duplicated files.
 
-\[DEC\_130\] Event Triggered
-----------------------------
+## \[DEC_130\] Event Triggered
 
-The message traces some event which has been triggered for a given
-interface according to the configuration items defined in .
+The message traces some event which has been triggered for a given interface according to the configuration items defined in [Events](#Events).
 
 ### Event newfile2intray
 
-This event is triggered upon successful polling completion (cf. ) which
-drove dissemination of some files (cf. ).
+This event is triggered upon successful polling completion (cf. [DEC_060](#DEC060)) which drove dissemination of some files (cf. [DEC_115](#DEC115)).
 
     [DEC_130] LEAP I/F : event newfile2intray => auxConverter -f /S3/Leap_Second.dat
 
 ### Event onreceivenewfilesok
 
-This event is triggered upon successful polling completion (cf. ) which
-drove download of some files (cf. ).
+This event is triggered upon successful polling completion (cf. [DEC_060](#DEC060)) which drove download of some files (cf. [DEC_110](#DEC110)).
 
     [DEC_130] LEAP I/F : event onreceivenewfilesok triggered => echo %f RECEIVED
 
-\[DEC\_131\] Dissemination Command Execution 
---------------------------------------------
+## \[DEC_131\] Dissemination Command Execution 
 
-The message traces some event which has been triggered for a given
-interface according to the configuration item *\"Execution\"* defined in
-the .
+The message traces some event which has been triggered for a given interface according to the configuration item *\"Execution\"* defined in the [*dissemination rules*](#Dissemination rules).
 
-[\[DEC135\]]{#DEC135 label="DEC135"}
+[]{#DEC135 label="DEC135"}
 
-\[DEC\_135\] Report Generation of Files Pulled
-----------------------------------------------
+## \[DEC_135\] Report Generation of Files Pulled
 
-The message traces the generation of the DEC report containing the files
-retrieved during a pull iteration from a given interface.
+The message traces the generation of the DEC report containing the files retrieved during a pull iteration from a given interface.
 
-[\[DEC144\]]{#DEC144 label="DEC144"}
+[]{#DEC144 label="DEC144"}
 
-\[DEC\_144\] Pull Statistics
-----------------------------
+## \[DEC_144\] Pull Statistics
 
-This message is generated by to supply some statistics regarding the
-file *pull* operations during the last \"n\" hours. The internal of log
-messages is a JSON string referring to:
+This message is generated by [decStats](#decStats) to supply some statistics regarding the file *pull* operations during the last \"n\" hours. The internal of log messages is a JSON string referring to:
 
 -   **filename** : the name of the file pushed
 
@@ -347,106 +248,83 @@ messages is a JSON string referring to:
 
 -   **date** : date of the circulation
 
-[\[DEC200\]]{#DEC200 label="DEC200"}
+[]{#DEC200 label="DEC200"}
 
-\[DEC\_200\] Push iteration to Interface completed successfully
----------------------------------------------------------------
+## \[DEC_200\] Push iteration to Interface completed successfully
 
 This message traces the successful push circulation completion.
 
-[\[DEC203\]]{#DEC203 label="DEC203"}
+[]{#DEC203 label="DEC203"}
 
-\[DEC\_203\] Request to Push File to Interface started
-------------------------------------------------------
+## \[DEC_203\] Request to Push File to Interface started
 
-This message traces the start of a given file push circulation towards
-an interface.
+This message traces the start of a given file push circulation towards an interface.
 
-[\[DEC205\]]{#DEC205 label="DEC205"}
+[]{#DEC205 label="DEC205"}
 
-\[DEC\_205\] Push Retry to Interface waiting LoopDelay
-------------------------------------------------------
+## \[DEC_205\] Push Retry to Interface waiting LoopDelay
 
-Push loop which has failed any circulation (cf. ) is waiting *LoopDelay*
-seconds to retry.
+Push loop which has failed any circulation (cf. [DEC_710](#DEC710) ) is waiting *LoopDelay* seconds to retry.
 
-[\[DEC206\]]{#DEC206 label="DEC206"}
+[]{#DEC206 label="DEC206"}
 
-\[DEC\_206\] Push Immediate Retry to Re-sending File to Interface waiting LoopDelay
------------------------------------------------------------------------------------
+## \[DEC_206\] Push Immediate Retry to Re-sending File to Interface waiting LoopDelay
 
-Push loop which has failed any circulation (cf. ) is waiting *LoopDelay*
-seconds to retry.
+Push loop which has failed any circulation (cf. [DEC_710](#DEC710) ) is waiting *LoopDelay* seconds to retry.
 
-[\[DEC210\]]{#DEC210 label="DEC210"}
+[]{#DEC210 label="DEC210"}
 
-\[DEC\_210\] File Pushed to Interface
--------------------------------------
+## \[DEC_210\] File Pushed to Interface
 
-The file referenced in the message has been uploaded to the interface
-placed into its .
+The file referenced in the message has been uploaded to the interface placed into its [*UploadDir*](#Upload Rules).
 
-[\[DEC211\]]{#DEC211 label="DEC211"}
+[]{#DEC211 label="DEC211"}
 
-\[DEC\_211\] Push Setup / File at GlobalOutbox
-----------------------------------------------
+## \[DEC_211\] Push Setup / File at GlobalOutbox
 
 The file has been placed in the GlobalOutbox for push circulations.
 
-[\[DEC212\]]{#DEC212 label="DEC212"}
+[]{#DEC212 label="DEC212"}
 
-\[DEC\_212\] Push Setup / File at Removed from SourceDir
---------------------------------------------------------
+## \[DEC_212\] Push Setup / File at Removed from SourceDir
 
-The file has been removed from the SourceDir upon its previous
-availability at the GlobalOutbox for push circulation.
+The file has been removed from the SourceDir upon its previous availability at the GlobalOutbox for push circulation.
 
-[\[DEC213\]]{#DEC213 label="DEC213"}
+[]{#DEC213 label="DEC213"}
 
-\[DEC\_213\] Push Setup / File at Interface LocalOutbox
--------------------------------------------------------
+## \[DEC_213\] Push Setup / File at Interface LocalOutbox
 
-The file has been placed in the Interface LocalOutbox for push
-circulations.
+The file has been placed in the Interface LocalOutbox for push circulations.
 
-[\[DEC214\]]{#DEC214 label="DEC214"}
+[]{#DEC214 label="DEC214"}
 
-\[DEC\_214\] Push Setup / File Compressed at Interface LocalOutbox
-------------------------------------------------------------------
+## \[DEC_214\] Push Setup / File Compressed at Interface LocalOutbox
 
-The file has been compressed in the Interface LocalOutbox location for
-push circulations.
+The file has been compressed in the Interface LocalOutbox location for push circulations.
 
-[\[DEC235\]]{#DEC235 label="DEC235"}
+[]{#DEC235 label="DEC235"}
 
-\[DEC\_235\] Report Generation DeliveredFiles to Interface
-----------------------------------------------------------
+## \[DEC_235\] Report Generation DeliveredFiles to Interface
 
-This message traces the generation of the report which refers to the
-files pushed towards the configured interfaces.
+This message traces the generation of the report which refers to the files pushed towards the configured interfaces.
 
-[\[DEC240\]]{#DEC240 label="DEC240"}
+[]{#DEC240 label="DEC240"}
 
-\[DEC\_240\] Push Email Notification to Interface
--------------------------------------------------
+## \[DEC_240\] Push Email Notification to Interface
 
 TBW / decNotify2Interface.
 
-[\[DEC241\]]{#DEC241 label="DEC241"}
+[]{#DEC241 label="DEC241"}
 
-\[DEC\_241\] Push Error Email Notification to Interface
--------------------------------------------------------
+## \[DEC_241\] Push Error Email Notification to Interface
 
 TBW / decNotify2Interface.
 
-[\[DEC244\]]{#DEC244 label="DEC244"}
+[]{#DEC244 label="DEC244"}
 
-\[DEC\_244\] Push Statistics
-----------------------------
+## \[DEC_244\] Push Statistics
 
-This message is generated by to supply some statistics regarding the
-file *push* operations during the last \"n\" hours. The internal of the
-log message is a JSON string referring to:
+This message is generated by [decStats](#decStats) to supply some statistics regarding the file *push* operations during the last \"n\" hours. The internal of the log message is a JSON string referring to:
 
 -   **filename** : the name of the file pushed
 
@@ -456,289 +334,217 @@ log message is a JSON string referring to:
 
 -   **date** : date of the circulation
 
-\"filename\":\"tai-utc.dat\",\"size\":61,\"interface\":\"LOCAL\",\"protocol\":\"FTP;\",\"date\":\"2020-04-15
-17:03:19 UTC\"
-\"filename\":\"mario.jpg\",\"size\":32478,\"interface\":\"LOCAL\",\"protocol\":\"FTP;\",\"date\":\"2020-04-15
-17:03:19 UTC\"
+::: verbnobox
+\"filename\":\"tai-utc.dat\",\"size\":61,\"interface\":\"LOCAL\",\"protocol\":\"FTP;\",\"date\":\"2020-04-15 17:03:19 UTC\" \"filename\":\"mario.jpg\",\"size\":32478,\"interface\":\"LOCAL\",\"protocol\":\"FTP;\",\"date\":\"2020-04-15 17:03:19 UTC\"
+:::
 
-[\[DEC254\]]{#DEC254 label="DEC254"}
+[]{#DEC254 label="DEC254"}
 
-\[DEC\_254\] Request OData Metadata to Interface
-------------------------------------------------
+## \[DEC_254\] Request OData Metadata to Interface
 
 Request of OData Metadata to an interface.
 
-[\[DEC255\]]{#DEC255 label="DEC255"}
+[]{#DEC255 label="DEC255"}
 
-\[DEC\_255\] Retry Request OData URL
-------------------------------------
+## \[DEC_255\] Retry Request OData URL
 
 Retry to request OData URL.
 
-[\[DEC257\]]{#DEC257 label="DEC257"}
+[]{#DEC257 label="DEC257"}
 
-\[DEC\_257\] OData Metadata File Created
-----------------------------------------
+## \[DEC_257\] OData Metadata File Created
 
 Query reply from an OData service dumped to file.
 
-[\[DEC259\]]{#DEC259 label="DEC259"}
+[]{#DEC259 label="DEC259"}
 
-\[DEC\_259\] OData Download Request
------------------------------------
+## \[DEC_259\] OData Download Request
 
 Request to download using HTTP a product from an OData service.
 
-[\[DEC260\]]{#DEC260 label="DEC260"}
+[]{#DEC260 label="DEC260"}
 
-\[DEC\_260\] OData Download Successful
---------------------------------------
+## \[DEC_260\] OData Download Successful
 
 Product download successful from an OData service.
 
-[\[AUX001\]]{#AUX001 label="AUX001"}
+[]{#AUX001 label="AUX001"}
 
-\[AUX\_001\] Auxiliary Data Conversion
---------------------------------------
+## \[AUX_001\] Auxiliary Data Conversion
 
-This message contains trace information regarding the file conversions
-from some source.
+This message contains trace information regarding the file conversions from some source.
 
-[\[NATS001\]]{#NATS001 label="NATS001"}
+[]{#NATS001 label="NATS001"}
 
-\[NATS001\] NATS Request Perfomed
----------------------------------
+## \[NATS001\] NATS Request Perfomed
 
-This message contains trace information regarding the NATS request
-performed to an interface: server, subject and body.
+This message contains trace information regarding the NATS request performed to an interface: server, subject and body.
 
-[\[NATS002\]]{#NATS002 label="NATS002"}
+[]{#NATS002 label="NATS002"}
 
-\[NATS002\] NATS Request Successful
------------------------------------
+## \[NATS002\] NATS Request Successful
 
-This message contains trace information regarding the NATS request
-reply.
+This message contains trace information regarding the NATS request reply.
 
-[\[NATS003\]]{#NATS003 label="NATS003"}
+[]{#NATS003 label="NATS003"}
 
-\[NATS003\] NATS Subscribe Performed
-------------------------------------
+## \[NATS003\] NATS Subscribe Performed
 
-This message contains trace information regarding the NATS subscribe
-message.
+This message contains trace information regarding the NATS subscribe message.
 
-Warning Messages
-================
+# Warning Messages
 
-Scope
------
+## Scope
 
-The warning messages by DEC SW are meant in general for tracing not
-nominal situations which might eventually require some intervention.
+The warning messages by DEC SW are meant in general for tracing not nominal situations which might eventually require some intervention.
 
-Index of Messages
------------------
+## Index of Messages
 
--   **\[DEC\_301\]** Detected duplicated file \"filename\" already
-    received from \"interface\" I/F
+-   **\[DEC_301\]** Detected duplicated file \"filename\" already received from \"interface\" I/F
 
--   **\[DEC\_320\]** Detected unknown file \"filename\" available at
-    \"interface\" I/F
+-   **\[DEC_320\]** Detected unknown file \"filename\" available at \"interface\" I/F
 
--   **\[DEC\_330\]** \"filename\" is stuck in \"temporal\" directory
+-   **\[DEC_330\]** \"filename\" is stuck in \"temporal\" directory
 
--   **\[DEC\_331\]** \"filename\" is stuck in LocalInbox directory
+-   **\[DEC_331\]** \"filename\" is stuck in LocalInbox directory
 
--   **\[DEC\_401\]** \"filename\" was previously sent
+-   **\[DEC_401\]** \"filename\" was previously sent
 
--   **\[DEC\_555\]** \"filename\" was previously Sent
+-   **\[DEC_555\]** \"filename\" was previously Sent
 
-[\[DEC301\]]{#DEC301 label="DEC301"}
+[]{#DEC301 label="DEC301"}
 
-\[DEC\_301\] Duplicated File Available
---------------------------------------
+## \[DEC_301\] Duplicated File Available
 
-The file reported is available again at the *pull* interface ; if the
-inventory is active, DEC retrieves just once a given file from each
-interface. This message will be reported during every polling iteration
-unless the *duplicated* file is removed from the interface.
+The file reported is available again at the *pull* interface ; if the inventory is active, DEC retrieves just once a given file from each interface. This message will be reported during every polling iteration unless the *duplicated* file is removed from the interface.
 
-[\[DEC320\]]{#DEC320 label="DEC320"}
+[]{#DEC320 label="DEC320"}
 
-\[DEC\_320\] Unknown File Available
------------------------------------
+## \[DEC_320\] Unknown File Available
 
-The file reported is available in the *pull* interface, but did not
-match any filtering rule defined in the configuration
-*dec\_incoming\_files.xml*. This message will be repeated every polling
-iteration unless the *unknown* file is removed from the interface.
+The file reported is available in the *pull* interface, but did not match any filtering rule defined in the configuration *dec_incoming_files.xml*. This message will be repeated every polling iteration unless the *unknown* file is removed from the interface.
 
-[\[DEC330\]]{#DEC330 label="DEC330"}
+[]{#DEC330 label="DEC330"}
 
-\[DEC\_330\] File Stuck in Temporal Directory
----------------------------------------------
+## \[DEC_330\] File Stuck in Temporal Directory
 
-This warning is associated to error message informing that the file was
-successfully downloaded and stuck in the temporal directory available
-for contingency recovery.
+This warning is associated to error message [*\[DEC_620\]*](#DEC620) informing that the file was successfully downloaded and stuck in the temporal directory available for contingency recovery.
 
-[\[DEC340\]]{#DEC340 label="DEC340"}
+[]{#DEC340 label="DEC340"}
 
-\[DEC\_340\] Email notification is disabled for the Interface
--------------------------------------------------------------
+## \[DEC_340\] Email notification is disabled for the Interface
 
-This warning is obtained when triggering for an interface whose
-configuration has such notifications disabled (cf. flag ).
+This warning is obtained when triggering [*decNotify2Interface*](#decNotify2Interface) for an interface whose configuration has such notifications disabled (cf. flag [*SendNotification*](#SendNotification)).
 
-[\[DEC401\]]{#DEC401 label="DEC401"}
+[]{#DEC401 label="DEC401"}
 
-\[DEC\_401\] File Previously Uploaded
--------------------------------------
+## \[DEC_401\] File Previously Uploaded
 
-The file reported has been found available again for upload towards an
-interface though it has been previously *pushed* there ; since the
-*push* iteration is executed with the \"once\" flag, this file has been
-discarded for upload.
+The file reported has been found available again for upload towards an interface though it has been previously *pushed* there ; since the *push* iteration is executed with the \"once\" flag, this file has been discarded for upload.
 
-[\[DEC501\]]{#DEC501 label="DEC501"}
+[]{#DEC501 label="DEC501"}
 
-\[DEC\_501\] Interface already present in DEC Inventory
--------------------------------------------------------
+## \[DEC_501\] Interface already present in DEC Inventory
 
-This warning message is generated by when requesting addition of an
-interface which is already present in the DEC Inventory database.
+This warning message is generated by [*decConfigInterface2DB*](#decConfigInterface2DB) when requesting addition of an interface which is already present in the DEC Inventory database.
 
-[\[DEC555\]]{#DEC555 label="DEC555"}
+[]{#DEC555 label="DEC555"}
 
-\[DEC\_555\] File Disseminated Exists
--------------------------------------
+## \[DEC_555\] File Disseminated Exists
 
-This message is raised when a previous file with same filename is found
-disseminating locally into an in-tray.
+This message is raised when a previous file with same filename is found disseminating locally into an in-tray.
 
-[\[DEC556\]]{#DEC556 label="DEC556"}
+[]{#DEC556 label="DEC556"}
 
-\[DEC\_556\] Old File Removed
------------------------------
+## \[DEC_556\] Old File Removed
 
-This message is raised upon detection of a previous file in the final
-intray to record its deletion prior the dissemination of the new one.
+This message is raised upon detection of a previous file in the final intray to record its deletion prior the dissemination of the new one.
 
-Error Messages
-==============
+# Error Messages
 
-Scope
------
+## Scope
 
-The error messages by DEC SW are meant in general for tracing problems
-encountered during one iteration which prevented the complete
-termination of any circulation rule.
+The error messages by DEC SW are meant in general for tracing problems encountered during one iteration which prevented the complete termination of any circulation rule.
 
-Index of Messages
------------------
+## Index of Messages
 
--   **\[DEC\_600\]** I/F \"interface\": Could not perform polling
+-   **\[DEC_600\]** I/F \"interface\": Could not perform polling
 
--   **\[DEC\_604\]** I/F \"interface\": Exchange Point Not Reachable
+-   **\[DEC_604\]** I/F \"interface\": Exchange Point Not Reachable
 
--   **\[DEC\_605\]** I/F \"interface\": Pull Miss-Configuration
+-   **\[DEC_605\]** I/F \"interface\": Pull Miss-Configuration
 
--   **\[DEC\_610\]** I/F \"interface\": Unable to connect to
+-   **\[DEC_610\]** I/F \"interface\": Unable to connect to [\"Hostname\"](#Config_Server)
 
--   **\[DEC\_611\]** I/F \"interface\": reason of the connection failure
+-   **\[DEC_611\]** I/F \"interface\": reason of the connection failure
 
--   **\[DEC\_612\]** I/F \"interface\": Cannot reach directory defined
-    in any of the the
+-   **\[DEC_612\]** I/F \"interface\": Cannot reach directory defined in any of the the [\"DownloadDirs\"](#DownloadDirs)
 
--   **\[DEC\_613\]** I/F \"interface\": server message associated to the
-    failure associated to the change of directory
+-   **\[DEC_613\]** I/F \"interface\": server message associated to the failure associated to the change of directory
 
--   **\[DEC\_614\]** I/F \"interface\": Cannot GET \"URL\"
+-   **\[DEC_614\]** I/F \"interface\": Cannot GET \"URL\"
 
--   **\[DEC\_615\]** I/F \"interface\": Failed to get list of files /
-    FTP passive mode is \"mode\"
+-   **\[DEC_615\]** I/F \"interface\": Failed to get list of files / FTP passive mode is \"mode\"
 
--   **\[DEC\_620\]** I/F \"interface\": Could not copy \"file\" into
-    local \"directory\"
+-   **\[DEC_620\]** I/F \"interface\": Could not copy \"file\" into local \"directory\"
 
--   **\[DEC\_625\]** Dissemination failure of \"file\" into intray
-    \"directory\" using mv command
+-   **\[DEC_625\]** Dissemination failure of \"file\" into intray \"directory\" using mv command
 
--   **\[DEC\_626\]** Dissemination failure of \"file\" into intray
-    \"directory\" using hard-links command
+-   **\[DEC_626\]** Dissemination failure of \"file\" into intray \"directory\" using hard-links command
 
--   **\[DEC\_627\]** Compression / Uncompression failure of \"file\"
-    into intray \"directory\" using hard-links command
+-   **\[DEC_627\]** Compression / Uncompression failure of \"file\" into intray \"directory\" using hard-links command
 
--   **\[DEC\_628\]** Failure when executing command
+-   **\[DEC_628\]** Failure when executing command
 
--   **\[DEC\_666\]** I/F \"interface\": Could not download \"file\"
+-   **\[DEC_666\]** I/F \"interface\": Could not download \"file\"
 
--   **\[DEC\_667\]** OData I/F \"interface\": Could not download
-    \"file\"
+-   **\[DEC_667\]** OData I/F \"interface\": Could not download \"file\"
 
--   **\[DEC\_705\]** I/F \"interface\": Push miss-configuration
+-   **\[DEC_705\]** I/F \"interface\": Push miss-configuration
 
--   **\[DEC\_711\]** Could not reach directory from *SourceDir* to fetch
-    files for push
+-   **\[DEC_711\]** Could not reach directory from *SourceDir* to fetch files for push
 
--   **\[DEC\_713\]** Could not place file in *LocalOutbox* to prepare
-    files out-tray for push
+-   **\[DEC_713\]** Could not place file in *LocalOutbox* to prepare files out-tray for push
 
--   **\[DEC\_798\]** Configuration problem
+-   **\[DEC_798\]** Configuration problem
 
--   **\[DEC\_799\]** Integration problem
+-   **\[DEC_799\]** Integration problem
 
--   **\[AUX\_600\]** Cannot read specified file
+-   **\[AUX_600\]** Cannot read specified file
 
--   **\[AUX\_666\]** Input file is not recognized
+-   **\[AUX_666\]** Input file is not recognized
 
-[\[DEC600\]]{#DEC600 label="DEC600"}
+[]{#DEC600 label="DEC600"}
 
-\[DEC\_600\] Failed to Pull from Interface
-------------------------------------------
+## \[DEC_600\] Failed to Pull from Interface
 
-This message is raised at the completion of the interface polling
-operation (i.e. *pull* circulation)when it failed. Reason should have
-been previously logged (e.g. , ,etc). Polling elapse time can be
-computed by referring to the associated message.
+This message is raised at the completion of the interface polling operation (i.e. *pull* circulation)when it failed. Reason should have been previously logged (e.g. [DEC_610](#DEC610), [DEC_611](#DEC611),etc). Polling elapse time can be computed by referring to the associated [DEC_005](#DEC005) message.
 
-[\[DEC601\]]{#DEC601 label="DEC601"}
+[]{#DEC601 label="DEC601"}
 
-\[DEC\_601\] Failed to Start Listener for Interface
----------------------------------------------------
+## \[DEC_601\] Failed to Start Listener for Interface
 
-This message is raised when the interface commanded for *pull*
-circulation is miss-configured. It is usually explained by message.
+This message is raised when the interface commanded for *pull* circulation is miss-configured. It is usually explained by [DEC_605](#DEC605) message.
 
-[\[DEC603\]]{#DEC603 label="DEC603"}
+[]{#DEC603 label="DEC603"}
 
-\[DEC\_603\] Listener for Interface was not running
----------------------------------------------------
+## \[DEC_603\] Listener for Interface was not running
 
-This message is raised when the interface commanded to stop or re-start
-its listener was not previously switched-on.
+This message is raised when the interface commanded to stop or re-start its listener was not previously switched-on.
 
-[\[DEC604\]]{#DEC604 label="DEC604"}
+[]{#DEC604 label="DEC604"}
 
-\[DEC\_604\] Interface Exchange Point Not Reachable
----------------------------------------------------
+## \[DEC_604\] Interface Exchange Point Not Reachable
 
-This message is generated by tool when checking the availability of the
-configured interfaces. This message is the counter side of tracing that
-the check tool could not reach the exchange point, which may be related
-to miss-configuration or network unavailability.
+This message is generated by [*decCheckConfig*](#decCheckConfig) tool when checking the availability of the configured interfaces. This message is the counter side of [DEC_004](#DEC004) tracing that the check tool could not reach the exchange point, which may be related to miss-configuration or network unavailability.
 
-[\[DEC605\]]{#DEC605 label="DEC605"}
+[]{#DEC605 label="DEC605"}
 
-\[DEC\_605\] Pull Miss-Configuration
-------------------------------------
+## \[DEC_605\] Pull Miss-Configuration
 
-This message is raised when interface commanded for *pull* circulation
-is miss-configured.
+This message is raised when interface commanded for *pull* circulation is miss-configured.
 
-### Not existing interface in dec\_interfaces.xml 
+### Not existing interface in dec_interfaces.xml 
 
     [DEC_605] I/F Foo: such is not a configured interface
 
@@ -748,33 +554,27 @@ is miss-configured.
 
 ### Not registered interface in database 
 
-Polling is performed using the database but such interface has not been
-registered.
+Polling is performed using the database but such interface has not been registered.
 
     [DEC_605] I/F Foo: such is not a registered I/F in db
 
-### Pull flag is disabled in dec\_interfaces.xml 
+### Pull flag is disabled in dec_interfaces.xml 
 
     [DEC_605] I/F IERS: Enabled4Receiving flag is disabled
 
-### I/F LocalInbox not defined in dec\_incoming\_files.xml 
+### I/F LocalInbox not defined in dec_incoming_files.xml 
 
     [DEC_605] I/F Foo: LocalInbox configuration item not found
 
-[\[DEC610\]]{#DEC610 label="DEC610"}
+[]{#DEC610 label="DEC610"}
 
-\[DEC\_610\] Unable to Connect to server
-----------------------------------------
+## \[DEC_610\] Unable to Connect to server
 
-This error is raised when it is not possible to connect to using the .
+This error is raised when it is not possible to connect to [\"Hostname\"](#Config_Server) using the [\"Protocol\"](#Config_Server).
 
-\[DEC\_611\] Pull Server Error Message {#DEC611}
---------------------------------------
+## \[DEC_611\] Pull Server Error Message {#DEC611}
 
-This error code can bring different messages associated to the
-connection failure \[DEC\_610\] is reporting. Errors can driven by
-miss-configuration of the associated to such interface or its
-unavailability due to network problems.
+This error code can bring different messages associated to the connection failure \[DEC_610\] is reporting. Errors can driven by miss-configuration of the [Server](#Config_Server) associated to such interface or its unavailability due to network problems.
 
 ### Hostname is unknown
 
@@ -790,183 +590,129 @@ unavailability due to network problems.
 
 ### Failed authentication
 
-The authentication failure message differs depending on the network
-protocol used for pull.
+The authentication failure message differs depending on the network protocol used for pull.
 
     [DEC_611] I/F LOCALHOST_NOT_SECURE: 530 Login authentication failed
 
-\[DEC\_612\] Cannot Reach Interface Download Directory {#DEC612}
-------------------------------------------------------
+## \[DEC_612\] Cannot Reach Interface Download Directory {#DEC612}
 
-Failed to reach one of the *Directory* of the of a given interface.
+Failed to reach one of the *Directory* of the [\"DownloadDirs\"](#DownloadDirs) of a given interface.
 
-\[DEC\_613\] Server Error Message 
----------------------------------
+## \[DEC_613\] Server Error Message 
 
-The information replied by the server when error condition arises is
-usually meaningless to understand the root reason to limit the risks of
-security attacks. It usually is related to file permissions on the
-server or miss-configuration problems referring to a non existing
-directory.
+The information replied by the server when error condition [\[DEC_612\]](#DEC612) arises is usually meaningless to understand the root reason to limit the risks of security attacks. It usually is related to file permissions on the server or miss-configuration problems referring to a non existing directory.
 
     [DEC_613] LOCALHOST I/F: 550 Can't change directory to /a/if/local/: No such file or directory
 
-[\[DEC614\]]{#DEC614 label="DEC614"}
+[]{#DEC614 label="DEC614"}
 
-\[DEC\_614\] Cannot Get URL
----------------------------
+## \[DEC_614\] Cannot Get URL
 
-Failed to get the URL associated to one *Directory* of the of a given
-interface when using the HTTP protocol.
+Failed to get the URL associated to one *Directory* of the [\"DownloadDirs\"](#DownloadDirs) of a given interface when using the HTTP protocol.
 
-[\[DEC615\]]{#DEC615 label="DEC615"}
+[]{#DEC615 label="DEC615"}
 
-\[DEC\_615\] Failed to list files with FTP
-------------------------------------------
+## \[DEC_615\] Failed to list files with FTP
 
-In practical terms, this is a failure when performing the FTP command
-list to obtain the list of files available in a given directory.
+In practical terms, this is a failure when performing the FTP command list to obtain the list of files available in a given directory.
 
-\[DEC\_620\] Downloaded File not Copied into Final Dir {#DEC620}
-------------------------------------------------------
+## \[DEC_620\] Downloaded File not Copied into Final Dir {#DEC620}
 
-The file retrieved from the interface could not be copied into the final
-directory defined in the configuration. This is usually a problem of
-file permissions.
+The file retrieved from the interface could not be copied into the final directory defined in the configuration. This is usually a problem of file permissions.
 
-\[DEC\_625\] File Move Dissemination Failure {#DEC625}
---------------------------------------------
+## \[DEC_625\] File Move Dissemination Failure {#DEC625}
 
-This error is raised when DEC could not disseminate a file into a given
-*Intray* according to the using a mv command. This is usually associated
-to file permission problems of the *Intray* directory.
+This error is raised when DEC could not disseminate a file into a given *Intray* according to the [*Dissemination rules*](#Dissemination rules) using a mv command. This is usually associated to file permission problems of the *Intray* directory.
 
-\[DEC\_626\] File Hard-Link Dissemination Failure {#DEC626}
--------------------------------------------------
+## \[DEC_626\] File Hard-Link Dissemination Failure {#DEC626}
 
-This error is raised when DEC could not disseminate a file into a given
-*Intray* according to the using hard-links. This is usually associated
-to file permission problems of the *Intray* directory.
+This error is raised when DEC could not disseminate a file into a given *Intray* according to the [*Dissemination rules*](#Dissemination rules) using hard-links. This is usually associated to file permission problems of the *Intray* directory.
 
-\[DEC\_627\] File Dissemination Compress / Uncompress Failure {#DEC627}
--------------------------------------------------------------
+## \[DEC_627\] File Dissemination Compress / Uncompress Failure {#DEC627}
 
-This error is raised when DEC could not compress / uncompress a file
-into a given *Intray* according to the .
+This error is raised when DEC could not compress / uncompress a file into a given *Intray* according to the [*Dissemination rules*](#Dissemination rules).
 
-\[DEC\_628\] Command Execution Failure {#DEC628}
---------------------------------------
+## \[DEC_628\] Command Execution Failure {#DEC628}
 
-This error is raised when DEC tried to execute a command in sub-shell
-obtaining failure status.
+This error is raised when DEC tried to execute a command in sub-shell obtaining failure status.
 
-\[DEC\_666\] Download Failure {#DEC666}
------------------------------
+## \[DEC_666\] Download Failure {#DEC666}
 
-This error is raised when DEC could not download a file from a given
-interface.
+This error is raised when DEC could not download a file from a given interface.
 
-\[DEC\_667\] OData URI Download Failure {#DEC667}
----------------------------------------
+## \[DEC_667\] OData URI Download Failure {#DEC667}
 
-This error is raised when DEC could not download a URI file from some
-given OData interface delivery point.
+This error is raised when DEC could not download a URI file from some given OData interface delivery point.
 
-\[DEC\_668\] OData Metadata Download Failure {#DEC668}
---------------------------------------------
+## \[DEC_668\] OData Metadata Download Failure {#DEC668}
 
-This error is raised when DEC could not download the OData metadata from
-some given OData interface delivery point.
+This error is raised when DEC could not download the OData metadata from some given OData interface delivery point.
 
-[\[DEC670\]]{#DEC670 label="DEC670"}
+[]{#DEC670 label="DEC670"}
 
-\[DEC\_670\] Deletion Failure
------------------------------
+## \[DEC_670\] Deletion Failure
 
-This error is raised when DEC could not delete from the interface a file
-which has been successfully downloaded (cf. ). For a given file from a
-specific interface this message is exclusive to .
+This error is raised when DEC could not delete from the interface a file which has been successfully downloaded (cf. [*\[DEC_110\]*](#DEC110)). For a given file from a specific interface this message is exclusive to [*\[DEC_126\]*](#DEC126).
 
-[\[DEC700\]]{#DEC700 label="DEC700"}
+[]{#DEC700 label="DEC700"}
 
-\[DEC\_700\] Push Failure to Interface
---------------------------------------
+## \[DEC_700\] Push Failure to Interface
 
-This message is raised at the completion of the interface *push*
-operation, when it failed, upon completion of the retry loops (cf. ).
-Reason should have been previously logged (e.g. , ,).
+This message is raised at the completion of the interface *push* operation, when it failed, upon completion of the retry loops (cf. [TXRXParams configuration](#TXRXParams)). Reason should have been previously logged (e.g. [DEC_710](#DEC710), [DEC_711](#DEC711),[DEC_712](#DEC712)).
 
-[\[DEC703\]]{#DEC703 label="DEC703"}
+[]{#DEC703 label="DEC703"}
 
-\[DEC\_703\] Push Iteration to Interface is already running
------------------------------------------------------------
+## \[DEC_703\] Push Iteration to Interface is already running
 
-This message is raised upon execution of a new instance of
-decSend2Interface for a given interface when there is already a previous
-on-going execution for such given interface.
+This message is raised upon execution of a new instance of decSend2Interface for a given interface when there is already a previous on-going execution for such given interface.
 
-[\[DEC705\]]{#DEC705 label="DEC705"}
+[]{#DEC705 label="DEC705"}
 
-\[DEC\_705\] Push Miss-Configuration for Interface
---------------------------------------------------
+## \[DEC_705\] Push Miss-Configuration for Interface
 
-This message is raised when interface commanded for *push* circulation
-is miss-configured.
+This message is raised when interface commanded for *push* circulation is miss-configured.
 
-### Not existing interface in dec\_interfaces.xml 
+### Not existing interface in dec_interfaces.xml 
 
     [DEC_705] Foo I/F: such is not a configured interface
 
-### Push flag is disabled in dec\_interfaces.xml 
+### Push flag is disabled in dec_interfaces.xml 
 
     [DEC_705] IERS I/F: Enabled4Sending flag is disabled
 
-[\[DEC710\]]{#DEC710 label="DEC710"}
+[]{#DEC710 label="DEC710"}
 
-\[DEC\_710\] Failed to send file to Interface
----------------------------------------------
+## \[DEC_710\] Failed to send file to Interface
 
-This message is raised when failure to *push* a file towards an
-interface.
+This message is raised when failure to *push* a file towards an interface.
 
-[\[DEC711\]]{#DEC711 label="DEC711"}
+[]{#DEC711 label="DEC711"}
 
-\[DEC\_711\] Cannot Reach SourceDir Sub-Directory
--------------------------------------------------
+## \[DEC_711\] Cannot Reach SourceDir Sub-Directory
 
-This error is raised when DEC could not reach a *SourceDir*
-sub-directory to fetch the selected files to *push* according to some
-miss-configuration.
+This error is raised when DEC could not reach a *SourceDir* sub-directory to fetch the selected files to *push* according to some [*\[Upload Rule*](#Upload Rules) miss-configuration.
 
-[\[DEC712\]]{#DEC712 label="DEC712"}
+[]{#DEC712 label="DEC712"}
 
-\[DEC\_712\] Cannot Reach Interface Upload Directory
-----------------------------------------------------
+## \[DEC_712\] Cannot Reach Interface Upload Directory
 
 Failed to reach *UploadDir* for a given interface.
 
-[\[DEC713\]]{#DEC713 label="DEC713"}
+[]{#DEC713 label="DEC713"}
 
-\[DEC\_713\] File Hard-link Failure into LocalOutbox
-----------------------------------------------------
+## \[DEC_713\] File Hard-link Failure into LocalOutbox
 
-This error is raised when hard-linking from the source directory to the
-local outbox.
+This error is raised when hard-linking from the source directory to the local outbox.
 
-[\[DEC714\]]{#DEC714 label="DEC714"}
+[]{#DEC714 label="DEC714"}
 
-\[DEC\_714\] File Read Error in LocalOutbox
--------------------------------------------
+## \[DEC_714\] File Read Error in LocalOutbox
 
-This error is raised when a file previously detected in the LocalOutbox
-for push is not found when reading it to extract its size. This is
-usually an integration problem of the data-flow and the component
-workflow.
+This error is raised when a file previously detected in the LocalOutbox for push is not found when reading it to extract its size. This is usually an integration problem of the data-flow and the component workflow.
 
-[\[DEC715\]]{#DEC715 label="DEC715"}
+[]{#DEC715 label="DEC715"}
 
-\[DEC\_715\] Push Server Error Message
---------------------------------------
+## \[DEC_715\] Push Server Error Message
 
 Server error message associated to the *push* failure.
 
@@ -974,29 +720,23 @@ Server error message associated to the *push* failure.
 
     [DEC_715] I/F LOCALHOST_FTPS: 553 Could not create file
 
-[\[DEC740\]]{#DEC740 label="DEC740"}
+[]{#DEC740 label="DEC740"}
 
-\[DEC\_740\] Failed to Email Push Success Notification to Interface
--------------------------------------------------------------------
+## \[DEC_740\] Failed to Email Push Success Notification to Interface
 
-This message is raised when failed to email the notification to inform
-about a *success* *push* iteration.
+This message is raised when [*\[decNotify2Interface*](#decNotify2Interface) failed to email the notification to inform about a *success* *push* iteration.
 
-[\[DEC741\]]{#DEC741 label="DEC741"}
+[]{#DEC741 label="DEC741"}
 
-\[DEC\_741\] Failed to Email Push Error Notification to Interface
------------------------------------------------------------------
+## \[DEC_741\] Failed to Email Push Error Notification to Interface
 
-This message is raised when failed to email the notification to inform
-about a *failed* *push* iteration.
+This message is raised when [*\[decNotify2Interface*](#decNotify2Interface) failed to email the notification to inform about a *failed* *push* iteration.
 
-[\[DEC742\]]{#DEC742 label="DEC742"}
+[]{#DEC742 label="DEC742"}
 
-\[DEC\_742\] Email Server Error
--------------------------------
+## \[DEC_742\] Email Server Error
 
-This message is the (SMTP) server error when sending notification
-emails.
+This message is the (SMTP) server error when sending notification emails.
 
 ### Credentials Not Accepted
 
@@ -1014,55 +754,44 @@ emails.
 
     [ERROR] 2020-04-14 18:58:58 NODE_1.mail - [DEC_742] LOCALHOST_NOT_SECURE I/F: Must issue a STARTTLS command first
 
-[\[DEC750\]]{#DEC750 label="DEC750"}
+[]{#DEC750 label="DEC750"}
 
-\[DEC\_750\] Event Error
-------------------------
+## \[DEC_750\] Event Error
 
-This message is logged when the command executed associated to some
-raised.
+This message is logged when the command executed associated to some [*Event*](#Events) raised.
 
         [ERROR] [DEC_750] I/F NOAA: EventManager failed execution of auxConverter / No such file or directory - auxConverter
 
-[\[DEC798\]]{#DEC798 label="DEC798"}
+[]{#DEC798 label="DEC798"}
 
-\[DEC\_798\] Configuration Error
---------------------------------
+## \[DEC_798\] Configuration Error
 
-This message is logged when the XML schema validation corresponding to a
-given configuration file is failing.
+This message is logged when the XML schema validation corresponding to a given configuration file is failing.
 
         [DEBUG] NODE_1.checker - xmllint --schema /Users/mario/.frum/versions/3.1.0/lib/ruby/gems/3.1.0/gems/dec-1.0.33/code/dec/../../schemas/dec_log_config.xsd /Users/mario/.frum/versions/3.1.0/lib/ruby/gems/3.1.0/gems/dec-1.0.33/code/dec/../../config/dec_log_config.xml --noout
         [DEC_798] Fail schema check for dec_interfaces
 
-[\[DEC799\]]{#DEC799 label="DEC799"}
+[]{#DEC799 label="DEC799"}
 
-\[DEC\_799\] Integration Error
-------------------------------
+## \[DEC_799\] Integration Error
 
 This message is logged when some unexpected error raised.
 
-[\[AUX600\]]{#AUX600 label="AUX600"}
+[]{#AUX600 label="AUX600"}
 
-\[AUX\_600\] Cannot access File
--------------------------------
+## \[AUX_600\] Cannot access File
 
-This message is logged when the file to be converted can not be reached
-from the specified path.
+This message is logged when the file to be converted can not be reached from the specified path.
 
-[\[AUX666\]]{#AUX666 label="AUX666"}
+[]{#AUX666 label="AUX666"}
 
-\[AUX\_666\] No File conversion pattern found
----------------------------------------------
+## \[AUX_666\] No File conversion pattern found
 
-This message is logged when the file to be converted does not meet any
-file converted pattern (i.e. the SW does not recognize the type of the
-input file).
+This message is logged when the file to be converted does not meet any file converted pattern (i.e. the SW does not recognize the type of the input file).
 
 ### Missing SW Dependency
 
-Some SW dependency required by DEC was not found in \$PATH. Refer to to
-check the SW dependencies which DEC needs for its correct execution.
+Some SW dependency required by DEC was not found in \$PATH. Refer to [*section FOSS*](#FOSS) to check the SW dependencies which DEC needs for its correct execution.
 
         [DEC_799] Fatal Error : 7za not present in $PATH
         [DEC_799] Fatal Error : jq not present in $PATH
@@ -1075,29 +804,23 @@ check the SW dependencies which DEC needs for its correct execution.
 
 ### Database table not existing or reachable
 
-This is an error when not finding the some DEC/Inventory table ; likely
-because it has not been created yet.
+This is an error when not finding the some DEC/Inventory table ; likely because it has not been created yet.
 
         [DEC_799] Fatal Error : DEC/Inventory Could not find table 'interfaces'
 
 ### Zero length file download
 
-If an interfaces publishes a Zero length file, this can be retrieved
-though no data content is really dumped into the file-system (e.g. FTP
-protocol replies successful 226). This is an anomaly of the source
-interface.
+If an interfaces publishes a Zero length file, this can be retrieved though no data content is really dumped into the file-system (e.g. FTP protocol replies successful 226). This is an anomaly of the source interface.
 
 ### Compress method for push not supported
 
-This is a configuration error regarding the definition of the
-compression mechanism prior push operations.
+This is a configuration error regarding the definition of the compression mechanism prior push operations.
 
     [DEC_799] Fatal Error : compress method #{compress} not supported / check dec_outgoing_files.xml
 
 ### Unexpected error when launching the listener for pull
 
-This is an unexpected error when launching the listener for pull
-operations.
+This is an unexpected error when launching the listener for pull operations.
 
     [DEC_799] I/F #{entity}: Error when launching Listener
 
@@ -1107,114 +830,74 @@ This is an error when trying to reach one file or directory.
 
         [DEC_799] I/F #{entity}: No such file or directory @ dir_s_chdir - /volume1/dec/interfaces/dhus_odata/
 
-Debug Messages
-==============
+# Debug Messages
 
-Scope
------
+## Scope
 
-The debug messages by DEC SW are meant in general for troubleshooting
-purposes when undesired behaviour raises ; for instance it may be useful
-to activate it when rehearsing new configurations.
+The debug messages by DEC SW are meant in general for troubleshooting purposes when undesired behaviour raises ; for instance it may be useful to activate it when rehearsing new configurations.
 
-By default the log debug messages are not generated ; they can be
-optionally activated at the execution time of the different DEC commands
-by usage of the *--Debug* or *-D* execution flag supplied at the command
-line interface.
+By default the log debug messages are not generated ; they can be optionally activated at the execution time of the different DEC commands by usage of the *--Debug* or *-D* execution flag supplied at the command line interface.
 
-Index of Messages
------------------
+## Index of Messages
 
--   **\[DEC\_910\]** I/F \"interface\": Filtering directory with files
-    \"number\" of items
+-   **\[DEC_910\]** I/F \"interface\": Filtering directory with files \"number\" of items
 
--   **\[DEC\_911\]** I/F \"interface\": performance when filtering
-    according to download rules
+-   **\[DEC_911\]** I/F \"interface\": performance when filtering according to download rules
 
--   **\[DEC\_912\]** I/F \"interface\": performance when filtering
-    according to database
+-   **\[DEC_912\]** I/F \"interface\": performance when filtering according to database
 
--   **\[DEC\_913\]** I/F \"interface\": filtering file with database
+-   **\[DEC_913\]** I/F \"interface\": filtering file with database
 
--   **\[DEC\_914\]** I/F \"interface\": \"file\" found in database
+-   **\[DEC_914\]** I/F \"interface\": \"file\" found in database
 
--   **\[DEC\_915\]** I/F \"interface\": \"file\" not found in database
+-   **\[DEC_915\]** I/F \"interface\": \"file\" not found in database
 
--   **\[DEC\_941\]** File dissemination command I
+-   **\[DEC_941\]** File dissemination command I
 
--   **\[DEC\_942\]** File dissemination command II
+-   **\[DEC_942\]** File dissemination command II
 
--   **\[DEC\_951\]** Removing \"file\" in \"directory\" which is
+-   **\[DEC_951\]** Removing \"file\" in \"directory\" which is [\"LocalInbox\"](#LocalInbox)
 
-\[DEC\_910\] Filtering Number of Files in Download Directory {#DEC910}
-------------------------------------------------------------
+## \[DEC_910\] Filtering Number of Files in Download Directory {#DEC910}
 
-This message reports the number of files published in the which are
-about to be filtered according to the download rules and the database
-content.
+This message reports the number of files published in the [\"DownloadDirs\"](#DownloadDirs) which are about to be filtered according to the download rules and the database content.
 
-\[DEC\_911\] Filtering According to Download Rules {#DEC911}
---------------------------------------------------
+## \[DEC_911\] Filtering According to Download Rules {#DEC911}
 
-This message reports the CPU time resources used to perform the
-filtering operations.
+This message reports the CPU time resources used to perform the filtering operations.
 
-[\[DEC912\]]{#DEC912 label="DEC912"}
+[]{#DEC912 label="DEC912"}
 
-\[DEC\_912\] Filtering Number of Items with Database
-----------------------------------------------------
+## \[DEC_912\] Filtering Number of Items with Database
 
-This message traces the number of files which met the download rules
-during a given pull iteration and which are about to be filtered with
-respect to the database registry.
+This message traces the number of files which met the download rules during a given pull iteration and which are about to be filtered with respect to the database registry.
 
-[\[DEC913\]]{#DEC913 label="DEC913"}
+[]{#DEC913 label="DEC913"}
 
-\[DEC\_913\] Filtering File with Database
------------------------------------------
+## \[DEC_913\] Filtering File with Database
 
-This message traces that a file found in the interface, which is
-matching the download rules, is about to be verified whether it has been
-previously received or not by checking its name reference in the
-database.
+This message traces that a file found in the interface, which is matching the download rules, is about to be verified whether it has been previously received or not by checking its name reference in the database.
 
-[\[DEC914\]]{#DEC914 label="DEC914"}
+[]{#DEC914 label="DEC914"}
 
-\[DEC\_914\] File Found in Database
------------------------------------
+## \[DEC_914\] File Found in Database
 
-This message traces that a file found in the interface, which is
-matching the download rules, is already registered in the database
-referring to a previous successful download, and therefore such file
-will be filtered-out and it will not be pulled again.
+This message traces that a file found in the interface, which is matching the download rules, is already registered in the database referring to a previous successful download, and therefore such file will be filtered-out and it will not be pulled again.
 
-[\[DEC915\]]{#DEC915 label="DEC915"}
+[]{#DEC915 label="DEC915"}
 
-\[DEC\_915\] File Previously Not Recorded in Database
------------------------------------------------------
+## \[DEC_915\] File Previously Not Recorded in Database
 
-This message traces that a file found in the interface, which is
-matching the download rules, is not previously registered in the
-database, and therefore such file will be requested for download as part
-of the *pull* iteration.
+This message traces that a file found in the interface, which is matching the download rules, is not previously registered in the database, and therefore such file will be requested for download as part of the *pull* iteration.
 
-\[DEC\_941\] File Dissemination Command I {#DEC941}
------------------------------------------
+## \[DEC_941\] File Dissemination Command I {#DEC941}
 
-This message traces the file-system command used to perform the pulled
-file *first* dissemination from the Interface into the first *Intray*
-configured according to the .
+This message traces the file-system command used to perform the pulled file *first* dissemination from the Interface [*\"LocalInbox\"*](#LocalInbox) into the first *Intray* configured according to the [*Dissemination Rules*](#Dissemination rules).
 
-\[DEC\_942\] File Dissemination Command II {#DEC942}
-------------------------------------------
+## \[DEC_942\] File Dissemination Command II {#DEC942}
 
-This message traces the file-system command used to perform the pulled
-file *remaining* dissemination(s) from the first *Intray* configured
-according to the .
+This message traces the file-system command used to perform the pulled file *remaining* dissemination(s) from the first *Intray* configured according to the [*Dissemination Rules*](#Dissemination rules).
 
-\[DEC\_951\] Removal from LocalInbox upon Dissemination {#DEC951}
--------------------------------------------------------
+## \[DEC_951\] Removal from LocalInbox upon Dissemination {#DEC951}
 
-This message reports that the \"file\" has been removed from the
-\"directory\" upon a complete dissemination according to the configured
-rules.
+This message reports that the \"file\" has been removed from the \"directory\" [\"LocalInbox\"](#LocalInbox) upon a complete dissemination according to the configured rules.

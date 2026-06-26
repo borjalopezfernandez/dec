@@ -1,0 +1,1048 @@
+[]{#Public Data Providers label="Public Data Providers"}
+
+# Introduction
+
+This section includes some few open public data providers of auxiliary data used in different domains (earth observation, navigation, geodesy, space weather, public health, etc), for which there is already a DEC configuration available to exploit them. Any *public data provider* can be supported by DEC, but the ones described here have been selected to demonstrate the DEC SW capabilities considering that such interfaces have been used by several projects. As such, every provider is subject of a dedicated test interface which does not simulate the provider but it exploits the real interface. Also the selection of interfaces is driven by the nature of the different protocols used in order to have some variety.
+
+The dedicated test interfaces aim at verifying the full capacity to exploit a given ADP, hence they comprise all the usual steps since configuration verification, listing up, data retrieval, local transformation up to the final local dissemination for consumption (i.e. pull circulations). It is noted that there are dedicated test interface project-wise to support both pull and push circulations but ADP, which are open, public and sometimes anonymous do not support push circulations by definition.
+
+The information included in the following sections do not represent the full interface test suite for each data provider but it aims at showing some of the DEC natural capabilities whilst demonstrating the correct exploitation of those end-points.
+
+# CelesTrak 
+
+Celestrak publishes the NORAD satellite catalogue of TLE with a convenient public anonymous API.
+
+## Satellite TLE 
+
+The DEC SW queries the CelesTrak API to check its availability and request the spacecraft according to its SATCAT identifier (i.e. NORAD identifier).
+
+Deimos satellites can be retrieved using CELES_D1 and CELES_D2 interface workflows, which are defined to retrieve the TLE of DE1 and DE2 spacecrafts, which are subsequently dumped into files and renamed accordingly for their unambiguous identification. Other missions such as Copernicus Sentinels have also been tested.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2022-03-02 10:32:22 NODE_1.test - DECTestCaseCelesTrak::test_pull => START
+[DEBUG] 2022-03-02 10:32:23 NODE_1.test - rm -f /tmp/dec/in_basket_if_celes/*
+[DEBUG] 2022-03-02 10:32:23 NODE_1.test - decGetFromInterface -m CELES_D1 -l --nodb
+[ INFO] 2022-03-02 10:32:25 NODE_1.pull - [DEC_005] I/F CELES_D1: Polling Started - List mode is true
+[ INFO] 2022-03-02 10:32:26 NODE_1.pull - [DEC_105] I/F CELES_D1: File gp.php?CATNR=35681 is available
+[ INFO] 2022-03-02 10:32:26 NODE_1.pull - [DEC_060] I/F CELES_D1: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-03-02 10:32:26 NODE_1.pull - [DEC_100] I/F CELES_D1: Pull iteration completed successfully
+[DEBUG] 2022-03-02 10:32:28 NODE_1.test - decGetFromInterface -m CELES_D1 --nodb
+[ INFO] 2022-03-02 10:32:30 NODE_1.pull - [DEC_005] I/F CELES_D1: Polling Started - List mode is false
+[ INFO] 2022-03-02 10:32:31 NODE_1.pull - [DEC_060] I/F CELES_D1: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-03-02 10:32:32 NODE_1.pull - [DEC_110] I/F CELES_D1: gp.php?CATNR=35681 downloaded with size 168 bytes
+[ INFO] 2022-03-02 10:32:32 NODE_1.pull - [DEC_130] I/F CELES_D1: event triggered onreceivenewfilesok => 
+mv /tmp/dec/in_basket_if_celes/gp.php?CATNR=35681 /tmp/dec/in_basket_if_celes/"$(date +"%Y%m%d%H%M%S_DEIMOS-1.tle")"
+[ INFO] 2022-03-02 10:32:32 NODE_1.pull - [DEC_130] I/F CELES_D1: event completed onreceivenewfilesok => 
+mv /tmp/dec/in_basket_if_celes/gp.php?CATNR=35681 /tmp/dec/in_basket_if_celes/"$(date +"%Y%m%d%H%M%S_DEIMOS-1.tle")"
+[ INFO] 2022-03-02 10:32:32 NODE_1.pull - [DEC_135] I/F CELES_D1: S2__OPER_DEC_F_RECV_2BOA_20220302T103232_V20220302T103232_20220302T103232_CELES_D1.xml pull report created
+[ INFO] 2022-03-02 10:32:32 NODE_1.pull - [DEC_115] Intray TLE: 20220302103232_DEIMOS-1.tle disseminated into /tmp/dec_local_dissemination/TLE
+[ INFO] 2022-03-02 10:32:32 NODE_1.pull - [DEC_100] I/F CELES_D1: Pull iteration completed successfully
+[DEBUG] 2022-03-02 10:32:37 NODE_1.test - decGetFromInterface -m CELES_D2 -l --nodb
+[ INFO] 2022-03-02 10:32:39 NODE_1.pull - [DEC_005] I/F CELES_D2: Polling Started - List mode is true
+[ INFO] 2022-03-02 10:32:40 NODE_1.pull - [DEC_105] I/F CELES_D2: File gp.php?CATNR=40013 is available
+[ INFO] 2022-03-02 10:32:40 NODE_1.pull - [DEC_060] I/F CELES_D2: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-03-02 10:32:40 NODE_1.pull - [DEC_100] I/F CELES_D2: Pull iteration completed successfully
+[DEBUG] 2022-03-02 10:32:42 NODE_1.test - decGetFromInterface -m CELES_D2 --nodb
+[ INFO] 2022-03-02 10:32:43 NODE_1.pull - [DEC_005] I/F CELES_D2: Polling Started - List mode is false
+[ INFO] 2022-03-02 10:32:44 NODE_1.pull - [DEC_060] I/F CELES_D2: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-03-02 10:32:45 NODE_1.pull - [DEC_110] I/F CELES_D2: gp.php?CATNR=40013 downloaded with size 168 bytes
+[ INFO] 2022-03-02 10:32:45 NODE_1.pull - [DEC_130] I/F CELES_D2: event triggered onreceivenewfilesok => 
+mv /tmp/dec/in_basket_if_celes/gp.php?CATNR=40013 /tmp/dec/in_basket_if_celes/"$(date +"%Y%m%d%H%M%S_DEIMOS-2.tle")"
+[ INFO] 2022-03-02 10:32:45 NODE_1.pull - [DEC_130] I/F CELES_D2: event completed onreceivenewfilesok => 
+mv /tmp/dec/in_basket_if_celes/gp.php?CATNR=40013 /tmp/dec/in_basket_if_celes/"$(date +"%Y%m%d%H%M%S_DEIMOS-2.tle")"
+[ INFO] 2022-03-02 10:32:45 NODE_1.pull - [DEC_135] I/F CELES_D2: S2__OPER_DEC_F_RECV_2BOA_20220302T103245_V20220302T103245_20220302T103245_CELES_D2.xml pull report created
+[ INFO] 2022-03-02 10:32:45 NODE_1.pull - [DEC_115] Intray TLE: 20220302103245_DEIMOS-2.tle disseminated into /tmp/dec_local_dissemination/TLE
+[ INFO] 2022-03-02 10:32:45 NODE_1.pull - [DEC_100] I/F CELES_D2: Pull iteration completed successfully
+[DEBUG] 2022-03-02 10:32:50 NODE_1.test - grep ERROR /tmp/DEC000001.log
+[ INFO] 2022-03-02 10:32:50 NODE_1.test - DECTestCaseCelesTrak::test_pull => END
+```
+
+## CelesTrak TLE Catalogue 
+
+The DEC SW queries the CelesTrak API to obtain the TLE catalogue of active objects which they are monitoring.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2022-08-29 09:00:30.185 nl2-u-moc-srv-01.test - DECTestCaseCelesTrak::testTCA START
+[DEBUG] 2022-08-29 09:00:30.185 nl2-u-moc-srv-01.test - rm -f /tmp/dec/int/NS1_OPER_AUX_TCA____*
+[DEBUG] 2022-08-29 09:00:30.195 nl2-u-moc-srv-01.test - rm -f /tmp/dec/in_basket_if_celes/tca/*
+[DEBUG] 2022-08-29 09:00:30.202 nl2-u-moc-srv-01.test - decConfigInterface2DB -a CELESTRAK_TCA
+[ INFO] 2022-08-29 09:00:31.235 nl2-u-moc-srv-01.db   - [DEC_001] I/F CELESTRAK_TCA: added to the DEC Inventory/Interface db
+[ INFO] 2022-08-29 09:00:31.246 nl2-u-moc-srv-01.test - decCheckConfig -e CELESTRAK_TCA
+[DEBUG] 2022-08-29 09:00:35.982 nl2-u-moc-srv-01.chck - [DEC_XXX] I/F CELESTRAK_TCA: File gp.php?GROUP=active&FORMAT=2le is available
+[ INFO] 2022-08-29 09:00:35.989 nl2-u-moc-srv-01.chck - [DEC_004] I/F CELESTRAK_TCA: exchange point is reachable 👍
+[ INFO] 2022-08-29 09:00:36.570 nl2-u-moc-srv-01.chck - [DEC_003] I/F CELESTRAK_TCA: interface is correctly declared in DEC/Inventory 👍
+[ INFO] 2022-08-29 09:00:36.584 nl2-u-moc-srv-01.test - decGetFromInterface -m CELESTRAK_TCA -l
+[ INFO] 2022-08-29 09:00:38.443 nl2-u-moc-srv-01.pull - [DEC_005] I/F CELESTRAK_TCA: Polling Started - List mode is true
+[ INFO] 2022-08-29 09:00:41.998 nl2-u-moc-srv-01.pull - [DEC_105] I/F CELESTRAK_TCA: File gp.php?GROUP=active&FORMAT=2le is available
+[ INFO] 2022-08-29 09:00:41.999 nl2-u-moc-srv-01.pull - [DEC_060] I/F CELESTRAK_TCA: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 09:00:41.999 nl2-u-moc-srv-01.pull - [DEC_100] I/F CELESTRAK_TCA: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 09:00:42.020 nl2-u-moc-srv-01.test - decGetFromInterface -m CELESTRAK_TCA
+[ INFO] 2022-08-29 09:00:44.460 nl2-u-moc-srv-01.pull - [DEC_005] I/F CELESTRAK_TCA: Polling Started - List mode is false
+[ INFO] 2022-08-29 09:00:47.859 nl2-u-moc-srv-01.pull - [DEC_060] I/F CELESTRAK_TCA: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 09:00:50.490 nl2-u-moc-srv-01.pull - [DEC_110] I/F CELESTRAK_TCA: gp.php?GROUP=active&FORMAT=2le downloaded with size 901984 bytes
+[ INFO] 2022-08-29 09:00:50.546 nl2-u-moc-srv-01.pull - [DEC_115] Intray NAOS_IN: "gp.php?GROUP=active&FORMAT=2le" disseminated into /data/mocExternalInterfaces/tmp/naos/
+[ INFO] 2022-08-29 09:00:50.547 nl2-u-moc-srv-01.pull - [DEC_130] I/F CELESTRAK_TCA: event triggered newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/"gp.php?GROUP=active&FORMAT=2le" -d /data/mocExternalInterfaces/FDS/inTray/CEL/AUX_TCA
+[ INFO] 2022-08-29 09:00:50.858 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_TCA____20220829T000000_21000101T000000_0001.TXT generated from gp.php?GROUP=active&FORMAT=2le
+[ INFO] 2022-08-29 09:00:50.861 nl2-u-moc-srv-01.pull - [DEC_130] I/F CELESTRAK_TCA: event completed newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/"gp.php?GROUP=active&FORMAT=2le" -d /data/mocExternalInterfaces/FDS/inTray/CEL/AUX_TCA
+[ INFO] 2022-08-29 09:00:50.913 nl2-u-moc-srv-01.pull - [DEC_100] I/F CELESTRAK_TCA: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 09:00:50.933 nl2-u-moc-srv-01.test - decGetFromInterface -m CELESTRAK_TCA
+[ INFO] 2022-08-29 09:00:53.089 nl2-u-moc-srv-01.pull - [DEC_005] I/F CELESTRAK_TCA: Polling Started - List mode is false
+[ INFO] 2022-08-29 09:00:56.571 nl2-u-moc-srv-01.pull - [DEC_060] I/F CELESTRAK_TCA: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 09:00:59.329 nl2-u-moc-srv-01.pull - [DEC_111] I/F CELESTRAK_TCA: gp.php?GROUP=active&FORMAT=2le downloaded is duplicated / same md5
+[ INFO] 2022-08-29 09:00:59.379 nl2-u-moc-srv-01.pull - [DEC_100] I/F CELESTRAK_TCA: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 09:00:59.397 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 09:01:00.372 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"gp.php?GROUP=active&FORMAT=2le","interface":"CELESTRAK_TCA","date":"2022-08-29 07:00:50 UTC","protocol":"HTTP","size":901984,"md5":"d20f2ec1e1bd0c5aaf31e2c06fa41193"}
+[ INFO] 2022-08-29 09:01:00.372 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"250.00 B/s","volume":"880.84 KiB"}
+[ INFO] 2022-08-29 09:01:00.375 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[DEBUG] 2022-08-29 09:01:00.383 nl2-u-moc-srv-01.test - Verification of log trace: TCA conversion to NAOS mission
+[DEBUG] 2022-08-29 09:01:00.384 nl2-u-moc-srv-01.test - grep AUX_001 /data/mocExternalInterfaces/log/DEC000001.log
+[ INFO] 2022-08-29 09:00:50.858 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_TCA____20220829T000000_21000101T000000_0001.TXT generated from gp.php?GROUP=active&FORMAT=2le
+[DEBUG] 2022-08-29 09:01:00.388 nl2-u-moc-srv-01.test - Verification of log trace: Duplication of TCA
+[DEBUG] 2022-08-29 09:01:00.388 nl2-u-moc-srv-01.test - grep DEC_111 /data/mocExternalInterfaces/log/DEC000001.log
+[ INFO] 2022-08-29 09:00:59.330 nl2-u-moc-srv-01.pull - [DEC_111] I/F CELESTRAK_TCA: gp.php?GROUP=active&FORMAT=2le downloaded is duplicated / same md5
+[ INFO] 2022-08-29 09:01:00.396 nl2-u-moc-srv-01.test - DECTestCaseCelesTrak::testTCA END
+```
+
+## CelesTrak Space-weather 
+
+The DEC SW queries the CelesTrak interface to retrieve the resource SW-Last5Years.txt which is updated on daily basis carrying a 45-day forecast of daily ap and F10.7 index.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2022-08-29 09:04:29.134 nl2-u-moc-srv-01.test - DECTestCaseCelesTrak::testSFS START
+[DEBUG] 2022-08-29 09:04:29.134 nl2-u-moc-srv-01.test - decConfigInterface2DB -a CELESTRAK_SFS
+[ INFO] 2022-08-29 09:04:30.155 nl2-u-moc-srv-01.db   - [DEC_001] I/F CELESTRAK_SFS: added to the DEC Inventory/Interface db
+[ INFO] 2022-08-29 09:04:30.181 nl2-u-moc-srv-01.test - decCheckConfig -e CELESTRAK_SFS
+[DEBUG] 2022-08-29 09:04:33.528 nl2-u-moc-srv-01.chck - [DEC_XXX] I/F CELESTRAK_SFS: File SW-Last5Years.txt is available
+[ INFO] 2022-08-29 09:04:33.537 nl2-u-moc-srv-01.chck - [DEC_004] I/F CELESTRAK_SFS: exchange point is reachable 
+[ INFO] 2022-08-29 09:04:34.172 nl2-u-moc-srv-01.chck - [DEC_003] I/F CELESTRAK_SFS: interface is correctly declared in DEC/Inventory
+[ INFO] 2022-08-29 09:04:34.187 nl2-u-moc-srv-01.test - decGetFromInterface -m CELESTRAK_SFS -l
+[ INFO] 2022-08-29 09:04:36.285 nl2-u-moc-srv-01.pull - [DEC_005] I/F CELESTRAK_SFS: Polling Started - List mode is true
+[ INFO] 2022-08-29 09:04:38.032 nl2-u-moc-srv-01.pull - [DEC_105] I/F CELESTRAK_SFS: File SW-Last5Years.txt is available
+[ INFO] 2022-08-29 09:04:38.032 nl2-u-moc-srv-01.pull - [DEC_060] I/F CELESTRAK_SFS: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 09:04:38.032 nl2-u-moc-srv-01.pull - [DEC_100] I/F CELESTRAK_SFS: Pull iteration completed successfully
+[ INFO] 2022-08-29 09:04:38.048 nl2-u-moc-srv-01.test - decGetFromInterface -m CELESTRAK_SFS
+[ INFO] 2022-08-29 09:04:39.934 nl2-u-moc-srv-01.pull - [DEC_005] I/F CELESTRAK_SFS: Polling Started - List mode is false
+[ INFO] 2022-08-29 09:04:41.712 nl2-u-moc-srv-01.pull - [DEC_060] I/F CELESTRAK_SFS: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 09:04:43.346 nl2-u-moc-srv-01.pull - [DEC_110] I/F CELESTRAK_SFS: SW-Last5Years.txt downloaded with size 308713 bytes
+[ INFO] 2022-08-29 09:04:43.400 nl2-u-moc-srv-01.pull - [DEC_115] Intray NAOS_IN: SW-Last5Years.txt disseminated into /data/mocExternalInterfaces/tmp/naos/
+[ INFO] 2022-08-29 09:04:43.401 nl2-u-moc-srv-01.pull - [DEC_130] I/F CELESTRAK_SFS: event triggered newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/SW-Last5Years.txt -d /data/mocExternalInterfaces/FDS/inTray/CEL/AUX_SFS
+[ INFO] 2022-08-29 09:04:43.720 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_SFS____20220829T000000_20221012T000000_0001.TXT generated from SW-Last5Years.txt
+[ INFO] 2022-08-29 09:04:43.723 nl2-u-moc-srv-01.pull - [DEC_130] I/F CELESTRAK_SFS: event completed newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/SW-Last5Years.txt -d /data/mocExternalInterfaces/FDS/inTray/CEL/AUX_SFS
+[ INFO] 2022-08-29 09:04:43.768 nl2-u-moc-srv-01.pull - [DEC_100] I/F CELESTRAK_SFS: Pull iteration completed successfully
+[ INFO] 2022-08-29 09:04:43.786 nl2-u-moc-srv-01.test - decGetFromInterface -m CELESTRAK_SFS
+[ INFO] 2022-08-29 09:04:45.677 nl2-u-moc-srv-01.pull - [DEC_005] I/F CELESTRAK_SFS: Polling Started - List mode is false
+[ INFO] 2022-08-29 09:04:47.376 nl2-u-moc-srv-01.pull - [DEC_060] I/F CELESTRAK_SFS: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 09:04:49.003 nl2-u-moc-srv-01.pull - [DEC_111] I/F CELESTRAK_SFS: SW-Last5Years.txt downloaded is duplicated / same md5
+[ INFO] 2022-08-29 09:04:49.047 nl2-u-moc-srv-01.pull - [DEC_100] I/F CELESTRAK_SFS: Pull iteration completed successfully
+[ INFO] 2022-08-29 09:04:49.065 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 09:04:50.028 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"SW-Last5Years.txt","interface":"CELESTRAK_SFS","date":"2022-08-29 07:04:43 UTC","protocol":"HTTP","size":308713,"md5":"8586b873d2dd81d6c647b13b0223355f"}
+[ INFO] 2022-08-29 09:04:50.028 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"85.00 B/s","volume":"301.48 KiB"}
+[ INFO] 2022-08-29 09:04:50.031 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[DEBUG] 2022-08-29 09:04:50.039 nl2-u-moc-srv-01.test - Verification of log trace: SFS conversion to NAOS mission
+[DEBUG] 2022-08-29 09:04:50.039 nl2-u-moc-srv-01.test - grep AUX_001 /data/mocExternalInterfaces/log/DEC000001.log
+[ INFO] 2022-08-29 09:04:43.720 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_SFS____20220829T000000_20221012T000000_0001.TXT generated from SW-Last5Years.txt
+[DEBUG] 2022-08-29 09:04:50.043 nl2-u-moc-srv-01.test - Verification of log trace: Duplication of short-term weather forecast
+[DEBUG] 2022-08-29 09:04:50.043 nl2-u-moc-srv-01.test - grep DEC_111 /data/mocExternalInterfaces/log/DEC000001.log
+[ INFO] 2022-08-29 09:04:49.003 nl2-u-moc-srv-01.pull - [DEC_111] I/F CELESTRAK_SFS: SW-Last5Years.txt downloaded is duplicated / same md5
+[ INFO] 2022-08-29 09:04:50.051 nl2-u-moc-srv-01.test - DECTestCaseCelesTrak::testSFS END
+```
+
+# Copernicus Open Hub
+
+The Copernicus Open Access Hub for EO Products of the Sentinels missions with fresh production.
+
+## Copernicus Precise Orbit Determination
+
+The COAH publishes GNSS products belonging to the Sentinels.
+
+``` {fontsize="\\tiny"}
+decODataClient -u ******** -p ******** -c "2022-03-07T00:00:00.000,2022-03-08T00:00:00.000" -q dhus:gnss:S1A -L /tmp -r
+[ INFO] 2022-03-08 15:52:09 NODE_1.odata - [DEC_257] I/F DHUS: created DEC_OPER_AGNSS_S1A_ADGS_20220308T155208_V20220307T000000_20220308T000000_18_00.xml
+[ INFO] 2022-03-08 15:52:09 NODE_1.odata - [DEC_259] I/F DHUS: downloading S1A_OPER_AUX_RESORB_OPOD_20220307T005502_V20220306T205322_20220307T001052 / 559.71 kB
+########################################################################################################################################################################################################## 100.0%
+[ INFO] 2022-03-08 15:52:11 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S1A_OPER_AUX_RESORB_OPOD_20220307T005502_V20220306T205322_20220307T001052 / 559.71 kB / 0.39 MiB/s
+[ INFO] 2022-03-08 15:52:11 NODE_1.odata - [DEC_259] I/F DHUS: downloading S1A_OPER_AUX_PROQUA_POD__20220307T021956_V20220304T235942_20220305T235941 / 1.57 MB
+########################################################################################################################################################################################################## 100.0%
+[ INFO] 2022-03-08 15:52:11 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S1A_OPER_AUX_PROQUA_POD__20220307T021956_V20220304T235942_20220305T235941 / 1.57 MB / 5.49 MiB/s
+[ INFO] 2022-03-08 15:52:11 NODE_1.odata - [DEC_259] I/F DHUS: downloading S1A_OPER_AUX_GNSSRD_POD__20220307T020223_V20220227T235946_20220228T235936 / 2.65 MB
+########################################################################################################################################################################################################## 100.0%
+
+(...)
+
+[ INFO] 2022-03-08 15:52:27 NODE_1.odata - [DEC_259] I/F DHUS: downloading S1A_OPER_AUX_RESORB_OPOD_20220307T200933_V20220307T163817_20220307T195547 / 559.57 kB
+########################################################################################################################################################################################################## 100.0%
+[ INFO] 2022-03-08 15:52:28 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S1A_OPER_AUX_RESORB_OPOD_20220307T200933_V20220307T163817_20220307T195547 / 559.57 kB / 0.47 MiB/s
+[ INFO] 2022-03-08 15:52:28 NODE_1.odata - [DEC_259] I/F DHUS: downloading S1A_OPER_AUX_RESORB_OPOD_20220307T221710_V20220307T181701_20220307T213431 / 559.91 kB
+########################################################################################################################################################################################################## 100.0%
+[ INFO] 2022-03-08 15:52:29 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S1A_OPER_AUX_RESORB_OPOD_20220307T221710_V20220307T181701_20220307T213431 / 559.91 kB / 0.47 MiB/s
+```
+
+## Sentinel-1
+
+### Selection by Catalogue Time
+
+This test is demonstrating the selection and retrieval (i.e. pull circulation) of Sentinel-1 products (cf. S2-PFS) which have been published by the COAH during a certain time period.
+
+``` {fontsize="\\tiny"}
+[DEBUG] 2022-02-21 18:30:31 NODE_1.test - DECTestInterfaceDHUS::test_download_s1a_updates START
+[DEBUG] 2022-02-21 18:30:31 NODE_1.test - rm -f /tmp/S1A*
+[DEBUG] 2022-02-21 18:30:32 NODE_1.test - decODataClient -u ******** -p ******** -c "2022-02-21T16:30:00.000,2022-02-21T16:32:00.000" -q dhus:s1:S1A -L /tmp -r
+[ INFO] 2022-02-21 18:30:34 NODE_1.odata - [DEC_257] I/F DHUS: created DEC_OPER_OPDHUS_S1A_ADGS_20220221T183033_V20220221T163000_20220221T163200_1_0.xml
+[ INFO] 2022-02-21 18:30:34 NODE_1.odata - [DEC_259] I/F DHUS: downloading S1A_IW_SLC__1SDV_20220221T153011_20220221T153024_042013_050121_4148 / 1.91 GB
+#################################################################################################################################################################################################### 100.0%curl: Saved to filename 'S1A_IW_SLC__1SDV_20220221T153011_20220221T153024_042013_050121_4148.zip'
+
+[ INFO] 2022-02-21 18:33:49 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S1A_IW_SLC__1SDV_20220221T153011_20220221T153024_042013_050121_4148 / 1.91 GB / 9.83 MiB/s
+[DEBUG] 2022-02-21 18:33:49 NODE_1.test - DECTestInterfaceDHUS::test_download_s1a_updates END
+teardown
+.
+Finished in 202.514565 seconds.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 1 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+--------------------------------------------------------------------------------------------------------------
+```
+
+## Sentinel-2
+
+### Selection by Catalogue Time
+
+This test is demonstrating the selection and retrieval (i.e. pull circulation) of Sentinel-2 products (cf. S2-PFS) which have been published by the COAH during a certain time period.
+
+``` {fontsize="\\tiny"}
+[DEBUG] 2022-02-18 10:17:28 NODE_1.test - DECTestInterfaceDHUS::test_download_s2a START
+[DEBUG] 2022-02-18 10:17:28 NODE_1.test - rm -f /tmp/S2A*
+[DEBUG] 2022-02-18 10:17:28 NODE_1.test - decODataClient -u ******** -p ******** -q dhus:s2:S2A --creation "2021-07-01T00:00:00.000,2021-07-01T00:05:03.000" -L /tmp -r
+[ INFO] 2022-02-18 10:17:30 NODE_1.odata - [DEC_257] I/F DHUS: created DEC_OPER_OPDHUS_S2A_ADGS_20220218T101729_V20210701T000000_20210701T000503_3_0.xml
+[ INFO] 2022-02-18 10:17:30 NODE_1.odata - [DEC_259] I/F DHUS: downloading S2A_MSIL1C_20210630T174911_N0301_R141_T12QUM_20210630T231156 / 103.90 MB
+########################################################################################################################################################################################################## 100.0%curl: Saved to filename 'S2A_MSIL1C_20210630T174911_N0301_R141_T12QUM_20210630T231156.zip'
+
+[ INFO] 2022-02-18 10:18:53 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S2A_MSIL1C_20210630T174911_N0301_R141_T12QUM_20210630T231156 / 103.90 MB / 1.26 MiB/s
+[ INFO] 2022-02-18 10:18:53 NODE_1.odata - [DEC_259] I/F DHUS: downloading S2A_MSIL1C_20210630T174911_N0301_R141_T12SXB_20210630T231156 / 24.90 MB
+########################################################################################################################################################################################################## 100.0%curl: Saved to filename 'S2A_MSIL1C_20210630T174911_N0301_R141_T12SXB_20210630T231156.zip'
+
+[ INFO] 2022-02-18 10:19:13 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S2A_MSIL1C_20210630T174911_N0301_R141_T12SXB_20210630T231156 / 24.90 MB / 1.25 MiB/s
+[ INFO] 2022-02-18 10:19:13 NODE_1.odata - [DEC_259] I/F DHUS: downloading S2A_MSIL1C_20210630T174911_N0301_R141_T13RBL_20210630T231156 / 14.25 MB
+########################################################################################################################################################################################################## 100.0%curl: Saved to filename 'S2A_MSIL1C_20210630T174911_N0301_R141_T13RBL_20210630T231156.zip'
+
+[ INFO] 2022-02-18 10:19:25 NODE_1.odata - [DEC_260] I/F DHUS: downloaded S2A_MSIL1C_20210630T174911_N0301_R141_T13RBL_20210630T231156 / 14.25 MB / 1.2 MiB/s
+[DEBUG] 2022-02-18 10:19:25 NODE_1.test - DECTestInterfaceDHUS::test_download_s2a END
+teardown
+.
+Finished in 121.409788 seconds.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 1 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.01 tests/s, 0.01 assertions/s
+End of DEC tests 4 DHUS
+```
+
+## Sentinel-5P
+
+### Selection by Catalogue Time
+
+This test is demonstrating the selection and retrieval (i.e. pull circulation) of Sentinel-5P NetCDF level-2 products (cf. S5P-PA) which have been published by the COAH during a certain time period.
+
+``` {fontsize="\\tiny"}
+[DEBUG] 2022-03-08 15:36:51 NODE_1.test - DECTestInterfaceDHUS::test_download_s5p_updates START
+[DEBUG] 2022-03-08 15:36:51 NODE_1.test - rm -f /tmp/S5*
+[DEBUG] 2022-03-08 15:36:51 NODE_1.test - decODataClient -u ******** -p ******** -c "2022-03-08T13:36:00.000,2022-03-08T13:56:00.000" -q dhus_s5p:s5:S5P_NRTI_L2 -L /tmp
+[ INFO] 2022-03-08 15:36:52 NODE_1.odata - [DEC_257] I/F DHUS_S5P: created DEC_OPER_OPDHUS_S5P_NRTI_L2_ADGS_20220308T153651_V20220308T133600_20220308T135600_13_00.xml
+[DEBUG] 2022-03-08 15:36:57 NODE_1.test - decODataClient -u ******** -p ******** -c "2022-03-08T13:36:00.000,2022-03-08T13:56:00.000" -q dhus_s5p:s5:S5P_NRTI_L2 -L /tmp -r
+[ INFO] 2022-03-08 15:36:59 NODE_1.odata - [DEC_257] I/F DHUS_S5P: created DEC_OPER_OPDHUS_S5P_NRTI_L2_ADGS_20220308T153658_V20220308T133600_20220308T135600_13_00.xml
+[ INFO] 2022-03-08 15:36:59 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T122157_20220308T122657_22801_02_020301_20220308T132819 / 1.18 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T122157_20220308T122657_22801_02_020301_20220308T132819.nc'
+
+[ INFO] 2022-03-08 15:37:03 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T122157_20220308T122657_22801_02_020301_20220308T132819 / 1.18 MB / 0.3 MiB/s
+[ INFO] 2022-03-08 15:37:03 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T114157_20220308T114657_22800_02_020301_20220308T132516 / 1.68 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T114157_20220308T114657_22800_02_020301_20220308T132516.nc'
+
+[ INFO] 2022-03-08 15:37:10 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T114157_20220308T114657_22800_02_020301_20220308T132516 / 1.68 MB / 0.23 MiB/s
+[ INFO] 2022-03-08 15:37:10 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T123157_20220308T123657_22801_02_020301_20220308T133043 / 17.73 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T123157_20220308T123657_22801_02_020301_20220308T133043.nc'
+
+[ INFO] 2022-03-08 15:37:45 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T123157_20220308T123657_22801_02_020301_20220308T133043 / 17.73 MB / 0.51 MiB/s
+[ INFO] 2022-03-08 15:38:26 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T124657_20220308T125157_22801_02_020301_20220308T133531 / 18.46 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T124657_20220308T125157_22801_02_020301_20220308T133531.nc'
+
+[ INFO] 2022-03-08 15:39:06 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T124657_20220308T125157_22801_02_020301_20220308T133531 / 18.46 MB / 0.45 MiB/s
+[ INFO] 2022-03-08 15:39:06 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T123657_20220308T124157_22801_02_020301_20220308T133503 / 17.58 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T123657_20220308T124157_22801_02_020301_20220308T133503.nc'
+
+[ INFO] 2022-03-08 15:39:46 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T123657_20220308T124157_22801_02_020301_20220308T133503 / 17.58 MB / 0.44 MiB/s
+[ INFO] 2022-03-08 15:39:46 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T125657_20220308T130157_22801_02_020301_20220308T133755 / 18.30 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T125657_20220308T130157_22801_02_020301_20220308T133755.nc'
+
+(...)
+
+[ INFO] 2022-03-08 15:41:35 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T125157_20220308T125657_22801_02_020301_20220308T133654 / 18.36 MB / 0.37 MiB/s
+[ INFO] 2022-03-08 15:41:35 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_LH_20220308T113657_20220308T114157_22800_02_020301_20220308T132756 / 4.90 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_LH_20220308T113657_20220308T114157_22800_02_020301_20220308T132756.nc'
+
+[ INFO] 2022-03-08 15:41:53 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_LH_20220308T113657_20220308T114157_22800_02_020301_20220308T132756 / 4.90 MB / 0.28 MiB/s
+[ INFO] 2022-03-08 15:41:53 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_AI_20220308T124157_20220308T124657_22801_02_020301_20220308T133432 / 17.80 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_AI_20220308T124157_20220308T124657_22801_02_020301_20220308T133432.nc'
+
+[ INFO] 2022-03-08 15:42:42 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_AI_20220308T124157_20220308T124657_22801_02_020301_20220308T133432 / 17.80 MB / 0.36 MiB/s
+[ INFO] 2022-03-08 15:42:42 NODE_1.odata - [DEC_259] I/F DHUS_S5P: downloading S5P_NRTI_L2__AER_LH_20220308T114157_20220308T114657_22800_02_020301_20220308T132624 / 1.68 MB
+################################################################################################################################################################################## 100.0%curl: Saved to filename 'S5P_NRTI_L2__AER_LH_20220308T114157_20220308T114657_22800_02_020301_20220308T132624.nc'
+
+[ INFO] 2022-03-08 15:42:49 NODE_1.odata - [DEC_260] I/F DHUS_S5P: downloaded S5P_NRTI_L2__AER_LH_20220308T114157_20220308T114657_22800_02_020301_20220308T132624 / 1.68 MB / 0.22 MiB/s
+S5P_NRTI_L2__AER_LH_20220308T122157_20220308T122657_22801_02_020301_20220308T132926 / 1.19 MB / 0.26 MiB/s
+[DEBUG] 2022-03-08 15:42:54 NODE_1.test - DECTestInterfaceDHUS::test_download_s5p_updates END
+teardown
+.
+Finished in 368.136018 seconds.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 2 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.00 tests/s, 0.01 assertions/s
+End of DEC tests 4 DHUS
+```
+
+# European Center for Disease Prevention and Control 
+
+The European Center for Disease Prevention and Control (ECDC) publishes some analytic regarding the Covid-19 pandemic distribution across the World. The interface is publishing a CSV resource containing the data using HTTP.
+
+``` {fontsize="\\tiny"}
+
+======================================
+DEC Interface ECDC http / catalogue Unit Test Cases
+    
+decCheckConfig -e ECDC
+[DEBUG] [DEC_XXX] I/F ECDC: File csv is available
+[ INFO] [DEC_004] I/F ECDC: exchange point is reachable 
+[DEBUG] NODE_1.chck - Checking DEC/Inventory entries ...
+[ INFO] NODE_1.chck - [DEC_003] I/F ECDC: interface is correctly declared in DEC/Inventory 
+decGetFromInterface --mnemonic ECDC -l
+[ INFO] NODE_1.pull - [DEC_005] I/F ECDC: Polling Started - List mode is true
+[ INFO] NODE_1.pull - [DEC_105] I/F ECDC: File csv is available
+[ INFO] NODE_1.pull - [DEC_060] I/F ECDC: Polling Completed / New file(s) 1 available for pull
+[ INFO] NODE_1.pull - [DEC_100] I/F ECDC: Pull iteration completed successfully
+decGetFromInterface --mnemonic ECDC
+[ INFO] NODE_1.pull - [DEC_005] I/F ECDC: Polling Started - List mode is false
+[ INFO] NODE_1.pull - [DEC_060] I/F ECDC: Polling Completed / New file(s) 1 available for pull
+[ INFO] NODE_1.pull - [DEC_110] I/F ECDC: csv downloaded with size 4307302 bytes
+[ INFO] NODE_1.pull - [DEC_130] I/F ECDC: event triggered onreceivenewfilesok => mv /tmp/dec/in_basket_if_ecdc/csv /tmp/dec/in_basket_if_ecdc/"$(date +"%Y%m%d_covid-19.csv")"
+[ INFO] NODE_1.pull - [DEC_130] I/F ECDC: event completed onreceivenewfilesok => mv /tmp/dec/in_basket_if_ecdc/csv /tmp/dec/in_basket_if_ecdc/"$(date +"%Y%m%d_covid-19.csv")"
+[ INFO] NODE_1.pull - [DEC_135] I/F ECDC: S2__OPER_DEC_F_RECV_2BOA_20200715T110144_V20200715T110144_20200715T110144_ECDC.xml pull report created
+[ INFO] NODE_1.pull - [DEC_100] I/F ECDC: Pull iteration completed successfully
+.
+Finished in 98.635273 seconds.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2 tests, 3 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.02 tests/s, 0.03 assertions/s
+End of DECTestCase_Interface_ECDC
+```
+
+# International Earth Rotation Service
+
+## Bulletins A & B
+
+The IERS bulletins A & B with EOP data are grouped into the same interface test since they are retrieved from the same publishing point.
+
+``` {fontsize="\\tiny"}
+decGetFromInterface -m IERS -l --nodb
+[ INFO] 2022-02-16 18:14:39 NODE_1.pull - [DEC_005] I/F IERS: Polling Started - List mode is true
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File finals.all is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File finals.data is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File finals2000A.data is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File gpsrapid.out is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File finals.daily is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File finals2000A.daily is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_105] I/F IERS: File gpsrapid.daily is available
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_060] I/F IERS: Polling Completed / New file(s) 7 available for pull
+[ INFO] 2022-02-16 18:14:40 NODE_1.pull - [DEC_100] I/F IERS: Pull iteration completed successfully
+decGetFromInterface -m IERS --nodb
+[ INFO] 2022-02-16 18:14:44 NODE_1.pull - [DEC_005] I/F IERS: Polling Started - List mode is false
+[ INFO] 2022-02-16 18:14:45 NODE_1.pull - [DEC_060] I/F IERS: Polling Completed / New file(s) 7 available for pull
+[ INFO] 2022-02-16 18:14:46 NODE_1.pull - [DEC_110] I/F IERS: finals.daily downloaded with size 34028 bytes
+[ INFO] 2022-02-16 18:14:46 NODE_1.pull - [DEC_110] I/F IERS: gpsrapid.out downloaded with size 936797 bytes
+[ INFO] 2022-02-16 18:14:46 NODE_1.pull - [DEC_115] Intray GPS: gpsrapid.out disseminated into /tmp/dec_local_dissemination/GPS
+[ INFO] 2022-02-16 18:14:46 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:46 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:46 NODE_1.pull - [DEC_110] I/F IERS: finals.data downloaded with size 2147336 bytes
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_110] I/F IERS: finals2000A.data downloaded with size 2147336 bytes
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_110] I/F IERS: finals.all downloaded with size 3451680 bytes
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_110] I/F IERS: finals2000A.daily downloaded with size 34028 bytes
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_115] Intray S3_IN: finals2000A.daily disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_110] I/F IERS: gpsrapid.daily downloaded with size 9029 bytes
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_115] Intray GPS: gpsrapid.daily disseminated into /tmp/dec_local_dissemination/GPS
+[ INFO] 2022-02-16 18:14:47 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_116] I/F IERS: finals.all compressed in 7z at with size 538436 bytes
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_115] Intray S2A: finals.7z disseminated into /tmp/dec_local_dissemination/S2A
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_115] Intray GPS: finals.all disseminated into /tmp/dec_local_dissemination/GPS
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_115] Intray S2B: finals.all disseminated into /tmp/dec_local_dissemination/S2B
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_115] Intray S2_7Z: finals.7z disseminated into /tmp/dec_local_dissemination/S2_7Z
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_115] Intray S2ALL: finals.all disseminated into /tmp/dec_local_dissemination/S2ALL
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event triggered newfile2intray => echo NEW FILE TO INTRAY
+NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event completed newfile2intray => echo NEW FILE TO INTRAY
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event triggered onreceivenewfilesok => echo \':-\)\'
+':-)'
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_130] I/F IERS: event completed onreceivenewfilesok => echo \':-\)\'
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_135] I/F IERS: S2__OPER_DEC_F_RECV_2BOA_20220216T181448_V20220216T181448_20220216T181448_IERS.xml pull report created
+[ INFO] 2022-02-16 18:14:48 NODE_1.pull - [DEC_100] I/F IERS: Pull iteration completed successfully
+
+================================================
+decTestInterface_IERS::teardown
+
+decManageDB -d
+-- drop_table(:received_files)
+-> 0.0018s
+-- drop_table(:tracked_files)
+-> 0.0013s
+-- drop_table(:sent_files)
+-> 0.0013s
+-- drop_table(:interfaces)
+-> 0.0011s
+.
+Finished in 17.493844 seconds.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 6 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
+```
+
+## Bulletin C
+
+The IERS bulletin C contains the leap-second information, which is retrieved from Paris Observatory hosted by SYRTE (cf. IERS-P). This test converts the BULC filename pulled into the Sentinel-3 file format conventions using the external component *auxConverter* tool.
+
+``` {fontsize="\\tiny"}
+decGetFromInterface -m LEAP -l
+[ INFO] 2022-02-16 18:19:14 NODE_1.pull - [DEC_005] I/F LEAP: Polling Started - List mode is true
+[ INFO] 2022-02-16 18:19:14 NODE_1.pull - [DEC_105] I/F LEAP: File Leap_Second.dat is available
+[ INFO] 2022-02-16 18:19:14 NODE_1.pull - [DEC_060] I/F LEAP: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-02-16 18:19:14 NODE_1.pull - [DEC_100] I/F LEAP: Pull iteration completed successfully
+decGetFromInterface -m LEAP --nodb
+[ INFO] 2022-02-16 18:19:21 NODE_1.pull - [DEC_005] I/F LEAP: Polling Started - List mode is false
+[ INFO] 2022-02-16 18:19:21 NODE_1.pull - [DEC_060] I/F LEAP: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-02-16 18:19:21 NODE_1.pull - [DEC_110] I/F LEAP: Leap_Second.dat downloaded with size 1359 bytes
+[ INFO] 2022-02-16 18:19:21 NODE_1.pull - [DEC_115] Intray S3_IN: Leap_Second.dat disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-16 18:19:21 NODE_1.pull - [DEC_130] I/F LEAP: event triggered newfile2intray => auxConverter -f /tmp/dec_local_dissemination/S3/Leap_Second.dat -d /tmp/dec/publish/s3/
+S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3
+[ INFO] 2022-02-16 18:19:22 NODE_1.pull - [DEC_130] I/F LEAP: event completed newfile2intray => auxConverter -f /tmp/dec_local_dissemination/S3/Leap_Second.dat -d /tmp/dec/publish/s3/
+[ INFO] 2022-02-16 18:19:22 NODE_1.pull - [DEC_135] I/F LEAP: S2__OPER_DEC_F_RECV_2BOA_20220216T181922_V20220216T181922_20220216T181922_LEAP.xml pull report created
+[ INFO] 2022-02-16 18:19:22 NODE_1.pull - [DEC_100] I/F LEAP: Pull iteration completed successfully
+decGetFromInterface -m PUBLISH_S3 -l
+[ INFO] 2022-02-16 18:19:29 NODE_1.pull - [DEC_005] I/F PUBLISH_S3: Polling Started - List mode is true
+[ INFO] 2022-02-16 18:19:29 NODE_1.pull - [DEC_050] I/F PUBLISH_S3: Polling Completed / No file(s) available for pull
+[ INFO] 2022-02-16 18:19:29 NODE_1.pull - [DEC_100] I/F PUBLISH_S3: Pull iteration completed successfully
+decGetFromInterface -m PUBLISH_S3
+[ INFO] 2022-02-16 18:19:31 NODE_1.pull - [DEC_005] I/F PUBLISH_S3: Polling Started - List mode is false
+[ INFO] 2022-02-16 18:19:31 NODE_1.pull - [DEC_050] I/F PUBLISH_S3: Polling Completed / No file(s) available for pull
+[ INFO] 2022-02-16 18:19:31 NODE_1.pull - [DEC_115] Intray FINAL_S3: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 disseminated into /tmp/dec_final_dissemination/S3/
+[ INFO] 2022-02-16 18:19:31 NODE_1.pull - [DEC_115] Intray ARCHIVE: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 disseminated into /tmp/dec_final_dissemination/archive/
+[ INFO] 2022-02-16 18:19:31 NODE_1.pull - [DEC_100] I/F PUBLISH_S3: Pull iteration completed successfully
+decGetFromInterface -m LEAP --nodb
+[ INFO] 2022-02-16 18:19:33 NODE_1.pull - [DEC_005] I/F LEAP: Polling Started - List mode is false
+[ INFO] 2022-02-16 18:19:33 NODE_1.pull - [DEC_060] I/F LEAP: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-02-16 18:19:34 NODE_1.pull - [DEC_110] I/F LEAP: Leap_Second.dat downloaded with size 1359 bytes
+[ INFO] 2022-02-16 18:19:34 NODE_1.pull - [DEC_115] Intray S3_IN: Leap_Second.dat disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-16 18:19:34 NODE_1.pull - [DEC_130] I/F LEAP: event triggered newfile2intray => auxConverter -f /tmp/dec_local_dissemination/S3/Leap_Second.dat -d /tmp/dec/publish/s3/
+S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3
+[ INFO] 2022-02-16 18:19:34 NODE_1.pull - [DEC_130] I/F LEAP: event completed newfile2intray => auxConverter -f /tmp/dec_local_dissemination/S3/Leap_Second.dat -d /tmp/dec/publish/s3/
+[ INFO] 2022-02-16 18:19:34 NODE_1.pull - [DEC_135] I/F LEAP: S2__OPER_DEC_F_RECV_2BOA_20220216T181934_V20220216T181934_20220216T181934_LEAP.xml pull report created
+[ INFO] 2022-02-16 18:19:34 NODE_1.pull - [DEC_100] I/F LEAP: Pull iteration completed successfully
+decGetFromInterface -m PUBLISH_S3 -l
+[ INFO] 2022-02-16 18:19:41 NODE_1.pull - [DEC_005] I/F PUBLISH_S3: Polling Started - List mode is true
+[ INFO] 2022-02-16 18:19:41 NODE_1.pull - [DEC_050] I/F PUBLISH_S3: Polling Completed / No file(s) available for pull
+[ INFO] 2022-02-16 18:19:41 NODE_1.pull - [DEC_100] I/F PUBLISH_S3: Pull iteration completed successfully
+decGetFromInterface -m PUBLISH_S3
+[ INFO] 2022-02-16 18:19:43 NODE_1.pull - [DEC_005] I/F PUBLISH_S3: Polling Started - List mode is false
+[ INFO] 2022-02-16 18:19:43 NODE_1.pull - [DEC_050] I/F PUBLISH_S3: Polling Completed / No file(s) available for pull
+[ WARN] 2022-02-16 18:19:43 NODE_1.pull - [DEC_555_1] Intray FINAL_S3: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 duplicated already existed in /tmp/dec_final_dissemination/S3/
+[ WARN] 2022-02-16 18:19:43 NODE_1.pull - [DEC_556_1] Intray FINAL_S3: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 duplicated will be deleted before dissemination
+[ INFO] 2022-02-16 18:19:43 NODE_1.pull - [DEC_115] Intray FINAL_S3: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 disseminated into /tmp/dec_final_dissemination/S3/
+[ WARN] 2022-02-16 18:19:43 NODE_1.pull - [DEC_555] Intray ARCHIVE: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 duplicated already existed in /tmp/dec_final_dissemination/archive//S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3
+[ WARN] 2022-02-16 18:19:43 NODE_1.pull - [DEC_556] Intray ARCHIVE: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 duplicated will be deleted before dissemination
+[ INFO] 2022-02-16 18:19:43 NODE_1.pull - [DEC_115] Intray ARCHIVE: S3__GN_1_LSC_AX_19720101T000000_20221228T000000_20220216T000000_____________________USN_O_NR_POD.SEN3 disseminated into /tmp/dec_final_dissemination/archive/
+[ INFO] 2022-02-16 18:19:43 NODE_1.pull - [DEC_100] I/F PUBLISH_S3: Pull iteration completed successfully
+grep ERROR /tmp/DEC000001.log
+
+================================================
+decTestInterface_IERS::teardown
+
+decManageDB -d
+-- drop_table(:received_files)
+-> 0.0021s
+-- drop_table(:tracked_files)
+-> 0.0014s
+-- drop_table(:sent_files)
+-> 0.0012s
+-- drop_table(:interfaces)
+-> 0.0011s
+.
+Finished in 35.01586 seconds.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 9 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.03 tests/s, 0.26 assertions/s
+```
+
+# International GNSS Service
+
+## GNSS Broadcast Ephemeris
+
+GNSS Broadcast ephemeris files RINEX2 merged GPS broadcast ephemeris file are pulled from an ESA server by the GSSC.
+
+``` {fontsize="\\tiny"}
+[DEBUG] 2022-02-24 12:07:57 NODE_1.test - DECTestCaseGNSS::setup
+[DEBUG] 2022-02-24 12:07:58 NODE_1.test - DECTestCaseGNSS::test_pull => IGS noDB false
+[DEBUG] 2022-02-24 12:08:00 NODE_1.test - decGetFromInterface -m IGS -l
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_005] I/F IGS: Polling Started - List mode is true
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0010.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0020.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0030.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0040.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0050.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0070.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0060.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0080.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0090.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0100.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0110.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0120.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0130.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0140.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0150.22n.gz is available
+
+(...)
+
+
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_105] I/F IGS: File brdc0550.22n.gz is available
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_060] I/F IGS: Polling Completed / New file(s) 55 available for pull
+[ INFO] 2022-02-24 12:08:03 NODE_1.pull - [DEC_100] I/F IGS: Pull iteration completed successfully
+[DEBUG] 2022-02-24 12:08:08 NODE_1.test - decGetFromInterface -m IGS
+[ INFO] 2022-02-24 12:08:11 NODE_1.pull - [DEC_005] I/F IGS: Polling Started - List mode is false
+[ INFO] 2022-02-24 12:08:11 NODE_1.pull - [DEC_060] I/F IGS: Polling Completed / New file(s) 55 available for pull
+[ INFO] 2022-02-24 12:08:12 NODE_1.pull - [DEC_110] I/F IGS: brdc0010.22n.gz downloaded with size 58866 bytes
+[ INFO] 2022-02-24 12:08:12 NODE_1.pull - [DEC_110] I/F IGS: brdc0020.22n.gz downloaded with size 57460 bytes
+[ INFO] 2022-02-24 12:08:12 NODE_1.pull - [DEC_110] I/F IGS: brdc0030.22n.gz downloaded with size 58051 bytes
+[ INFO] 2022-02-24 12:08:12 NODE_1.pull - [DEC_110] I/F IGS: brdc0040.22n.gz downloaded with size 58243 bytes
+[ INFO] 2022-02-24 12:08:13 NODE_1.pull - [DEC_110] I/F IGS: brdc0050.22n.gz downloaded with size 58116 bytes
+[ INFO] 2022-02-24 12:08:13 NODE_1.pull - [DEC_110] I/F IGS: brdc0070.22n.gz downloaded with size 57721 bytes
+
+(...)
+
+[ INFO] 2022-02-24 12:08:25 NODE_1.pull - [DEC_110] I/F IGS: brdc0530.22n.gz downloaded with size 57248 bytes
+[ INFO] 2022-02-24 12:08:25 NODE_1.pull - [DEC_110] I/F IGS: brdc0540.22n.gz downloaded with size 57515 bytes
+[ INFO] 2022-02-24 12:08:25 NODE_1.pull - [DEC_110] I/F IGS: brdc0550.22n.gz downloaded with size 29419 bytes
+[ INFO] 2022-02-24 12:08:25 NODE_1.pull - [DEC_135] I/F IGS: S2__OPER_DEC_F_RECV_2BOA_20220224T120825_V20220224T120825_20220224T120825_IGS.xml pull report created
+[ INFO] 2022-02-24 12:08:25 NODE_1.pull - [DEC_100] I/F IGS: Pull iteration completed successfully
+[DEBUG] 2022-02-24 12:08:30 NODE_1.test - decStats -H 1
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0010.22n.gz","interface":"IGS","date":"2022-02-24 11:08:12 UTC","protocol":"FTP","size":58866}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0020.22n.gz","interface":"IGS","date":"2022-02-24 11:08:12 UTC","protocol":"FTP","size":57460}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0030.22n.gz","interface":"IGS","date":"2022-02-24 11:08:12 UTC","protocol":"FTP","size":58051}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0040.22n.gz","interface":"IGS","date":"2022-02-24 11:08:12 UTC","protocol":"FTP","size":58243}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0050.22n.gz","interface":"IGS","date":"2022-02-24 11:08:13 UTC","protocol":"FTP","size":58116}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0070.22n.gz","interface":"IGS","date":"2022-02-24 11:08:13 UTC","protocol":"FTP","size":57721}
+
+(...)
+
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0540.22n.gz","interface":"IGS","date":"2022-02-24 11:08:25 UTC","protocol":"FTP","size":57515}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"brdc0550.22n.gz","interface":"IGS","date":"2022-02-24 11:08:25 UTC","protocol":"FTP","size":29419}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_144] Pull stats: {"numFiles":55,"hours":1,"rate":"872.00 B/s","volume":"3.00 MiB"}
+[ INFO] 2022-02-24 12:08:32 NODE_1.stat - [DEC_244] Push 1h: No files pushed
+[DEBUG] 2022-02-24 12:08:32 NODE_1.test - decGetFromInterface -m IGS -l
+[ INFO] 2022-02-24 12:08:34 NODE_1.pull - [DEC_005] I/F IGS: Polling Started - List mode is true
+[ INFO] 2022-02-24 12:08:34 NODE_1.pull - [DEC_050] I/F IGS: Polling Completed / No file(s) available for pull
+[ INFO] 2022-02-24 12:08:34 NODE_1.pull - [DEC_100] I/F IGS: Pull iteration completed successfully
+[DEBUG] 2022-02-24 12:08:34 NODE_1.test - grep ERROR /tmp/DEC000001.log
+[DEBUG] 2022-02-24 12:08:34 NODE_1.test - DECTestCaseGNSS::teardown
+.
+Finished in 37.71214 seconds.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 6 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.03 tests/s, 0.16 assertions/s
+[ INFO] 2022-02-24 12:08:34 NODE_1.test - End of DEC test for GNSS ADP interface    
+```
+
+# International Laser Ranging Service
+
+The International Laser Ranging Service provides global satellite and lunar laser ranging data and their related products to support geodetic and geophysical research activities.
+
+## Sentinel-3
+
+The Copernicus Sentinel-3 constellation are equipped with a laser retro reflector (cf. S3-LRR) to support altimetry science with laser ranging (cf. S3-SLR). Sentinel-3 ranging data in CRD is publicly published by Eurolas Data Center (cf. EDC).
+
+``` {fontsize="\\tiny"}
+[DEBUG] 2022-02-21 11:07:43 NODE_1.test - DECTestCaseILRS::test_ILRS_S3 START
+[DEBUG] 2022-02-21 11:07:43 NODE_1.test - decGetFromInterface -m ILRS -l
+[ INFO] 2022-02-21 11:07:49 NODE_1.pull - [DEC_005] I/F ILRS: Polling Started - List mode is true
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_202201.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220101.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220102.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220103.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220104.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220105.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220106.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220107.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220108.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220109.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220110.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220111.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220112.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220113.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220114.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220115.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220116.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220117.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220118.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220119.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220120.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220121.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3a_20220122.npt is available
+
+(...)
+
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3b_20220219.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3b_20220220.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_105] I/F ILRS: File sentinel3b_20220221.npt is available
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_060] I/F ILRS: Polling Completed / New file(s) 108 available for pull
+[ INFO] 2022-02-21 11:07:51 NODE_1.pull - [DEC_100] I/F ILRS: Pull iteration completed successfully
+[DEBUG] 2022-02-21 11:07:53 NODE_1.test - decGetFromInterface -m ILRS
+[ INFO] 2022-02-21 11:07:59 NODE_1.pull - [DEC_005] I/F ILRS: Polling Started - List mode is false
+[ INFO] 2022-02-21 11:08:00 NODE_1.pull - [DEC_060] I/F ILRS: Polling Completed / New file(s) 108 available for pull
+[ INFO] 2022-02-21 11:08:02 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_20220101.npt downloaded with size 46320 bytes
+[ INFO] 2022-02-21 11:08:03 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_20220102.npt downloaded with size 35036 bytes
+[ INFO] 2022-02-21 11:08:04 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_202201.npt downloaded with size 1321655 bytes
+[ INFO] 2022-02-21 11:08:05 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_20220103.npt downloaded with size 47431 bytes
+[ INFO] 2022-02-21 11:08:06 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_20220104.npt downloaded with size 18711 bytes
+[ INFO] 2022-02-21 11:08:07 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_20220105.npt downloaded with size 54431 bytes
+[ INFO] 2022-02-21 11:08:08 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3a_20220106.npt downloaded with size 45874 bytes
+
+(...)
+
+[ INFO] 2022-02-21 11:09:30 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3b_20220217.npt downloaded with size 67662 bytes
+[ INFO] 2022-02-21 11:09:31 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3b_20220219.npt downloaded with size 37669 bytes
+[ INFO] 2022-02-21 11:09:31 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3b_20220220.npt downloaded with size 18385 bytes
+[ INFO] 2022-02-21 11:09:33 NODE_1.pull - [DEC_110] I/F ILRS: sentinel3b_20220221.npt downloaded with size 5605 bytes
+[ INFO] 2022-02-21 11:09:33 NODE_1.pull - [DEC_130] I/F ILRS: event triggered onreceivenewfilesok => echo \':-\)\'
+':-)'
+[ INFO] 2022-02-21 11:09:33 NODE_1.pull - [DEC_130] I/F ILRS: event completed onreceivenewfilesok => echo \':-\)\'
+[ INFO] 2022-02-21 11:09:33 NODE_1.pull - [DEC_135] I/F ILRS: S2__OPER_DEC_F_RECV_2BOA_20220221T110933_V20220221T110933_20220221T110933_ILRS.xml pull report created
+[ INFO] 2022-02-21 11:09:33 NODE_1.pull - [DEC_100] I/F ILRS: Pull iteration completed successfully
+[DEBUG] 2022-02-21 11:09:33 NODE_1.test - DECTestCaseILRS::test_ILRS_S3 END
+```
+
+# NASA
+
+NASA is a major public data provider covering several different domains such as earth observation / geophysical, navigation, space-weather, etc.
+
+## ASTER Global DEM
+
+ASTER Global DEM (ASTGTM) are publicly available as part of NASA EOSDIS. DEC is able to perform bulk data retrievals in an unattended mode. For the sake of the test, DEC has been configured to retrieve the tiles metadata and quick-looks only.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2023-07-17 10:32:03.163 luuaplmds01.test - decGetFromInterface -m TEST_NASA_ASTGTM -l
+[ INFO] 2023-07-17 10:32:08.162 luuaplmds01.pull - [DEC_005] I/F TEST_NASA_ASTGTM: Polling Started - List mode is true
+[ INFO] 2023-07-17 10:34:02.702 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E006.1.jpg is available
+[ INFO] 2023-07-17 10:34:02.703 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E006.zip.xml is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E009.1.jpg is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E009.zip.xml is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E010.1.jpg is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E010.zip.xml is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E011.1.jpg is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E011.zip.xml is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E012.1.jpg is available
+[ INFO] 2023-07-17 10:34:02.704 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_N00E012.zip.xml is available
+(...)
+[ INFO] 2023-07-17 10:44:40.592 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_S83W157.1.jpg is available
+[ INFO] 2023-07-17 10:44:40.592 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_ASTGTM: File ASTGTMV003_S83W157.zip.xml is available
+[ INFO] 2023-07-17 10:44:40.592 luuaplmds01.pull - [DEC_060] I/F TEST_NASA_ASTGTM: Polling Completed / New file(s) 45824 available for pull
+[ INFO] 2023-07-17 10:44:40.592 luuaplmds01.pull - [DEC_100] I/F TEST_NASA_ASTGTM: Pull iteration completed successfully 🕺
+(...)
+[ INFO] 2023-07-17 10:44:40.905 luuaplmds01.test - decGetFromInterface -m TEST_NASA_ASTGTM
+[ INFO] 2023-07-17 10:44:45.122 luuaplmds01.pull - [DEC_005] I/F TEST_NASA_ASTGTM: Polling Started - List mode is false
+[ INFO] 2023-07-17 10:46:42.401 luuaplmds01.pull - [DEC_060] I/F TEST_NASA_ASTGTM: Polling Completed / New file(s) 45824 available for pull
+[ INFO] 2023-07-17 10:46:43.262 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E006.1.jpg downloaded with size 14925 bytes
+[ INFO] 2023-07-17 10:46:43.688 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E010.1.jpg downloaded with size 113799 bytes
+[ INFO] 2023-07-17 10:46:43.697 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E009.1.jpg downloaded with size 104509 bytes
+[ INFO] 2023-07-17 10:46:44.480 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E011.1.jpg downloaded with size 102038 bytes
+[ INFO] 2023-07-17 10:46:44.944 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E012.1.jpg downloaded with size 125479 bytes
+[ INFO] 2023-07-17 10:46:46.196 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E013.1.jpg downloaded with size 182996 bytes
+[ INFO] 2023-07-17 10:46:47.521 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E009.zip.xml downloaded with size 2851 bytes
+[ INFO] 2023-07-17 10:46:47.688 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E010.zip.xml downloaded with size 2850 bytes
+[ INFO] 2023-07-17 10:46:47.803 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E006.zip.xml downloaded with size 2849 bytes
+[ INFO] 2023-07-17 10:46:48.186 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E012.zip.xml downloaded with size 2852 bytes
+[ INFO] 2023-07-17 10:46:48.254 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E011.zip.xml downloaded with size 2852 bytes
+[ INFO] 2023-07-17 10:46:48.758 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E014.1.jpg downloaded with size 129451 bytes
+[ INFO] 2023-07-17 10:46:49.112 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E015.1.jpg downloaded with size 129684 bytes
+[ INFO] 2023-07-17 10:46:49.240 luuaplmds01.pull - [DEC_110] I/F TEST_NASA_ASTGTM: ASTGTMV003_N00E014.zip.xml downloaded with size 2852 bytes
+(...)
+```
+
+## MODIS Products
+
+MODIS products are publicly available as part of NASA EOSDIS. DEC is able to perform bulk data retrievals in an unattended mode.
+
+### MOD09A1
+
+MODIS L3 Surface Reflectance Product: HDF and XML metadata is managed ; the configuration also is polling the directories names in which the MOD09A1 products are published.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2023-07-17 10:02:27.007 luuaplmds01.test - decGetFromInterface -m TEST_NASA_RFM -l
+[ INFO] 2023-07-17 10:02:31.728 luuaplmds01.pull - [DEC_005] I/F TEST_NASA_RFM: Polling Started - List mode is true
+[ INFO] 2023-07-17 10:02:34.664 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File MOD09A1.A2023169.h00v08.061.2023178033738.hdf is available
+[ INFO] 2023-07-17 10:02:34.664 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File MOD09A1.A2023169.h00v08.061.2023178033738.hdf.xml is available
+[ INFO] 2023-07-17 10:02:34.664 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File MOD09A1.A2023169.h00v09.061.2023178031908.hdf is available
+[ INFO] 2023-07-17 10:02:34.664 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File MOD09A1.A2023169.h00v09.061.2023178031908.hdf.xml is available
+(...)
+[ INFO] 2023-07-17 10:02:34.730 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File 2023.06.10 is available
+[ INFO] 2023-07-17 10:02:34.730 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File 2023.06.18 is available
+[ INFO] 2023-07-17 10:02:34.730 luuaplmds01.pull - [DEC_105] I/F TEST_NASA_RFM: File 2023.06.26 is available
+[ INFO] 2023-07-17 10:02:34.730 luuaplmds01.pull - [DEC_060] I/F TEST_NASA_RFM: Polling Completed / New file(s) 771 available for pull
+```
+
+## NASA Bulletin A
+
+NASA CDDIS publishes Bulletin A Earth rotation parameters with a slight format different from IERS.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2022-08-29 10:10:37.159 nl2-u-moc-srv-01.test - DECTestInterface_NASA_CDDIS::testNBULA START
+[DEBUG] 2022-08-29 10:10:37.160 nl2-u-moc-srv-01.test - decConfigInterface2DB -a NASA_NBULA
+[ INFO] 2022-08-29 10:10:38.162 nl2-u-moc-srv-01.db   - [DEC_001] I/F NASA_NBULA: added to the DEC Inventory/Interface db
+[ INFO] 2022-08-29 10:10:38.172 nl2-u-moc-srv-01.test - decCheckConfig -e NASA_NBULA
+[DEBUG] 2022-08-29 10:10:40.352 nl2-u-moc-srv-01.chck - [DEC_XXX] I/F NASA_NBULA: File finals2000A.data is available
+[ INFO] 2022-08-29 10:10:40.358 nl2-u-moc-srv-01.chck - [DEC_004] I/F NASA_NBULA: exchange point is reachable 👍
+[ INFO] 2022-08-29 10:10:40.937 nl2-u-moc-srv-01.chck - [DEC_003] I/F NASA_NBULA: interface is correctly declared in DEC/Inventory 👍
+[ INFO] 2022-08-29 10:10:40.950 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_NBULA -l
+[ INFO] 2022-08-29 10:10:42.770 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_NBULA: Polling Started - List mode is true
+[ INFO] 2022-08-29 10:10:43.866 nl2-u-moc-srv-01.pull - [DEC_105] I/F NASA_NBULA: File finals2000A.data is available
+[ INFO] 2022-08-29 10:10:43.866 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_NBULA: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:10:43.866 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_NBULA: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:10:43.882 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_NBULA
+[ INFO] 2022-08-29 10:10:45.822 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_NBULA: Polling Started - List mode is false
+[ INFO] 2022-08-29 10:10:46.910 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_NBULA: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:10:52.267 nl2-u-moc-srv-01.pull - [DEC_110] I/F NASA_NBULA: finals2000A.data downloaded with size 2184184 bytes
+[ INFO] 2022-08-29 10:10:52.323 nl2-u-moc-srv-01.pull - [DEC_115] Intray NAOS_IN: finals2000A.data disseminated into /data/mocExternalInterfaces/tmp/naos/
+[ INFO] 2022-08-29 10:10:52.324 nl2-u-moc-srv-01.pull - [DEC_130] I/F NASA_NBULA: event triggered newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/finals2000A.data -d /data/mocExternalInterfaces/FDS/inTray/NAS/AUX_NBULA
+[ INFO] 2022-08-29 10:10:52.655 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_NBULA__20220826T000000_20230902T000000_0001.TXT generated from finals2000A.data
+[ INFO] 2022-08-29 10:10:52.659 nl2-u-moc-srv-01.pull - [DEC_130] I/F NASA_NBULA: event completed newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/finals2000A.data -d /data/mocExternalInterfaces/FDS/inTray/NAS/AUX_NBULA
+[ INFO] 2022-08-29 10:10:52.698 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_NBULA: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:10:52.714 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 10:10:53.672 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"finals2000A.data","interface":"NASA_NBULA","date":"2022-08-29 08:10:52 UTC","protocol":"HTTP","size":2184184,"md5":"078b0239fa414d9e9a2c36668edbbccb"}
+[ INFO] 2022-08-29 10:10:53.673 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"606.00 B/s","volume":"2.08 MiB"}
+[ INFO] 2022-08-29 10:10:53.676 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[ INFO] 2022-08-29 10:10:53.684 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_NBULA
+[ INFO] 2022-08-29 10:10:55.821 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_NBULA: Polling Started - List mode is false
+[ INFO] 2022-08-29 10:10:56.922 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_NBULA: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:10:59.668 nl2-u-moc-srv-01.pull - [DEC_111] I/F NASA_NBULA: finals2000A.data downloaded is duplicated / same md5
+[ INFO] 2022-08-29 10:10:59.716 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_NBULA: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:10:59.732 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 10:11:00.967 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"finals2000A.data","interface":"NASA_NBULA","date":"2022-08-29 08:10:52 UTC","protocol":"HTTP","size":2184184,"md5":"078b0239fa414d9e9a2c36668edbbccb"}
+[ INFO] 2022-08-29 10:11:00.967 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"606.00 B/s","volume":"2.08 MiB"}
+[ INFO] 2022-08-29 10:11:00.971 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[ INFO] 2022-08-29 10:11:00.982 nl2-u-moc-srv-01.test - DECTestInterface_NASA_CDDIS::testNBULA END
+```
+
+## NASA Bulletin C
+
+NASA CDDIS publishes Bulletin C leap second announcement with a slight format different from IERS.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2022-08-29 10:28:42.405 nl2-u-moc-srv-01.test - DECTestInterface_NASA_CDDIS::testNBULC START
+[DEBUG] 2022-08-29 10:28:42.405 nl2-u-moc-srv-01.test - decConfigInterface2DB -a NASA_NBULC
+[ INFO] 2022-08-29 10:28:43.475 nl2-u-moc-srv-01.db   - [DEC_001] I/F NASA_NBULC: added to the DEC Inventory/Interface db
+[ INFO] 2022-08-29 10:28:43.487 nl2-u-moc-srv-01.test - decCheckConfig -e NASA_NBULC
+[DEBUG] 2022-08-29 10:28:46.214 nl2-u-moc-srv-01.chck - [DEC_XXX] I/F NASA_NBULC: File tai-utc.dat is available
+[ INFO] 2022-08-29 10:28:46.257 nl2-u-moc-srv-01.chck - [DEC_004] I/F NASA_NBULC: exchange point is reachable 👍
+[ INFO] 2022-08-29 10:28:46.897 nl2-u-moc-srv-01.chck - [DEC_003] I/F NASA_NBULC: interface is correctly declared in DEC/Inventory 👍
+[ INFO] 2022-08-29 10:28:46.911 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_NBULC -l
+[ INFO] 2022-08-29 10:28:48.871 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_NBULC: Polling Started - List mode is true
+[ INFO] 2022-08-29 10:28:49.943 nl2-u-moc-srv-01.pull - [DEC_105] I/F NASA_NBULC: File tai-utc.dat is available
+[ INFO] 2022-08-29 10:28:49.943 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_NBULC: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:28:49.944 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_NBULC: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:28:49.960 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_NBULC
+[ INFO] 2022-08-29 10:28:51.963 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_NBULC: Polling Started - List mode is false
+[ INFO] 2022-08-29 10:28:53.038 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_NBULC: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:28:54.169 nl2-u-moc-srv-01.pull - [DEC_110] I/F NASA_NBULC: tai-utc.dat downloaded with size 3321 bytes
+[ INFO] 2022-08-29 10:28:54.238 nl2-u-moc-srv-01.pull - [DEC_115] Intray NAOS_IN: tai-utc.dat disseminated into /data/mocExternalInterfaces/tmp/naos/
+[ INFO] 2022-08-29 10:28:54.239 nl2-u-moc-srv-01.pull - [DEC_130] I/F NASA_NBULC: event triggered newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/tai-utc.dat -d /data/mocExternalInterfaces/FDS/inTray/NAS/AUX_NBULC
+[ INFO] 2022-08-29 10:28:54.582 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_NBULC__20170101T000000_21000101T000000_0001.TXT generated from tai-utc.dat
+[ INFO] 2022-08-29 10:28:54.586 nl2-u-moc-srv-01.pull - [DEC_130] I/F NASA_NBULC: event completed newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/tai-utc.dat -d /data/mocExternalInterfaces/FDS/inTray/NAS/AUX_NBULC
+[ INFO] 2022-08-29 10:28:54.625 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_NBULC: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:28:54.643 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 10:28:55.630 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"tai-utc.dat","interface":"NASA_NBULC","date":"2022-08-29 08:28:54 UTC","protocol":"HTTP","size":3321,"md5":"cd22c7ec716a489509e3bfdb7bac42fc"}
+[ INFO] 2022-08-29 10:28:55.630 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"0.00 B/s","volume":"3.24 KiB"}
+[ INFO] 2022-08-29 10:28:55.633 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[ INFO] 2022-08-29 10:28:55.642 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_NBULC
+[ INFO] 2022-08-29 10:28:57.541 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_NBULC: Polling Started - List mode is false
+[ INFO] 2022-08-29 10:28:58.658 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_NBULC: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:28:59.768 nl2-u-moc-srv-01.pull - [DEC_111] I/F NASA_NBULC: tai-utc.dat downloaded is duplicated / same md5
+[ INFO] 2022-08-29 10:28:59.806 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_NBULC: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:28:59.824 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 10:29:00.812 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"tai-utc.dat","interface":"NASA_NBULC","date":"2022-08-29 08:28:54 UTC","protocol":"HTTP","size":3321,"md5":"cd22c7ec716a489509e3bfdb7bac42fc"}
+[ INFO] 2022-08-29 10:29:00.812 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"0.00 B/s","volume":"3.24 KiB"}
+[ INFO] 2022-08-29 10:29:00.815 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[ INFO] 2022-08-29 10:29:00.828 nl2-u-moc-srv-01.test - DECTestInterface_NASA_CDDIS::testNBULC END
+```
+
+## Space-weather F10.7 & Ap Index
+
+NASA MSFC publishes Bulletin C leap second announcement with statistical index of solar radio 10.7 cm flux (F10.7), and the geomagnetic planetary index, Ap.
+
+``` {fontsize="\\tiny"}
+[ INFO] 2022-08-29 10:35:33.742 nl2-u-moc-srv-01.test - DECTestInterface_NASA_CDDIS::testSFL START
+[DEBUG] 2022-08-29 10:35:33.742 nl2-u-moc-srv-01.test - decConfigInterface2DB -a NASA_SFL
+[ INFO] 2022-08-29 10:35:34.799 nl2-u-moc-srv-01.db   - [DEC_001] I/F NASA_SFL: added to the DEC Inventory/Interface db
+[ INFO] 2022-08-29 10:35:34.810 nl2-u-moc-srv-01.test - decCheckConfig -e NASA_SFL
+[DEBUG] 2022-08-29 10:35:36.846 nl2-u-moc-srv-01.chck - [DEC_XXX] I/F NASA_SFL: File jul2022f10_prd.txt is available
+[ INFO] 2022-08-29 10:35:36.852 nl2-u-moc-srv-01.chck - [DEC_004] I/F NASA_SFL: exchange point is reachable
+[ INFO] 2022-08-29 10:35:37.456 nl2-u-moc-srv-01.chck - [DEC_003] I/F NASA_SFL: interface is correctly declared in DEC/Inventory
+[ INFO] 2022-08-29 10:35:37.468 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_SFL -l
+[ INFO] 2022-08-29 10:35:39.543 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_SFL: Polling Started - List mode is true
+[ INFO] 2022-08-29 10:35:40.386 nl2-u-moc-srv-01.pull - [DEC_105] I/F NASA_SFL: File jul2022f10_prd.txt is available
+[ INFO] 2022-08-29 10:35:40.386 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_SFL: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:35:40.386 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_SFL: Pull iteration completed successfully
+[ INFO] 2022-08-29 10:35:40.403 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_SFL
+[ INFO] 2022-08-29 10:35:42.324 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_SFL: Polling Started - List mode is false
+[ INFO] 2022-08-29 10:35:43.199 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_SFL: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:35:44.381 nl2-u-moc-srv-01.pull - [DEC_110] I/F NASA_SFL: jul2022f10_prd.txt downloaded with size 18431 bytes
+[ INFO] 2022-08-29 10:35:44.446 nl2-u-moc-srv-01.pull - [DEC_115] Intray NAOS_IN: jul2022f10_prd.txt disseminated into /data/mocExternalInterfaces/tmp/naos/
+[ INFO] 2022-08-29 10:35:44.447 nl2-u-moc-srv-01.pull - [DEC_130] I/F NASA_SFL: event triggered newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/jul2022f10_prd.txt -d /data/mocExternalInterfaces/FDS/inTray/NAS/AUX_SFL
+[ INFO] 2022-08-29 10:35:44.768 nl2-u-moc-srv-01.auxc - [AUX_001] NS1_OPER_AUX_SFL____20220101T000000_20411001T000000_0001.TXT generated from jul2022f10_prd.txt
+[ INFO] 2022-08-29 10:35:44.772 nl2-u-moc-srv-01.pull - [DEC_130] I/F NASA_SFL: event completed newfile2intray => auxConverter -m NAOS -f /data/mocExternalInterfaces/tmp/naos/jul2022f10_prd.txt -d /data/mocExternalInterfaces/FDS/inTray/NAS/AUX_SFL
+[ INFO] 2022-08-29 10:35:44.816 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_SFL: Pull iteration completed successfully
+[ INFO] 2022-08-29 10:35:44.832 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 10:35:45.811 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"jul2022f10_prd.txt","interface":"NASA_SFL","date":"2022-08-29 08:35:44 UTC","protocol":"HTTP","size":18431,"md5":"94ec62c2a075011f5988287064b263ff"}
+[ INFO] 2022-08-29 10:35:45.811 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"5.00 B/s","volume":"18.00 KiB"}
+[ INFO] 2022-08-29 10:35:45.814 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[ INFO] 2022-08-29 10:35:45.821 nl2-u-moc-srv-01.test - decGetFromInterface -m NASA_SFL
+[ INFO] 2022-08-29 10:35:47.673 nl2-u-moc-srv-01.pull - [DEC_005] I/F NASA_SFL: Polling Started - List mode is false
+[ INFO] 2022-08-29 10:35:48.547 nl2-u-moc-srv-01.pull - [DEC_060] I/F NASA_SFL: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-08-29 10:35:49.624 nl2-u-moc-srv-01.pull - [DEC_111] I/F NASA_SFL: jul2022f10_prd.txt downloaded is duplicated / same md5
+[ INFO] 2022-08-29 10:35:49.658 nl2-u-moc-srv-01.pull - [DEC_100] I/F NASA_SFL: Pull iteration completed successfully 🕺
+[ INFO] 2022-08-29 10:35:49.675 nl2-u-moc-srv-01.test - decStats
+[ INFO] 2022-08-29 10:35:50.680 nl2-u-moc-srv-01.stat - [DEC_144] Pull 1h: {"filename":"jul2022f10_prd.txt","interface":"NASA_SFL","date":"2022-08-29 08:35:44 UTC","protocol":"HTTP","size":18431,"md5":"94ec62c2a075011f5988287064b263ff"}
+[ INFO] 2022-08-29 10:35:50.680 nl2-u-moc-srv-01.stat - [DEC_144] Pull stats: {"numFiles":1,"hours":1,"rate":"5.00 B/s","volume":"18.00 KiB"}
+[ INFO] 2022-08-29 10:35:50.683 nl2-u-moc-srv-01.stat - [DEC_244] Push 1h: No files pushed
+[ INFO] 2022-08-29 10:35:50.696 nl2-u-moc-srv-01.test - DECTestInterface_NASA_CDDIS::testSFL END
+```
+
+# NOAA
+
+## Report Solar Geophysical Activity
+
+NOAA publishes solar and geophysical activity reports is a brief list of solar and geophysical events and indices including energetic solar flares, proton events, geomagnetic activity, and stratospheric warming alerts (cf. RSGA).
+
+``` {fontsize="\\tiny"}
+decGetFromInterface -m NOAA -l
+[ INFO] 2022-02-15 13:57:09 NODE_1.pull - [DEC_005] I/F NOAA: Polling Started - List mode is true
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220101RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220102RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220103RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220104RSGA.txt is available
+
+(...)
+
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220211RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220212RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220213RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_105] I/F NOAA: File 20220214RSGA.txt is available
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_060] I/F NOAA: Polling Completed / New file(s) 45 available for pull
+[ INFO] 2022-02-15 13:57:12 NODE_1.pull - [DEC_100] I/F NOAA: Pull iteration completed successfully
+decGetFromInterface -m NOAA
+[ INFO] 2022-02-15 13:57:20 NODE_1.pull - [DEC_005] I/F NOAA: Polling Started - List mode is false
+[ INFO] 2022-02-15 13:57:23 NODE_1.pull - [DEC_060] I/F NOAA: Polling Completed / New file(s) 45 available for pull
+[ INFO] 2022-02-15 13:57:25 NODE_1.pull - [DEC_110] I/F NOAA: 20220102RSGA.txt downloaded with size 2022 bytes
+[ INFO] 2022-02-15 13:57:25 NODE_1.pull - [DEC_110] I/F NOAA: 20220101RSGA.txt downloaded with size 2121 bytes
+[ INFO] 2022-02-15 13:57:25 NODE_1.pull - [DEC_115] Intray S3_IN: 20220102RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:57:25 NODE_1.pull - [DEC_115] Intray S3_IN: 20220101RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:57:26 NODE_1.pull - [DEC_110] I/F NOAA: 20220103RSGA.txt downloaded with size 1974 bytes
+[ INFO] 2022-02-15 13:57:26 NODE_1.pull - [DEC_115] Intray S3_IN: 20220103RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:57:28 NODE_1.pull - [DEC_110] I/F NOAA: 20220104RSGA.txt downloaded with size 1924 bytes
+[ INFO] 2022-02-15 13:57:28 NODE_1.pull - [DEC_110] I/F NOAA: 20220105RSGA.txt downloaded with size 1953 bytes
+[ INFO] 2022-02-15 13:57:28 NODE_1.pull - [DEC_115] Intray S3_IN: 20220104RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:57:28 NODE_1.pull - [DEC_115] Intray S3_IN: 20220105RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+
+(...)
+
+[ INFO] 2022-02-15 13:58:07 NODE_1.pull - [DEC_110] I/F NOAA: 20220212RSGA.txt downloaded with size 1987 bytes
+[ INFO] 2022-02-15 13:58:07 NODE_1.pull - [DEC_115] Intray S3_IN: 20220212RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:58:09 NODE_1.pull - [DEC_110] I/F NOAA: 20220213RSGA.txt downloaded with size 1973 bytes
+[ INFO] 2022-02-15 13:58:09 NODE_1.pull - [DEC_115] Intray S3_IN: 20220213RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:58:09 NODE_1.pull - [DEC_110] I/F NOAA: 20220214RSGA.txt downloaded with size 1952 bytes
+[ INFO] 2022-02-15 13:58:09 NODE_1.pull - [DEC_115] Intray S3_IN: 20220214RSGA.txt disseminated into /tmp/dec_local_dissemination/S3/
+[ INFO] 2022-02-15 13:58:10 NODE_1.pull - [DEC_135] I/F NOAA: S2__OPER_DEC_F_RECV_2BOA_20220215T135810_V20220215T135810_20220215T135810_NOAA.xml pull report created
+[ INFO] 2022-02-15 13:58:10 NODE_1.pull - [DEC_100] I/F NOAA: Pull iteration completed successfully
+decGetFromInterface -m PUBLISH_S3
+[ INFO] 2022-02-15 13:58:26 NODE_1.pull - [DEC_005] I/F PUBLISH_S3: Polling Started - List mode is false
+[ INFO] 2022-02-15 13:58:26 NODE_1.pull - [DEC_050] I/F PUBLISH_S3: Polling Completed / No file(s) available for pull
+[ INFO] 2022-02-15 13:58:26 NODE_1.pull - [DEC_100] I/F PUBLISH_S3: Pull iteration completed successfully
+
+
+decStats -H 1
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"20220102RSGA.txt","interface":"NOAA","date":"2022-02-15 12:57:25 UTC","protocol":"FTP","size":2022}
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"20220101RSGA.txt","interface":"NOAA","date":"2022-02-15 12:57:25 UTC","protocol":"FTP","size":2121}
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"20220103RSGA.txt","interface":"NOAA","date":"2022-02-15 12:57:26 UTC","protocol":"FTP","size":1974}
+
+(...)
+
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"20220213RSGA.txt","interface":"NOAA","date":"2022-02-15 12:58:09 UTC","protocol":"FTP","size":1973}
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_144] Pull 1h: {"filename":"20220214RSGA.txt","interface":"NOAA","date":"2022-02-15 12:58:09 UTC","protocol":"FTP","size":1952}
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_144] Pull stats: {"numFiles":45,"hours":1,"rate":"25.00 B/s","volume":"88.27 KiB"}
+[ INFO] 2022-02-15 13:58:32 NODE_1.stat - [DEC_244] Push 1h: No files pushed
+
+.
+Finished in 103.289446 seconds.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 6 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.01 tests/s, 0.06 assertions/s
+End of DEC test for NOAA interface      
+```
+
+# SPCS / CSpOC
+
+The SPCS publishes space situational awareness data in space-track.org using some RESTful API.
+
+## Conjunction Data Messages
+
+The public conjunction data messages published by SPCS / CSpOC are retrieved in JSON using the available API and then dumped into a file for subsequent consumption.
+
+``` {fontsize="\\tiny"}
+
+[ INFO] 2022-03-08 12:47:17 NODE_1.test - DECTestCaseSPCS::test_pull => START
+ /tmp/dec_local_dissemination/CDM/cdm_public.json
+[DEBUG] 2022-03-08 12:47:18 NODE_1.test - decGetFromInterface -m SPCS -l --nodb
+[ INFO] 2022-03-08 12:47:20 NODE_1.pull - [DEC_005] I/F SPCS: Polling Started - List mode is true
+[ INFO] 2022-03-08 12:47:22 NODE_1.pull - [DEC_105] I/F SPCS: File cdm_public is available
+[ INFO] 2022-03-08 12:47:22 NODE_1.pull - [DEC_060] I/F SPCS: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-03-08 12:47:22 NODE_1.pull - [DEC_100] I/F SPCS: Pull iteration completed successfully
+[DEBUG] 2022-03-08 12:47:24 NODE_1.test - decGetFromInterface -m SPCS --nodb
+[ INFO] 2022-03-08 12:47:26 NODE_1.pull - [DEC_005] I/F SPCS: Polling Started - List mode is false
+[ INFO] 2022-03-08 12:47:28 NODE_1.pull - [DEC_060] I/F SPCS: Polling Completed / New file(s) 1 available for pull
+[ INFO] 2022-03-08 12:48:44 NODE_1.pull - [DEC_110] I/F SPCS: cdm_public.json downloaded with size 9747797 bytes
+[ INFO] 2022-03-08 12:48:44 NODE_1.pull - [DEC_115] Intray CDM: cdm_public.json disseminated into /tmp/dec_local_dissemination/CDM
+[ INFO] 2022-03-08 12:48:44 NODE_1.pull - [DEC_135] I/F SPCS: S2__OPER_DEC_F_RECV_2BOA_20220308T124844_V20220308T124844_20220308T124844_SPCS.xml pull report created
+[ INFO] 2022-03-08 12:48:44 NODE_1.pull - [DEC_100] I/F SPCS: Pull iteration completed successfully
+[DEBUG] 2022-03-08 12:48:46 NODE_1.test - cat /tmp/dec_local_dissemination/CDM/cdm_public.json
+[
+  {
+    "CDM_ID": "225135432",
+    "CREATED": "2022-02-06 08:54:39.000000",
+    "EMERGENCY_REPORTABLE": "Y",
+    "TCA": "2022-02-06T11:10:31.625000",
+    "MIN_RNG": "568",
+    "PC": "0.0003684127",
+    "SAT_1_ID": "177",
+    "SAT_1_NAME": "THOR ABLESTAR DEB",
+    "SAT1_OBJECT_TYPE": "DEBRIS",
+    "SAT1_RCS": "SMALL",
+    "SAT_1_EXCL_VOL": "5.00",
+    "SAT_2_ID": "45128",
+    "SAT_2_NAME": "COSMOS 2491 DEB *",
+    "SAT2_OBJECT_TYPE": "DEBRIS",
+    "SAT2_RCS": null,
+    "SAT_2_EXCL_VOL": "5.00"
+  },
+  {
+    "CDM_ID": "225135604",
+    "CREATED": "2022-02-06 08:54:40.000000",
+    "EMERGENCY_REPORTABLE": "Y",
+    "TCA": "2022-02-08T15:19:39.697000",
+    "MIN_RNG": "114",
+    "PC": "0.0006129776",
+    "SAT_1_ID": "426",
+    "SAT_1_NAME": "THOR AGENA B R/B",
+    "SAT1_OBJECT_TYPE": "ROCKET BODY",
+    "SAT1_RCS": "LARGE",
+    "SAT_1_EXCL_VOL": "5.00",
+    "SAT_2_ID": "38716",
+    "SAT_2_NAME": "FENGYUN 1C DEB",
+    "SAT2_OBJECT_TYPE": "DEBRIS",
+    "SAT2_RCS": "SMALL",
+    "SAT_2_EXCL_VOL": "5.00"
+  },
+  {
+    "CDM_ID": "225135691",
+    "CREATED": "2022-02-06 08:54:40.000000",
+    "EMERGENCY_REPORTABLE": "Y",
+    "TCA": "2022-02-07T10:56:31.671000",
+    "MIN_RNG": "87",
+    "PC": "0.001533235",
+    "SAT_1_ID": "560",
+    "SAT_1_NAME": "THOR ABLESTAR DEB",
+    "SAT1_OBJECT_TYPE": "DEBRIS",
+    "SAT1_RCS": "SMALL",
+    "SAT_1_EXCL_VOL": "5.00",
+    "SAT_2_ID": "41827",
+    "SAT_2_NAME": "FENGYUN 1C DEB",
+    "SAT2_OBJECT_TYPE": "DEBRIS",
+    "SAT2_RCS": "SMALL",
+    "SAT_2_EXCL_VOL": "5.00"
+  },
+
+(...)
+
+  {
+    "CDM_ID": "249238682",
+    "CREATED": "2022-03-08 01:31:15.000000",
+    "EMERGENCY_REPORTABLE": "Y",
+    "TCA": "2022-03-10T03:32:24.824000",
+    "MIN_RNG": "424",
+    "PC": "0.0001140841",
+    "SAT_1_ID": "49691",
+    "SAT_1_NAME": "COSMOS 1408 DEB",
+    "SAT1_OBJECT_TYPE": "DEBRIS",
+    "SAT1_RCS": "SMALL",
+    "SAT_1_EXCL_VOL": "5.00",
+    "SAT_2_ID": "32430",
+    "SAT_2_NAME": "FENGYUN 1C DEB",
+    "SAT2_OBJECT_TYPE": "DEBRIS",
+    "SAT2_RCS": "SMALL",
+    "SAT_2_EXCL_VOL": "5.00"
+  },
+  {
+    "CDM_ID": "249238918",
+    "CREATED": "2022-03-08 01:31:16.000000",
+    "EMERGENCY_REPORTABLE": "Y",
+    "TCA": "2022-03-09T20:46:07.657000",
+    "MIN_RNG": "476",
+    "PC": "0.000365506",
+    "SAT_1_ID": "49710",
+    "SAT_1_NAME": "COSMOS 1408 DEB",
+    "SAT1_OBJECT_TYPE": "DEBRIS",
+    "SAT1_RCS": "SMALL",
+    "SAT_1_EXCL_VOL": "5.00",
+    "SAT_2_ID": "43112",
+    "SAT_2_NAME": "PSLV DEB",
+    "SAT2_OBJECT_TYPE": "DEBRIS",
+    "SAT2_RCS": "LARGE",
+    "SAT_2_EXCL_VOL": "5.00"
+  }
+]
+[ INFO] 2022-03-08 12:34:13 NODE_1.test - DECTestCaseSPCS::test_pull => END
+.
+Finished in 89.55922 seconds.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 tests, 4 assertions, 0 failures, 0 errors, 0 pendings, 0 omissions, 0 notifications
+100% passed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.01 tests/s, 0.04 assertions/s
+[ INFO] 2022-03-08 12:34:13 NODE_1.test - End of DEC test for SPCS
+```

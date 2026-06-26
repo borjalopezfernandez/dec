@@ -1,0 +1,98 @@
+# General Configuration
+
+The general configuration file *dec_config.xml* carries the items to drive the DEC report generation and workflow of files prior their circulation ; additionally it carries the *Inventory* configuration items.
+
+[]{#decconfigxml label="decconfigxml"}
+
+# Example dec_config.xml {#SourceDir}
+
+[]{#GlobalOutbox label="GlobalOutbox"}
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Configuration>
+
+       <Project>
+          <Name>Data Exchange Component</Name>
+            <Id>DEC</Id>
+            <Mission>UNIT TESTS</Mission>
+            <SatPrefix>S2_</SatPrefix>
+       </Project>
+
+        <Filters>
+            <IncomingFilters>
+                <Filter>*</Filter>
+            </IncomingFilters>
+            <OutgoingFilters>
+                <Filter>*</Filter>
+            </OutgoingFilters>
+        </Filters>
+
+       <Options>
+          <Upload>
+              <DeleteSourceFiles>true</DeleteSourceFiles>
+              <UploadFilePrefix>false</UploadFilePrefix>
+              <UploadDirs>false</UploadDirs>
+          </Upload>
+          <Download>
+             <DownloadDirs>false</DownloadDirs>
+             <DeleteUnknownFiles>false</DeleteUnknownFiles>
+             <DeleteDuplicatedFiles>true</DeleteDuplicatedFiles>
+    <!--
+    <LogUnknownFiles>false</LogUnknownFiles>
+    <LogDuplicatedFiles>false</LogDuplicatedFiles>     
+    -->    
+             </Download>
+    </Options>
+
+
+    <Reports>
+
+    <!-- DDC delivery reports / push (decSend2Interface) -->      
+
+       <Report Name="DeliveredFiles">
+          <Enabled>true</Enabled>
+          <Desc>List of Files Delivered</Desc>
+          <FileClass>OPER</FileClass>
+          <FileType>DEC_F_SENT</FileType>
+       </Report>
+
+       <Report Name="EmergencyDeliveredFiles">
+          <Enabled>false</Enabled>
+          <Desc>List of Files Delivered in Emergency Mode</Desc>
+          <FileClass>OPER</FileClass>
+          <FileType>DEMERGENCY</FileType>
+       </Report>
+
+    <!-- DCC Retrieval reports (decGetFromInterface) -->
+
+       <Report Name="RetrievedFiles">
+          <Enabled>true</Enabled>
+          <Desc>List of Files Retrieved</Desc>
+          <FileClass>OPER</FileClass>
+          <FileType>DEC_F_RECV</FileType>
+       </Report>
+
+       <Report Name="UnknownFiles">
+          <Enabled>true</Enabled>
+          <Desc>List of unknown Files present</Desc>
+          <FileClass>OPER</FileClass>
+          <FileType>DECUNKNOWN</FileType>
+       </Report>
+
+    </Reports>
+
+    <Workflow>
+       <SourceDir>/tmp/dec_delivery_root</SourceDir>
+       <GlobalOutbox>/tmp/dec/outbox</GlobalOutbox>
+       <ReportDir>/tmp/dec/in_basket_if_localhost_notsecure</ReportDir>
+       <TempDir>/tmp/dec/tmp</TempDir>
+    </Workflow>
+
+    <Inventory>
+       <Database_Adapter>sqlite3</Database_Adapter>
+       <Database_Name>/tmp/dec_inventory</Database_Name>
+       <Database_User>root</Database_User>
+       <Database_Password>2mysql</Database_Password>
+    </Inventory>
+
+    </Configuration>

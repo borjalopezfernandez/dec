@@ -1,27 +1,20 @@
-[\[CLI\]]{#CLI label="CLI"}
+[]{#CLI label="CLI"}
 
-Command Line Interface
-======================
+# Command Line Interface
 
-This section provides a brief description of the command line interface
-which is common to every DEC SW executable.
+This section provides a brief description of the command line interface which is common to every DEC SW executable.
 
-The command exit codes have been defined in order to chain them at will
-so it is possible to understand their execution correctness. In this
-respect the following exit codes are available:
+The command exit codes have been defined in order to chain them at will so it is possible to understand their execution correctness. In this respect the following exit codes are available:
 
 -   *exit 0* : the command was successfully executed .
 
--   *exit 66* : the command was invoked with wrong parameters and it did
-    not perform its workflow.
+-   *exit 66* : the command was invoked with wrong parameters and it did not perform its workflow.
 
--   *exit 99* : this command was executed and raised any problem when
-    performing its workflow.
+-   *exit 99* : this command was executed and raised any problem when performing its workflow.
 
-[\[decValidateConfig\]]{#decValidateConfig label="decValidateConfig"}
+[]{#decValidateConfig label="decValidateConfig"}
 
-decValidateConfig
-=================
+# decValidateConfig
 
 
     == Synopsis
@@ -76,14 +69,11 @@ decValidateConfig
     -N <label>  label of the node to be appended into the configuration
     -h          shows this help
     -v          shows version number
-
-
         
 
-[\[decCheckConfig\]]{#decCheckConfig label="decCheckConfig"}
+[]{#decCheckConfig label="decCheckConfig"}
 
-decCheckConfig
-==============
+# decCheckConfig
 
     == Synopsis
 
@@ -147,10 +137,7 @@ decCheckConfig
     -V    it performs the execution in Verbose mode
     -D    it performs the execution in Debug mode     
 
-   
-
-decCheckSent {#decCheckSent}
-============
+# decCheckSent {#decCheckSent}
 
     == Synopsis
 
@@ -167,12 +154,9 @@ decCheckSent {#decCheckSent}
     --Debug     shows Debug info during the execution
     --version   shows version number
 
+[]{#decConfigInterface2DB label="decConfigInterface2DB"}
 
-[\[decConfigInterface2DB\]]{#decConfigInterface2DB
-label="decConfigInterface2DB"}
-
-decConfigInterface2DB
-=====================
+# decConfigInterface2DB
 
     == Synopsis
 
@@ -193,13 +177,9 @@ decConfigInterface2DB
     --help      shows this help
     --usage     shows the usage
 
-   
+# decDeliverFiles {#decGetFiles4Transfer}
 
-decDeliverFiles {#decGetFiles4Transfer}
-===============
-
-decGetFiles4Transfer
-====================
+# decGetFiles4Transfer
 
 
     == Synopsis
@@ -229,10 +209,7 @@ decGetFiles4Transfer
     --Debug     shows Debug info during the execution
     --version   shows version number
 
-   
-
-decGetFromInterface
-===================
+# decGetFromInterface
 
 
     decGetFromInterface 
@@ -278,10 +255,7 @@ decGetFromInterface
     --Benchmark shows Benchmark info during the execution
     --version   shows version number
 
-    
-
-decODataClient {#decODataClient}
-==============
+# decODataClient {#decODataClient}
 
     The decODataClient is a simple OData client to hit Copernicus Sentinel
     servers to extract metadata and download the associated products.
@@ -323,8 +297,7 @@ decODataClient {#decODataClient}
     --Location  <full_path_dir>
     --format    json | xml | csv
 
-decListener
-===========
+# decListener
 
 
     == Synopsis
@@ -355,12 +328,9 @@ decListener
     --Debug               shows Debug info during the execution
     --version             shows version number      
 
-    
+[]{#decManageDB label="decManageDB"}
 
-[\[decManageDB\]]{#decManageDB label="decManageDB"}
-
-decManageDB
-===========
+# decManageDB
 
 
     == Usage
@@ -371,10 +341,9 @@ decManageDB
     --Debug           shows Debug info during the execution
     --help            shows this help
 
-[\[decNATS\]]{#decNATS label="decNATS"}
+[]{#decNATS label="decNATS"}
 
-decNATS
-=======
+# decNATS
 
 
     == Synopsis
@@ -464,13 +433,9 @@ decNATS
            --Debug     shows Debug info during the execution
            --version   shows version number
 
-    
+[]{#decNotify2Interface label="decNotify2Interface"}
 
-[\[decNotify2Interface\]]{#decNotify2Interface
-label="decNotify2Interface"}
-
-decNotify2Interface
-===================
+# decNotify2Interface
 
 
     == Usage
@@ -483,8 +448,7 @@ decNotify2Interface
     --Debug     shows Debug info during the execution
     --version   shows version number
 
-decSend2Interface
-=================
+# decSend2Interface
 
 
     == Synopsis
@@ -522,13 +486,9 @@ decSend2Interface
     --Debug     shows Debug info during the execution
     --version   shows version number
 
-   
+# decSmokeTests {#decStats}
 
-decSmokeTests {#decStats}
-=============
-
-decStats
-========
+# decStats
 
 
     == Synopsis
@@ -544,13 +504,9 @@ decStats
     --Debug                   shows Debug info during the execution
     --version                  shows version number
 
+[]{#auxConverter label="auxConverter"}
 
-    
-
-[\[auxConverter\]]{#auxConverter label="auxConverter"}
-
-auxConverter
-============
+# auxConverter
 
 
     == Synopsis
@@ -577,4 +533,6 @@ auxConverter
         --Debug           shows Debug info during the execution
         --help            shows this help
 
-    
+# decUnitTests
+
+# decUnitTests_IERS
