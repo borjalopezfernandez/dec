@@ -68,9 +68,9 @@
          <!--
             <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.prev_day.yday().to_s.rjust(3,'0')}/JPL0OPSRAP_2025#{Date.today.prev_day.yday().to_s.rjust(3,'0')}0000_01D_02H_GIM.INX.gz"</Directory>
             -->
-            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.prev_day.prev_day.yday().to_s.rjust(3,'0')}/"</Directory>
-            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.prev_day.yday().to_s.rjust(3,'0')}/"</Directory>
-            <Directory DepthSearch="1">"archive/gnss/products/ionex/2025/#{require 'date' ; Date.today.yday().to_s.rjust(3,'0')}/"</Directory>
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2026/#{require 'date' ; Date.today.prev_day.prev_day.yday().to_s.rjust(3,'0')}/"</Directory>
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2026/#{require 'date' ; Date.today.prev_day.yday().to_s.rjust(3,'0')}/"</Directory>
+            <Directory DepthSearch="1">"archive/gnss/products/ionex/2026/#{require 'date' ; Date.today.yday().to_s.rjust(3,'0')}/"</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>false</DeleteDownloaded>
@@ -88,7 +88,7 @@
          <Name>S1_CDDIS_4_AUX_TEC</Name>
          <LocalInbox>/data/adgs/tmp/in_basket_if_s1_cddis_4_aux_tec</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="1">"/pub/gps/products/ionex/2024/#{require 'date' ; Date.today.yday()}"</Directory>
+            <Directory DepthSearch="1">"/pub/gps/products/ionex/2026/#{require 'date' ; Date.today.yday()}"</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>false</DeleteDownloaded>
