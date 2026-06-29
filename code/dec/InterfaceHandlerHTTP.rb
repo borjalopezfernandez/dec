@@ -140,7 +140,12 @@ class InterfaceHandlerHTTP < InterfaceHandlerAbstract
             newArrFile << getDirList(dir, bShortCircuit)
             next
          else
-            newArrFile << getListFile(dir, bShortCircuit)
+            new_file = getListFile(dir, bShortCircuit)
+            if new_file != nil then
+               newArrFile << new_file
+            else
+               raise "Error getting list of items from I/F"
+            end
             next         
          end 
          # ---------------------------------------
