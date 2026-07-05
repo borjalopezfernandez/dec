@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = [ 'code', 'code/e2e' ]
 
-  s.bindir        = [ 'code/e2e' ]
+  s.bindir        = 'code/e2e'
 
   s.executables   = [ 
                      'analytic_E2E', \

@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
                   Dir['config/aux_log_config.xml']
 
   s.require_paths = ['code', 'code/aux']
-  s.bindir        = ['code/aux']
+  s.bindir        = 'code/aux'
 
   s.executables   = [ 
                      'auxConverter', \

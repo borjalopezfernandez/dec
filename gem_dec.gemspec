@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = [ 'code', 'code/ctc', 'code/dec' ]
 
-  s.bindir        = [ 'code/dec' ]
+  s.bindir        = 'code/dec'
 
   s.executables   = [
                      'decNATS', \
