@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Config>
+
+<!-- 
+
+Rules for the new kids
+
+-->
+
+   <!-- =========================================================== -->
+
+   <ListInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+     <Interface>
+         <Name>FOS_PRIME</Name>
+         <LocalInbox>/data/fcops/int/fromFOS_PRIME</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/fromFOS</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>FOS_BACKP</Name>
+         <LocalInbox>/data/fcops/int/fromFOS_BACKP</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/fromFOS</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+
+      <Interface>
+         <Name>CPF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromCPF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">smf</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+     
+     <Interface>
+         <Name>MARF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromMARF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">.</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>AF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromAF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">toSMF</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
+         <Name>DAF_2_SMF</Name>
+         <LocalInbox>/data/fcops/int/fromDAF</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">smf</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+
+
+   </ListInterfaces>
+
+   <!-- =========================================================== -->
+
+   <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+      <File Type="*MPL_ORBPRE*">
+         <Description>MPL_ORBPRE</Description>
+         <FromList>
+            <Interface>FOS_PRIME</Interface>
+            <Interface>FOS_BACKP</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*MPL_TLEPRE*">
+         <Description>MPL_TLEPRE</Description>
+        <FromList>
+            <Interface>FOS_PRIME</Interface>
+            <Interface>FOS_BACKP</Interface>
+         </FromList>
+      </File>
+
+   </DownloadRules>
+
+   <!-- =========================================================== -->
+
+   <DisseminationRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   
+      <ListIntrays>
+
+         <Intray>
+            <Name>FOS_MPF_AF</Name>
+            <Directory>/data/fcops/int/fos_mpf/af/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>FOS_MPF_SMF</Name>
+            <Directory>/data/mpf/delivery_root/smf/fromMPF</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>FOS_MPF</Name>
+            <Directory>/data/fcops/int/fos_mpf/mpf/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+   
+      </ListIntrays>
+
+      <!-- =============================================== -->
+
+      <ListFilesDisseminated>
+    
+      <!--
+            SORT Rules ranking from more restrictive ones    
+            Only the first rule matching the file pattern is applied     
+      -->
+
+
+         <File Type="*MPL_ORBPRE*">
+            <HardLink>true</HardLink>
+            <ToList>
+               <Intray>FOS_MPF_SMF</Intray>
+               <Intray>FOS_MPF</Intray>
+            </ToList>
+         </File>
+
+         <File Type="*MPL_TLEPRE*">
+            <HardLink>true</HardLink>
+            <ToList>
+               <Intray>FOS_MPF_AF</Intray>
+               <Intray>FOS_MPF_SMF</Intray>
+               <Intray>FOS_MPF</Intray>
+            </ToList>
+         </File>
+
+
+      </ListFilesDisseminated>
+   </DisseminationRules>
+
+   <!-- =========================================================== -->
+
+
+</Config>

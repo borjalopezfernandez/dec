@@ -42,9 +42,6 @@
     <Notify>
       <SendNotification>true</SendNotification>
       <To>
-       <Address>borja.esa@gmail.com</Address>
-       <Address>borja.lopez@deimos-space.com</Address>
-       <Address>borja.lopez.fernandez@esa.int</Address>
       </To>
     </Notify>
     <Events>

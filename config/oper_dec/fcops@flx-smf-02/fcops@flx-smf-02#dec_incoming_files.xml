@@ -194,6 +194,13 @@ Rules for the new kids
          </FromList>
       </File>
 
+      <File Type="*MPL_TLEPRE*">
+         <Description>MPL_TLEPRE</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
       <File Type="*MPL_ORBSCT*">
          <Description>MPL_ORBSCT</Description>
          <FromList>
@@ -445,10 +452,15 @@ Rules for the new kids
             <Execute></Execute>
          </Intray>
 
-
          <Intray>
             <Name>DEVOPS_MPL_ORBPRE</Name>
             <Directory>/data/fcops/devops/mpf/MPL_ORBPRE</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_MPL_TLEPRE</Name>
+            <Directory>/data/fcops/devops/mpf/MPL_TLEPRE</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -562,6 +574,13 @@ Rules for the new kids
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_MPL_ORBPRE</Intray>
             <Intray>DEVOPS_MPL_ORBPRE</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*MPL_TLEPRE*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>DEVOPS_MPL_TLEPRE</Intray>
          </ToList>
       </File>
 

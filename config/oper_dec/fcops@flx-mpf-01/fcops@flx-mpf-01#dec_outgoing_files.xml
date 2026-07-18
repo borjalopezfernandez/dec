@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <!-- =========================================================== -->
+
+   <ListInterfaces>
+
+      <Interface>
+         <Name>SMF_PDGS_AF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs/af</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+
+      <Interface>
+         <Name>SMF_PDGS_CPF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs/cpf</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+
+      <Interface>
+         <Name>SMF_PDGS_DAF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs/daf</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+
+      <Interface>
+         <Name>SMF_PDGS_MARF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs/marf</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+      
+      <Interface>
+         <Name>SMF_PDGS_MPF</Name>
+         <LocalOutbox>/data/fcops/int/smf_pdgs/mpf</LocalOutbox>
+         <UploadDir>smf</UploadDir>
+         <UploadTemp>_temporary_</UploadTemp>
+      </Interface>
+      
+      <Interface>
+         <Name>FILESYSTEM</Name>
+         <LocalOutbox>$DEC_TMP/dec/out_basket_if_filesystem</LocalOutbox>
+         <UploadDir>/tmp/dec_simul_if/filesystem/upload</UploadDir>
+         <UploadTemp>/tmp/dec_simul_if/filesystem/upload/_TEMP_</UploadTemp>
+      </Interface>      
+            
+   </ListInterfaces>
+
+   <!-- =========================================================== -->
+
+   <ListFiles>
+
+      <File Type="*MPL_ORBPRE*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
+
+
+   </ListFiles>
+
+   <!-- =========================================================== -->
+
+</Config>
