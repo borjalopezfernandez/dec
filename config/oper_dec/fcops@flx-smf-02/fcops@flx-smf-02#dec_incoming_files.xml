@@ -125,7 +125,7 @@ Rules for the new kids
 -->
 
       <File Type="*DWHDATA_OA*">
-         <Description>AUX_IERS_A</Description>
+         <Description>DAF report</Description>
          <FromList>
             <Interface>DAF_2_SMF</Interface>
          </FromList>
