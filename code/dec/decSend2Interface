@@ -173,6 +173,27 @@ def main
       exit(99)
    end
    
+   # ---------------------------------------------
+   #
+   # initialize logger
+   #
+   loggerFactory = CUC::Log4rLoggerFactory.new("push", "#{ENV['DEC_CONFIG']}/dec_log_config.xml")
+   if @isDebugMode then
+      loggerFactory.setDebugMode
+   end
+   @logger = loggerFactory.getLogger
+   if @logger == nil then
+      puts
+		puts "Error in send2Interface::main"
+		puts "Could not set up logging system !  :-("
+      puts "Check DEC logs configuration under \"#{ENV['DEC_CONFIG']}/dec_log_config.xml\"" 
+		puts
+		puts
+		exit(99)
+   end
+
+   # ---------------------------------------------
+
    @ftReadConf = ReadInterfaceConfig.instance
 
    if @bShowMnemonics == true then
@@ -191,8 +212,17 @@ def main
             puts "=== Data Exchange Component / Registered I/Fs for Push ==="
             arrInterfaces.each{|interface|
                entity = interface.name
-               if @ftReadConf.isEnabled4Sending?(entity) == false then
-                  next
+               if @isDebugMode == true then
+                  @logger.debug("Checking if I/F #{entity} is enabled for sending")
+               end
+               begin
+                  if @ftReadConf.isEnabled4Sending?(entity) == false then
+                     next
+                  end
+               rescue Exception => e
+                  @logger.error("[DEC_799] Fatal Error: #{e.to_s} #{'1F480'.hex.chr('UTF-8')}")
+                  @logger.error("#{entity} in database but not in configuration file")
+                  exit(99)
                end
                print interface.name
                1.upto(25 - interface.name.length) do
@@ -215,26 +245,6 @@ def main
       decodeParams
    end
    
-   # ---------------------------------------------
-   #
-   # initialize logger
-   #
-   loggerFactory = CUC::Log4rLoggerFactory.new("push", "#{ENV['DEC_CONFIG']}/dec_log_config.xml")
-   if @isDebugMode then
-      loggerFactory.setDebugMode
-   end
-   @logger = loggerFactory.getLogger
-   if @logger == nil then
-      puts
-		puts "Error in send2Interface::main"
-		puts "Could not set up logging system !  :-("
-      puts "Check DEC logs configuration under \"#{ENV['DEC_CONFIG']}/dec_log_config.xml\"" 
-		puts
-		puts
-		exit(99)
-   end
-
-   #
    # ---------------------------------------------
    
    # Set send2Interface <I/F> running.

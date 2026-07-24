@@ -7,8 +7,8 @@
    <ListInterfaces>
 
       <Interface>
-         <Name>SMF_PDGS_AF</Name>
-         <LocalOutbox>/data/fcops/int/smf_pdgs/af</LocalOutbox>
+         <Name>FOS_2_AF</Name>
+         <LocalOutbox>/data/fcops/int/fos/af</LocalOutbox>
          <UploadDir>smf</UploadDir>
          <UploadTemp>_temporary_</UploadTemp>
       </Interface>
@@ -57,10 +57,16 @@
       <File Type="*MPL_ORBPRE*">
          <Description></Description>
          <ToList>
-            <Interface Name='SMF_PDGS_MPF'  Compress='NONE' DeliveryMethods='SFTP' />
+            <Interface Name='FOS_2_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
          </ToList>
       </File>
 
+      <File Type="*MPL_TLEPRE*">
+         <Description></Description>
+         <ToList>
+            <Interface Name='AF_2_CPF'  Compress='NONE' DeliveryMethods='SFTP' />
+         </ToList>
+      </File>
 
    </ListFiles>
 

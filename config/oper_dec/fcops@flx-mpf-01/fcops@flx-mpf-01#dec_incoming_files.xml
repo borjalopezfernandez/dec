@@ -48,41 +48,7 @@ Rules for the new kids
 
 
       <Interface>
-         <Name>CPF_2_SMF</Name>
-         <LocalInbox>/data/fcops/int/fromCPF</LocalInbox>
-         <DownloadDirs>
-            <Directory DepthSearch="0">smf</Directory>
-         </DownloadDirs>
-         <Switches>
-            <DeleteDownloaded>true</DeleteDownloaded>
-            <DeleteDuplicated>false</DeleteDuplicated>
-            <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>true</LocalDissemination>
-            <LogDuplicated>false</LogDuplicated>
-            <LogUnknown>false</LogUnknown>
-            <MD5>false</MD5>
-         </Switches>
-      </Interface>
-     
-     <Interface>
-         <Name>MARF_2_SMF</Name>
-         <LocalInbox>/data/fcops/int/fromMARF</LocalInbox>
-         <DownloadDirs>
-            <Directory DepthSearch="0">.</Directory>
-         </DownloadDirs>
-         <Switches>
-            <DeleteDownloaded>true</DeleteDownloaded>
-            <DeleteDuplicated>false</DeleteDuplicated>
-            <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>true</LocalDissemination>
-            <LogDuplicated>false</LogDuplicated>
-            <LogUnknown>false</LogUnknown>
-            <MD5>false</MD5>
-         </Switches>
-      </Interface>
-
-      <Interface>
-         <Name>AF_2_SMF</Name>
+         <Name>FOS_2_AF</Name>
          <LocalInbox>/data/fcops/int/fromAF</LocalInbox>
          <DownloadDirs>
             <Directory DepthSearch="0">toSMF</Directory>
@@ -97,24 +63,6 @@ Rules for the new kids
             <MD5>false</MD5>
          </Switches>
       </Interface>
-
-      <Interface>
-         <Name>DAF_2_SMF</Name>
-         <LocalInbox>/data/fcops/int/fromDAF</LocalInbox>
-         <DownloadDirs>
-            <Directory DepthSearch="0">smf</Directory>
-         </DownloadDirs>
-         <Switches>
-            <DeleteDownloaded>true</DeleteDownloaded>
-            <DeleteDuplicated>false</DeleteDuplicated>
-            <DeleteUnknown>false</DeleteUnknown>
-            <LocalDissemination>true</LocalDissemination>
-            <LogDuplicated>false</LogDuplicated>
-            <LogUnknown>false</LogUnknown>
-            <MD5>false</MD5>
-         </Switches>
-      </Interface>
-
 
 
    </ListInterfaces>
@@ -148,20 +96,15 @@ Rules for the new kids
       <ListIntrays>
 
          <Intray>
-            <Name>FOS_MPF_AF</Name>
-            <Directory>/data/fcops/int/fos_mpf/af/sftp</Directory>
+            <Name>FOS_CPF</Name>
+            <Directory>/data/mpf/delivery_root/cpf/toCPF</Directory>
             <Execute></Execute>
          </Intray>
 
+      
          <Intray>
-            <Name>FOS_MPF_SMF</Name>
-            <Directory>/data/mpf/delivery_root/smf/fromMPF</Directory>
-            <Execute></Execute>
-         </Intray>
-
-         <Intray>
-            <Name>FOS_MPF</Name>
-            <Directory>/data/fcops/int/fos_mpf/mpf/sftp</Directory>
+            <Name>FOS_2_AF</Name>
+            <Directory>/data/fcops/int/fos/af/sftp</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -181,15 +124,16 @@ Rules for the new kids
          <File Type="*MPL_ORBPRE*">
             <HardLink>true</HardLink>
             <ToList>
-               <Intray>FOS_MPF_SMF</Intray>
+               <Intray>FOS_CPF</Intray>
                <Intray>FOS_MPF</Intray>
+               <Intray>FOS_SMF</Intray>
             </ToList>
          </File>
 
          <File Type="*MPL_TLEPRE*">
             <HardLink>true</HardLink>
             <ToList>
-               <Intray>FOS_MPF_AF</Intray>
+               <Intray>FOS_2_AF</Intray>
                <Intray>FOS_MPF_SMF</Intray>
                <Intray>FOS_MPF</Intray>
             </ToList>
