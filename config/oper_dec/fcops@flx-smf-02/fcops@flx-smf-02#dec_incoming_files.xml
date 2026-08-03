@@ -16,7 +16,7 @@ Rules for the new kids
          <Name>MPF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromMPF</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">/data/mpf/delivery_root/smf/fromMPF</Directory>
+            <Directory DepthSearch="0">/data/mpf/delivery_root/smf/toSMF/</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
