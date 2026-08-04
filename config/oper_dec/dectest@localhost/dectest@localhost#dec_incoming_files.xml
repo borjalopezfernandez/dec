@@ -383,6 +383,23 @@
       </Interface>
 
       <Interface>
+         <Name>LOCALHOST_SECURE_KEYS_ERROR_DIR</Name>
+         <LocalInbox>/tmp/dec/in_basket_if_localhost_secure_keys</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/tmp/i_do_not_exist</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>true</DeleteDownloaded>
+            <DeleteDuplicated>true</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>true</LocalDissemination>
+            <LogDuplicated>true</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>         
+      </Interface>
+
+      <Interface>
          <Name>LOCALHOST_SECURE_PASSWORD</Name>
          <LocalInbox>/tmp/dec/in_basket_if_localhost_secure_password</LocalInbox>
          <DownloadDirs>

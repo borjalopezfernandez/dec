@@ -590,13 +590,8 @@ class DEC_ReceiverFromInterface
             exploreSecureTree(@remotePath, 0)
 
          rescue Exception => e
-            @logger.error("#{e.class.to_s.upcase} : Unable to explore directory tree from : #{@remotePath}")
-            @logger.error(e.to_s)
-
-            if @isDebugMode == true then
-               @logger.debug(e.backtrace)
-            end
-            next
+            raise e
+            # next
          end
       }
 
@@ -632,11 +627,15 @@ class DEC_ReceiverFromInterface
         end
       # rescue Net::SFTP::StatusException => status_e
       rescue Exception => status_e
-         @logger.error("StatusException : Unable to list #{path} (#{status_e.message})")
+         @logger.error("[DEC_612] I/F #{@entity}: Cannot reach #{path} directory")
+        
          if @isDebugMode == true then
+            @logger.error("StatusException : Unable to list #{path} (#{status_e.message})")
             @logger.debug(status_e.backtrace)
          end
-         return
+
+         raise status_e
+         # return
       end
 
       req.each{|item|
