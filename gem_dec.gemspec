@@ -132,11 +132,10 @@ Gem::Specification.new do |s|
    end
    ## --------------------------------------------
 
+   s.homepage    = 'https://github.com/borjalopezfernandez/dec'
+   s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
 
-  s.homepage    = 'https://github.com/borjalopezfernandez/dec'
-  s.metadata    = { "source_code_uri" => "https://github.com/borjalopezfernandez/dec" }
-
-  ## ----------------------------------------------
+   ## ----------------------------------------------
 
    # s.required_ruby_version = '>= 3.4'
    s.required_ruby_version = '>= 3.3'
@@ -171,7 +170,9 @@ Gem::Specification.new do |s|
    s.add_dependency('ed25519', '~> 1.3')
    s.add_dependency('open-uri', '~> 0.5')
    s.add_dependency('nokogiri', '~> 1.1')
+   s.add_dependency('sqlite3', '~> 1.4')
    s.add_dependency('shell', '~> 0.8')
+   s.add_dependency('sys-filesystem', '~> 1.3')
 
    if ENV.include?("DEC_TEST") == true then
       s.add_dependency('minitest', '~> 5.15')
@@ -186,30 +187,19 @@ Gem::Specification.new do |s|
 #  end
 #  ## --------------------------------------------
 
-  ## --------------------------------------------
-  ##
-  ## Tailored installer to include Postgresql
-  if ENV.include?("DEC_PG") == true then
+   ## --------------------------------------------
+   ##
+   ## Tailored installer to include Postgresql
+   if ENV.include?("DEC_PG") == true then
      s.add_dependency('pg', '~> 1.5.9')
-  end
-  ## --------------------------------------------
+   end
+   ## --------------------------------------------
 
-  s.add_dependency('sqlite3', '~> 1.4')
-  s.add_dependency('sys-filesystem', '~> 1.3')
+   ## ----------------------------------------------
 
-  ## ----------------------------------------------
+   s.post_install_message = "#{'1F4E1'.hex.chr('UTF-8')} DEC #{'1F47E'.hex.chr('UTF-8')} Data Exchange Component installed #{DEC.class_variable_get(:@@version)} \360\237\215\200 \360\237\215\200 \360\237\215\200"
 
-  s.add_development_dependency('coderay', '~> 1.1')
-  s.add_development_dependency('rspec', '~> 3.9')
-  s.add_development_dependency('sqlite3', '~> 1.4')
-  s.add_development_dependency('test-unit', '~> 3.0')
-
-
-  ## ----------------------------------------------
-
-  s.post_install_message = "#{'1F4E1'.hex.chr('UTF-8')} DEC #{'1F47E'.hex.chr('UTF-8')} Data Exchange Component installed #{DEC.class_variable_get(:@@version)} \360\237\215\200 \360\237\215\200 \360\237\215\200"
-
-  ## ----------------------------------------------
+   ## ----------------------------------------------
 
 end
 

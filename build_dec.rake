@@ -676,6 +676,24 @@ namespace :dec do
    end
    ## --------------------------------------------------------------------
 
+   desc "Bundle cache gems dependencies"
+
+   task :bundle_cache do
+      prev_dir = Dir.pwd
+      Dir.chdir('gems')
+      cmd  = "bundle config set cache_all true"
+      puts cmd
+      system(cmd)
+      cmd  = "bundle cache"
+      puts cmd
+      system(cmd)
+      Dir.chdir(prev_dir)
+      version = DEC.class_variable_get(:@@version)
+      cmd = "7za a -t7z dec-#{version}_gems_dependencies.7z gems/vendor/cache/*.gem -mx=7"
+      puts cmd
+      retval = system(cmd)
+   end
+
    ## --------------------------------------------------------------------
 
    desc "perform RSpec TDD/BDD"
