@@ -26,11 +26,12 @@ module DEC
 
    include CUC::DirUtils
 
-   @@version = '1.0.47.9'
+   @@version = '1.0.48.1'
 
    ## -----------------------------------------------------------------
 
    @@change_record = { \
+      "1.0.48" =>    "Report generation supports REP_NOB_IN", \
       "1.0.47" =>    "decODataClient supports CDSE / Sentinel-3 collections", \
       "1.0.46" =>    "Update to ruby 3.4", \
       "1.0.45" =>    "Support for NASA CDDIS with HTTPS\n\

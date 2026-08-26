@@ -65,8 +65,15 @@
 
       <!-- DEC pull / retrieval reports (decGetFromInterface) -->
 
-      <Report Name="RetrievedFiles">
+      <Report Name="REP_NOB_IN">
          <Enabled>true</Enabled>
+         <Desc>Ingested Files</Desc>
+         <FileClass>OPER</FileClass>
+         <FileType>REP_NOB_IN</FileType>
+      </Report>
+
+      <Report Name="RetrievedFiles">
+         <Enabled>false</Enabled>
          <Desc>List of Files Retrieved</Desc>
          <FileClass>OPER</FileClass>
          <FileType>DEC_F_RECV</FileType>

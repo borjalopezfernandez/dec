@@ -195,7 +195,7 @@ private
    
    def writeElement(arrFiles)
 	   arrFiles.each{|file|
-		   @theFile.puts(%Q{        <Filename>#{File.basename(file)}</Filename>})
+		   @theFile.puts(%Q{        <Filename>#{File.basename(file['filename'])}</Filename>})
 		}
    end
    #-------------------------------------------------------------

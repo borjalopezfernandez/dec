@@ -633,7 +633,7 @@ namespace :dec do
       puts "rake -f build_dec.rake dec:install[dectest,localhost,s2_test_pg]"
       puts
       puts "FCOPS"
-      puts "rake -f build_dec.rake dec:install[fcops,flx-smf-02]"
+      puts "rake -f build_dec.rake dec:install[fcops,flx-smf-02,oper]"
       puts "rake -f build_dec.rake dec:install[fcops,flx-mpf-01,oper]"
       puts
       puts "ADGS"

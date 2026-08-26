@@ -43,6 +43,7 @@ require 'dec/ReadConfigIncoming'
 require 'dec/EventManager'
 require 'dec/EntityContentWriter'
 require 'dec/CheckerInterfaceConfig'
+require 'dec/WriteXMLFile_REP_NOB_IN'
 
 module DEC
 
@@ -914,27 +915,42 @@ class DEC_ReceiverFromInterface
       fileType    = ""
       fileClass   = ""
       desc        = ""
-      time        = Time.now
+      time        = Time.now.utc
       now         = time.strftime("%Y%m%dT%H%M%S")
-
-      arrReports = @decConfig.getReports
-
-      bIsEnabled = false
+      arrReports  = @decConfig.getReports
+      bIsEnabled  = false
+      arrFilesReceived = Array.new
 
       # -----------------------------------------------------
       # Create RetrievedFiles Report
 
+      if @isDebugMode == true then
+         @logger.debug("Creation of RetrievedFiles Report with #{@arrFilesReceived.length} files / #{@arrFilesReceived.length} files")
+      end
+
       if @arrFilesReceived.length > 0 then
       #if @fileList.length > 0 then
 
+         # REP_NOB_IN
+
          arrReports.each{|aReport|
-            if aReport[:name] == "RETRIEVEDFILES" then
+
+            if aReport[:name] == 'RETRIEVEDFILES' and aReport[:enabled] == true then
                bFound      = true
                fileType    = aReport[:fileType]
                desc        = aReport[:desc]
                bIsEnabled  = aReport[:enabled]
                fileClass   = aReport[:fileClass]
             end
+
+            if aReport[:name] == 'REP_NOB_IN' and aReport[:enabled] == true then
+               bFound      = true
+               fileType    = aReport[:fileType]
+               desc        = aReport[:desc]
+               bIsEnabled  = aReport[:enabled]
+               fileClass   = aReport[:fileClass]
+            end
+
          }
 
          if bForceCreation == true and bFound == false then
@@ -947,7 +963,33 @@ class DEC_ReceiverFromInterface
 
          if bFound == true and bIsEnabled == true then
 
-            writer = CTC::ListWriterDelivery.new(directory, true, fileClass, fileType)
+            @arrFilesReceived.each{|file|
+               arrFiles = ReceivedFile.where(filename: file)
+
+                  arrFiles.to_a.each{|received_file|
+                     if received_file.interface_id == @interface.id then
+                        hFileReceived = Hash.new
+                        hFileReceived['filename']        = received_file.filename
+                        hFileReceived['size']            = received_file.size
+                        hFileReceived['reception_date']  = received_file.reception_date
+                        hFileReceived['interface']       = @entity
+                        arrFilesReceived << hFileReceived
+                     end
+               }                  
+            }
+
+            if fileType == 'REP_NOB_IN' then
+               if @isDebugMode == true then
+                  @logger.debug("Creating REP_NOB_IN Report")
+               end
+               writer = WriteXMLFile_REP_NOB_IN.new(directory, @logger, @isDebugMode)
+
+            else
+               if @isDebugMode == true then
+                  @logger.debug("Creating RETRIEVEDFILES Report")
+               end
+               writer = CTC::ListWriterDelivery.new(directory, true, fileClass, fileType)
+            end
 
             if @isDebugMode == true then
 		         writer.setDebugMode
@@ -955,7 +997,7 @@ class DEC_ReceiverFromInterface
 
             writer.setup(@satPrefix, @prjName, @prjID, @mission)
             #writer.writeData(@entity, time, @fileList)
-            writer.writeData(@entity, time, @arrFilesReceived)
+            writer.writeData(@entity, time, arrFilesReceived)
 
             filename = writer.getFilename
 

@@ -478,6 +478,10 @@ def body
                
                event.trigger(@entity, "ONRECEIVENEWFILESOK", nil, @logger)
 
+               if @isDebugMode == true then
+                  @logger.debug("I/F #{@entity}: create Report of files retrieved")
+               end
+
                @receiver.createReportFile(ReadConfigDEC.instance.getReportDir, \
                                     true, \
                                     @createReport \

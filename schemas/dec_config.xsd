@@ -10,6 +10,7 @@
       <xs:enumeration value="EmergencyDeliveredFiles"/>
       <xs:enumeration value="RetrievedFiles"/>
       <xs:enumeration value="UnknownFiles"/>
+      <xs:enumeration value="REP_NOB_IN"/>
    </xs:restriction>
  </xs:simpleType>
 

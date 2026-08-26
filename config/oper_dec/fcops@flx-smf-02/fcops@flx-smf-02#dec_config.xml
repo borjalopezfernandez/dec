@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
    <Project>
-      <Name>FCOPS / Data Exchange Component - SMF Node (20260604-bis)</Name>
+      <Name>FCOPS / Data Exchange Component - SMF Node (20260826)</Name>
       <Id>DEC</Id>
       <Mission>FCOPS</Mission>
       <SatPrefix>FLX</SatPrefix>
@@ -36,7 +36,14 @@
    <Reports>
             
        <!-- DEC push / delivery reports / push (decSend2Interface) -->      
-            
+
+      <Report Name="REP_NOB_IN">
+         <Enabled>true</Enabled>
+         <Desc>Ingested Files</Desc>
+         <FileClass>OPER</FileClass>
+         <FileType>REP_NOB_IN</FileType>
+      </Report>
+
       <Report Name="DeliveredFiles">
          <Enabled>false</Enabled>
          <Desc>List of Files Delivered</Desc>
@@ -72,7 +79,7 @@
    <Workflow>
       <SourceDir>/data/fcops/dec/delivery_root</SourceDir>
       <GlobalOutbox>/data/fcops/dec/outbox</GlobalOutbox>
-      <ReportDir>/data/fcops/dec/reports</ReportDir>
+      <ReportDir>/data/fcops/devops/dec/REP_NOB_IN</ReportDir>
       <TempDir>/data/fcops/tmp</TempDir>
    </Workflow>
 

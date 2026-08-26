@@ -16,7 +16,7 @@ Rules for the new kids
          <Name>MPF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromMPF</LocalInbox>
          <DownloadDirs>
-            <Directory DepthSearch="0">/data/mpf/delivery_root/smf/toSMF/</Directory>
+            <Directory DepthSearch="0">mpf</Directory>
          </DownloadDirs>
          <Switches>
             <DeleteDownloaded>true</DeleteDownloaded>
@@ -105,25 +105,6 @@ Rules for the new kids
 
    <DownloadRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  
-
-<!--
-
-     <File Type="bulletinA.txt">
-         <Description>AUX_IERS_A</Description>
-         <FromList>
-            <Interface>IERS_BULA</Interface>
-         </FromList>
-      </File>
- 
-      <File Type="bulletinB.txt">
-         <Description>AUX_IERS_B</Description>
-         <FromList>
-            <Interface>IERS_BULB</Interface>
-         </FromList>
-      </File>
-
--->
-
       <File Type="*DWHDATA_OA*">
          <Description>DAF report</Description>
          <FromList>
