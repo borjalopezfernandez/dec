@@ -182,6 +182,13 @@ Rules for the new kids
          </FromList>
       </File>
 
+      <File Type="*REP_GS_UNV*">
+         <Description>REP_GS_UNV</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
       <File Type="*MPL_ORBSCT*">
          <Description>MPL_ORBSCT</Description>
          <FromList>
