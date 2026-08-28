@@ -14,14 +14,14 @@
 #
 # -R flag:
 #
-# With this option (Reporting), DEC Reports will be created (see dcc_config.xml). 
+# With this option (Reporting), DEC Reports will be created (see dec_config.xml). 
 # Report files are initally placed in the Interface local inbox and
 # if configured in files2InTrays.xml disseminated as nominal retrieved file.
 #
 # --del-unknown:
 #
-# It overrides the dcc_config.xml configuration parameter DeleteUnknown and explicitly
-# commands for removal of unknown files not configured in ft_incoming_files.xml
+# It overrides the dec_config.xml configuration parameter DeleteUnknown and explicitly
+# commands for removal of unknown files not configured in dec_incoming_files.xml
 #
 #
 # == Usage
@@ -30,7 +30,7 @@
 #     --list      list only (not downloading and no ingestion)
 #     --nodb      no Inventory recording
 #     --no-intray skip step of delivery to intrays
-#     --del-unknown it deletes remote files not configured in ft_incoming_files.xmls
+#     --del-unknown it deletes remote files not configured in dec_incoming_files.xml
 #     --receipt   create only receipt file-list with the content available
 #     --Report    create a Report when new files have been retrieved
 #     --Show      it shows all available I/Fs registered in the DEC Inventory
@@ -148,6 +148,12 @@ def main
      
    if @listOnly == true and  @createReceipt == true then
       puts "--list and --receipt are incompatible flags"
+      puts
+      exit(66)
+   end
+
+   if @createReport == true and @isNoDB == true then
+      puts "--nodb and --Report are incompatible flags"
       puts
       exit(66)
    end
@@ -463,7 +469,7 @@ def body
          @logger.info("[DEC_060] I/F #{@entity}: Polling Completed / New file(s) #{listOfFiles.length} available for pull")
 
          
-         if @listOnly == false and @createReceipt == false then
+         if @listOnly == false and @createReceipt == false and @isNoDB == false then
             ret = @receiver.receiveAllFiles
             
 #             # Create Report File
