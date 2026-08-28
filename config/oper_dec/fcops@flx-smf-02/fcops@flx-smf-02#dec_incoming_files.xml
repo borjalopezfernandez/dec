@@ -189,6 +189,13 @@ Rules for the new kids
          </FromList>
       </File>
 
+      <File Type="*REP__SUP__*">
+         <Description>REP__SUP__</Description>
+         <FromList>
+            <Interface>MPF_2_SMF</Interface>
+         </FromList>
+      </File>
+
       <File Type="*MPL_ORBSCT*">
          <Description>MPL_ORBSCT</Description>
          <FromList>
@@ -263,6 +270,30 @@ Rules for the new kids
          <Intray>
             <Name>SMF_PDGS_CPF</Name>
             <Directory>/data/fcops/int/smf_pdgs/cpf/sftp</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP_GS_UNV</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP_GS_UNV</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP_GS_UNV</Name>
+            <Directory>/data/fcops/devops/mpf/REP_GS_UNV</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_REP__SUP__</Name>
+            <Directory>/data/fcops/smf/mpf-sftp/REP__SUP__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>DEVOPS_REP__SUP__</Name>
+            <Directory>/data/fcops/devops/mpf/REP__SUP__</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -493,6 +524,23 @@ Rules for the new kids
             Only the first rule matching the file pattern is applied     
       -->
 
+      <File Type="*REP__SUP__*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_REP__SUP__</Intray>
+            <Intray>DEVOPS_REP__SUP__</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*REP_GS_UNV*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MPF</Intray>
+            <Intray>SMF_FCOPS_REP_GS_UNV</Intray>
+            <Intray>DEVOPS_REP_GS_UNV</Intray>
+         </ToList>
+      </File>
 
       <File Type="*DWHDATA_OA*">
          <HardLink>true</HardLink>
