@@ -11,14 +11,14 @@ class ODataClientCDSE < ODataClientBase
    
    ## -------------------------------------------------------------
    
-   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, debug = false)
+   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, list_only = false, debug = false)
       
-      super(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, debug)
+      super(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, list_only, debug)
 
       # self.setDebugMode
 
       if @isDebugMode == true then
-         @logger.debug("ODataClientCDSE initialize with query: #{query}, creationtime: #{creationtime}, datetime: #{datetime}, sensingtime: #{sensingtime}, full_path_dir: #{full_path_dir}, download: #{download}")
+         @logger.debug("ODataClientCDSE initialize with query: #{query}, creationtime: #{creationtime}, datetime: #{datetime}, sensingtime: #{sensingtime}, full_path_dir: #{full_path_dir}, download: #{download}, list_only: #{list_only}")
       end
 
       @topLimits   = CDSE::API_TOP_LIMIT_ITEMS
@@ -51,10 +51,34 @@ class ODataClientCDSE < ODataClientBase
          @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_OL_1_EFR___
       end
 
+      if query.include?("S3B") and query.include?("OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3B_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3B_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3B_OL_1_EFR___
+      end
+
+      if query.include?("S3C") and query.include?("OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3C_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3C_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3C_OL_1_EFR___
+      end
+
       if query.include?("S3A") and query.include?("NR_OL_1_EFR___") then
          @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3A_NR_OL_1_EFR___
          @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3A_NR_OL_1_EFR___
          @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NR_OL_1_EFR___
+      end
+
+      if query.include?("S3B") and query.include?("NR_OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3B_NR_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3B_NR_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3B_NR_OL_1_EFR___
+      end
+
+      if query.include?("S3C") and query.include?("NR_OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3C_NR_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3C_NR_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3C_NR_OL_1_EFR___
       end
 
       if query.include?("S3A") and query.include?("NT_OL_1_EFR___") then
@@ -62,6 +86,19 @@ class ODataClientCDSE < ODataClientBase
          @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3A_NT_OL_1_EFR___
          @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3A_NT_OL_1_EFR___
       end
+
+      if query.include?("S3B") and query.include?("NT_OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3B_NT_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3B_NT_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3B_NT_OL_1_EFR___
+      end
+
+      if query.include?("S3C") and query.include?("NT_OL_1_EFR___") then
+         @urlCount    = CDSE::API_URL_ODATA_COUNT_SENTINEL3C_NT_OL_1_EFR___
+         @urlSelect   = CDSE::API_URL_ODATA_SELECT_BASE_SENTINEL3C_NT_OL_1_EFR___
+         @urlPaging   = CDSE::API_URL_ODATA_SELECT_PAGING_SENTINEL3C_NT_OL_1_EFR___
+      end
+
 
       if @sensingtime != nil then
          @urlSelect   = CDSE::API_URL_ODATA_PRODUCT_SELECT_BY_SENSING

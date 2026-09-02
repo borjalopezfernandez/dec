@@ -21,7 +21,7 @@ class ODataClientBase
    
    ## -------------------------------------------------------------
    
-   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, debug = false)
+   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, list_only = false, debug = false)
       @user          = user
       @password      = password      
       @query         = query.upcase
@@ -31,6 +31,7 @@ class ODataClientBase
       @full_path_dir = full_path_dir
       @download      = download
       @logger        = logger
+      @list_only     = list_only
       @format        = "json"
       @currentDate   = DateTime.now.strftime("%Y%m%dT%H%M%S")
       
@@ -243,12 +244,14 @@ class ODataClientBase
       ## ---------------------
       
       ## type is carrying the mission id
-      begin    
-         createFileMetadata(endpoint, mission, response.body, iSkip)
-      rescue Exception => e
-         return false
+      if @list_only == false then
+         begin    
+            createFileMetadata(endpoint, mission, response.body, iSkip)
+         rescue Exception => e
+            return false
+         end
       end
-      
+
       if @download == true then
          downloadItems(response.body)
       else

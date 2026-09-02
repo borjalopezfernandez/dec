@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
-# The decODataClient is a simple OData client to hit OData endpoints
+# The decODataClient is a simple OData client to exploit OData API endpoints
 #
 # CDSE queries:
 #
 # Query by Sentinel-3 Product types ; NR and NT timeliness are preppended to the product type 
 #
 # --query cdse:s3a:OL_1_EFR___
-# --query cdse:s3a:NR_OL_1_EFR___ / Near-Real Time
-# --query cdse:s3a:NT_OL_1_EFR___ / Non Time Critical
+# --query cdse:s3a:NR_OL_1_EFR___ / S3A Near-Real Time
+# --query cdse:s3b:NT_OL_1_EFR___ / S3B Non Time Critical
 # --query cdse:s3:OL_1_ERR___
 # --query cdse:s3:OL_1_EFR___
 # --query cdse:s3:SL_1_RBT___
@@ -56,11 +56,6 @@
 #     --version   it shows the DEC version numnber
 # 
 #
-# prip:S2A_OPER_MSI_L0__DS_VGS2:MSI_L0__GR
-#
-# long long long long query GS2B_20201015T092029_018852_N02.14
-# 
-# S2B_OPER_MSI_L0__DS_VGS2_20201028T163228_S20201028T144729_N02.09
 
 require 'rubygems'
 require 'getoptlong'
@@ -95,6 +90,7 @@ def main
    @isVerboseMode = false
    @isDebugMode   = false
    @bDownload     = false
+   @listOnly      = false
    @creationDelay = nil
    @hourDelay     = nil
    @currentDate   = DateTime.now.strftime("%Y%m%dT%H%M%S")
@@ -113,6 +109,7 @@ def main
      ["--sensing", "-s",            GetoptLong::REQUIRED_ARGUMENT],
      ["--Hour", "-H",               GetoptLong::REQUIRED_ARGUMENT],
      ["--Location", "-L",           GetoptLong::REQUIRED_ARGUMENT],
+     ["--list", "-l",               GetoptLong::NO_ARGUMENT],
      ["--Verbose", "-V",            GetoptLong::NO_ARGUMENT],
      ["--Debug", "-D",              GetoptLong::NO_ARGUMENT],
      ["--retrieve", "-r",           GetoptLong::NO_ARGUMENT],
@@ -124,6 +121,7 @@ def main
       opts.each do |opt, arg|
          case opt
             when "--Debug"             then @isDebugMode    = true
+            when "--list"              then @listOnly       = true
             when "--retrieve"          then @bDownload      = true
             when "--user"              then @user           = arg.to_s.chomp
             when "--password"          then @password       = arg.to_s.chomp
@@ -275,7 +273,7 @@ def main
    if @query.include?("PRIP") == true then
       ret = queryPRIP(@user, @password, @query)
    else
-      factory = ODataClientFactory.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @bDownload, @logger)
+      factory = ODataClientFactory.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @bDownload, @logger, @listOnly, @isDebugMode)
       
       client  = factory.get_instance   
       
@@ -485,7 +483,7 @@ def usage
    
    fullpathFile = File.expand_path(__FILE__)
    
-   value = `#{"head -53 #{fullpathFile}"}`
+   value = `#{"head -58 #{fullpathFile}"}`
       
    value.lines.drop(1).each{
       |line|

@@ -27,7 +27,7 @@ class ODataClientFactory
    
    ## -------------------------------------------------------------
    
-   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, debug = false)
+   def initialize(user, password, query, creationtime, datetime, sensingtime, full_path_dir, download, logger, list_only = false,debug = false)
       @user          = user
       @password      = password
       @query         = query
@@ -39,7 +39,8 @@ class ODataClientFactory
       @logger        = logger
       @query         = query
       @logger        = logger    
-      @isDebugMode   = debug        
+      @isDebugMode   = debug
+      @list_only     = list_only        
    end
    ## -----------------------------------------------------------
   
@@ -56,7 +57,7 @@ class ODataClientFactory
    def get_instance
 
       if @query.include?('CDSE') == true then
-         return ODataClientCDSE.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @isDebugMode)
+         return ODataClientCDSE.new(@user, @password, @query, @creationtime, @datetime, @sensingtime,  @full_path_dir, @download, @logger, @list_only, @isDebugMode)
       end
 
       if @query.include?('TEST_ADGS') == true then
