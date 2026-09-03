@@ -41,6 +41,7 @@
 #
 # == Usage
 # decODataClient 
+#     --list      list only (no reporting neither downloading)
 #     --user      <username>
 #     --password  <password>
 #     --time      2026-03-24T00:00:00.000Z (format applied to the PublicationDate)
