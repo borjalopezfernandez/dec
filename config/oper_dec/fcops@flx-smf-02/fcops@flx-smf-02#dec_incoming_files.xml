@@ -496,6 +496,12 @@ Rules for the new kids
          </Intray>
 
          <Intray>
+            <Name>DEVOPS_REP__CHF__</Name>
+            <Directory>/data/fcops/devops/mpf/REP__CHF__</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
             <Name>SMF_FCOPS_REP_PSDUMP</Name>
             <Directory>/data/fcops/smf/mpf-sftp/REP_PSDUMP</Directory>
             <Execute></Execute>
@@ -687,6 +693,7 @@ Rules for the new kids
          <ToList>
             <Intray>SMF_PDGS_MPF</Intray>
             <Intray>SMF_FCOPS_REP__CHF__</Intray>
+            <Intray>DEVOPS_REP__CHF__</Intray>
          </ToList>
       </File>
 

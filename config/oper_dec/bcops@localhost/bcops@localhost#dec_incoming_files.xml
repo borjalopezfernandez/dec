@@ -223,7 +223,7 @@
          </FromList>
       </File>
 
-      <File Type="COD0OPSPRD*INX.gz">
+      <File Type="COD0OPSP?D*INX.gz">
          <Description>IGS ionex TEC Predicted COD0OPSPRD_20262540000_01D_01H_GIM.INX</Description>
          <FromList>
             <Interface>AIUB_AUX_TEC_FTP</Interface>
