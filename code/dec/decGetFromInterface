@@ -484,14 +484,21 @@ def body
                
                event.trigger(@entity, "ONRECEIVENEWFILESOK", nil, @logger)
 
-               if @isDebugMode == true then
-                  @logger.debug("I/F #{@entity}: create Report of files retrieved")
-               end
+               if @isNoDB == false then
 
-               @receiver.createReportFile(ReadConfigDEC.instance.getReportDir, \
+                  if @isDebugMode == true then
+                     @logger.debug("I/F #{@entity}: create Report of files retrieved")
+                  end
+
+                  @receiver.createReportFile(ReadConfigDEC.instance.getReportDir, \
                                     true, \
                                     @createReport \
                                     )
+               else
+                  if @isDebugMode == true then
+                     @logger.debug("I/F #{@entity}: --nodb flag disables the generation of the report of files retrieved")
+                  end
+               end
             else
                if @isDebugMode == true then
                   @logger.debug("Event triggered OnReceiveError")

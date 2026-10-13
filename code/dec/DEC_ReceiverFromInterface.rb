@@ -560,14 +560,14 @@ class DEC_ReceiverFromInterface
       @depthLevel = 0
 
       begin
-         Timeout.timeout(10) do
+         Timeout.timeout(30) do
             if @isDebugMode == true then
                @logger.debug("[DEC_XXX] I/F #{@entity}: Connecting to #{user}@#{host} with #{@protocol}")
             end
             if pass != "N/A" and pass != "" and pass != nil then
-               @ftp     = Net::SFTP.start(host, user, :password => pass, :port => port, :timeout => 5)
+               @ftp     = Net::SFTP.start(host, user, :password => pass, :port => port, :timeout => 10)
             else
-               @ftp     = Net::SFTP.start(host, user, :port => port, :timeout => 5)
+               @ftp     = Net::SFTP.start(host, user, :port => port, :timeout => 10)
             end
             @session = @ftp.connect!
          end
@@ -615,16 +615,18 @@ class DEC_ReceiverFromInterface
                @logger.debug("[DEC_XXX] I/F #{@entity}: #{@protocol} CD #{path}")
             end
 
-            handle = @ftp.opendir!(path)
+            # handle = @ftp.opendir!(path)
 
             if @isDebugMode == true then
                @logger.debug("[DEC_XXX] I/F #{@entity}: #{@protocol} NLST")
             end
 
-            req = @ftp.readdir!(handle)
+            req = @ftp.dir.entries(path)
+            #req = @ftp.readdir!(handle)
 
-            # req = @ftp.readdir(handle)
-            @ftp.close!(handle)
+            # @ftp.close!(handle)
+            @ftp.close_channel   # closes the SFTP channel
+            @ftp.session.close
         end
       # rescue Net::SFTP::StatusException => status_e
       rescue Exception => status_e
@@ -653,6 +655,10 @@ class DEC_ReceiverFromInterface
             end
             @newArrFile << fullFile
             next
+         else
+            if @isDebugMode == true then
+               # @logger.debug("Found NOT FILE: #{fullFile}")
+            end
          end
 
          # Make recursive call if the item is a directory
@@ -1687,7 +1693,7 @@ private
             # @logger.debug("[DEC_ZYX] I/F #{@entity}: dissemination of #{File.basename(disFile)} to In-Trays")
             disseminateFile(disFile)
          else
-            @logger.warning("[DEC_ZYX] I/F #{@entity}: dissemination of #{File.basename(disFile)} is skipped")
+            # @logger.warn("[DEC_ZYX] I/F #{@entity}: dissemination of #{File.basename(disFile)} is skipped")
          end
 
          return true
