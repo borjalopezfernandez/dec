@@ -81,6 +81,23 @@ Rules for the new kids
       </Interface>
 
       <Interface>
+         <Name>AF_BULK</Name>
+         <LocalInbox>/data/fcops/int/fromAF_BULK</LocalInbox>
+         <DownloadDirs>
+            <Directory DepthSearch="0">/data/customers/flex/report_archive</Directory>
+         </DownloadDirs>
+         <Switches>
+            <DeleteDownloaded>false</DeleteDownloaded>
+            <DeleteDuplicated>false</DeleteDuplicated>
+            <DeleteUnknown>false</DeleteUnknown>
+            <LocalDissemination>false</LocalDissemination>
+            <LogDuplicated>false</LogDuplicated>
+            <LogUnknown>false</LogUnknown>
+            <MD5>false</MD5>
+         </Switches>
+      </Interface>
+
+      <Interface>
          <Name>DAF_2_SMF</Name>
          <LocalInbox>/data/fcops/int/fromDAF</LocalInbox>
          <DownloadDirs>
@@ -116,11 +133,19 @@ Rules for the new kids
          <Description>REP_XACQ___</Description>
          <FromList>
             <Interface>AF_2_SMF</Interface>
+            <Interface>AF_BULK</Interface>
          </FromList>
       </File>
 
       <File Type="*REP_ARCUPD*">
          <Description>REP_ARCUPD</Description>
+         <FromList>
+            <Interface>MARF_2_SMF</Interface>
+         </FromList>
+      </File>
+
+      <File Type="*FLX_list_scratch*">
+         <Description>FLX_list_scratch</Description>
          <FromList>
             <Interface>MARF_2_SMF</Interface>
          </FromList>
@@ -209,6 +234,7 @@ Rules for the new kids
             <Interface>MPF_2_SMF</Interface>
             <Interface>CPF_2_SMF</Interface>
             <Interface>AF_2_SMF</Interface>
+            <Interface>AF_BULK</Interface>
          </FromList>
       </File>
 
@@ -218,6 +244,7 @@ Rules for the new kids
             <Interface>MPF_2_SMF</Interface>
             <Interface>CPF_2_SMF</Interface>
             <Interface>AF_2_SMF</Interface>
+            <Interface>AF_BULK</Interface>
          </FromList>
       </File>
 
@@ -318,6 +345,18 @@ Rules for the new kids
           <Intray>
             <Name>DEVOPS_REP_ARCUPD</Name>
             <Directory>/data/fcops/devops/marf/REP_ARCUPD</Directory>
+            <Execute></Execute>
+         </Intray>
+
+         <Intray>
+            <Name>SMF_FCOPS_FLX_list_scratch</Name>
+            <Directory>/data/fcops/smf/marf-sftp/FLX_list_scratch</Directory>
+            <Execute></Execute>
+         </Intray>
+
+          <Intray>
+            <Name>DEVOPS_FLX_list_scratch</Name>
+            <Directory>/data/fcops/devops/marf/FLX_list_scratch</Directory>
             <Execute></Execute>
          </Intray>
 
@@ -572,6 +611,15 @@ Rules for the new kids
             <Intray>SMF_PDGS_MARF</Intray>
             <Intray>SMF_FCOPS_REP_ARCUPD</Intray>
             <Intray>DEVOPS_REP_ARCUPD</Intray>
+         </ToList>
+      </File>
+
+      <File Type="*FLX_list_scratch*">
+         <HardLink>true</HardLink>
+         <ToList>
+            <Intray>SMF_PDGS_MARF</Intray>
+            <Intray>SMF_FCOPS_FLX_list_scratch</Intray>
+            <Intray>DEVOPS_FLX_list_scratch</Intray>
          </ToList>
       </File>
 

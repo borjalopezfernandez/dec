@@ -233,6 +233,61 @@
 <!-- ================================================================ -->
 
 
+
+<Interface Name="AF_BULK">
+  <Desc>AF Server</Desc>
+  <TXRXParams>
+    <Enabled4Sending>false</Enabled4Sending>
+    <Enabled4Receiving>true</Enabled4Receiving>
+    <ImmediateRetries>3</ImmediateRetries>
+    <LoopRetries>2</LoopRetries>
+    <LoopDelay unit="s">60</LoopDelay>
+    <PollingInterval unit="s">60</PollingInterval>
+    <PollingSize>100000</PollingSize>
+    <ParallelDownload>8</ParallelDownload>
+  </TXRXParams>    
+  <Server>
+    <Protocol>SFTP</Protocol>
+    <Hostname>192.146.239.44</Hostname>
+    <Port>22</Port>
+    <User>flex</User>
+    <Pass></Pass>
+    <RegisterContentFlag>false</RegisterContentFlag>
+    <RetrieveContentFlag>true</RetrieveContentFlag>
+    <SecureFlag>true</SecureFlag>
+    <VerifyPeerSSL>false</VerifyPeerSSL>
+    <CompressFlag>false</CompressFlag>
+    <PassiveFlag>true</PassiveFlag>
+    <CleanUpFreq Unit="s">5</CleanUpFreq>
+  </Server>
+  <DeliverByMailTo>
+     <Address></Address>
+  </DeliverByMailTo>
+  <Notify>
+    <SendNotification>false</SendNotification>
+    <To>
+     <Address></Address>
+    </To>
+  </Notify>
+  <Events>
+      <!--
+      <Event Name='OnReceiveNewFile'        executeCmd="echo 'OnReceiveNewFile from SMF_PDGS'"/>
+      <Event Name='NewFile2Intray'          executeCmd="echo 'NewFile2Intray from SMF_PDGS %f / %F'"/>
+      -->
+  </Events>
+  <ContactInfo>
+    <Name></Name>
+    <EMail></EMail>
+    <Tel></Tel>
+    <Fax></Fax>
+    <Address></Address>
+  </ContactInfo>
+</Interface> 
+
+<!-- ================================================================ -->
+
+
+
 <!-- ================================================================ -->
 
 <Interface Name="DAF_2_SMF">
